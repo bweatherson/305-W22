@@ -1,0 +1,85 @@
+---
+title: "305 Lecture 9.1 - Expected Utility"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- Today we're going to talk about the role of probability in decision making.
+- And to do this, we need to introduce a new concept, **Expected Value**.
+
+## Associated Reading
+
+Odds and Ends, chapter 11; though like with chapter 8 I'm going to take a different path through the material to the book.
+
+## Random Variables
+
+- A **random variable**  is simply a variable that takes different numerical values in different states. 
+- In other words, it is a function from possibilities to numbers. 
+- It need not be 'random' in any familiar sense.
+- The function from possible situations to the value of 2 + 2 in that situation is a random variable, albeit a constant one.
+- It's just a slightly confusing term for any variable that takes different, numerical, values in different situations.
+
+## Labels
+
+- Typically, random variables are denoted by capital letters. 
+- So we might have a random variable $X$ whose value is the age of the next President of the United States, and his or her inauguration. 
+- Or we might have a random variable $Y$ that is the number of children you will have in your lifetime. 
+- Basically any mapping from possibilities to numbers can be a random variable. 
+
+## An Example
+
+- You've asked each of your friends who will win the Lakers v Clippers game.
+- 12 said the Lakers will win.
+- 7 said the Clippers will win. \pause
+- Then we can let $X$ be a random variable measuring the number of your friends who correctly predicted the result of the game.
+
+\begin{equation*}
+X = 
+	\begin{cases}
+		12,& \text{if Lakers win} ,\\ 
+		7,& \text{if Clippers win} .
+	\end{cases}
+\end{equation*}
+
+## Expected Value
+
+- Given a random variable $X$ and a probability function $Pr$, we can work out the **expected value** of that random variable with respect to that probability function. 
+- Intuitively, the expected value of $X$ is a weighted average of the possible values of $X$, where the weights are given by the probability (according to $Pr$) of each value coming about. 
+
+## Calculating Expected Value
+
+- More formally, we work out the expected value of $X$ this way. 
+- For each possibility, we multiply the value of $X$ in that case by the probability of the possibility obtaining. 
+- Then we sum the numbers we've got, and the result is the expected value of $X$. 
+- We'll write the expected value of $X$ as $Exp(X)$. 
+
+## Back to the Example
+
+- So if the probability that the Lakers win is 0.7, and the probability that the Clippers win is 0.3, then
+
+\begin{align*}
+Exp(X) &= 12 \times 0.7 + 7 \times 0.3 \\
+ &= 8.4 + 2.1 \\
+ &= 10.5
+\end{align*} 
+
+## Notes
+
+1. The expected value of $X$ isn't in any sense the value that we expect $X$ to take. It's more like an average.
+2. If this kind of situation recurs a lot, you would expect the long run average value $X$ takes to be roundabout the expected value.
+3. That's a better way of conceptualising what expected values are.
+
+## For Next Time
+
+- We will look at how to formally model a decision problem.

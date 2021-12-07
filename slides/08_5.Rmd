@@ -1,0 +1,142 @@
+---
+title: "305 Lecture 8.5 - Base Rates"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- This lecture will talk about the importance of taking base rates into account.
+- To do that, I need to explain what a base rate is.
+- And to do that, it helps to start with a famous example.
+
+## Associated Reading
+
+Odds and Ends, section 8.1
+
+## The Blue and Green Example
+
+Plan
+
+- Go over the example.
+- Explain what the book says about it.
+- Say why I think it's a bit more complicated than calling one view a mistake. (The short version is that English is ambiguous around here, and we shouldn't assume one particular disambiguation.)
+
+## Setup (Part One)
+
+A cab was involved in a hit and run accident at night. Two cab companies, the Green and the Blue, operate in the city. You are given the following data:
+
+1. 85% of the cabs in the city are Green and 15% are Blue.
+2. A witness identified the cab as Blue.
+
+## Setup (Part Two)
+
+The court tested the reliability of the witness under the same circumstances that existed on the night of the accident and concluded that the witness correctly identified each one of the two colors 80% of the time and failed 20% of the time.
+
+- What is the probability that the cab involved in the accident was blue rather green?
+
+## Reliability
+
+Let's understand that last clause as meaning that the following two claims are true.
+
+- Pr(Correct Identification $|$ Is-Green) = $0.8$; and
+- Pr(Correct Identification $|$ Is-Blue) = $0.8$.
+
+Let's also note that this isn't obvious that this is the right translation. For one thing, it translates a single data point as a conjunction.
+
+## Restating Reliability
+
+> - Pr(Looks-Green $|$ Is-Green) = $0.8$. 
+> - So Pr(Looks-Blue $|$ Is-Green) = $0.2$. 
+
+> - Pr(Looks-Blue $|$ Is-Blue) = $0.8$. 
+> - So Pr(Looks-Green $|$ Is-Blue) = $0.2$. 
+
+> - And we also know Pr(Is-Green) = $0.85$
+
+## Another Table
+
+|          |      Looks-Green          |          Looks-Blue       |
+|---------:|:-------------------------:|:-------------------------:|
+| Is-Green | $0.85 \times 0.8 = 0.68$ | $0.85 \times 0.2 = 0.17$ |
+| Is-Blue  | $0.15 \times 0.2 = 0.03$ | $0.15 \times 0.8 = 0.12$ |
+ 
+Think about why each of those numbers are there.
+
+## Conditional Probablility
+
+Now focus on the right-hand column.
+
+|          |      Looks-Green          |          Looks-Blue       |
+|---------:|:-------------------------:|:-------------------------:|
+| Is-Green | $0.85 \times 0.8 = 0.68$ | $0.85 \times 0.2 = 0.17$ |
+| Is-Blue  | $0.15 \times 0.2 = 0.03$ | $0.15 \times 0.8 = 0.12$ |
+ 
+\pause
+- The probability of Looks Blue is $0.17 + 0.12 = 0.29$ \pause
+- The probability of Is-Blue-and-Looks-Blue is $0.12$. \pause
+- So the probability of Is-Blue given Looks-Blue is $\frac{0.12}{0.29} \approx 0.41$.
+
+## The Standard Story
+
+> - Even though the witness is pretty reliable, it is still more likely a green cab than a blue cab given their evidence.
+> - When something is really probable to start with, it takes a lot of evidence to shift the probabilities.
+> - We often tend to conflate the **direction** of the recent evidence with the **result** of that getting that evidence.
+> - Even if Blue is better supported by the recent evidence than Green, the overall evidence might still better support Green.
+> - And a special case of that is where all the indivudalised evidence supports Blue, but the generic evidence (the base rates) supports Green.
+
+## Worry 1 of 3
+
+This is a really bad witness.
+
+- If they'd just said green every time, they'd have been more reliable.
+- If you're less reliable than a tape recorder saying the same thing over and over again, that's bad.
+- So bad that we might worry about what's going on.
+
+## Worry 2 of 3
+
+Why make the inference from Pr(Looks-Blue $|$ Is-Blue) = $0.8$ to Pr(Looks-Green $|$ Is-Blue) = $0.2$? \pause
+
+- The text only says that (a) all the taxis are Blue or Green, and (b) the witness is 80% accurate.
+- It doesn't follow that every time that they misidentify a Blue cab, they misidentify it as Green. \pause
+- Even if there aren't yellow cabs, they might see it as yellow. (Maybe they just moved from NYC). \pause
+- Or maybe a "don't know" verdict count as not a correct identification. So we need a column for "don't know".
+
+## Worry 3 of 3
+
+Why interpret the accuracy claim as that conjunction rather than the conjunction:
+
+- Pr(Correct Identification $|$ Looks-Green) = $0.8$; and
+- Pr(Correct Identification $|$ Looks-Blue) = $0.8$.
+
+Then the answer is 0.8. And I guess I don't see what in the English makes it more likely to be read one way rather than another.
+
+## Worry 3 of 3 rephrased
+
+Put another way, if this conjunction was true, how would you describe it?
+
+- Pr(Correct Identification $|$ Looks-Green) = $0.8$; and
+- Pr(Correct Identification $|$ Looks-Blue) = $0.8$. \pause
+
+I think I'd say the witness correctly identified the color 80% of the time.
+
+## General Lesson
+
+- When you get this kind of accuracy data in words - check what you are being told!
+- Data with very different implications might be described in similar words.
+- This is just as important a lesson as the lesson "Attend to base rates".
+
+## For Next Time
+
+We will end the week looking at some more complicated examples of inverting conditional probability.

@@ -1,0 +1,103 @@
+---
+title: $A \rightarrow \Box \Diamond A$ (in KTB)
+author: Build a Tableau
+date: To Check Whether it is Valid
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Hypothesis
+
+$A \rightarrow \Box \Diamond A$ is a theorem of KTB.
+
+- So we can use all the rules, plus the special rules for B and T.
+
+## $A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{A \rightarrow \Box \Diamond A}{1}, just = \TAss,
+]
+\end{oltableau}
+
+\bigskip
+
+Start with it being false at 1.
+
+## $A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss
+  [\pFmla{\True}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+You know the drill - left hand side true, right hand side false.
+
+## $A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss
+  [\pFmla{\True}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\False}{\Diamond A}{1.1}, just = {\TRule{\False}{\Box}[3]}
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+False $\Box$ sentences are false somewhere.
+
+## $A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss
+  [\pFmla{\True}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\False}{\Diamond A}{1.1}, just = {\TRule{\False}{\Box}[3]}
+        [\pFmla{\False}{A}{1}, just = {B $\Diamond$ 4}]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+In B, false $\Diamond$ sentences have to be false one step backwards as well as one step forwards.
+
+## $A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss
+  [\pFmla{\True}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\False}{\Diamond A}{1.1}, just = {\TRule{\False}{\Box}[3]}
+        [\pFmla{\False}{A}{1}, just = {B $\Diamond$ 4}, close]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+And that closes the tree, so it is a theorem.
+
+

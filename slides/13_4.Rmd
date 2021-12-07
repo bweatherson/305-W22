@@ -1,0 +1,74 @@
+---
+title: "305 Lecture 13.4 - Antecedent Strengthening"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To discuss a rule that both the material and strict conditionals satisfy, antecedent strengthening.
+
+## Associated Reading
+
+- No new reading
+
+## Antecedent Strengthening
+
+Here is one of the implications we can use to test the strict implication theory.
+
+1. $A \rightarrow B$
+2. So, $(C \wedge A) \rightarrow B$
+
+That is **valid** on the strict implication theory. Is it valid for ordinary, English conditionals?
+
+## Subjunctive Counterfactual Conditionals
+
+1. If I had struck this match, it would have lit. \pause 
+2. If I had dropped this match in water, and struck it, it would have lit. \pause 
+
+If you think 1 is true, but 2 is false, then you think antecedent strengthening is **invalid** for subjunctive conditionals.
+
+## Future Directed Indicative Conditionals
+
+1. If I strike this match tomorrow, it will light. \pause 
+2. If I soak this match in water overnight, then strike it tomorrow, it will light. \pause 
+
+If you think 1 is true, but 2 is false, then you think antecedent strengthening is **invalid** for future directed indicative  conditionals.
+
+## Past Directed Indicative Conditionals
+
+It is a little trickier to get a counterexample here. There are some very unnatural examples though.
+
+1. If Shakespeare didn't write Hamlet, someone else did.
+2. If we've all been collectively hallucinating that there is such a play as Hamlet, when in fact there is no such play, and it certainly wasn't written by Shakespeare, then someone else wrote Hamlet.
+
+I guess I think 1 is true and 2 is false, but it's a very weird example.
+
+## Challenge
+
+Literally a challenge - this is one of the homework questions this week.
+
+- Find your own counterexample to antecedent strenghening for subjunctive conditionals.
+- Find your own counterexample to antecedent strenghening for future-directed indicative conditionals, i.e., indicative conditionals where the antecedent is about an event that may or may not happen in the future.
+- Find your own counterexample to antecedent strenghening for past-directed indicative conditionals, i.e., indicative conditionals where the antecedent is about an event that may or may not have happened in the past.
+
+## Reverse Direction
+
+Is the following speech ok.
+
+> If I'd dropped this match in water and then struck it, it would not have lit. But if I'd struck this match, it would have lit. \pause
+
+A lot of philosophers and linguists have argued that this sounds really weird. And this is going to be relevant, because on the best theory of why antecedent strengthening fails, it should be ok.
+
+## Next Time
+
+We'll talk about that 'best theory', the modern theory of counterfactual conditionals.

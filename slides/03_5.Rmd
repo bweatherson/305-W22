@@ -1,0 +1,95 @@
+---
+title: "305 Lecture 3.5 - Introducing Truth Trees"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+This lecture introduces a new way of testing for validity - truth trees.
+
+## Associated Reading
+
+Boxes and Diamonds, section 2.1
+
+## What Tableaux Are
+
+- A way for determining whether some combinations are logically possible.
+- That can be used for determining whether some arguments are valid - if the truth of the premises and the falsity of the conclusion is not logically possible; then the argument is valid.
+
+## Structure
+
+- Start out writing the things you care about.\pause
+- Each time one of those things implies that some other things must be the case, write those down too.
+- For example, if you write down that $A \wedge B$ is true, also write down that $A$ is true and that $B$ is true. \pause
+- Each time there are multiple ways to make something you've written true, create multiple branches for those ways.
+- For example, if you write down that $A \vee B$ is true, create a branch where $A$ is true, and a branch where $B$ is true.
+
+## Closing
+
+- A branch of a tableau is closed if it contains that some particular claim has incompatible truth values.
+- For now, this means that one sentence is both true and false.\pause
+- The whole tableau is closed if every branch is closed.
+
+## What Closure Means
+
+- If the tableau is closed, then the initial assumptions cannot be true together.
+- If you are evaluating an argument, this means that the argument is valid.\pause
+- If you start the tableau by just saying that one sentence is false, the closure of the tableau means that that sentence is a logical truth.
+
+## Benefits of Tableaux
+
+Tableaux have two big benefits over truth tables.
+
+1. They don't grow exponentially when you increase the number of variables.\pause
+2. They can be generalised to things beyond propositional logic.
+
+We are introducing them here because of point 2.
+
+## Open Tableaux
+
+Here is something the book doesn't make a big deal of, but is kind of important.
+
+- A closed tableau can show that an argument is valid.
+- An open **and completed** tableau can show that an argument is invalid.\pause
+- The trick here is that it's hard to tell when a tableau is completed in the relevant sense.
+- This will be easier to illustrate in practice than in theory, so let's start building tableau up.
+
+## Signs
+
+The system we are using is what is called a **signed tableau** system.
+
+- That means that every line consists of two parts.
+- The bigger, second, part is a sentence.
+- The first part is a **sign**, which for now is a truth value.
+- That is, it is either $\True$ or $\False$.
+
+## What Lines Mean
+
+So each line either says that a particular sentence is true, or says that it is false.
+
+- The book for some reason includes the word 'might' here.
+- That's misleading; what they should say is that each line says what is true given (a) the starting assumptions and (b) the assumptions we made for branching purposes.
+
+## Numbering And Annotation
+
+The system we're using also has two other distinctive features.
+
+1. We number each of the lines. \pause
+2. We list why we're writing down each line to the right of the tree. \pause
+
+Both of these are somewhat idiosyncratic, though not abnormal. Unlike the truth tables, there just aren't well defined conventions for how to write these things out.
+
+## For Next Time
+
+We will start looking at the rules that get used for building truth trees.
+

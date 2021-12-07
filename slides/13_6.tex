@@ -1,0 +1,550 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 13.6 - Minimal Change Semantics},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\usetikzlibrary{arrows.meta}
+\RequirePackage[tableaux]{prooftrees}
+\forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 13.6 - Minimal Change Semantics}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+To discuss the `nearest possible world' approach to counterfactuals.
+\end{frame}
+
+\begin{frame}{Reading}
+\protect\hypertarget{reading}{}
+Still chapter 7 of Boxes and Diamonds
+\end{frame}
+
+\begin{frame}{Basic Idea}
+\protect\hypertarget{basic-idea}{}
+\begin{itemize}
+\tightlist
+\item
+  Replace the on/off accessibility relation between worlds with a
+  distance measure \(d\).
+\item
+  So \(d(x, y)\), where \(x, y\) are worlds, measures how similar \(x\)
+  and \(y\) are.
+\item
+  But we'll sometimes talk as if it is a distance measure, that tracks
+  `how far apart' the worlds are.
+\item
+  And for simplicity, we'll assume \(d(x, y)\) is always an integer -
+  there are the worlds 1 unit apart, 2 units apart, etc.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Nearest World}
+\protect\hypertarget{nearest-world}{}
+\begin{itemize}
+\tightlist
+\item
+  So if we're evaluating ``If A were true, B would be true'', we do the
+  following.
+\item
+  We find the nearest world, or worlds, where A is true.
+\item
+  We see A is actually true, if not we look one unit away and see if
+  there are any A worlds there, if not we look two units away and see if
+  there are A worlds there, and so on until we find some A worlds.
+\item
+  Say the distance they are separated from us is \(d\).
+\item
+  Then ``If A were true, B would be true'' is true just in case all the
+  worlds distance \(d\) away where A is true also make B true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Short Version}
+\protect\hypertarget{short-version}{}
+\emph{If A were true, B would be true}, means
+
+\begin{itemize}
+\tightlist
+\item
+  All of the nearest A-worlds are B-worlds.
+\end{itemize}
+
+From now on, I'll sometimes write this as \(A \boxright B\).
+\end{frame}
+
+\begin{frame}{Variably Strict}
+\protect\hypertarget{variably-strict}{}
+\begin{itemize}
+\tightlist
+\item
+  This makes the conditional a variably strict conditional.
+\item
+  It's strict, because it requires all A worlds to be B worlds.
+\item
+  But it's variably strict, because which worlds it ranges over varies
+  with what the antecedent is.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Intuition Check}
+\protect\hypertarget{intuition-check}{}
+Here's the thought behind Lewis's view.
+
+\begin{itemize}
+\tightlist
+\item
+  When a counterfactual has a normal antecedent, the only worlds that
+  matter to its truth are fairly normal worlds.
+\item
+  To figure out what would have happened if I'd had bacon and eggs for
+  breakfast, you only have to consider worlds that are really a lot like
+  the actual world.
+\item
+  But to figure out what would have happened if Columbus's fleet had
+  sunk, you have to think about worlds that are really different to
+  reality.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How Far Away}
+\protect\hypertarget{how-far-away}{}
+We can even try to think about really wild counterfactuals.
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  What would happen if a vampire was the starting QB for the University
+  of Michigan?
+\item
+  Or a zombie?
+\item
+  Or the number 7? \pause
+\end{itemize}
+
+Maybe some of those don't make sense - there are no worlds, not even
+distant ones, where they are actual. But we can go a fair way until we
+get to that point.
+\end{frame}
+
+\begin{frame}{Recap}
+\protect\hypertarget{recap}{}
+The textbook calls this theory ``minimal change semantics''. Here's a
+reminder of how it works.
+
+\begin{itemize}
+\tightlist
+\item
+  Let's say we want to find out whether \(A \boxright B\) is true at
+  \(w\) (we'll use \(\boxright\) for the conditional we're about to
+  define).
+\item
+  We find the world \(x\) such that \(A\) is true at \(x\), and \(x\) is
+  closest to \(w\), i.e., is the least distance away.
+\item
+  Then we look to see whether \(B\) is true.
+\item
+  If so, \(A \boxright B\) is true.
+\item
+  If not, \(A \boxright B\) is false.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Complication 1: No A-world}
+\protect\hypertarget{complication-1-no-a-world}{}
+We'll just stipulate that if there are no \(A\)-worlds at all, then
+\(A \boxright B\) is true for all \(B\). These cases are weird, and I'll
+mostly set them aside.
+\end{frame}
+
+\begin{frame}{Complication 2: No `closest' A-world}
+\protect\hypertarget{complication-2-no-closest-a-world}{}
+Here's something that can happen if you drop the assumption that the
+distances are integers.
+
+\begin{itemize}
+\tightlist
+\item
+  For any distance \(d > 2\), there is a world \(x\) such that the
+  distance between \(w\) and \(x\) is \(d\), and \(A\) is true at \(x\).
+\item
+  But for any distance \(d \leq 2\), there is no world \(x\) such that
+  the distance between \(w\) and \(x\) is \(d\), and \(A\) is true at
+  \(x \pause\).
+\item
+  So there isn't a \textbf{closest} \(A\)-world, because you can get
+  closer and closer to 2, and find a yet closer \(A\)-world.
+\item
+  This is also a weird possibility, and I'll set it aside.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Complication 3: Many equally closest A-worlds}
+\protect\hypertarget{complication-3-many-equally-closest-a-worlds}{}
+This is more philosophically substantial.
+
+\begin{itemize}
+\tightlist
+\item
+  Imagine that for \(d\) less than 2, there is no \(A\)-world distance
+  \(d\) away.
+\item
+  But at distance 2, there are multiple worlds where \(A\) is true.
+\item
+  And at some of them \(B\) is true, and at others \(B\) is false.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{One solution: Require all of them to be \(B\) worlds}
+\protect\hypertarget{one-solution-require-all-of-them-to-be-b-worlds}{}
+As I noted above David Lewis said that in that case we should say:
+
+\begin{itemize}
+\tightlist
+\item
+  \(A \boxright B\) is false. \pause  But also
+\item
+  \(A \boxright \neg B\) is false.
+\end{itemize}
+
+In general \(A \boxright\) something requires that the something is true
+at all the nearest \(A\)-worlds. And neither \(B\) nor \(\neg B\) is
+true at all of them, so neither is true.
+\end{frame}
+
+\begin{frame}{Intuition Pump}
+\protect\hypertarget{intuition-pump}{}
+Could you have 1 and 2 false, but 3 true?
+
+\begin{enumerate}
+\tightlist
+\item
+  If a UM student had been elected mayor of Ann Arbor, it would have
+  been an undergraduate.
+\item
+  If a UM student had been elected mayor of Ann Arbor, it would have
+  been a postgraduate.
+\item
+  If a UM student had been elected mayor of Ann Arbor, it would have
+  been either an undergraduate or a postgraduate.
+\end{enumerate}
+
+Lewis said that you could have 1 and 2 both false, but 3 true, and
+that's why \(\boxright\) should work this way.
+\end{frame}
+
+\begin{frame}{Another solution: Deny this is possible}
+\protect\hypertarget{another-solution-deny-this-is-possible}{}
+But the other great founder of this tradition, Robert Stalnaker, argued
+that we should want these things to be equivalent (at least if
+\(\boxright\) was going to represent something in English).
+
+\begin{enumerate}
+\tightlist
+\item
+  \(A \boxright B \vee A \boxright C\)
+\item
+  \(A \boxright (B \vee C)\)
+\end{enumerate}
+
+And we couldn't have that on Lewis's picture.
+\end{frame}
+
+\begin{frame}{Stalnaker's Solution}
+\protect\hypertarget{stalnakers-solution}{}
+\begin{itemize}
+\tightlist
+\item
+  It is a constraint on the distance metric that there are no ties.
+\item
+  The similarity measure is a strict ordering.
+\item
+  And it's still a matter of debate whether Lewis or Stalnaker is right
+  about this.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Next Time}
+\protect\hypertarget{next-time}{}
+\begin{itemize}
+\tightlist
+\item
+  We'll talk more about this notion of similarity.
+\end{itemize}
+\end{frame}
+
+\end{document}

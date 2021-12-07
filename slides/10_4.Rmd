@@ -1,0 +1,111 @@
+---
+title: "305 Lecture 10.4 - Subjective Theories of Probability"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- We're going to look at versions of the subjective theory of probability
+
+## Associated Reading
+
+Odds and Ends, chapter 16.
+
+## Subjective Theory
+
+Probability is degree of confidence.
+
+## Two Questions
+
+1. Whose confidence? \pause
+2. Actual confidence or idealised confidence?
+
+## Actual
+
+Question 2 seems easiest to answer.
+
+- No matter how confident you or I am that the moon is made of green cheese, it is not probable that the moon is made of green cheese.
+- If we're really confident that it is, then we're getting something very badly wrong.
+- But if probability just was how confident we actually are in something, then it would be probable that the moon is made of green cheese.
+
+## Idealised
+
+A better view is, as the textbook says, that 
+
+> Probability is ultimately about belief. It's about how certain you should be that something is true.
+
+So not what you actually believe, but what you should believe. This gets out of the green cheese problem.
+
+## Several Challenges
+
+1. Why think that 'how certain you should be that something is true' obeys these rules? \pause
+2. Who is the 'you' in how certain you should be that something is true? \pause
+3. What happens if rationality is **permissive**; there are several attitudes you can rationally have about how likely something is? \pause
+4. Especially if that last one is true, how does probability have a role to play in objective science? \pause
+5. How do we even measure how confident people, real or idealised, are in propositions? \pause
+
+We could do weeks on every one of these questions, but I'll focus on 3/4.
+
+## Bayesianism
+
+The main subjective theory is known as Bayesianism.
+
+- The name comes from the Rev. Thomas Bayes, an 18th century mathematician.
+- Just what is and is not a form of Bayesianism is a slightly contested, though mostly terminological question.
+
+## Conditionalisation
+
+The core principle behind Bayesianism is that updating is by conditionalisation.
+
+- That is, the new $\Pr(H)$ after getting evidence $E$ is the old $\Pr(H | E)$.
+- And $\Pr(H | E)$ is given by the formula.
+
+$$
+\Pr(H | E) = \frac{\Pr(E | H)\Pr(H)}{\Pr(E)}
+$$
+
+## Problem of the Priors
+
+- That tells you how to convert an old probability into a new probability given some evidence $E$.
+- That is, it tells you how to generate a **posterior** probability. \pause
+- But it does not tell you where the **prior** probability comes from.
+- And this question is one that Bayesians have never quite had a good answer to.
+
+## Green Cheese
+
+To make the problem vivid, imagine that I start out with the following probabilities.
+
+- The probability that the moon is made of green cheese is 0.99.
+- The things that happen around here are probabilistically independent of hypotheses about the material composition of the moon.
+
+The first of these is absurd, but the second isn't ridiculous I suppose.
+
+## Updating
+
+Now some stuff happens, I get evidence $E$.
+
+- Let $H$ be that the moon is made of green cheese.
+- Since $\Pr(H) = 0.99$, and $H$ is independent of $E$, it follows that $\Pr(H | E) = 0.99$. \pause
+- So the Bayesians' favourite updating rule says that the new probability for $H$ should be 0.99. \pause
+- But that's fairly absurd - what could it mean to say that I **should** have probability 0.99 in $H$?
+
+## Two Available Moves Here
+
+1. Say what the one true prior is - and say that there are two rules: use the one true prior, and update it by conditionalisation. \pause
+2. Say that there are a large class of acceptable priors, and argue that conditionalising any of them with enough evidence will produce a rational outcome. \pause
+
+The very rough history of this is that 19th century folks were sympathetic to option 1, but in the 20th century, most of the focus was on option 2.
+
+## For Next Time
+
+- We will take a short look at the 'one true prior' option.

@@ -1,0 +1,43 @@
+---
+title: "Assignment Week 7"
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "mathastext"]
+    fig_caption: no
+fontsize: 11pt
+mainfont: SF Pro Text Light
+mainfontoptions: "Scale=MatchLowercase"
+geometry: margin=1.2in
+linestretch: 1.4
+author: Philosophy 305
+date: Due March 5, 2021
+---
+
+# Chapter 5 Questions
+
+1. What is the probability of $A\wedge\left(B\wedge\neg A\right)$?
+2. What is the probability of $\neg\left(A\wedge\neg A\right)$?
+3. True or False: If propositions are independent, they must be mutually exclusive.
+4. True or False: Independent propositions usually aren’t mutually exclusive.
+5. True or False: If propositions are mutually exclusive, then they must be independent.
+6. True or False: Mutually exclusive propositions usually aren’t independent.
+7. Assume $\text{Pr}\left(A\wedge B\right)=\nicefrac{1}{3}$ and $\text{Pr}\left(A\wedge\neg B\right)=\nicefrac{1}{5}$. Say (in decimal form, to two decimal places), what is $\text{Pr}\left(\left(A\wedge B\right)\vee\left(A\wedge\neg B\right)\right)$.
+8. Assume $\text{Pr}\left(A\wedge B\right)=\nicefrac{1}{3}$ and $\text{Pr}\left(A\wedge\neg B\right)=\nicefrac{1}{5}$. Say (in decimal form, to two decimal places), what is $\text{Pr}\left(A\right)$.
+9. Assume $\text{Pr}\left(A\wedge B\right)=\nicefrac{1}{3}$ and $\text{Pr}\left(A\wedge\neg B\right)=\nicefrac{1}{5}$. Are $\left(A\wedge B\right)$ and $\left(A\wedge\neg B\right)$ independent?
+10. Suppose $A$ and $B$ are independent, and $A$ and $C$ are mutually exclusive. Assume $\Pr(A) = \nicefrac{1}{3}, \Pr(B) = \nicefrac{1}{6}$ and $\Pr(C) = \nicefrac{1}{9}$. What (to two decimal places) is $\Pr(A \wedge C)$?
+11. Suppose $A$ and $B$ are independent, and $A$ and $C$ are mutually exclusive. Assume $\Pr(A) = \nicefrac{1}{3}, \Pr(B) = \nicefrac{1}{6}$ and $\Pr(C) = \nicefrac{1}{9}$. What (to two decimal places) is $\Pr((A \wedge B) \vee C)$?
+12. Suppose $A$ and $B$ are independent, and $A$ and $C$ are mutually exclusive. Assume $\Pr(A) = \nicefrac{1}{3}, \Pr(B) = \nicefrac{1}{6}$ and $\Pr(C) = \nicefrac{1}{9}$. What (to two decimal places) is $\Pr(A \wedge B)$?
+13. True or False: If $\Pr(A) = \Pr(B)$ then $A$ and $B$ must be logically equivalent.
+14. Consider this argument. _If a coin is fair, then the probability of getting at least one heads in a sequence of four tosses is quite high: above 90%. Therefore, if a fair coin has landed tails three times in a row, the next toss will probably land heads._ True or False: The premise of the argument is true.
+15. Consider this argument. _If a coin is fair, then the probability of getting at least one heads in a sequence of four tosses is quite high: above 90%. Therefore, if a fair coin has landed tails three times in a row, the next toss will probably land heads._ True or False: The argument is sound.
+16. Consider this argument. _If a coin is fair, then the probability of getting at least one heads in a sequence of four tosses is quite high: above 90%. Therefore, if a fair coin has landed tails three times in a row, the next toss will probably land heads._  True or False: The argument is sound.
+
+# Chapter Six Questions
+
+17. Five percent of tablets made by the company Ixian have factory defects. Ten percent of the tablets made by their competitor company Guild do. A computer store buys 40% of its tablets from Ixian, and 60% from Guild. What is the probability a randomly selected tablet in the store is made by Ixian and has a factory defect?
+18. Five percent of tablets made by the company Ixian have factory defects. Ten percent of the tablets made by their competitor company Guild do. A computer store buys 40% of its tablets from Ixian, and 60% from Guild. What is the probability a randomly selected tablet in the store has a factory defect?
+19. Five percent of tablets made by the company Ixian have factory defects. Ten percent of the tablets made by their competitor company Guild do. A computer store buys 40% of its tablets from Ixian, and 60% from Guild. What is the probability a randomly selected tablet in the store is made by Ixian, given that it has a factory defect?

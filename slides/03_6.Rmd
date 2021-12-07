@@ -1,0 +1,189 @@
+---
+title: "305 Lecture 3.6 - Rules for Truth Trees"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+This lecture introduces the rules we use for building up truth trees.
+
+## Associated Reading
+
+Boxes and Diamonds, sections 2.2-2.3.
+
+## What Rules Do
+
+The rules tell you what new lines to write down given the lines you've already got.
+
+- To some extent they simply have to be memorised.
+- But hopefully they are all (except for the rules about $\rightarrow$) fairly intuitive.
+
+## Rules for $\neg$
+
+::: columns
+
+:::: column
+\begin{oltableau}
+[\sFmla{\True}{\neg A}, 
+	[\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[1]}]
+]
+\end{oltableau}
+::::
+
+:::: column
+\begin{oltableau}
+[\sFmla{\False}{\neg A}, 
+	[\sFmla{\True}{A}, just = {\TRule{\False}{\neg}[1]}]
+]
+\end{oltableau}
+::::
+
+:::
+
+\pause
+
+
+- Note that the line numbers are just for illustration, and are arbitrary in two senses.
+- First, you apply the rule wherever a sentence like $\neg A$ appears, not just at line 1.
+- Second, you don't need to apply the rules immediately, so the successor line could come later than 2.
+
+## Rule for true $\wedge$ sentence
+
+\begin{oltableau}
+[\sFmla{\True}{A \wedge B}, 
+	[\sFmla{\True}{A}, just = {\TRule{\True}{\wedge}[1]}
+	  [\sFmla{\True}{B}, just = {\TRule{\True}{\wedge}[1]}]
+	]
+]
+\end{oltableau}
+
+
+When you have a true $\wedge$ sentence, you can write down that the sentences either side of it are true.
+
+
+## Rule for true $\vee$ sentence
+
+\begin{oltableau}
+[\sFmla{\True}{A \vee B}, 
+	[\sFmla{\True}{A}, just = {\TRule{\True}{\vee}[1]}]
+	[\sFmla{\True}{B}, just = {\TRule{\True}{\vee}[1]}]
+]
+\end{oltableau}
+
+
+- When you have a true $\vee$ sentence, you create two **branches**.
+- The way to read the tree is that at least one of the branches must be all true. \pause
+- The 'trunk' above the branching (in this case just line 1), is part of both branches.
+- Branches are inclusive; you are saying that at least one branch is true, not that precisely one is.
+
+## Rule for false $\wedge$ sentence
+
+\begin{oltableau}
+[\sFmla{\False}{A \wedge B}, 
+	[\sFmla{\False}{A}, just = {\TRule{\False}{\wedge}[1]}]
+	[\sFmla{\False}{B}, just = {\TRule{\False}{\wedge}[1]}]
+]
+\end{oltableau}
+
+
+- If an $\wedge$ sentence is false, then we know that one or other (or both) of the sides are false.
+- So we create two branches, one where each side is false.
+
+## Rule for false $\vee$ sentence
+
+\begin{oltableau}
+[\sFmla{\False}{A \vee B}, 
+	[\sFmla{\False}{A}, just = {\TRule{\False}{\vee}[1]}
+	  [\sFmla{\False}{B}, just = {\TRule{\False}{\vee}[1]}]
+	]
+]
+\end{oltableau}
+
+
+When you have a false $\vee$ sentence, you know that each side is false, so you write down that they are both false.
+
+## Justifying the rule for false $\vee$ sentences
+
+Recall the truth table for $\vee$
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A & B &  & A & $\vee$ & B & \\
+\hline 
+$\True$ & $\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\True$ & $\False$ &  & $\True$ & \textcolor{red}{$\True$} & $\False$ & \\
+$\False$ & $\True$ &  & $\False$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\False$ & $\False$ &  & $\False$ & \textcolor{red}{$\False$} & $\False$ & \\
+\end{tabular}
+
+\end{center}
+
+- The only line where the whole sentence is \textcolor{red}{$\False$} is line 4. 
+- So if a $\vee$ sentence is \textcolor{red}{$\False$}, we know that we're on line 4.
+- And on line 4, both $A$ and $B$ are false.
+
+## Rule for false $\rightarrow$ sentence
+
+\begin{oltableau}
+[\sFmla{\False}{A \rightarrow B}, 
+	[\sFmla{\True}{A}, just = {\TRule{\False}{\rightarrow}[1]}
+	  [\sFmla{\False}{B}, just = {\TRule{\False}{\rightarrow}[1]}]
+	]
+]
+\end{oltableau}
+
+
+When you have a false $\rightarrow$ sentence, you know that the left side is true and the right side is false, so you write those things down.
+
+## Justifying the rule for false $\rightarrow$ sentences
+
+Recall the truth table for $\rightarrow$
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A & B &  & A & $\rightarrow$ & B & \\
+\hline 
+$\True$ & $\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\True$ & $\False$ &  & $\True$ & \textcolor{red}{$\False$} & $\False$ & \\
+$\False$ & $\True$ &  & $\False$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\False$ & $\False$ &  & $\False$ & \textcolor{red}{$\True$} & $\False$ & \\
+\end{tabular}
+
+\end{center}
+
+- The only line where the whole sentence is \textcolor{red}{$\False$} is line 2. 
+- So if a $\rightarrow$ sentence is \textcolor{red}{$\False$}, we know that we're on line 2.
+- And on line 4,$A$ is true and $B$ are false.
+
+## Rule for true $\rightarrow$ sentence
+
+\begin{oltableau}
+[\sFmla{\True}{A \rightarrow B}, 
+	[\sFmla{\False}{A}, just = {\TRule{\True}{\rightarrow}[1]}]
+	[\sFmla{\True}{B}, just = {\TRule{\True}{\rightarrow}[1]}]
+]
+\end{oltableau}
+
+
+- When you have a true $\rightarrow$ sentence, you create two **branches**.
+- On the first, $A$ is false. That covers lines 3 and 4 of the truth table.
+- On the second, $B$ is true. That covers lines 1 and 3 of the truth table.
+- Between them, they cover lines 1, 3 and 4 of the truth table.
+- And those are the lines where $A \rightarrow B$ is true.
+
+## Next Week
+
+- We will look at some examples of truth trees.
+- I find truth trees are much easier in practice than in theory, so if this was all a bit abstract, hopefully it will be more intelligible once we work through some examples.

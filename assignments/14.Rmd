@@ -1,0 +1,49 @@
+---
+title: "Assignment Week 14"
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    md_extensions: +startnum
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "mathastext"]
+    fig_caption: no
+fontsize: 11pt
+mainfont: SF Pro Text Light
+mainfontoptions: "Scale=MatchLowercase"
+geometry: margin=1.3in
+linestretch: 1.1
+author: Philosophy 305
+date: Due April 22, 2021
+---
+
+For each of the following arguments, I want you to find substitution instances for $A, B$ and $C$ to make the arguments intuitively have true premises and a false conclusion. In most cases there are examples of these in the textbook or the slides - you **must** use your own versions, not those. If you need to explain the background to the examples, you can do that as well in the text boxes provided.
+
+## Question 1
+
+1. If it were the case that $A$, it would be the case that $B$.
+1. So, if it were the case that $C \wedge A$, it would be the case that $B$.
+
+## Question 2
+
+1. If it will be the case that $A$, it will be the case that $B$.
+1. So, if it will the case that $C \wedge A$, it will be the case that $B$.
+
+## Question 3
+
+1. If it was be the case that $A$, it was be the case that $B$.
+1. So, if it was the case that $C \wedge A$, it was be the case that $B$.
+
+## Question 4
+
+1. If it were the case that $A$, it would be the case that $B$.
+1. If it were the case that $B$, it would be the case that $C$.
+1. So, if it were the case that $A$, it would be the case that $C$.
+
+## Question 5
+
+1. If it were the case that $A$, it would be the case that $B \vee C$.
+1. So \textit{either}, if it were the case that $A$, it would be the case that $B$, \textit{or}, if it were the case that $A$, it would be the case that $C$.
+
+Note that the assignment is due on **Thursday** at 5pm.

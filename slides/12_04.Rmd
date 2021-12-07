@@ -1,0 +1,57 @@
+---
+title: "305 Lecture 12.4 - S5"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- The simple rules for the logic S5.
+
+## Associated Reading
+
+- Boxes and Diamonds, section 5.8.
+
+## Universal relations and Equivalence Relations
+
+Strictly speaking, S5 is the logic of frames where R is an **equivalence relation**. That is, it is a relation that is:
+
+- Transitive
+- Reflexive
+- Symmetric
+
+But we can simplify things by just focussing on the case where R is a **universal** relation - that is, a relation that holds between any two points.
+
+## Universal relations and Equivalence Relations
+
+Not all equivalence relations are universal relations:
+
+- The relation *Has the same birthday as* is an equivalence relation, but not universal.
+
+But anything that's true on all models for universal R will be true on all models for equivalence relation R.
+
+- That's because from the perspective of any point, R may as well be universal.
+- All that matters to truth at any point is what happens at points you can reach in a finite number of steps.
+- So R may as well be a universal relation.
+
+## Simple Rules for S5
+
+Drop the rules you've already got for $\Box$ and $\Diamond$. And drop the decimal points; all worlds just get referred to by a single number. \pause 
+
+- If $\Box A$ is true at $x$, then for any $y$ on the branch, $A$ is true at $y$.
+- If $\Diamond A$ is false at $x$, then for any $y$ on the branch, $A$ is false at $y \pause$.
+- If $\Box A$ is false at $x$, then add a new world $y$ with $A$ false at $y$.
+- If $\Diamond A$ is true at $x$ then add a new world $y$ with $A$ true at $y$.
+
+## For Next Time
+
+On Wednesday we'll look at using trees to prove invalidity, and go over a bunch of examples.

@@ -1,0 +1,81 @@
+---
+title: "305 Lecture 11.3 - Two Basic Results"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To go over two fundamental results in modal logic.
+
+## Associated Reading
+
+- Boxes and Diamonds, section 3.4.
+
+## Duality
+
+These two claims are equivalent.
+
+1. $\Box A$
+2. $\neg \Diamond \neg A$\pause
+
+From 1 to 2: If $\Box A$ is true at $x$, then $A$ is true for all $y$ such that $xRy$. That means there is no $y$ such that $xRy$ and $A$ is not true. That means there is no $y$ such that $xRy$ and $\neg A$ is true. That means $\Diamond \neg A$ is not true at $w$. That means $\neg \Diamond \neg A$ is true at $x$.
+
+## Duality
+
+These two claims are equivalent.
+
+1. $\Box A$
+2. $\neg \Diamond \neg A$\pause
+
+From 2 to 1: If $\neg \Diamond \neg A$ is true at $x$, then $\Diamond \neg A$ is not true at $w$. So there is no world $y$ such that $xRy$ and $\neg A$ is true at $y$. So at all worlds $y$ such that $xRy$, $\neg A$ is not true. So at all worlds $y$ such that $xRy$, $A$ is true. So $\Box A$ is true at $x$.
+
+## Duality
+
+These two claims are also equivalent, though I will not prove this.
+
+1. $\Diamond A$
+2. $\neg \Box \neg A$
+
+## Big Picture
+
+These claims are both logically true.
+
+1. $\Box \neg A \leftrightarrow \neg \Diamond A$
+1. $\Diamond \neg A \leftrightarrow \neg \Box A$
+
+To move a negation sign outside of a modal operator, either $\Box$ or $\Diamond$, you have to rotate the operator by 45 degrees.
+
+## Normality
+
+This sentence is also true no matter what the model looks like, and no matter what sentence $A$ is.
+
+> $\Box (A \rightarrow B)  \rightarrow (\Box A \rightarrow \Box B)$
+
+- Assume it is false at $w$. 
+- So $\Box (A \rightarrow B)$ is true at $w$ and $(\Box A \rightarrow \Box B)$ is false at $w$. 
+- So $\Box A$ is true at $w$ and $\Box B$ is false at $w$. 
+- So at every where $y$ such that $wRy$, $A$ must be true (since $\Box A$ is true at $w$), and $A \rightarrow B$ must be true (since $\Box(A \rightarrow B)$ is true at $w$).
+- If $A$ and $A \rightarrow B$ are true at $y$, $B$ must be true at $y$ as well.
+- But this implies that $B$ is true all $y$ such that $wRy$, contradicting the assumption that $\Box B$ is false at $w$.
+
+## Normality
+
+This principle has a very important role in the history of modal logics.
+
+> $\Box (A \rightarrow B)  \rightarrow (\Box A \rightarrow \Box B)$
+
+Having this be an axiom is one of two conditions on what have come to be called **normal** modal logics.
+
+## For Next Time
+
+We'll talk about what it is for a sentence to be true on a whole model.

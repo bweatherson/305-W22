@@ -1,0 +1,133 @@
+---
+title: $\Box A \rightarrow (A \wedge \Box \Box A)$ (in S4)
+author: Build a Tableau
+date: To Check Whether it is Valid
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Hypothesis
+
+$\Box A \rightarrow (A \wedge \Box \Box A)$ is a theorem of S4 = KT4.
+
+- So we can use all the rules, plus the special rules for T and for 4.
+
+## $\Box A \rightarrow (A \wedge \Box \Box A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow (A \wedge \Box \Box A)}{1}, just = \TAss,
+]
+\end{oltableau}
+
+\bigskip
+
+Start with it being false at 1.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow (A \wedge \Box \Box A)}{1}, checked, just = \TAss
+  [\pFmla{\True}{\Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{A \wedge \Box \Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+You know the drill - left hand side true, right hand side false.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow (A \wedge \Box \Box A)}{1}, checked, just = \TAss
+  [\pFmla{\True}{\Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{A \wedge \Box \Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{1}, just = {T $\Box$ 2}
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+We have T, so necessary truths are true.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow (A \wedge \Box \Box A)}{1}, checked, just = \TAss
+  [\pFmla{\True}{\Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{A \wedge \Box \Box A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{1}, just = {T $\Box$ 2}
+        [\pFmla{\False}{A}{1}, just = {\TRule{\False}{\wedge}[3]}, close]
+        [\pFmla{\False}{\Box \Box A}{1}, just = {\TRule{\False}{\wedge}[3]}
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+False $\wedge$ means branching, but happily one branch closes immediately.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow (A \wedge \Box \Box A)}{1}, checked, just = \TAss
+  [\pFmla{\True}{\Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{A \wedge \Box \Box A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{1}, just = {T $\Box$ 2}
+        [\pFmla{\False}{A}{1}, just = {\TRule{\False}{\wedge}[3]}, close]
+        [\pFmla{\False}{\Box \Box A}{1}, checked, just = {\TRule{\False}{\wedge}[3]}
+          [\pFmla{\False}{\Box A}{1.1}, just = {\TRule{\False}{\Box}[5]}
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+False $\Box$ sentences require new worlds where the unboxed thing is false.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow (A \wedge \Box \Box A)}{1}, checked, just = \TAss
+  [\pFmla{\True}{\Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{A \wedge \Box \Box A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{1}, just = {T $\Box$ 2}
+        [\pFmla{\False}{A}{1}, just = {\TRule{\False}{\wedge}[3]}, close]
+        [\pFmla{\False}{\Box \Box A}{1}, checked, just = {\TRule{\False}{\wedge}[3]}
+          [\pFmla{\False}{\Box A}{1.1}, just = {\TRule{\False}{\Box}[5]}
+            [\pFmla{\True}{\Box A}{1.1}, just = {4 $\Box$ 2}, close]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+But 4 requires we carry down $\Box$ sentences, and now we're done. Both branches close, so this is a logical truth.
+
+
+

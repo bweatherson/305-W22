@@ -1,0 +1,141 @@
+---
+title: "305 Lecture 9.6 - Allais Paradox"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- In this lecture we'll talk about a famous puzzle for the story I've been telling you about the relationship between utility and money: the Allais paradox.
+
+## Associated Reading
+
+Odds and Ends, section 13.1.
+
+## Sure Thing Principle
+
+Assume two bets A and B have the following characteristic.
+
+- For some proposition $p$, A and B have the exact same return. \pause
+
+Then the Sure Thing Principle says the following.
+
+- Changing what that return is won't change your preference between A and B.
+
+## Intuitive Example
+
+Assume that B is a **conditional bet** - a bet on $q$ that only takes place if something is true. So if you take the bet, the following things happen.
+
+- So if the condition, and $q$ is true, you win, let's say, $10.
+- If the condition, and $q$ is false, you lose $10.
+- But if the condition is not met, then the bet is called off.
+
+E.g., you might bet a friend that if the Rose Bowl is played this year, Michigan will win it. The bet is simply called off if the Rose Bowl doesn't happen. Let A be the action of simply not taking this bet, and staying at the status quo. And let $p$ be that the Rose Bowl doesn't happen. So A and B have the same payoff if $p$, since then the bet is called off.
+
+## A Change
+
+You find out, apparently because you've been doing more gambling in your spare time than is good for you, that you have another bet that wins 5 dollars if $p$, i.e., if the Rose Bowl doesn't happen, and returns nothing otherwise.
+
+- Could this change your preferences over A vs B?
+
+## The Argument for No
+
+Either $p$ is true or it isn't.
+
+- If it is, then whether you would have got $5 if it were not doesn't make a difference to whether you prefer A or B.
+- If it is not, then you should still be indifferent between A and B.
+- And this doesn't look like it just applies to this case.
+- It looks like a perfectly general weak dominance argument.
+
+## Expected Utility Theory and Constraints on Choice
+
+- Orthodox expected utility theory, the theory that says you should maximise expected utility, puts very few constraints on individual choices.
+- But it puts quite striking constraints on sets of choices.
+- It says you can't prefer A to B, and B to C, and C to A, for example.
+- And it says that the Sure Thing Principle, a principle about what changes in payouts licence a change of preferences, holds.
+
+## Allais
+
+Maurice Allais (1911-2010) developed the most famous objection to the Sure Thing Principle.
+
+- It is a pair of two-way choices, and an intuitively rational pair of preferences among them.
+- Expected utility can make sense of either one of the pair, but not both.
+
+## Allais - First Part
+
+You have a choice between:
+
+A.  A 10% chance of $5,000,000.
+B.  An 11% chance of $1,000,000.
+
+What do you choose?
+
+## Allais - Second Part
+
+That was a hypothetical. Now for real you have a choice between:
+
+C.  A 10% chance of $5,000,000, an 89% chance of $1,000,000, and a 1% chance of nothing.
+D.  $1,000,000.
+
+What do you choose?
+
+## Allais's Argument
+
+- It is rational to prefer A to B, and D to C. \pause
+- Expected utility theory says that you can't prefer both A to B, and D to C. \pause
+- So expected utility theory is false.
+
+## Allais Table
+
+Imagine you have 10 blue marbles in an urn, 89 maize marbles, and 1 scarlet marble.
+
+|   | Blue | Maize | Scarlet |
+|:-:|:----:|:-----:|:-------:|
+| A | 5M   |  0    |   0     |
+| B | 1M   |  0    |   1M    |
+|   |      |       |         |
+| C | 5M   |  1M   |   0     |
+| D | 1M   |  1M   |   1M    |
+
+
+All that changed from AB to CD was that we changed how much the payout was if Maize, without changing the fact that it was equal.
+
+## Why Expected Utility Theory Can't Handle This
+
+Let $u(5M) = x$ and $u(1M) = y$.
+
+- If A is preferred to B, then $0.1x > 0.11y$, since those are the expected utilities of A and B. \pause
+- So adding $0.89y$ to both sides, we get $0.1x + 0.89y > y$. \pause
+- But those just are the expected utilities of C and D.
+- So if A is preferred to B, then C is preferred to D.
+
+## An argument against Allais
+
+Assume you'll find out, both in the AB case and the CD case, whether the marble was maize, or not-maize before you are told its color.
+
+- At that point, in the AB case, what will you wish you'd chosen? \pause
+- If B, or you are indifferent, then you shouldn't have preferred A in the first place. \pause
+- If A, then do the same thing in the CD case.
+- If you find out the marble is maize, you don't care.
+- If you find out it's not maize, then you're back in the exact same puzzle, so you should prefer C to D.
+- So by weak dominance, you should prefer C to D overall.
+
+## Decision Theory for Allais Agents
+
+- This was originally developed by the Australian economist John Quiggin, and recently expanded by the American philosopher Lara Buchak.
+- Very roughly, you replace the $Pr$ in expected utility theory with some function $f(Pr)$ where $f$ measures the agent's attitude to risk.
+- If $f(x) < x$, the agent is risk averse, if $f(x) > x$ they are risk seeking.
+- If you let $f(x) = x^2$, it's easy to model the Allais preferences.
+
+## For Next Time
+
+- We will move on to thinking about how to use probability in learning about the world.

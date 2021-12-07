@@ -1,0 +1,115 @@
+---
+title: $A \rightarrow \Box \Diamond A$ (in S4)
+author: Build a Tableau
+date: To Check Whether it is Valid
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Hypothesis
+
+$A \rightarrow \Box \Diamond A$ is a theorem of S4 = KT4.
+
+- So we can use all the rules, plus the special rules for T and for 4.
+
+## $A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{A \rightarrow \Box \Diamond A}{1}, just = \TAss,
+]
+\end{oltableau}
+
+\bigskip
+
+Start with it being false at 1.
+
+## $A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss
+  [\pFmla{\True}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+You know the drill - left hand side true, right hand side false.
+
+## $A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss
+  [\pFmla{\True}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\False}{\Diamond A}{1.1}, just = {\TRule{\False}{\Box}[3]}
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+False $\Box$ sentences are false somewhere.
+
+## $A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss
+  [\pFmla{\True}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\False}{\Diamond A}{1.1}, just = {\TRule{\False}{\Box}[3]}
+        [\pFmla{\False}{A}{1.1}, just = {T $\Diamond$ 4}]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+It's T, so false $\Diamond$ sentences have to actually be false.
+
+## $A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss
+  [\pFmla{\True}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\False}{\Diamond A}{1.1}, just = {\TRule{\False}{\Box}[3]}
+        [\pFmla{\False}{A}{1.1}, just = {T $\Diamond$ 4}]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+- But that's it 
+- We've applied all the rules, and it doesn't close.
+- So not a theorem.
+
+## A Model 
+
+- Two worlds, $w_1, w_{1.1}$.
+- The accessibility relations are $w_1Rw_{1.1}, w_1Rw_1$ and $w_{1.1}Rw_{1.1}$.
+- The first is from the tree, the next two from reflexivity.
+- In this case, transitivity doesn't require anything more. (Though double check this!)
+- $A$ is true at $w_1$ and and false at $w_{1.1}$.
+- So $\Diamond A$ will be false only at $w_{1.1}$.
+- So $\Box \Diamond A$ will be false at $w_1$, while $A$ is true, as required.
+
+

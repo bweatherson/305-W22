@@ -1,0 +1,48 @@
+---
+title: "Assignment Week 11"
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    md_extensions: +startnum
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "mathastext"]
+    fig_caption: no
+fontsize: 11pt
+mainfont: SF Pro Text Light
+mainfontoptions: "Scale=MatchLowercase"
+classoption: twocolumn
+geometry: margin=1.4in
+linestretch: 1.2
+author: Philosophy 305
+date: Due April 2, 2020
+---
+
+![First model](11_first_picture.png)
+
+![First model](11_second_picture.png)
+
+\newpage
+
+## Questions 1-5
+
+In the model pictured here, which worlds are the following sentences true at:
+
+1. $p$
+2. $q$
+3. $\Box p$
+4. $\Diamond p$
+5. $\Box (p \rightarrow q)$
+
+\vspace{75pt}
+
+## Questions 6-10
+
+In the model pictured here, which worlds are the following sentences true at:
+
+6. $p_2$
+7. $\Box(p_1 \rightarrow p_2)$
+8. $\Box p_2 \rightarrow p_2$
+9. $\Box \Diamond p_3$
+10. $\Box p_3 \vee \Box \neg p_3$

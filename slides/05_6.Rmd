@@ -1,0 +1,114 @@
+---
+title: "305 Lecture 5.6 - Two Special Cases"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+
+## Plan
+
+This lecture looks at two tricky cases, and how the proofs for them work.
+
+## Associated Reading
+
+forall x, chapter 17.
+
+## Disjunctive Syllogism
+
+1. $A \vee B$
+2. $\neg A$
+3. So, $B$
+
+That looks pretty good; let's try proving it.
+
+## $A \vee B, \neg A \vdash B$
+
+![List premises and conclusion](5_6a.png){height=75%}
+
+## $A \vee B, \neg A \vdash B$
+
+![We have a $\vee$ premise, so set up $\vee$E](5_6b.png){height=75%}
+
+## $A \vee B, \neg A \vdash B$
+
+![I've already added the rule for the second half](5_6b.png){height=75%}
+
+## $A \vee B, \neg A \vdash B$
+
+![A tricky move - we have a $\neg$ premise so we'll need Indirect Proof](5_6c.png){height=75%}
+
+## $A \vee B, \neg A \vdash B$
+
+![And the contradiction comes very easily](5_6d.png){height=75%}
+
+## $A \vee B, \neg A \vdash B$
+
+![Maybe too easily? Should we have been forced to use B?](5_6d.png){height=75%}
+
+## $A \vee B, \neg A \vdash B$
+
+![Since $\neg$B got to contradiction, we can infer B](5_6e.png){height=75%}
+
+## $A \vee B, \neg A \vdash B$
+
+![Now fill in line number on second subproof](5_6g.png){height=75%}
+
+## $A \vee B, \neg A \vdash B$
+
+![And now we're done.](5_6h.png){height=75%}
+
+## Second example
+
+$\vdash A \vee \neg A$
+
+## How to prove things from zero premises
+
+1. If they are a conditional, set up $\rightarrow$I. The left hand side will work just like a premise.
+2. If they are not a conditional, go for Indirect Proof.
+
+## $\vdash A \vee \neg A$
+
+![Writing out conclusion - but not premise because there is none](5_6p.png){height=75%}
+
+## $\vdash A \vee \neg A$
+
+![Setting up indirect proof](5_6q.png){height=75%}
+
+## $\vdash A \vee \neg A$
+
+![A very tricky move - extracting something from negated disjunction](5_6r.png){height=75%}
+
+## Negated Disjunctions
+
+- The move from the previous slide is more or less compulsory.
+- The only way to get something out of $\neg(X \vee Y)$ is to assume $X$, get a contradiction (via deriving $X \vee Y$), and then use $\neg$I to get $\neg X$.
+- It's a pain, and it's just a move you have to learn.
+- It might be my single least favorite part of this system.
+
+## $\vdash A \vee \neg A$
+
+![If we have $\neg A$, we are basically home](5_6s.png){height=75%}
+
+## $\vdash A \vee \neg A$
+
+![Filling in line numbers - note the subproof is the entire proof to this point](5_6t.png){height=75%}
+
+## Challenge Problem
+
+1. Prove $\vdash ((A \rightarrow B) \rightarrow A) \rightarrow A$
+2. See if you can complete that proof in under 25 lines.
+
+That one, like $\vdash A \vee \neg A$, is a sign that the strategies in 17.1 and 17.2 work 98% of the time, but not 100% of the time.
+
+## For Next Time
+
+No recorded lectures next week. We'll just go over the proofs in the weekly assignment, and do some revision.

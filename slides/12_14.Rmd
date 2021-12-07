@@ -1,0 +1,170 @@
+---
+title: $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$ (in S4)
+author: Build a Tableau
+date: To Check Whether it is Valid
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Hypothesis
+
+$\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$ is a theorem of S4.
+
+- So we can use all the rules, plus the special rules for T and 4.
+
+## $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)}{1}, just = \TAss,
+]
+\end{oltableau}
+
+\bigskip
+
+Start with it being false at 1.
+
+## $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)}{1}, checked, just = \TAss,
+  [\pFmla{\False}{\Box(\Box A \rightarrow B)}{1}, just = {\TRule{\False}{\vee}[1]}
+    [\pFmla{\False}{\Box(\Box B \rightarrow A)}{1}, just = {\TRule{\False}{\vee}[1]}
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+False $\vee$ sentences have both sides false.
+
+## $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)}{1}, checked, just = \TAss,
+  [\pFmla{\False}{\Box(\Box A \rightarrow B)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+    [\pFmla{\False}{\Box(\Box B \rightarrow A)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+      [\pFmla{\False}{\Box A \rightarrow B}{1.1}, just = {\TRule{\False}{\Box}[2]}
+        [\pFmla{\False}{\Box B \rightarrow A}{1.2}, just = {\TRule{\False}{\Box}[3]}
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Both of these false $\Box$ sentences have to be made false somehow.
+
+## $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)}{1}, checked, just = \TAss,
+  [\pFmla{\False}{\Box(\Box A \rightarrow B)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+    [\pFmla{\False}{\Box(\Box B \rightarrow A)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+      [\pFmla{\False}{\Box A \rightarrow B}{1.1}, checked, just = {\TRule{\False}{\Box}[2]}
+        [\pFmla{\False}{\Box B \rightarrow A}{1.2}, checked, just = {\TRule{\False}{\Box}[3]}
+          [\pFmla{\True}{\Box A}{1.1}, just = {\TRule{\False}{\rightarrow}[4]}
+            [\pFmla{\False}{B}{1.1}, just = {\TRule{\False}{\rightarrow}[4]}
+              [\pFmla{\True}{\Box B}{1.2}, just = {\TRule{\False}{\rightarrow}[5]}
+                [\pFmla{\False}{A}{1.2}, just = {\TRule{\False}{\rightarrow}[5]}
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+- False $\rightarrow$ sentences mean left false; right true.
+- Note we have no special rules for 4 or T triggered yet, because no true $\Box$ or false $\Diamond$, but that's about to change.
+
+## $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)}{1}, checked, just = \TAss,
+  [\pFmla{\False}{\Box(\Box A \rightarrow B)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+    [\pFmla{\False}{\Box(\Box B \rightarrow A)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+      [\pFmla{\False}{\Box A \rightarrow B}{1.1}, checked, just = {\TRule{\False}{\Box}[2]}
+        [\pFmla{\False}{\Box B \rightarrow A}{1.2}, checked, just = {\TRule{\False}{\Box}[3]}
+          [\pFmla{\True}{\Box A}{1.1}, just = {\TRule{\False}{\rightarrow}[4]}
+            [\pFmla{\False}{B}{1.1}, just = {\TRule{\False}{\rightarrow}[4]}
+              [\pFmla{\True}{\Box B}{1.2}, just = {\TRule{\False}{\rightarrow}[5]}
+                [\pFmla{\False}{A}{1.2}, just = {\TRule{\False}{\rightarrow}[5]}
+                  [\pFmla{\True}{A}{1.1}, just = {T $\Box$ 6}
+                    [\pFmla{\True}{B}{1.2}, just = {T $\Box$ 8}
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+T means true $\Box$ sentences are true unboxed.
+
+## $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)}{1}, checked, just = \TAss,
+  [\pFmla{\False}{\Box(\Box A \rightarrow B)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+    [\pFmla{\False}{\Box(\Box B \rightarrow A)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+      [\pFmla{\False}{\Box A \rightarrow B}{1.1}, checked, just = {\TRule{\False}{\Box}[2]}
+        [\pFmla{\False}{\Box B \rightarrow A}{1.2}, checked, just = {\TRule{\False}{\Box}[3]}
+          [\pFmla{\True}{\Box A}{1.1}, just = {\TRule{\False}{\rightarrow}[4]}
+            [\pFmla{\False}{B}{1.1}, just = {\TRule{\False}{\rightarrow}[4]}
+              [\pFmla{\True}{\Box B}{1.2}, just = {\TRule{\False}{\rightarrow}[5]}
+                [\pFmla{\False}{A}{1.2}, just = {\TRule{\False}{\rightarrow}[5]}
+                  [\pFmla{\True}{A}{1.1}, just = {T $\Box$ 6}
+                    [\pFmla{\True}{B}{1.2}, just = {T $\Box$ 8}
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+But now we've applied all the rules, and the tableau doesn't close. So not a theorem.
+
+## A Model
+
+- Three worlds, $w_1, w_{1.1}, w_{1.2}$
+- The accessibility relations are $w_1Rw_{1.1}, w_1Rw{1.2}, w_1Rw_1, w_{1.1}Rw_{1.1}, w_{1.2}Rw_{1.2}$.
+- The first two from the tree, the last three from T. Adding 4 doesn't require anything in this case.
+- $A$ is true at $w_{1.1}$ and false at $w_{1.2}$.
+- $B$ is true at $w_{1.2}$ and false at $w_{1.1}$.
+- It doesn't matter what values the atomics take at $w_1$.
+- So $\Box A$ will be true at $w_{1.1}$, while $B$ is false.
+- And $\Box B$ will be true at $w_{1.2}$, while $A$ is false.
+- So the original sentence fails at $w_1$.
+

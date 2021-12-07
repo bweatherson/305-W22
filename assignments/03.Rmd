@@ -1,0 +1,33 @@
+---
+title: "Assignment Week 3"
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "mathastext"]
+    fig_caption: no
+fontsize: 11pt
+mainfont: SF Pro Text Light
+mainfontoptions: "Scale=MatchLowercase"
+geometry: margin=1.2in
+linestretch: 1.4
+author: Philosophy 305
+date: Due February 5, 5pm
+---
+
+# Truth Tables and Validity
+
+Using http://carnap.io, use truth tables to check whether the following arguments are valid.
+
+1. $P \wedge (Q \vee R) \vDash (P \wedge Q) \vee (P \wedge R)$
+2. $P \wedge (Q \vee R) \vDash (P \vee Q) \wedge (P \vee R)$
+3. $(P \wedge Q) \vee (P \wedge R) \vDash P \wedge (Q \vee R)$
+4. $(P \vee Q) \wedge (P \vee R) \vDash P \wedge (Q \vee R)$
+5. $P \vee (Q \wedge R) \vDash (P \vee Q) \wedge (P \vee R)$
+6. $P \vee (Q \wedge R) \vDash (P \wedge Q) \vee (P \wedge R)$
+7. $(P \vee Q) \wedge (P \vee R) \vDash P \vee (Q \wedge R)$
+8. $(P \wedge Q) \wedge (P \wedge R) \vDash P \vee (Q \wedge R)$
+9. $\vDash ((P \rightarrow Q) \rightarrow P) \rightarrow P$
+10. $\vDash (P \rightarrow Q) \vee (Q \rightarrow P)$

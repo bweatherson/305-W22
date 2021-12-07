@@ -1,0 +1,475 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 1.2 - Arguments},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+ \usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+\usetikzlibrary{arrows.meta}
+ \forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 1.2 - Arguments}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan for This Lecture}
+\protect\hypertarget{plan-for-this-lecture}{}
+We're discussing the nature of arguments, and in particular, the role of
+premises and conclusions.
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+forall x, chapter 1, ``Arguments''.
+\end{frame}
+
+\begin{frame}{Arguments}
+\protect\hypertarget{arguments}{}
+Logic studies certain properties of arguments.
+
+An argument, in the sense we're interested in, has two parts:
+
+\begin{enumerate}
+\tightlist
+\item
+  Premises
+\item
+  Conclusion
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Example}
+\protect\hypertarget{example}{}
+\begin{description}
+\tightlist
+\item[~]
+All kangaroos are wise.
+\item[~]
+Skippy is a kangaroo.
+\item[\(\therefore\)]
+Skippy is wise.
+\end{description}
+
+Read \(\therefore\) as `therefore'.
+\end{frame}
+
+\begin{frame}{Premises}
+\protect\hypertarget{premises}{}
+\begin{description}
+\tightlist
+\item[~]
+All kangaroos are wise.
+\item[~]
+Skippy is a kangaroo.
+\item[\(\therefore\)]
+Skippy is wise.
+\end{description}
+
+\begin{itemize}
+\tightlist
+\item
+  The premises are the reasons that are given.
+\item
+  In this argument there are two.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\protect\hypertarget{conclusion}{}
+\begin{description}
+\tightlist
+\item[~]
+All kangaroos are wise.
+\item[~]
+Skippy is a kangaroo.
+\item[\(\therefore\)]
+Skippy is wise.
+\end{description}
+
+The conclusion is what comes after `therefore' and is supported by the
+premises.
+\end{frame}
+
+\begin{frame}{Ordinary English}
+\protect\hypertarget{ordinary-english}{}
+\begin{itemize}
+\tightlist
+\item
+  In ordinary English, the order of the premises and conclusion is not
+  as fixed as it is here.
+\item
+  The textbook has examples where the conclusion comes after the
+  premises, as in our presentations, before the premises, and between
+  the premises.
+\item
+  The general rule is that it is introduced by a word like `so', or
+  `therefore', or, if you're really old school, `hence'.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Premise Set}
+\protect\hypertarget{the-premise-set}{}
+\begin{description}
+\tightlist
+\item[~]
+All kangaroos are wise.
+\item[~]
+Skippy is a kangaroo.
+\item[\(\therefore\)]
+Skippy is wise.
+\end{description}
+
+There can be zero, one or multiple premises. Formally, we'll say there
+is a set of premises.
+\end{frame}
+
+\begin{frame}{Zero Premises}
+\protect\hypertarget{zero-premises}{}
+Here's my formal representation of (part of) the opening sentence of the
+Declaration of Independence.
+\end{frame}
+
+\begin{frame}{Zero Premises}
+\protect\hypertarget{zero-premises-1}{}
+\begin{description}
+\tightlist
+\item[\(\therefore\)]
+All men are created equal.
+\end{description}
+\end{frame}
+
+\begin{frame}{One Premise}
+\protect\hypertarget{one-premise}{}
+\begin{description}
+\tightlist
+\item[~]
+The cinema is closed.
+\item[\(\therefore\)]
+We shouldn't go to the cinema.
+\end{description}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\protect\hypertarget{conclusion-1}{}
+\begin{description}
+\tightlist
+\item[~]
+All kangaroos are wise.
+\item[~]
+Skippy is a kangaroo.
+\item[\(\therefore\)]
+Skippy is wise.
+\end{description}
+
+But we don't allow this flexibility to conclusions; arguments have a
+single conclusion.
+\end{frame}
+
+\begin{frame}{Chained Arguments}
+\protect\hypertarget{chained-arguments}{}
+\begin{itemize}
+\tightlist
+\item
+  Sometimes a conclusion of one argument will go to be a premise in
+  another argument.
+\item
+  We will use this fact when we are doing proofs in a few weeks.
+\item
+  But any given argument aims to prove just one thing.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Representation}
+\protect\hypertarget{representation}{}
+\begin{description}
+\tightlist
+\item[~]
+All kangaroos are wise.
+\item[~]
+Skippy is a kangaroo.
+\item[\(\therefore\)]
+Skippy is wise.
+\end{description}
+
+When I write arguments like this, I'm merely presenting them, not
+asserting that they have any nice features.
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+We'll start talking about these nice features.
+\end{frame}
+
+\end{document}

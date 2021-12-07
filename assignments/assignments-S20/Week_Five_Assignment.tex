@@ -1,0 +1,55 @@
+\title{Week Five Assigment}
+\author{Modal Models and Theorems of K}
+\date{Due August 7, 5pm}
+\input{assign-head.tex}
+
+\begin{center}
+
+\begin{tikzpicture}[modal,world/.append style={minimum size=1.5cm}]
+      \node[world] (w1) [label=right:$w_1$]{$q, \neg r$}; 
+      \node[world] (w2) [label=right:$w_2$, above left=of w1]{$\neg q, \neg r$}; 
+      \node[world] (w3) [label=right:$w_3$, above right=of w1] {$\neg q, r$};
+      \node[world] (w4) [label=right:$w_4$, above =of w2] {$q, \neg r$};
+      \node[world] (w5) [label=right:$w_5$, above =of w3] {$q, r$};
+      \draw[->] (w1) to (w2);
+      \draw[->] (w1) to (w3);
+      \draw[->] (w1) to (w3);
+      \draw[->] (w1) to (w4);
+      \draw[->] (w2) to (w4);
+      \draw[->] (w3) to (w5);
+	  \path[->] (w1) edge[reflexive below] (w1);
+	  \path[->] (w2) edge[reflexive left] (w2);
+	  \path[->] (w3) edge[reflexive left] (w3);
+	  \path[->] (w5) edge[reflexive above] (w5);
+    \end{tikzpicture}
+\end{center}
+All questions concern the model above. It has five worlds, with accessibility relations show. The truth values for $q$ and $r$ at each world are shown within the within the worlds. (So at $w_1$, for example, $q$ is true and $r$ false.) Your task is to say which worlds $p$ must be true in order for some things to apply. You should make $p$ true at as few worlds as possible. If the question said ``Make $q \rightarrow p$ true everywhere in the model, the answer would be $w_1, w_4$ and $w_5$. You'll be marked incorrect if you also make $p$ true at $w_2$, even though that would indeed make $q \rightarrow p$ true.
+
+\begin{enumerate}
+\item Make $\Box p$ true at $w_1$
+\item Make $\Box \Box p$ true at $w_1$
+\item Make $\Diamond q \rightarrow p$ true everywhere in the model.
+\item Make $\Box p \rightarrow p$ true everywhere in the model.
+\item Make $\Diamond r \rightarrow p$ true everywhere in the model.
+\item Make $\Box r \rightarrow p$ true everywhere in the model.
+\item Make $\Diamond \Box r \rightarrow p$ true everywhere in the model.
+\item Make $\Box (q \vee p)$ true everywhere in the model.
+\item Make $\Box (q \rightarrow p)$ true everywhere in the model.
+\item Make $\Box (r \vee p)$ true everywhere in the model.
+\end{enumerate}
+
+\newpage
+
+\section*{The Logic K}
+Which of these are theorems of K?
+
+\begin{enumerate*}
+\setcounter{enumi}{10}
+\item $(\Box A \vee \Box B) \rightarrow \Box(A \vee B)$
+\item $(\Box A \wedge \Diamond B) \rightarrow \Diamond(A \wedge B)$
+\item $\Box (A \wedge \Diamond B) \rightarrow \Diamond(A \wedge B)$
+\item $(\Box A \rightarrow \Box B) \rightarrow (\Diamond A \rightarrow \Diamond B)$
+\item $\Box (A \rightarrow B) \rightarrow (\Diamond A \rightarrow \Diamond B)$
+\end{enumerate*}
+
+\end{document}

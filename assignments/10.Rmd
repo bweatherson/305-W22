@@ -1,0 +1,63 @@
+---
+title: "Assignment Week 10"
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    md_extensions: +startnum
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "mathastext"]
+    fig_caption: no
+fontsize: 11pt
+mainfont: SF Pro Text Light
+mainfontoptions: "Scale=MatchLowercase"
+geometry: margin=1.4in
+linestretch: 1.2
+author: Philosophy 305
+date: Due March 26, 2021
+---
+
+## Question 1
+
+Some workplaces hold a weekly lottery. Suppose there are 30 people in your workplace lottery, and each person pays in $5 every Monday. A finalist is chosen at random every Friday, for three weeks. Then, on the fourth Friday, one of the three finalists from the previous three weeks is chosen at random. That person gets all the prize money.
+
+What is the expected value of being in the lottery?
+
+## Question 2
+
+Sonia has tickets to see The Weeknd tomorrow night. Her friend has tickets to see Beyoncé, and also tickets to Katy Perry. Beyoncé is Sonia’s favourite performer, in fact she would rather see Beyoncé than The Weeknd.
+
+Sonia’s friend offers a gamble in exchange for her tickets to The Weeknd. The gamble has a 9/10 chance of winning, in which case Sonia gets the Beyoncé tickets (utility 1). Otherwise she gets the Katy Perry tickets (utility 0).
+
+If Sonia declines the gamble, what can we conclude?
+
+a. For Sonia, the utility of seeing The Weeknd is 9/10
+b. For Sonia, the utility of seeing The Weeknd is greater than 9/10
+c. For Sonia, the utility of seeing The Weeknd is less than 9/10
+d. For Sonia, the utility of seeing The Weeknd is 1/10
+
+## Questions 3-4 
+
+After giving her calculus midterm, Professor X always offers her students a chance to improve their grade by trying to solve an optional “challenge” problem. If they get it right, their grade is increased by one letter grade: F changes to D, D changes to C, etc. But if they get it wrong, their grade goes down by one letter-grade: A changes to B, B changes to C, etc.
+
+Hui got a C on his midterm. He asks the professor how often students get the challenge problem right and she says they get it right half the time. Hui decides to stick with his C. But he would be willing to try the challenge problem if the chances of getting it right were higher: 2/3 or more.
+
+Suppose getting a D has utility 5/10 for Hui, while a B has utility 8/10.
+
+3. What is the expected utility for Hui of trying the challenge problem?
+4. How much utility does a C have for Hui?
+ 
+## Questions 5-7
+
+Eleanor wants to get a job at Google so she's going to university to study computer science. She has to decide between Wayne State and Michigan State. Suppose 1/100 of Wayne State's computer science students get jobs at Google and the rest get jobs at Facebook. For Eleanor, a job at Google has utility 200 while a job at Facebook has utility 50.
+
+5. What is the expected utility of going to Wayne State for Eleanor?
+
+Suppose Michigan State students have better odds of getting a job at Google: 5/400. And 360/400 students go to work at Amazon, which Eleanor would prefer to Facebook. On the other hand, the remaining 35/400 of them don't get a job at all, which has utility zero for Eleanor. After thinking about it, she can't decide: Wayne State and Michigan State seem like equally good options to her.
+
+6. How much utility does working at Amazon have for Eleanor?
+
+Suppose Eleanor ends up going to Wayne State, and now she's about to graduate. Unfortunately, Google isn't hiring any more. The only jobs available are at Amazon and Facebook. She would have to take a special summer training program to qualify for a job at Amazon, though. And that would mean she can't get a job at Facebook. Facebook is offering her a job, but she has to take it now or never. So, she has to either take the guaranteed job at Facebook right now, or gamble on the summer program. The summer program could get her a job at Amazon, or it could leave her unemployed.
+
+7. How high would the probability of getting a job at Amazon have to be for Eleanor to be indifferent between taking and not taking the special summer program?

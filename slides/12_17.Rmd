@@ -1,0 +1,170 @@
+---
+title: $\Box \Diamond A \rightarrow A$ (in S5)
+author: Build a Tableau
+date: To Check Whether it is Valid
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Hypothesis
+
+$\Box \Diamond A \rightarrow A$ is a theorem of S5.
+
+- We are going to use simplified S5. \pause
+- Note this 'should' fail given what we have shown.
+- We know that $\Diamond A$ implies $\Box \Diamond A$.
+- So if $\Box \Diamond A$ implies $A$, we'll have $\Diamond A$ implies $A$, which is absurd.
+
+
+## $\Box \Diamond A \rightarrow A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box \Diamond A \rightarrow A}{1}, just = \TAss,
+]
+\end{oltableau}
+
+\bigskip
+
+Start with it being false at 1.
+
+## $\Box \Diamond A \rightarrow A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box \Diamond A \rightarrow A}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Box \Diamond A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+This feels familiar by now.
+
+## $\Box \Diamond A \rightarrow A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box \Diamond A \rightarrow A}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Box \Diamond A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, just = {\TRule{\True}{\Box}[2]}
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+The unboxed part of a box sentence is true everywhere, so it is true here. (But it doesn't get checked, because it's an open ended rule.)
+
+## $\Box \Diamond A \rightarrow A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box \Diamond A \rightarrow A}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Box \Diamond A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\Box}[2]}
+        [\pFmla{\True}{A}{2}, just = {\TRule{\True}{\Diamond}[4]}
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+True $\Diamond$ sentences have to be made true by some world. It can't be this one, since $A$ is false here, and in any case we always use a new name.
+
+## $\Box \Diamond A \rightarrow A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box \Diamond A \rightarrow A}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Box \Diamond A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\Box}[2]}
+        [\pFmla{\True}{A}{2}, just = {\TRule{\True}{\Diamond}[4]}
+          [\pFmla{\True}{\Diamond A}{2}, just = {\TRule{\True}{\Box}[2]}
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+True $\Box$ sentences are true, unboxed, everywhere, so we have to make them true in the new world we added.
+
+## $\Box \Diamond A \rightarrow A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box \Diamond A \rightarrow A}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Box \Diamond A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\Box}[2]}
+        [\pFmla{\True}{A}{2}, just = {\TRule{\True}{\Diamond}[4]}
+          [\pFmla{\True}{\Diamond A}{2}, just = {\TRule{\True}{\Box}[2]}
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Now if we are following the rules mechanically we will add a new world to make $A$ true, call it world 3. And the cycle will continue.
+
+## $\Box \Diamond A \rightarrow A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box \Diamond A \rightarrow A}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Box \Diamond A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\Box}[2]}
+        [\pFmla{\True}{A}{2}, just = {\TRule{\True}{\Diamond}[4]}
+          [\pFmla{\True}{\Diamond A}{2}, just = {\TRule{\True}{\Box}[2]}
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+- But if we think through what the lines are saying, we can see that we can stop here.
+- Line 6 has to be made true somehow.
+- But line 5 says that world 2 itself makes line 6 true.
+- So there isn't anything extra to do.
+
+## $\Box \Diamond A \rightarrow A$
+
+So here is a description of a model where this alleged theorem fails.
+
+- There are two worlds: $w_1$ and $w_2$.
+- At $w_1$, $A$ is false.
+- At $w_2$, $A$ is true.
+- Because $w_2$ exists, $\Diamond A$ is true everywhere.
+- So $\Box \Diamond A$ is true everywhere.
+- So at $w_1$, $\Box \Diamond A$ is true and $A$ is false.
+- So at $w_1$, $\Box \Diamond A \rightarrow A$ is false.
+
+## For Next Time
+
+Next week we'll end the course by discussing conditionals.

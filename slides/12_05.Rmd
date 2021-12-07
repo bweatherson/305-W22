@@ -1,0 +1,133 @@
+---
+title: "305 Lecture 12.5 - Proving Invalidity"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- Discuss how to use tableau to show invalidity.
+
+## Associated Reading
+
+- Not in book.
+
+## Two Uses of Trees
+
+We tell that an argument is valid or that a sentence is a theorem by drawing a closed tree.
+
+- In principle, we can also use trees to show that an argument is invalid, or that something is not a theorem.
+- In practice, it's a little tricky.
+
+## Case One: Draw an Open Tree
+
+Imagine we're working in KT, and we want to show that $\Box A \rightarrow \Box \Box A$ is not a theorem. Then we really can draw a tree.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow \Box \Box A}{1}, checked, just = \TAss
+  [\pFmla{\True}{\Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Box A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{1}, just = {T $\Box$ 2}
+        [\pFmla{\False}{\Box A}{1.1}, checked, just = {\TRule{\False}{\Box}[3]}
+          [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Box}[2]}        
+            [\pFmla{\False}{A}{1.1.1}, just = {\TRule{\False}{\Box}[5]}
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+## A Model 
+
+- Three worlds, $w_1, w_{1.1}, w_{1.1.1}$.
+- The accessibility relations are $w_1Rw_{1.1}, w_{1.1}Rw_{1.1.1}, w_1Rw_1, w_{1.1}Rw_{1.1}$ and $w_{1.1.1}Rw_{1.1.1}$.
+- The first two are from the tree, the next three from the restriction.
+- $A$ is true at $w_1$ and $w_{1.1}$ and false at $w_{1.1.1}$.
+- So $\Box A$ will be true only at $w_1$.
+- So $\Box \Box A$ will be false at $w_1$, as required.
+
+## First Problem
+
+We typically can't just tick off the sentences as we apply the rules for them.
+
+- Lots of the rules, especially for true $\Box$ sentences and false $\Diamond$ sentences, are open.
+- So to check the tree is finished, you have to go back and look at each of these sentences, and be sure that you really really have applied all the rules.
+
+## Second Problem
+
+Sometimes the tree never ends.
+
+- Imagine we're working in KT4.
+- And we're trying to work out whether this is a theorem
+- $\Box \Diamond A \rightarrow \Diamond \Box B$
+- At one level, it's obvious that it isn't a theorem.
+- But the tree is a mess.
+
+---
+
+\begin{oltableau}
+[\pFmla{\False}{\Box \Diamond A \rightarrow \Diamond \Box B}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Box \Diamond A}{1}, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond \Box B}{1}, just = {\TRule{\False}{\rightarrow}[1]},
+      [\pFmla{\True}{\Diamond A}{1}, checked, just={T $\Box$, 2},
+        [\pFmla{\False}{\Box B}{1}, checked, just={T $\Diamond$, 2},
+          [\pFmla{\True}{A}{1.1}, just={\TRule{\True}{\Diamond}[4]},
+            [\pFmla{\True}{\Diamond A}{1.1}, just={\TRule{\Box}{\True}[2]},
+              [\pFmla{\False}{\Box B}{1.1}, just={\TRule{\False}{\Diamond}[3]},
+                [\pFmla{\True}{\Box \Diamond A}{1.1}, just = {4 $\Box$, 2},
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+## What Went Wrong
+
+We can sort of kind of see the problem.
+
+- The tree just repeats.
+- Maybe we can turn that into a model.
+
+## The General Recipe
+
+What shows something is not a theorem is a model where it is false at a world.
+
+- Take the open tree.
+- Each number on the tree is a world.
+- World $x$ is always related to world $x.y$.
+- Add R-relations that are required by the relevant restrictions.
+- Read truth for atomic sentences off what the tree says. It should be reasonably specific, though often it will leave gaps.
+
+## The Harder Case
+
+What to do if the tree doesn't close.
+
+1. Describe (but obviously don't draw) the infinite model.
+2. Draw a model where one world stands in for many different strings of numbers.
+
+## For Up/Down Verdicts
+
+If you can see that the tree will cycle and never complete, that's sort of good enough.
+
+## For Next Time
+
+We'll go on to examples.

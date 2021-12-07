@@ -1,0 +1,145 @@
+---
+title: "305 Lecture 1.2 - Arguments"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+  pdf_document: default
+---
+
+## Plan for This Lecture
+
+We're discussing the nature of arguments, and in particular, the role of premises and conclusions.
+
+## Associated Reading
+
+forall x, chapter 1, "Arguments".
+
+## Arguments
+
+Logic studies certain properties of arguments.
+
+An argument, in the sense we're interested in, has two parts:
+
+1. Premises
+2. Conclusion
+
+## Example
+
+&nbsp;
+:    All kangaroos are wise.
+
+&nbsp;
+:    Skippy is a kangaroo.
+
+$\therefore$
+:    Skippy is wise.
+
+Read $\therefore$ as 'therefore'.
+
+## Premises
+
+&nbsp;
+:    All kangaroos are wise.
+
+&nbsp;
+:    Skippy is a kangaroo.
+
+$\therefore$
+:    Skippy is wise.
+
+- The premises are the reasons that are given.
+- In this argument there are two.
+
+## Conclusion
+
+&nbsp;
+:    All kangaroos are wise.
+
+&nbsp;
+:    Skippy is a kangaroo.
+
+$\therefore$
+:    Skippy is wise.
+
+The conclusion is what comes after 'therefore' and is supported by the premises.
+
+## Ordinary English
+
+- In ordinary English, the order of the premises and conclusion is not as fixed as it is here.
+- The textbook has examples where the conclusion comes after the premises, as in our presentations, before the premises, and between the premises.
+- The general rule is that it is introduced by a word like 'so', or 'therefore', or, if you're really old school, 'hence'.
+
+## The Premise Set
+
+&nbsp;
+:    All kangaroos are wise.
+
+&nbsp;
+:    Skippy is a kangaroo.
+
+$\therefore$
+:    Skippy is wise.
+
+There can be zero, one or multiple premises. Formally, we'll say there is a set of premises.
+
+## Zero Premises
+
+Here's my formal representation of (part of) the opening sentence of the Declaration of Independence.
+
+## Zero Premises
+
+$\therefore$
+:    All men are created equal.
+
+## One Premise
+
+&nbsp;
+:    The cinema is closed.
+
+$\therefore$
+:    We shouldn't go to the cinema.
+
+## Conclusion
+
+&nbsp;
+:    All kangaroos are wise.
+
+&nbsp;
+:    Skippy is a kangaroo.
+
+$\therefore$
+:    Skippy is wise.
+
+But we don't allow this flexibility to conclusions; arguments have a single conclusion.
+
+## Chained Arguments
+
+- Sometimes a conclusion of one argument will go to be a premise in another argument.
+- We will use this fact when we are doing proofs in a few weeks.
+- But any given argument aims to prove just one thing.
+
+## Representation
+
+&nbsp;
+:    All kangaroos are wise.
+
+&nbsp;
+:    Skippy is a kangaroo.
+
+$\therefore$
+:    Skippy is wise.
+
+When I write arguments like this, I'm merely presenting them, not asserting that they have any nice features.
+
+## For Next Time
+
+We'll start talking about these nice features.

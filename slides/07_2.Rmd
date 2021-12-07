@@ -1,0 +1,172 @@
+---
+title: "305 Lecture 7.2 - About Probability Functions"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- This lecture looks at some general features of probability functions, and looks at some ways to think probabilistically about real world events.
+
+## Associated Reading
+
+Odds and Ends, Chapter 5
+
+## Scale
+
+$$
+0 \leq \Pr(A) \leq 1
+$$
+
+## Negation
+
+$$
+\Pr(\neg A) = 1 - \Pr(A)
+$$
+
+## Excluded Middle
+
+$$
+\Pr(A) + \Pr(\neg A) = 1
+$$
+
+## Partition
+
+Some events $A_1, \dots A_n$ form a partition if, necessarily, exactly one of them is true.
+
+- So they are **exclusive** - you can't have any two of them both be true.
+- And they are **exhaustive** - you have to have at least one true.
+
+## Partition
+
+If $A_1, \dots A_n$ form a partition then
+
+$$
+\Pr(A_1) + \dots + \Pr(A_n) = 1
+$$
+
+## Exclusive
+
+If $A, B$ are exclusive
+
+$$
+\Pr(A \vee B) = \Pr(A) + \Pr(B)
+$$
+
+## General Principle
+
+$$
+\Pr(A) + \Pr(B) = \Pr(A \vee B) + \Pr(A \wedge B)
+$$
+
+\pause
+
+It's worth thinking through why this is true in terms of possibilities.
+
+## Trees
+
+- Often, we can't just write down numbers for the possibilities.
+- But we can write down, or at least make reasonable guesses about, numbers for certain events.
+- And we can think about how things are likely to go given those events happen.
+- This is the tree structure that is used in _Odds and Ends_.
+
+## Academic Forecasting
+
+- So let's say you're interested in the probability that we have in person classes all the way through Fall semester.
+- The vaccine rollout is going much better than I ever expected.
+- But we saw how bad things got last Thanksgiving and Christmas, and you can see why that might make you worried.
+- But it's hard to put into numbers how it affects things.
+
+## One Method
+
+- Divide up the state space.
+- Work out the probability of being in one or other part of the space.
+- Work out the probability of classes running all semester in each part of the space.
+- Add things up.
+
+## Nothing is Reliable
+
+> - There are a lot of ways to do this.
+> - You could divide up the space by how many cases there are in Michigan.
+> - Or you could divide up the space by how many other universities shut down.
+> - Or, and let's work with this one, you could divide it up by how many people are vaccinated by the the start of term.
+
+## Three States
+
+1. Only high risk staff and students are vaccinated.
+2. More than just the high risk folks are vaccinated, but there are still shortages.
+3. Vaccine for all.
+
+## Two Step Process
+
+1. Work out (or at least estimate) probability of each state.
+2. Work out probability of the university staying open within each of those states.
+
+This will involve a lot of guesswork - do not make investment decisions on the basis of the numbers I'm about to use because they are really pulled out of the air - but it's a very helpful heuristic to at least approximate the reality.
+
+## Probabilities of States
+
+This could be embarrassingly out of date by the time we even do the classes, but let's say the probabilities look like this.
+
+- High risk only - 20%, or 0.2.
+- Limited quantities of vaccine - 50%, or 0.5.
+- Unlimited quantities of vaccine - 30%, or 0.3.
+
+## Class Probabilities
+
+Then we want to work out how likely it is that we get a full semester of classes in given each of these three possibilities.
+
+## High Risk Only
+
+Given how badly things went last Fall, I'm not sure what we'd do in this situation. Maybe we'd muddle through and it would work. But I suspect that it's most likely we'd be planning to shut down at Thanksgiving, so not strictly a full semester.
+
+> - Let's call it a 30% chance of staying open all semester in that situation.
+> - I really, and I can't stress this enough, want to emphasise that I'm making these numbers up for the purposes of an in class example.
+
+## Limited Vaccine
+
+This starts to feel more like something where we can get through the term. For one thing, we might just tought it out even if there is a bit of an outbreak. For another, I said limited in September; maybe by October/November it would be unlimited. So it feels pretty likely.
+
+- Let's say there is an 80% chance we make it all the way through semester in that situation, and only 20% that we don't.
+
+## Unlimited vaccine
+
+Now it's hard to see why the university would shut down. Rather than fuss about the details, let's just simplify and say that in this (very unlikely) scenario, it's 100% likely that we'll get all classes in.
+
+
+## The Giant Table
+
+                                     Full Semester             Some shutdown
+---------------------------- ------------------------- -------------------------
+No vaccine                    $0.2 \times 0.3 = 0.06$   $0.2 \times 0.7 = 0.14$
+Limited vaccine               $0.5 \times 0.8 = 0.40$   $0.5 \times 0.2 = 0.10$
+Unlimited vaccine             $0.3 \times 1.0 = 0.30$   $0.3 \times 0.0 = 0.00$
+  
+So the probability that we get a full semester in (given these literally made up assumptions) is $0.06 + 0.40 + 0.30 = 0.76$, or 76%.
+
+## Probabilities and Errors
+
+- The error bars on that calculation are massive.
+- But it's a kind of sanity check on how you think things are going.
+- Especially in situations where only a handful of paths lead to a salient result (like in playoffs in sports, or when thinking about the likelihood of a particular challenger winning), doing the tree even with favorable numbers can give you a conservative estimate of some probability.
+
+## Three Cases Where This is More Precise
+
+1. Probabilities are stipulated
+2. Probabilities are due to well understood chance processes (like gambling devices)
+3. Probabilities are derived from very large data sets
+
+## For Next Time
+
+- We will look at an example where the probabilities are indeed stipulated.

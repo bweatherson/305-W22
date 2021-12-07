@@ -1,0 +1,481 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 9.3 - Utilities},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+ \usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+\usetikzlibrary{arrows.meta}
+ \forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 9.3 - Utilities}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+\begin{itemize}
+\tightlist
+\item
+  In this lecture we'll talk about the notion of utility, the idea that
+  we can numerically measure how good an option is for a chooser.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+Odds and Ends, chapter 12
+\end{frame}
+
+\begin{frame}{Ranking}
+\protect\hypertarget{ranking}{}
+\begin{itemize}
+\tightlist
+\item
+  The dominance view makes recommendations just looking at the
+  \textbf{ranking} of various options.
+\item
+  It doesn't look at how much we prefer one option over another, just on
+  what is preferred to what.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ordinal Utility}
+\protect\hypertarget{ordinal-utility}{}
+\begin{itemize}
+\tightlist
+\item
+  To use the technical language, dominance just depends on
+  \textbf{ordinal utilities}.
+\item
+  The term \textbf{ordinal} here means that we only look at the
+  \textbf{order} of the options.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cardinal Utility}
+\protect\hypertarget{cardinal-utility}{}
+\begin{itemize}
+\tightlist
+\item
+  The rules that we'll look at rely on \textbf{cardinal utilities}.
+\item
+  Whenever we're associating outcomes with numbers in a way that the
+  magnitudes of the differences between the numbers matters, we're using
+  cardinal utilities.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why More Than Order Matters (An Example)}
+\protect\hypertarget{why-more-than-order-matters-an-example}{}
+\begin{itemize}
+\tightlist
+\item
+  Chris and Robin each have to make a decision between two airlines to
+  fly them from Detroit to Los Angeles.
+\item
+  One airline is more expensive, the other is more reliable.
+\item
+  To oversimplify things, let's say the unreliable airline runs well in
+  good weather, but in bad weather, things go wrong.
+\item
+  And Chris and Robin have no way of finding out what the weather along
+  the way will be.
+\item
+  They would prefer to save money, but they'd certainly not prefer for
+  things to go badly wrong.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A Table}
+\protect\hypertarget{a-table}{}
+So they face the following decision table.
+
+\begin{longtable}[]{@{}rcc@{}}
+\toprule
+& Good weather & Bad Weather \\ \addlinespace
+\midrule
+\endhead
+Fly Cheap Airline & 4 & 1 \\ \addlinespace
+Fly Good Airline & 3 & 2 \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+If we're just looking at the ordering of outcomes, that is the decision
+problem facing both Chris and Robin.
+\end{frame}
+
+\begin{frame}{Filling in Details}
+\protect\hypertarget{filling-in-details}{}
+\begin{itemize}
+\tightlist
+\item
+  The cheap airline that Chris might fly has a problem with luggage.
+\item
+  If the weather is bad, their passengers' luggage will be a day late
+  getting to Los Angeles. \pause 
+\item
+  The cheap airline that Robin might fly has a problem with staying in
+  the air.
+\item
+  If the weather is bad, their plane will crash.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Details Matter}
+\protect\hypertarget{details-matter}{}
+\begin{itemize}
+\tightlist
+\item
+  Those seem like very different decision problems.
+\item
+  It might be worth risking one's luggage being a day late in order to
+  get a cheap plane ticket.
+\item
+  It's not worth risking, seriously risking, a plane crash.
+\item
+  That's to say, Chris and Robin are facing very different decision
+  problems, even though the ranking of the four possible outcomes is the
+  same in each of their cases.
+\item
+  So it seems like some decision rules should be sensitive to magnitudes
+  of differences between options.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Utility}
+\protect\hypertarget{utility}{}
+\begin{itemize}
+\tightlist
+\item
+  Intuitively, think of utilities as measuring how good an outcome is.
+\item
+  The theory we're building towards is thoroughly subjectivist, so think
+  of `how good' as meaning `how good along all and only dimensions the
+  agent making the decision cares about'.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Scale}
+\protect\hypertarget{scale}{}
+\begin{itemize}
+\tightlist
+\item
+  Utilities aren't really measured on any scale.
+\item
+  Indeed, like temperature measures, they don't even have a fixed zero
+  point.
+\item
+  It is usually convenient to associate 0 utility with the status quo,
+  and then have negative numbers for outcomes worse than status quo, and
+  positive numbers for outcomes better than status quo.
+\item
+  But that's just a convention; you can set the 0 wherever you like.
+\item
+  And you can set the utility 1 point at anything better than 0.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Scale (continued)}
+\protect\hypertarget{scale-continued}{}
+\begin{itemize}
+\tightlist
+\item
+  But that's where the convention stops.
+\item
+  Once you fix the 0 and 1 points, nothing else is fixed by pure
+  convention.
+\item
+  Temperatures are like this too.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+\begin{itemize}
+\tightlist
+\item
+  We will look at how to use utility theory to make decisions.
+\end{itemize}
+\end{frame}
+
+\end{document}

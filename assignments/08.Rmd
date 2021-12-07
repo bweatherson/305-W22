@@ -1,0 +1,70 @@
+---
+title: "Assignment Week 8"
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    md_extensions: +fancy_lists
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "mathastext"]
+    fig_caption: no
+fontsize: 11pt
+mainfont: SF Pro Text Light
+mainfontoptions: "Scale=MatchLowercase"
+geometry: margin=1.2in
+linestretch: 1.4
+author: Philosophy 305
+date: Due March 12, 2021
+---
+
+## Odds and Ends 6.3
+
+Five percent of tablets made by the company Ixian have factory defects. Ten percent of the tablets made by their competitor com- pany Guild do. A computer store buys 40% of its tablets from Ixian, and 60% from Guild.
+
+a. What is the probability a randomly selected tablet in the store is made by Ixian and has a factory defect?
+b. What is the probability a randomly selected tablet in the store has a factory defect?
+c. What is the probability a tablet from this store is made by Ixian, given that it has a factory defect?
+
+## Odds and Ends 9.1 (with one extra question)
+
+Willy Wonka Co. makes two kinds of boxes of chocolates. The "wonk box" has four caramel chocolates and six regular chocolates. The "zonk box" has six caramel chocolates, two regular chocolates, and two mint chocolates. A third of their boxes are wonk boxes, the rest are zonk boxes.
+
+They don't mark the boxes. The only way to tell what kind of box you've bought is by trying the chocolates inside. In fact, all the chocolates look the same; you can only tell the difference by tasting them.
+
+If you buy a random box, try a chocolate at random, and find that it's caramel, what is the probability you've bought a wonk box?
+
+Now suppose you randomly select **two** chocolates.
+
+a. What is the probability it's a wonk box given that both chocolates are caramel?
+b. What is the probability it's a wonk box given that the first is caramel and the second is regular?
+c. What is the probability it's a wonk box given that the first is regular and the second is caramel?
+
+## Marbles
+
+Suppose I have an even mix of black and white marbles. I choose one at random without letting you see the colour, and I put it in a hat.
+
+Then I add a second, black marble to the hat. If I draw one marble at random from the hat and it's black, what is the probability the marble left in the hat is black?
+
+## Odds and Ends 8.5 and 9.2
+
+A magic shop sells two kinds of trick coins. The first kind are biased towards heads: they come up heads 9 times out of 10 (the tosses are independent). The second kind are biased towards tails: they comes up tails 8 times out of 10 (tosses still independent). Half the coins are the first kind, half are the second kind. But they don't label the coins, so you have to experiment to find out which are which.
+
+- You pick a coin at random and flip it once. Given that it comes up heads, what is the probability it's the first kind of coin?
+- If you flip the coin twice, and it lands heads both times, what is the probability that it is the first kind of coin?
+
+## Odds and Ends 8.12 and 9.4
+
+A room contains four urns. Three of them are Type X, one is Type Y.
+
+- The Type X urns each contain 3 black marbles, 2 white marbles.
+- The Type Y urn contains 1 black marble, 4 white marbles.
+
+You are going to pick an urn at random and start drawing marbles from it at random without replacement.
+
+- What is the probability the urn is Type X if the first draw is black?
+
+Now you are going to draw two marbles without replacement. (Note I'm skipping question b.)
+
+a.    What is the probability the urn is Type X if the first draw is black and the second is white? \setcounter{enumi}{2}
+c.    What is the probability the third draw will be black, if the first draw is black and the second is white?

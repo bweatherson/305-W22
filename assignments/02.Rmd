@@ -1,0 +1,33 @@
+---
+title: "Assignment Week 2"
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "mathastext"]
+    fig_caption: no
+fontsize: 11pt
+mainfont: SF Pro Text Light
+mainfontoptions: "Scale=MatchLowercase"
+geometry: margin=1.2in
+linestretch: 1.4
+author: Philosophy 305
+date: Due January 29, 2021, 5pm
+---
+
+# Truth Tables
+
+Using http://carnap.io, build truth tables for the following sentences.
+
+1. $P \rightarrow P$
+2. $Q \rightarrow \neg Q$
+3. $(P \rightarrow R) \vee (R \rightarrow P)$
+4. $(P \wedge R) \rightarrow (R \rightarrow P)$
+5. $\neg ((P \wedge Q) \vee (P \vee Q))$
+6. $(Q \rightarrow (R \vee P)) \wedge \neg Q$
+7. $(P \wedge \neg P) \rightarrow R$
+8. $\neg \neg (\neg P \wedge \neg R)$
+9. $((P \wedge R) \rightarrow Q) \rightarrow \neg (P \vee R)$
+10. $((P \rightarrow R) \rightarrow Q) \rightarrow (P \rightarrow (R \rightarrow Q))$

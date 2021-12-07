@@ -1,0 +1,84 @@
+---
+title: "305 Lecture 5.2 - Or"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+
+## Plan
+
+This lecture discusses the rules for disjunction.
+
+## Associated Reading
+
+forall x, section 16.7.
+
+## Reasoning to an Or sentence
+
+Imagine we're trying to prove a disjunction, like this one:
+
+- Either Rémy made the soup, or Alfredo made the soup.
+
+There are a lot of ways we could prove this, but the simplest would be to either prove Rémy made the soup, or prove Alfredo made the soup. Either one of those would do.
+
+## Or-Introduction
+
+- Or-introduction, or $\vee$I, is the formal version of the idea behind the last slide.
+- It says that if you a sentence, you can add a disjunct either to the left of it or to the right of it.
+
+## Or-Introduction the first
+
+![Or-Introduction](5_2a.png)
+
+## Or-Introduction the second
+
+![Or-Introduction](5_2b.png)
+
+## Reasoning from an Or Sentence
+
+Say you have as a premise:
+
+- Either Rémy made the soup, or Alfredo made the soup.
+
+And you want to get to the conclusion:
+
+- The soup is good.
+
+What do you need?
+
+## Two Things
+
+> 1. You need an argument that if Rémy made the soup, it is good; and
+> 2. You need an argument that if Alfredo made the soup, it is good.
+
+## Or-Elimination
+
+![Or-Elimination](5_2c.png)
+
+## Notes on Or Elimination
+
+> - It is hard; you have to do two subproofs.
+> - It doesn't always **eliminate** the disjunction; sometimes the C sentence includes a disjunction
+
+---
+
+![A distributive law](5_2d.png){height=75%}
+
+---
+
+![A metaphor](../images/snow_path.jpg){height=75%}
+
+## For Next Time
+
+- We will look at the rules for negation.
+- Then we will turn to the hard question of how to build these proofs.
+

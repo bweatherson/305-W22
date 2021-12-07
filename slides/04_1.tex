@@ -1,0 +1,595 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 4.1 - Using Truth Trees},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+ \usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+\usetikzlibrary{arrows.meta}
+ \forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 4.1 - Using Truth Trees}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+Showing how we use truth trees to check for logical truth and validity.
+\end{frame}
+
+\begin{frame}{Reading}
+\protect\hypertarget{reading}{}
+Boxes and Diamonds, section 2.4.
+\end{frame}
+
+\begin{frame}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{oltableau}
+[\sFmla{\True}{\neg A},
+    [\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[1]}]
+]
+\end{oltableau}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{oltableau}
+[\sFmla{\False}{\neg A},
+    [\sFmla{\True}{A}, just = {\TRule{\False}{\neg}[1]}]
+]
+\end{oltableau}
+\end{column}
+\end{columns}
+
+\vspace{-3pt}
+
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{oltableau}
+[\sFmla{\True}{A \wedge B},
+    [\sFmla{\True}{A}, just = {\TRule{\True}{\wedge}[1]}
+      [\sFmla{\True}{B}, just = {\TRule{\True}{\wedge}[1]}]
+    ]
+]
+\end{oltableau}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{oltableau}
+[\sFmla{\False}{A \wedge B},
+    [\sFmla{\False}{A}, just = {\TRule{\False}{\wedge}[1]}]
+    [\sFmla{\False}{B}, just = {\TRule{\False}{\wedge}[1]}]
+]
+\end{oltableau}
+\end{column}
+\end{columns}
+
+\vspace{-3pt}
+
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{oltableau}
+[\sFmla{\True}{A \vee B},
+    [\sFmla{\True}{A}, just = {\TRule{\True}{\vee}[1]}]
+    [\sFmla{\True}{B}, just = {\TRule{\True}{\vee}[1]}]
+]
+\end{oltableau}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{oltableau}
+[\sFmla{\False}{A \vee B},
+    [\sFmla{\False}{A}, just = {\TRule{\False}{\vee}[1]}
+      [\sFmla{\False}{B}, just = {\TRule{\False}{\vee}[1]}]
+    ]
+]
+\end{oltableau}
+\end{column}
+\end{columns}
+
+\vspace{-3pt}
+
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{oltableau}
+[\sFmla{\True}{A \rightarrow B},
+    [\sFmla{\False}{A}, just = {\TRule{\True}{\rightarrow}[1]}]
+    [\sFmla{\True}{B}, just = {\TRule{\True}{\rightarrow}[1]}]
+]
+\end{oltableau}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{oltableau}
+[\sFmla{\False}{A \rightarrow B},
+    [\sFmla{\True}{A}, just = {\TRule{\False}{\rightarrow}[1]}
+      [\sFmla{\False}{B}, just = {\TRule{\False}{\rightarrow}[1]}]
+    ]
+]
+\end{oltableau}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Closure}
+\protect\hypertarget{closure}{}
+\begin{itemize}
+\tightlist
+\item
+  A tree without branches closes if there is a sentence on the tree that
+  is marked as both true and false.
+\item
+  Here is an example. The first line is stipulated, the rest are
+  derived.
+\end{itemize}
+
+\begin{oltableau}
+[\sFmla{\True}{A \wedge \neg A},
+  [\sFmla{\True}{A}, just = {\TRule{\True}{\wedge}[1]}
+    [\sFmla{\True}{\neg A}, just = {\TRule{\True}{\wedge}[1]}
+      [\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[3]}, close
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+\end{frame}
+
+\begin{frame}{Interpreting Closure}
+\protect\hypertarget{interpreting-closure}{}
+\begin{itemize}
+\tightlist
+\item
+  If a tree is closed, it means the initial assumptions can't be true.
+\item
+  So this tree means that the initial assumption \(A \wedge \neg A\)
+  can't be true.
+\end{itemize}
+
+\begin{oltableau}
+[\sFmla{\True}{A \wedge \neg A},
+  [\sFmla{\True}{A}, just = {\TRule{\True}{\wedge}[1]}
+    [\sFmla{\True}{\neg A}, just = {\TRule{\True}{\wedge}[1]}
+      [\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[3]}, close
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+\end{frame}
+
+\begin{frame}{Closure with Branches}
+\protect\hypertarget{closure-with-branches}{}
+\begin{itemize}
+\tightlist
+\item
+  A branching tree closes if every branch closes.
+\item
+  The next slide has an example, with in this case the top two lines
+  stipulated.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{oltableau}
+[\sFmla{\True}{\neg A \wedge \neg B},
+  [\sFmla{\True}{A \vee B},
+    [\sFmla{\True}{\neg A}, just = {\TRule{\True}{\wedge}[1]}
+      [\sFmla{\True}{\neg B}, just = {\TRule{\True}{\wedge}[1]}
+        [\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[3]}
+          [\sFmla{\False}{B}, just = {\TRule{\True}{\neg}[4]}
+            [\sFmla{\True}{A}, just = {\TRule{\True}{\vee}[2]}, close]
+            [\sFmla{\True}{B}, just = {\TRule{\True}{\vee}[2]}, close]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+\end{frame}
+
+\begin{frame}{Closure with Branches}
+\protect\hypertarget{closure-with-branches-1}{}
+\begin{itemize}
+\tightlist
+\item
+  A tree with any open branches is open, i.e., not closed.
+\item
+  If a tree has some open branches and some closed branches, it is
+  \textbf{open}.
+\item
+  All that matters is if all branches are closed.
+\item
+  The next slide is an example of an open tree.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{oltableau}
+[\sFmla{\True}{\neg A \wedge B},
+  [\sFmla{\True}{A \vee B},
+    [\sFmla{\True}{\neg A}, just = {\TRule{\True}{\wedge}[1]}
+      [\sFmla{\True}{B}, just = {\TRule{\True}{\wedge}[1]}
+        [\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[3]}
+            [\sFmla{\True}{A}, just = {\TRule{\True}{\vee}[2]}, close]
+            [\sFmla{\True}{B}, just = {\TRule{\True}{\vee}[2]}]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+\end{frame}
+
+\begin{frame}{Logical Truth}
+\protect\hypertarget{logical-truth}{}
+Here is the algorithm for seeing whether a sentence is a logical truth.
+
+\begin{enumerate}[<+->]
+\tightlist
+\item
+  Start a tree by saying at line 1 that the sentence is \textbf{False}.
+\item
+  If the tree closes, it is a logical truth.
+\item
+  If the tree does not close, it is not a logical truth (of
+  propositional logic).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Looking for Counterexamples (Tables)}
+\protect\hypertarget{looking-for-counterexamples-tables}{}
+\begin{itemize}
+\tightlist
+\item
+  Truth tables didn't just tell us that something failed to be a logical
+  truth (of propositional logic).
+\item
+  It told us where the failure was.
+\item
+  You didn't just know that there was an \textcolor{red}{$\False$} in
+  the relevant column, you knew which row it was on.
+\item
+  And that told you where to look for counterexamples.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Looking for Counterexamples (Trees)}
+\protect\hypertarget{looking-for-counterexamples-trees}{}
+\begin{itemize}
+\tightlist
+\item
+  The same thing happens with trees.
+\item
+  By reading off the open branch, you can see where the sentence fails.
+\item
+  The trick is to focus on the \textbf{atomic} sentences on the branch.
+\item
+  These are the ones with no connectives at all.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{oltableau}
+[\sFmla{\False}{A \rightarrow (A \wedge B)},
+  [\sFmla{\True}{A}, just = {\TRule{\True}{\rightarrow}[1]}
+    [\sFmla{\False}{A \wedge B}, just = {\TRule{\True}{\rightarrow}[1]}
+      [\sFmla{\False}{A}, just = {\TRule{\False}{\wedge}[3]}, close]
+      [\sFmla{\False}{B}, just = {\TRule{\False}{\wedge}[3]}]
+    ]
+  ]
+]
+\end{oltableau}
+
+\begin{itemize}
+\tightlist
+\item
+  The right hand branch doesn't close.
+\item
+  The atomics on that branch are that \(A\) is \textcolor{red}{$\True$}
+  and \(B\) is \textcolor{red}{$\False$}.
+\item
+  So that's the line on the truth table where
+  \(A \rightarrow (A \wedge B)\) is \textcolor{red}{$\False$}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Validity}
+\protect\hypertarget{validity}{}
+Here is the algorithm for seeing whether an argument is valid (in
+propositional logic).
+
+\begin{enumerate}[<+->]
+\tightlist
+\item
+  Start a tree with one line for each premise, saying that the premise
+  is \textbf{True}.
+\item
+  Then have a line that says the conclusion is \textbf{False}.
+\item
+  If the tree closes, the argument is valid.
+\item
+  If the tree does not close, the argumnt is not valid (in propositional
+  logic).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+We will illustrate this algorithm.
+\end{frame}
+
+\end{document}

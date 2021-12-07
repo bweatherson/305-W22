@@ -1,0 +1,167 @@
+---
+title: $(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)$ (in K)
+author: Build a Tableau
+date: To Check Whether it is Valid
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## $(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)$
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)}{1}, just = \TAss,
+]
+\end{oltableau}
+
+\bigskip
+
+Start with it being false at 1.
+
+## $(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)$
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \vee \Diamond B}{1}, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \vee B)}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+True antecedent, false consequent.
+
+## $(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)$
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \vee \Diamond B}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \vee B)}{1}, just = {\TRule{\False}{\rightarrow}[1]},
+      [\pFmla{\True}{\Diamond A}{1}, just = {\TRule{\True}{\vee}[2]}]
+      [\pFmla{\True}{\Diamond B}{1}, just = {\TRule{\True}{\vee}[2]}]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Nothing to do but branch.
+
+
+## $(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)$
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \vee \Diamond B}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \vee B)}{1}, just = {\TRule{\False}{\rightarrow}[1]},
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\vee}[2]}
+        [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Diamond}[4]}
+        ]
+      ]
+      [\pFmla{\True}{\Diamond B}{1}, checked, just = {\TRule{\True}{\vee}[2]}
+        [\pFmla{\True}{B}{1.2}, just = {\TRule{\True}{\Diamond}[4]}
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Diamond sentences have to be made true somehow.
+
+## $(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)$
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \vee \Diamond B}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \vee B)}{1}, just = {\TRule{\False}{\rightarrow}[1]},
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\vee}[2]}
+        [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Diamond}[4]}
+          [\pFmla{\False}{A \vee B}{1.1},  just = {\TRule{\False}{\Diamond}[3]}
+          ]
+        ]
+      ]
+      [\pFmla{\True}{\Diamond B}{1}, checked,  just = {\TRule{\True}{\vee}[2]}
+        [\pFmla{\True}{B}{1.2}, just = {\TRule{\True}{\Diamond}[4]}
+          [\pFmla{\False}{A \vee B}{1.2},  just = {\TRule{\False}{\Diamond}[3]}
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+False diamond sentences are false at all accessible worlds.
+
+## $(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)$
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \vee \Diamond B}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \vee B)}{1}, just = {\TRule{\False}{\rightarrow}[1]},
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\vee}[2]}
+        [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Diamond}[4]}
+          [\pFmla{\False}{A \vee B}{1.1},  checked, just = {\TRule{\False}{\Diamond}[3]}
+            [\pFmla{\False}{A}{1.1}, just = {\TRule{\False}{\vee}[6]}, close]
+          ]
+        ]
+      ]
+      [\pFmla{\True}{\Diamond B}{1}, checked, just = {\TRule{\True}{\vee}[2]}
+        [\pFmla{\True}{B}{1.2}, just = {\TRule{\True}{\Diamond}[4]}
+          [\pFmla{\False}{A \vee B}{1.2},  checked, just = {\TRule{\False}{\Diamond}[3]}
+            [\pFmla{\False}{B}{1.2}, just = {\TRule{\False}{\vee}[6]}, close]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+And false or sentences have each side of the or false.
+
+## $(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)$
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \vee \Diamond B) \rightarrow \Diamond (A \vee B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \vee \Diamond B}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \vee B)}{1}, just = {\TRule{\False}{\rightarrow}[1]},
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\vee}[2]}
+        [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Diamond}[4]}
+          [\pFmla{\False}{A \vee B}{1.1},  checked, just = {\TRule{\False}{\Diamond}[3]}
+            [\pFmla{\False}{A}{1.1}, just = {\TRule{\False}{\vee}[6]}, close]
+          ]
+        ]
+      ]
+      [\pFmla{\True}{\Diamond B}{1}, checked, just = {\TRule{\True}{\vee}[2]}
+        [\pFmla{\True}{B}{1.2}, just = {\TRule{\True}{\Diamond}[4]}
+          [\pFmla{\False}{A \vee B}{1.2}, checked,  just = {\TRule{\False}{\Diamond}[3]}
+            [\pFmla{\False}{B}{1.2}, just = {\TRule{\False}{\vee}[6]}, close]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+I've cheated a bit here by just listing one justification for the lines after the branch. It's ok because the tree is completely symmetric; the same thing happens on each branch.
+

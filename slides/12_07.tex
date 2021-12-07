@@ -1,0 +1,547 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={(\textbackslash Diamond A \textbackslash wedge \textbackslash Diamond B) \textbackslash rightarrow \textbackslash Diamond (A \textbackslash wedge B) (in K)},
+  pdfauthor={Build a Tableau},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+ \usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+\usetikzlibrary{arrows.meta}
+ \forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+\title{\((\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)\) (in
+K)}
+\author{Build a Tableau}
+\date{To Check Whether it is Valid}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Hypothesis}
+\protect\hypertarget{hypothesis}{}
+
+\((\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)\) is
+a theorem of K.
+
+\begin{itemize}
+\tightlist
+\item
+  So we can use the base modal rules.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{\((\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)\)}
+\protect\hypertarget{diamond-a-wedge-diamond-b-rightarrow-diamond-a-wedge-b}{}
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)}{1}, just = \TAss,
+]
+\end{oltableau}
+
+\bigskip
+
+Start with it being false at 1.
+
+\end{frame}
+
+\begin{frame}{\((\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)\)}
+\protect\hypertarget{diamond-a-wedge-diamond-b-rightarrow-diamond-a-wedge-b-1}{}
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \wedge \Diamond B}{1}, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \wedge B)}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+True antecedent, false consequent.
+
+\end{frame}
+
+\begin{frame}{\((\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)\)}
+\protect\hypertarget{diamond-a-wedge-diamond-b-rightarrow-diamond-a-wedge-b-2}{}
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \wedge \Diamond B}{1},  checked, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \wedge B)}{1},just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, just = {\TRule{\True}{\wedge}[2]}
+        [\pFmla{\True}{\Diamond B}{1}, just = {\TRule{\True}{\wedge}[2]}
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Break up the and.
+
+\end{frame}
+
+\begin{frame}{\((\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)\)}
+\protect\hypertarget{diamond-a-wedge-diamond-b-rightarrow-diamond-a-wedge-b-3}{}
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \wedge \Diamond B}{1}, checked,just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \wedge B)}{1},  just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\wedge}[2]}
+        [\pFmla{\True}{\Diamond B}{1}, just = {\TRule{\True}{\wedge}[2]}
+          [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Diamond}[4]}
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Make \(\Diamond A\) true.
+
+\end{frame}
+
+\begin{frame}{\((\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)\)}
+\protect\hypertarget{diamond-a-wedge-diamond-b-rightarrow-diamond-a-wedge-b-4}{}
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \wedge \Diamond B}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \wedge B)}{1},  just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\wedge}[2]}
+        [\pFmla{\True}{\Diamond B}{1}, just = {\TRule{\True}{\wedge}[2]}
+          [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Diamond}[4]}
+            [\pFmla{\False}{A \wedge B}{1.1}, just = {\TRule{\False}{\Diamond}[3]}
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Since \(A \wedge B\) is false everywhere accessible from 1, it is false
+at 1.1.
+
+\end{frame}
+
+\begin{frame}{\((\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)\)}
+\protect\hypertarget{diamond-a-wedge-diamond-b-rightarrow-diamond-a-wedge-b-5}{}
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \wedge \Diamond B}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \wedge B)}{1},  just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\wedge}[2]}
+        [\pFmla{\True}{\Diamond B}{1}, just = {\TRule{\True}{\wedge}[2]}
+          [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Diamond}[4]}
+            [\pFmla{\False}{A \wedge B}{1.1}, checked, just = {\TRule{\False}{\Diamond}[3]}
+              [\pFmla{\False}{A}{1.1}, just = {\TRule{\False}{\wedge}[7]}, close]
+              [\pFmla{\False}{B}{1.1}, just = {\TRule{\False}{\wedge}[7]}
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Two ways for \(A \wedge B\) to fail; only one is possible.
+
+\end{frame}
+
+\begin{frame}{\((\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)\)}
+\protect\hypertarget{diamond-a-wedge-diamond-b-rightarrow-diamond-a-wedge-b-6}{}
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \wedge \Diamond B}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \wedge B)}{1},  just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\wedge}[2]}
+        [\pFmla{\True}{\Diamond B}{1}, checked, just = {\TRule{\True}{\wedge}[2]}
+          [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Diamond}[4]}
+            [\pFmla{\False}{A \wedge B}{1.1}, checked, just = {\TRule{\False}{\Diamond}[3]}
+              [\pFmla{\False}{A}{1.1}, just = {\TRule{\False}{\wedge}[7]}, close]
+              [\pFmla{\False}{B}{1.1}, just = {\TRule{\False}{\wedge}[7]}
+                  [\pFmla{\True}{B}{1.2}, just = {\TRule{\True}{\Diamond}[5]}
+                  ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\(B\) has to be possible, so we'll say it is possible at 1.2 - using a
+name we haven't already used.
+
+\end{frame}
+
+\begin{frame}{\((\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)\)}
+\protect\hypertarget{diamond-a-wedge-diamond-b-rightarrow-diamond-a-wedge-b-7}{}
+
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \wedge \Diamond B}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \wedge B)}{1},  just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\wedge}[2]}
+        [\pFmla{\True}{\Diamond B}{1}, checked, just = {\TRule{\True}{\wedge}[2]}
+          [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Diamond}[4]}
+            [\pFmla{\False}{A \wedge B}{1.1}, checked, just = {\TRule{\False}{\Diamond}[3]}
+              [\pFmla{\False}{A}{1.1}, just = {\TRule{\False}{\wedge}[7]}, close]
+              [\pFmla{\False}{B}{1.1}, just = {\TRule{\False}{\wedge}[7]}
+                  [\pFmla{\True}{B}{1.2}, just = {\TRule{\True}{\Diamond}[5]}
+                    [\pFmla{\False}{A \wedge B}{1.2}, just = {\TRule{\False}{\Diamond}[3]}
+                    ]
+                  ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\(A \wedge B\) is still impossible.
+
+\end{frame}
+
+\begin{frame}{\((\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)\)}
+\protect\hypertarget{diamond-a-wedge-diamond-b-rightarrow-diamond-a-wedge-b-8}{}
+
+\begin{footnotesize}
+\begin{oltableau}
+[\pFmla{\False}{(\Diamond A \wedge \Diamond B) \rightarrow \Diamond (A \wedge B)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A \wedge \Diamond B}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]},
+    [\pFmla{\False}{\Diamond (A \wedge B)}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\True}{\wedge}[2]}
+        [\pFmla{\True}{\Diamond B}{1}, checked, just = {\TRule{\True}{\wedge}[2]}
+          [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Diamond}[4]}
+            [\pFmla{\False}{A \wedge B}{1.1}, checked, just = {\TRule{\False}{\Diamond}[3]}
+              [\pFmla{\False}{A}{1.1}, just = {\TRule{\False}{\wedge}[7]}, close]
+              [\pFmla{\False}{B}{1.1}, just = {\TRule{\False}{\wedge}[7]}
+                  [\pFmla{\True}{B}{1.2}, just = {\TRule{\True}{\Diamond}[5]}
+                    [\pFmla{\False}{A \wedge B}{1.2}, checked, just = {\TRule{\False}{\Diamond}[3]}
+                      [\pFmla{\False}{A}{1.2}, just = {\TRule{\False}{\wedge}[7]}]
+                      [\pFmla{\False}{B}{1.2}, just = {\TRule{\False}{\wedge}[7]}, close]
+                    ]
+                  ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+And we're done. All the rules have been applied - though you really need to check this - and the middle branch does not close.
+\end{footnotesize}
+
+\end{frame}
+
+\begin{frame}{A Model}
+\protect\hypertarget{a-model}{}
+
+When the tableau doesn't close, you should be able to build a model
+where the sentence is false at \(w_1\).
+
+In fact, you should be able to read it off the tree.
+
+\end{frame}
+
+\begin{frame}{A Model}
+\protect\hypertarget{a-model-1}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Three worlds, \(w_1, w_{1.1}, w_{1.2}\).
+\item
+  The only accessibility relations are \(w_1Rw_{1.1}\) and
+  \(w_1Rw_{1.2}\).
+\item
+  In general, the accessibility relations are the ones required by the
+  restrictions (but there are none here), plus the ones required by the
+  numbering, i.e., \(w_xRw_{x.y}\).
+\item
+  \(A\) is true at \(w_{1.1}\) and false at \(w_{1.2}\).
+\item
+  \(B\) is true at \(w_{1.2}\) and false at \(w_{1.1}\).
+\item
+  It doesn't matter what atomics are true at \(w_1\).
+\item
+  But both \(\Diamond A\) and \(\Diamond B\) will be true at \(w_1\),
+  while \(\Diamond (A \wedge B)\) is false there.
+\end{itemize}
+
+\end{frame}
+
+\end{document}

@@ -1,0 +1,665 @@
+---
+title: "305 Lecture 10.7 - Significance Testing"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: Fira Math
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan
+
+- We're going to end with a discussion of the role of significance testing in contemporary statistics.
+
+## Associated Reading
+
+- Odds and Ends, Chapter 19 (and part of chapter 20)
+
+## Significance Testing
+
+- The subjective approach is very popular within philosophy, but not within statistics or a lot of social sciences.
+- This is in part because of its subjectivity.
+- A lot of sciences want methods that are more objective.
+
+## Significance Testing
+
+What is known as 'classical statistics' is based around the idea of significance testing.
+
+- The intuitive idea is that we say that a correlation reflects a real pattern in the underlying data if (but only if) it would be really improbable if we got the data we did by chance.
+- Intuitively, three heads in a row might be a coincidence, but ten heads in a row suggests something odd is going on.
+
+## Significance Testing
+
+So say that we want to argue that two things are connected.
+
+- To make this concrete, say that we want to argue that the survival rates for people who take our company's drug are higher than for people who do not.
+- What we do is give a bunch of people the drug (after getting all the approvals!)
+- We then look at their survival rates, and ask _How likely would this data be if our drug had no effect at all_?
+- If that number is low enough, we conclude that our drug works. (Profit!)
+
+## Significance Testing
+
+- That is, we work out something like $\Pr(E | H_0)$, where $E$ is the data that we get, and $H_0$ is a **null hypothesis** that says there is nothing of interest here.
+- If $\Pr(E | H_0)$ is low enough, we conclude that $H_0$ is false, and hopefully there is a natural alternative to $H_0$, such as that the drug works, that we infer.
+- In those cases, we will say that the data shows a significant correlation between taking the drug and survival rates.
+- This literally means that it would be really improbable to get this data by chance.
+
+## Significance Testing
+
+How low is 'really low'?
+
+- As the book says, this is mostly a matter of convention.
+- Which is ironic given the whole point was to get away from subjectivity.
+- But a common idea is that it is less than 5%.
+- So a correlation is significant if it is outside the central 95% of the distribution.
+
+## Inverting
+
+- Isn't this all wrong though?
+- Isn't it inferring from the fact that $\Pr(E | H_0)$ is low to the conclusion that $\Pr(H_0 | E)$ is low, something that we've said over and over again not to do? \pause
+- Yes, but... \pause
+- In practice the method is supplemented by practical rules that avoid the worst consequences of allowing these inversions.
+
+## Stopping Rules
+
+- As it stands, this method leads to all sorts of nonsense and, frankly, fraud. 
+- It needs to be supplemented with extra rules to avoid obvious mistakes.
+- The first thing that is needed, as was realised fairly early on, was a commitment to external 'stopping rules'.
+- If you are allowed to keep collecting data until the probability of the evidence given the null is low, you will almost always get to reject the null.
+
+## An Experiment
+
+- This is actually an experiment; the data are randomly generated anew every time I compile these slides.
+- I'm going to compile these slides, and then present them whether the data comes up the way I hope it does or not.
+- So it could go horribly wrong!
+
+## An Experiment
+
+- I'm going to simulate tossing a coin 100,000 times.
+- It uses the computer's random number generator, and it is set up so the probability of heads on each toss is 0.5, and the tosses are independent.
+- But I'm going to measure the probability of the evidence given the null after each toss, not just at the end.
+- And by 'the probability of the evidence', I mean the probability of getting at least that many heads.
+- If that is outside $[0.025, 0.975]$ then we have, at this point, a rejection of the null.
+- This is absurd of course; the null is programmed to be true.
+- I'll run it five times to see how it goes.
+
+## Tables
+
+In the tables that follow
+
+- t is the trial number, 
+- result is how the coin landed on that trial, 
+- heads is how many heads to that point, 
+- frequency is frequency of heads to that point, 
+- prob is probability of getting at least that many heads, and 
+- distance is the distance of that number from 0.5. In this trial, we ended up with this many heads.
+
+## Take One
+
+```{r include = FALSE}
+require(tidyverse)
+require(knitr)
+
+trials <- tibble(t = 1:100000)
+trials <- trials %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+trials <- trials %>%
+  mutate(heads = cumsum(result))
+trials <- trials %>%
+  mutate(frequency = heads/t) %>%
+  mutate(prob = pbinom(heads, t, 0.5)) %>%
+  mutate(distance = case_when(t > 1000 ~ abs(prob - 0.5), TRUE ~ 0)) %>%
+  arrange(desc(distance))
+shorttrials <- slice(trials, 1:5)
+```
+
+```{r echo= FALSE, results = 'asis'}
+kable(shorttrials)
+```
+
+Number of heads
+
+```{r echo = FALSE}
+sum(trials$result)
+```
+
+## Take Two
+
+```{r include = FALSE}
+require(tidyverse)
+require(knitr)
+
+trials <- tibble(t = 1:100000)
+trials <- trials %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+trials <- trials %>%
+  mutate(heads = cumsum(result))
+trials <- trials %>%
+  mutate(frequency = heads/t) %>%
+  mutate(prob = pbinom(heads, t, 0.5)) %>%
+  mutate(distance = case_when(t > 1000 ~ abs(prob - 0.5), TRUE ~ 0)) %>%
+  arrange(desc(distance))
+shorttrials <- slice(trials, 1:5)
+```
+
+```{r echo= FALSE, results = 'asis'}
+kable(shorttrials)
+```
+
+Number of heads
+
+```{r echo = FALSE}
+sum(trials$result)
+```
+
+## Take Three
+
+```{r include = FALSE}
+require(tidyverse)
+require(knitr)
+
+trials <- tibble(t = 1:100000)
+trials <- trials %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+trials <- trials %>%
+  mutate(heads = cumsum(result))
+trials <- trials %>%
+  mutate(frequency = heads/t) %>%
+  mutate(prob = pbinom(heads, t, 0.5)) %>%
+  mutate(distance = case_when(t > 1000 ~ abs(prob - 0.5), TRUE ~ 0)) %>%
+  arrange(desc(distance))
+shorttrials <- slice(trials, 1:5)
+```
+
+```{r echo= FALSE, results = 'asis'}
+kable(shorttrials)
+```
+
+Number of heads
+
+```{r echo = FALSE}
+sum(trials$result)
+```
+
+## Take Four
+
+```{r include = FALSE}
+require(tidyverse)
+require(knitr)
+
+trials <- tibble(t = 1:100000)
+trials <- trials %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+trials <- trials %>%
+  mutate(heads = cumsum(result))
+trials <- trials %>%
+  mutate(frequency = heads/t) %>%
+  mutate(prob = pbinom(heads, t, 0.5)) %>%
+  mutate(distance = case_when(t > 1000 ~ abs(prob - 0.5), TRUE ~ 0)) %>%
+  arrange(desc(distance))
+shorttrials <- slice(trials, 1:5)
+```
+
+```{r echo= FALSE, results = 'asis'}
+kable(shorttrials)
+```
+
+Number of heads
+
+```{r echo = FALSE}
+sum(trials$result)
+```
+
+## Take Five
+
+```{r include = FALSE}
+require(tidyverse)
+require(knitr)
+
+trials <- tibble(t = 1:100000)
+trials <- trials %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+trials <- trials %>%
+  mutate(heads = cumsum(result))
+trials <- trials %>%
+  mutate(frequency = heads/t) %>%
+  mutate(prob = pbinom(heads, t, 0.5)) %>%
+  mutate(distance = case_when(t > 1000 ~ abs(prob - 0.5), TRUE ~ 0)) %>%
+  arrange(desc(distance))
+shorttrials <- slice(trials, 1:5)
+```
+
+```{r echo= FALSE, results = 'asis'}
+kable(shorttrials)
+```
+
+Number of heads
+
+```{r echo = FALSE}
+sum(trials$result)
+```
+
+## Stopping Rules
+
+- As I said, this is a known bug in significance testing, and every responsible scientist who uses it knows that you aren't meant to stop just when you get the data you want.
+- But there is another kind of problem that we've recently discovered the importance of.
+- Here I was testing just one hypothesis.
+- What if we try to test many more hypotheses at once?
+
+## P-Hacking
+
+- This practice is known as **p-hacking**.
+- It is the tactic of looking at results within all sorts of sub-groups within the data in the hope of finding a significant correlation somewhere.
+- And with enough subgroups, the odds are pretty good that you'll find one.
+
+## Another Experiment
+
+- Here I'm doing 32000 coin flips, but each flip is randomly assigned to either having or not having three different characteristics: C1, C2 and C3.
+- In medical contexts, think of these as being like sex, age, race, etc.
+- Again, I'm just doing coin flips here.
+- And I'm going to run the trials to completion.
+- But we're going to look for significant correlations among each group.
+- I'll walk through three attempts to see how likely it is we get one.
+- I haven't seen the data, so there isn't commentary on the slides, but it is quite unlikely that we'll get a significant correlation on the whole set. On the sub-samples though...
+
+## Experiment One
+
+```{r include = FALSE}
+require(tidyverse)
+
+trials <- tibble(t = 1:32000)
+trials <- trials %>%
+  mutate(c1 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c2 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c3 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+
+big_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "All", sum(trials$result), nrow(trials), 0, 0
+)
+
+big_table <- big_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability))
+
+t1 <- trials %>% filter(c1 == 1)
+t2 <- trials %>% filter(c1 == 0)
+t3 <- trials %>% filter(c2 == 1)
+t4 <- trials %>% filter(c2 == 0)
+t5 <- trials %>% filter(c3 == 1)
+t6 <- trials %>% filter(c3 == 0)
+
+one_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "Yes C1", sum(t1$result), nrow(t1), 0, 0,
+  "No C1", sum(t2$result), nrow(t2), 0, 0,
+  "Yes C2", sum(t3$result), nrow(t3), 0, 0,
+  "No C2", sum(t4$result), nrow(t4), 0, 0,
+  "Yes C3", sum(t4$result), nrow(t5), 0, 0,
+  "No C3", sum(t4$result), nrow(t6), 0, 0
+)
+
+one_char_table <- one_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t11 <- trials %>% filter(c1 == 1, c2 == 1)
+t12 <- trials %>% filter(c1 == 1, c2 == 0)
+t13 <- trials %>% filter(c1 == 0, c2 == 1)
+t14 <- trials %>% filter(c1 == 0, c2 == 0)
+t21 <- trials %>% filter(c1 == 1, c3 == 1)
+t22 <- trials %>% filter(c1 == 1, c3 == 0)
+t23 <- trials %>% filter(c1 == 0, c3 == 1)
+t24 <- trials %>% filter(c1 == 0, c3 == 0)
+t31 <- trials %>% filter(c3 == 1, c2 == 1)
+t32 <- trials %>% filter(c3 == 1, c2 == 0)
+t33 <- trials %>% filter(c3 == 0, c2 == 1)
+t34 <- trials %>% filter(c3 == 0, c2 == 0)
+
+two_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2", sum(t11$result), nrow(t11), 0, 0,
+  "+C1-C2", sum(t12$result), nrow(t12), 0, 0,
+  "-C1+C2", sum(t13$result), nrow(t13), 0, 0,
+  "-C1-C2", sum(t14$result), nrow(t14), 0, 0,
+  "+C1+C3", sum(t21$result), nrow(t21), 0, 0,
+  "+C1-C3", sum(t22$result), nrow(t22), 0, 0,
+  "-C1+C3", sum(t23$result), nrow(t23), 0, 0,
+  "-C1-C3", sum(t24$result), nrow(t24), 0, 0,
+  "+C3+C2", sum(t31$result), nrow(t31), 0, 0,
+  "+C3-C2", sum(t32$result), nrow(t32), 0, 0,
+  "-C3+C2", sum(t33$result), nrow(t33), 0, 0,
+  "-C3-C2", sum(t34$result), nrow(t34), 0, 0
+)
+
+two_char_table <- two_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t41 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 1)
+t42 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 0)
+t43 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 1)
+t44 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 0)
+t45 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 1)
+t46 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 0)
+t47 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 1)
+t48 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 0)
+
+three_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2+C3", sum(t41$result), nrow(t41), 0, 0,
+  "+C1+C2-C3", sum(t42$result), nrow(t42), 0, 0,
+  "+C1-C2+C3", sum(t43$result), nrow(t43), 0, 0,
+  "+C1-C2-C3", sum(t44$result), nrow(t44), 0, 0,
+  "-C1+C2+C3", sum(t45$result), nrow(t45), 0, 0,
+  "-C1+C2-C3", sum(t46$result), nrow(t46), 0, 0,
+  "-C1-C2+C3", sum(t47$result), nrow(t47), 0, 0,
+  "-C1-C2-C3", sum(t48$result), nrow(t48), 0, 0
+)
+
+three_char_table <- three_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+```
+
+```{r echo = FALSE}
+kable(big_table)
+```
+
+## Experiment One - With One Characteristic
+
+```{r echo = FALSE}
+kable(one_char_table)
+```
+
+---
+
+\small
+
+```{r echo = FALSE}
+kable(two_char_table)
+```
+
+---
+
+\small
+
+```{r echo = FALSE}
+kable(three_char_table)
+```
+
+## Experiment Two
+
+```{r include = FALSE}
+require(tidyverse)
+
+trials <- tibble(t = 1:32000)
+trials <- trials %>%
+  mutate(c1 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c2 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c3 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+
+big_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "All", sum(trials$result), nrow(trials), 0, 0
+)
+
+big_table <- big_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability))
+
+t1 <- trials %>% filter(c1 == 1)
+t2 <- trials %>% filter(c1 == 0)
+t3 <- trials %>% filter(c2 == 1)
+t4 <- trials %>% filter(c2 == 0)
+t5 <- trials %>% filter(c3 == 1)
+t6 <- trials %>% filter(c3 == 0)
+
+one_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "Yes C1", sum(t1$result), nrow(t1), 0, 0,
+  "No C1", sum(t2$result), nrow(t2), 0, 0,
+  "Yes C2", sum(t3$result), nrow(t3), 0, 0,
+  "No C2", sum(t4$result), nrow(t4), 0, 0,
+  "Yes C3", sum(t4$result), nrow(t5), 0, 0,
+  "No C3", sum(t4$result), nrow(t6), 0, 0
+)
+
+one_char_table <- one_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t11 <- trials %>% filter(c1 == 1, c2 == 1)
+t12 <- trials %>% filter(c1 == 1, c2 == 0)
+t13 <- trials %>% filter(c1 == 0, c2 == 1)
+t14 <- trials %>% filter(c1 == 0, c2 == 0)
+t21 <- trials %>% filter(c1 == 1, c3 == 1)
+t22 <- trials %>% filter(c1 == 1, c3 == 0)
+t23 <- trials %>% filter(c1 == 0, c3 == 1)
+t24 <- trials %>% filter(c1 == 0, c3 == 0)
+t31 <- trials %>% filter(c3 == 1, c2 == 1)
+t32 <- trials %>% filter(c3 == 1, c2 == 0)
+t33 <- trials %>% filter(c3 == 0, c2 == 1)
+t34 <- trials %>% filter(c3 == 0, c2 == 0)
+
+two_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2", sum(t11$result), nrow(t11), 0, 0,
+  "+C1-C2", sum(t12$result), nrow(t12), 0, 0,
+  "-C1+C2", sum(t13$result), nrow(t13), 0, 0,
+  "-C1-C2", sum(t14$result), nrow(t14), 0, 0,
+  "+C1+C3", sum(t21$result), nrow(t21), 0, 0,
+  "+C1-C3", sum(t22$result), nrow(t22), 0, 0,
+  "-C1+C3", sum(t23$result), nrow(t23), 0, 0,
+  "-C1-C3", sum(t24$result), nrow(t24), 0, 0,
+  "+C3+C2", sum(t31$result), nrow(t31), 0, 0,
+  "+C3-C2", sum(t32$result), nrow(t32), 0, 0,
+  "-C3+C2", sum(t33$result), nrow(t33), 0, 0,
+  "-C3-C2", sum(t34$result), nrow(t34), 0, 0
+)
+
+two_char_table <- two_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t41 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 1)
+t42 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 0)
+t43 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 1)
+t44 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 0)
+t45 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 1)
+t46 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 0)
+t47 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 1)
+t48 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 0)
+
+three_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2+C3", sum(t41$result), nrow(t41), 0, 0,
+  "+C1+C2-C3", sum(t42$result), nrow(t42), 0, 0,
+  "+C1-C2+C3", sum(t43$result), nrow(t43), 0, 0,
+  "+C1-C2-C3", sum(t44$result), nrow(t44), 0, 0,
+  "-C1+C2+C3", sum(t45$result), nrow(t45), 0, 0,
+  "-C1+C2-C3", sum(t46$result), nrow(t46), 0, 0,
+  "-C1-C2+C3", sum(t47$result), nrow(t47), 0, 0,
+  "-C1-C2-C3", sum(t48$result), nrow(t48), 0, 0
+)
+
+three_char_table <- three_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+```
+
+```{r echo = FALSE}
+kable(big_table)
+```
+
+## Experiment Two - With One Characteristic
+
+```{r echo = FALSE}
+kable(one_char_table)
+```
+
+---
+
+\small
+
+```{r echo = FALSE}
+kable(two_char_table)
+```
+
+---
+
+\small
+
+```{r echo = FALSE}
+kable(three_char_table)
+```
+
+## Experiment Three
+
+```{r include = FALSE}
+require(tidyverse)
+
+trials <- tibble(t = 1:32000)
+trials <- trials %>%
+  mutate(c1 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c2 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c3 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+
+big_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "All", sum(trials$result), nrow(trials), 0, 0
+)
+
+big_table <- big_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability))
+
+t1 <- trials %>% filter(c1 == 1)
+t2 <- trials %>% filter(c1 == 0)
+t3 <- trials %>% filter(c2 == 1)
+t4 <- trials %>% filter(c2 == 0)
+t5 <- trials %>% filter(c3 == 1)
+t6 <- trials %>% filter(c3 == 0)
+
+one_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "Yes C1", sum(t1$result), nrow(t1), 0, 0,
+  "No C1", sum(t2$result), nrow(t2), 0, 0,
+  "Yes C2", sum(t3$result), nrow(t3), 0, 0,
+  "No C2", sum(t4$result), nrow(t4), 0, 0,
+  "Yes C3", sum(t4$result), nrow(t5), 0, 0,
+  "No C3", sum(t4$result), nrow(t6), 0, 0
+)
+
+one_char_table <- one_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t11 <- trials %>% filter(c1 == 1, c2 == 1)
+t12 <- trials %>% filter(c1 == 1, c2 == 0)
+t13 <- trials %>% filter(c1 == 0, c2 == 1)
+t14 <- trials %>% filter(c1 == 0, c2 == 0)
+t21 <- trials %>% filter(c1 == 1, c3 == 1)
+t22 <- trials %>% filter(c1 == 1, c3 == 0)
+t23 <- trials %>% filter(c1 == 0, c3 == 1)
+t24 <- trials %>% filter(c1 == 0, c3 == 0)
+t31 <- trials %>% filter(c3 == 1, c2 == 1)
+t32 <- trials %>% filter(c3 == 1, c2 == 0)
+t33 <- trials %>% filter(c3 == 0, c2 == 1)
+t34 <- trials %>% filter(c3 == 0, c2 == 0)
+
+two_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2", sum(t11$result), nrow(t11), 0, 0,
+  "+C1-C2", sum(t12$result), nrow(t12), 0, 0,
+  "-C1+C2", sum(t13$result), nrow(t13), 0, 0,
+  "-C1-C2", sum(t14$result), nrow(t14), 0, 0,
+  "+C1+C3", sum(t21$result), nrow(t21), 0, 0,
+  "+C1-C3", sum(t22$result), nrow(t22), 0, 0,
+  "-C1+C3", sum(t23$result), nrow(t23), 0, 0,
+  "-C1-C3", sum(t24$result), nrow(t24), 0, 0,
+  "+C3+C2", sum(t31$result), nrow(t31), 0, 0,
+  "+C3-C2", sum(t32$result), nrow(t32), 0, 0,
+  "-C3+C2", sum(t33$result), nrow(t33), 0, 0,
+  "-C3-C2", sum(t34$result), nrow(t34), 0, 0
+)
+
+two_char_table <- two_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t41 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 1)
+t42 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 0)
+t43 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 1)
+t44 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 0)
+t45 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 1)
+t46 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 0)
+t47 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 1)
+t48 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 0)
+
+three_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2+C3", sum(t41$result), nrow(t41), 0, 0,
+  "+C1+C2-C3", sum(t42$result), nrow(t42), 0, 0,
+  "+C1-C2+C3", sum(t43$result), nrow(t43), 0, 0,
+  "+C1-C2-C3", sum(t44$result), nrow(t44), 0, 0,
+  "-C1+C2+C3", sum(t45$result), nrow(t45), 0, 0,
+  "-C1+C2-C3", sum(t46$result), nrow(t46), 0, 0,
+  "-C1-C2+C3", sum(t47$result), nrow(t47), 0, 0,
+  "-C1-C2-C3", sum(t48$result), nrow(t48), 0, 0
+)
+
+three_char_table <- three_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+```
+
+```{r echo = FALSE}
+kable(big_table)
+```
+
+## Experiment Three - With One Characteristic
+
+```{r echo = FALSE}
+kable(one_char_table)
+```
+
+---
+
+\small
+
+```{r echo = FALSE}
+kable(two_char_table)
+```
+
+---
+
+\small
+
+```{r echo = FALSE}
+kable(three_char_table)
+```
+
+## Pre-Registration
+
+- The solution to this problem (which I hope the numbers came out right on!) is to require that scientists **pre-register** their hypotheses.
+- So you can't collect data then see what it supports, but have to say that one particular thing is what you're testing.
+- This is still in the process of becoming a universal requirement in respectable science; it was very much not part of standard scientific practice 10-20 years ago.
+
+## Philosophical Question
+
+- Should we trust a method if it requires these ad hoc rules like announced stopping rules and pre-registration? \pause
+- Maybe! It depends on the alternatives.
+- But when you see a report on a statistical finding, you should really check if it satisfies these conditions.
+- And if it comes from a for-profit entity, you should be really sceptical that it does unless they are super transparent.
+
+## For Next Time
+
+We'll start looking at modal logic, the logic of 'must' and 'might'.

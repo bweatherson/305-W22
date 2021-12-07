@@ -1,0 +1,18 @@
+---
+title: test
+output: bookdown::gitbook
+---
+
+# Several versions of the table
+
+```{r mtCarsTables, echo=FALSE, results='asis'}
+list <- c("Table 1", "Table 2", "Table 3")
+
+for(i in 1:length(list)){
+  table <- knitr::kable(head(mtcars),
+                        caption = paste("Version", i),
+                        label = paste0("mtcarstab", i))
+  print(table)
+  cat('\n\n<!-- -->\n\n') #separate tables
+}
+```

@@ -1,0 +1,101 @@
+---
+title: "305 Lecture 11.6 - Frames and Axioms"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To introduce the relationship between frames and axioms.
+
+## Associated Reading
+
+- Boxes and Diamonds, section 4.1 and 4.2.
+
+## Two Way Equivalence
+
+Some conditions on R are strongly tied to dedicated axioms:
+
+- If the condition on R holds, then the axiom is guaranteed to hold.
+- If the condition on R does not hold, then there is guaranteed to be a way to make the axiom fail.
+
+We'll illustrate this with the following pair:
+
+- R is transitive
+- $\Box A \rightarrow \Box \Box A$
+
+## What Are Frames
+
+- Frames are models without the valuations.
+- They are the $\langle W, R \rangle$ part of $\langle W, R, V \rangle$.
+
+## From R to Axiom
+
+In any frame where R is transitive, any instance of this schema is true at any point in any model on the frame.
+
+- $\Box A \rightarrow \Box \Box A \pause$
+
+This is a really strong claim. It says you can pick any value you like for the following three things, and $\Box A \rightarrow \Box \Box A$ will be true
+
+1. Any valuation function $V$ you like.
+2. Any point $w$ in $W$ that you like.
+3. Any substitution instance for $A$ that you like.
+
+## From Axiom to R
+
+The claim here is in a sense weaker, but still interesting. It says that if the R in $\langle W, R \rangle$ is not transitive, then there is some way to make $\Box A \rightarrow \Box \Box A$  false.  \pause  That is, if you pick the right values for the following three things:
+
+1. The point $w$ in $W$;
+2. The substitution instance for $A$
+3. The valuation function $V$;
+
+then $\Box A \rightarrow \Box \Box A$ will be false.
+
+## Picking the Substitution Instance
+
+In this case, it isn't that hard to get all three.
+
+1. Let $w$ be a point in $W$ such that for some $x, y$, $wRx$ and $xRy$, but not $wRy$. (Since $R$ is not transitive, we know such a point exists.)
+2. Let $A$ be $p$, i.e., an atomic sentence.
+3. Let $V$ make $p$ true at $z$ if and only if $wRz \pause$.
+
+Then at $w$, $\Box p$ will be true (since $p$ is true everywhere that $w$ can access), but $\Box \Box p$ will be false. That's because we know that $p$ is false at the point $y$ mentioned in 1.
+
+## Reflexivity
+
+The same equivalence holds between
+
+- $R$ is reflexive, i.e., for all $x, xRx$.
+- The axiom $\Box A \rightarrow A$ is valid on the frame.
+
+Left-to-right
+:    If $R$ is reflexive, then $x$ itself is one of the accessible worlds, so if $\Box A$ is true at $x$, then $A$ must also be true at $x$.
+
+Right-to-left
+:    If $R$ is not reflexive, then there is a point $x$ such that $\neg xRx$. Let $A$ be true everywhere but $x$. Then $\Box A$ will be true at $x$, since $A$ is true at all the points it can 'see', but $A$ is false.
+
+## Symmetry
+
+The same equivalence holds between
+
+- $R$ is symmetric, i.e., for all $x, y, xRy \rightarrow yRx$.
+- The axiom $A \rightarrow \Box \Diamond A$ is valid on the frame.
+
+Left-to-right
+:    If $R$ is symmetric, then everywhere $x$ can see can also see $x$. So if $A$ is true at $x$, then $\Diamond A$ is true at all those worlds. So $\Box \Diamond A$ is true at $x$. 
+
+Right-to-left
+:    If $R$ is not symmetric, then there is a pair $x, y$ such that $xRy \wedge \neg yRx$. Let $A$ be true only at $x$. Since $\neg yRx$, $\Diamond A$ is false at $y$. And since $xRy$, $\Box \Diamond A$ is false at $x$.
+ 
+## For Next Time
+
+We'll talk about the philosophical significance of these results.

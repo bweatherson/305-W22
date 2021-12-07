@@ -1,0 +1,85 @@
+---
+title: "305 Lecture 10.2 - The Gambler's Fallacy"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- In this lecture we're going to go over one bad way to learn from experience - the Gambler's Fallacy.
+- This requires jumping back in the book, back in fact to Chapter 4.
+
+## Associated Reading
+
+Odds and Ends, chapter 4.
+
+## Abstract Setup
+
+A process will be repeated. It just had one kind of outcome, and we want to know whether that made the likelihood of some other outcome on the next run of the process go up.
+
+## Questions
+
+Given that trial $n$ of the process produced output $o$, which processes are such that
+
+- The probability that trial $n$ will produce output $o$ just went up?
+- The probability that trial $n$ will produce output $o$ stayed the same?
+- The probability that trial $n$ will produce output $o$ just went down?
+
+## Induction
+
+There should be lots of cases where the probability goes up.
+
+> - E.g., I don't know what it's like to put my hand on a hot plate.
+> - On trial one, it hurts a lot.
+> - That increases the probability on trial two that it will also hurt a lot.
+
+## Fair Gambling Devices
+
+There are also a lot of cases where the probability stays the same.
+
+> - That's what happens in all fair gambling devices.
+> - But note that not all gambling devices are fair, and sometimes the fact that you get output $o$ is evidence that it is (intentionally or not) biased towards $o$.
+
+## Option Three
+
+It's really hard to find real-world cases where option three applies.
+
+> - Sampling without replacement (if you want to call it a single process) is one.
+> - The fact that the previous bag going onto the luggage carousel is not yours does really raise the probability that the next one will be yours.
+> - But these cases are rare.
+
+## Gambler's Fallacy
+
+The fallacy of thinking that you're in case (c) when you are not.
+
+## Hot Hand
+
+- It's a little odd to lump 'hot hand' reasoning in with gambler's fallacy.
+- On the face of it, it looks like simple inductive reasoning.
+- I think (though the data are really messy) that hot hand reasoning is often over-stated, but that there really is a phenomenon there.
+
+## Hot Hand
+
+The trick is squaring the intuitive idea in 1 with the observation in 2.
+
+1. Someone who hits a shot is more likely 'hot' and hence somewhat more likely to hit the next shot.
+2. Shooting percentages are roughly the same for shooters who hit and who missed on their previous shots.
+
+## Three Possible Explanations
+
+> - Injuries (though this would be small effect)
+> - Defence (assumes everyone knows about effect - which is realistic)
+> - Shot selection (not obviously rational, but might be)
+
+## For Next Time
+
+- We will look at what we mean by probability.

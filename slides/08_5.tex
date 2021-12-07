@@ -1,0 +1,568 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 8.5 - Base Rates},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+ \usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+\usetikzlibrary{arrows.meta}
+ \forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\setlength\lightrulewidth{0.3pt}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 8.5 - Base Rates}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+\begin{itemize}
+\tightlist
+\item
+  This lecture will talk about the importance of taking base rates into
+  account.
+\item
+  To do that, I need to explain what a base rate is.
+\item
+  And to do that, it helps to start with a famous example.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+Odds and Ends, section 8.1
+\end{frame}
+
+\begin{frame}{The Blue and Green Example}
+\protect\hypertarget{the-blue-and-green-example}{}
+Plan
+
+\begin{itemize}
+\tightlist
+\item
+  Go over the example.
+\item
+  Explain what the book says about it.
+\item
+  Say why I think it's a bit more complicated than calling one view a
+  mistake. (The short version is that English is ambiguous around here,
+  and we shouldn't assume one particular disambiguation.)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Setup (Part One)}
+\protect\hypertarget{setup-part-one}{}
+A cab was involved in a hit and run accident at night. Two cab
+companies, the Green and the Blue, operate in the city. You are given
+the following data:
+
+\begin{enumerate}
+\tightlist
+\item
+  85\% of the cabs in the city are Green and 15\% are Blue.
+\item
+  A witness identified the cab as Blue.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Setup (Part Two)}
+\protect\hypertarget{setup-part-two}{}
+The court tested the reliability of the witness under the same
+circumstances that existed on the night of the accident and concluded
+that the witness correctly identified each one of the two colors 80\% of
+the time and failed 20\% of the time.
+
+\begin{itemize}
+\tightlist
+\item
+  What is the probability that the cab involved in the accident was blue
+  rather green?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Reliability}
+\protect\hypertarget{reliability}{}
+Let's understand that last clause as meaning that the following two
+claims are true.
+
+\begin{itemize}
+\tightlist
+\item
+  Pr(Correct Identification \(|\) Is-Green) = \(0.8\); and
+\item
+  Pr(Correct Identification \(|\) Is-Blue) = \(0.8\).
+\end{itemize}
+
+Let's also note that this isn't obvious that this is the right
+translation. For one thing, it translates a single data point as a
+conjunction.
+\end{frame}
+
+\begin{frame}{Restating Reliability}
+\protect\hypertarget{restating-reliability}{}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Pr(Looks-Green \(|\) Is-Green) = \(0.8\).
+\item
+  So Pr(Looks-Blue \(|\) Is-Green) = \(0.2\).
+\end{itemize}
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Pr(Looks-Blue \(|\) Is-Blue) = \(0.8\).
+\item
+  So Pr(Looks-Green \(|\) Is-Blue) = \(0.2\).
+\end{itemize}
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  And we also know Pr(Is-Green) = \(0.85\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Another Table}
+\protect\hypertarget{another-table}{}
+\begin{longtable}[]{@{}rcc@{}}
+\toprule
+& Looks-Green & Looks-Blue \\ \addlinespace
+\midrule
+\endhead
+Is-Green & \(0.85 \times 0.8 = 0.68\) &
+\(0.85 \times 0.2 = 0.17\) \\ \addlinespace
+Is-Blue & \(0.15 \times 0.2 = 0.03\) &
+\(0.15 \times 0.8 = 0.12\) \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+Think about why each of those numbers are there.
+\end{frame}
+
+\begin{frame}{Conditional Probablility}
+\protect\hypertarget{conditional-probablility}{}
+Now focus on the right-hand column.
+
+\begin{longtable}[]{@{}rcc@{}}
+\toprule
+& Looks-Green & Looks-Blue \\ \addlinespace
+\midrule
+\endhead
+Is-Green & \(0.85 \times 0.8 = 0.68\) &
+\(0.85 \times 0.2 = 0.17\) \\ \addlinespace
+Is-Blue & \(0.15 \times 0.2 = 0.03\) &
+\(0.15 \times 0.8 = 0.12\) \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  The probability of Looks Blue is \(0.17 + 0.12 = 0.29\) \pause
+\item
+  The probability of Is-Blue-and-Looks-Blue is \(0.12\). \pause
+\item
+  So the probability of Is-Blue given Looks-Blue is
+  \(\frac{0.12}{0.29} \approx 0.41\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Standard Story}
+\protect\hypertarget{the-standard-story}{}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Even though the witness is pretty reliable, it is still more likely a
+  green cab than a blue cab given their evidence.
+\item
+  When something is really probable to start with, it takes a lot of
+  evidence to shift the probabilities.
+\item
+  We often tend to conflate the \textbf{direction} of the recent
+  evidence with the \textbf{result} of that getting that evidence.
+\item
+  Even if Blue is better supported by the recent evidence than Green,
+  the overall evidence might still better support Green.
+\item
+  And a special case of that is where all the indivudalised evidence
+  supports Blue, but the generic evidence (the base rates) supports
+  Green.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Worry 1 of 3}
+\protect\hypertarget{worry-1-of-3}{}
+This is a really bad witness.
+
+\begin{itemize}
+\tightlist
+\item
+  If they'd just said green every time, they'd have been more reliable.
+\item
+  If you're less reliable than a tape recorder saying the same thing
+  over and over again, that's bad.
+\item
+  So bad that we might worry about what's going on.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Worry 2 of 3}
+\protect\hypertarget{worry-2-of-3}{}
+Why make the inference from Pr(Looks-Blue \(|\) Is-Blue) = \(0.8\) to
+Pr(Looks-Green \(|\) Is-Blue) = \(0.2\)? \pause
+
+\begin{itemize}
+\tightlist
+\item
+  The text only says that (a) all the taxis are Blue or Green, and (b)
+  the witness is 80\% accurate.
+\item
+  It doesn't follow that every time that they misidentify a Blue cab,
+  they misidentify it as Green. \pause
+\item
+  Even if there aren't yellow cabs, they might see it as yellow. (Maybe
+  they just moved from NYC). \pause
+\item
+  Or maybe a ``don't know'' verdict count as not a correct
+  identification. So we need a column for ``don't know''.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Worry 3 of 3}
+\protect\hypertarget{worry-3-of-3}{}
+Why interpret the accuracy claim as that conjunction rather than the
+conjunction:
+
+\begin{itemize}
+\tightlist
+\item
+  Pr(Correct Identification \(|\) Looks-Green) = \(0.8\); and
+\item
+  Pr(Correct Identification \(|\) Looks-Blue) = \(0.8\).
+\end{itemize}
+
+Then the answer is 0.8. And I guess I don't see what in the English
+makes it more likely to be read one way rather than another.
+\end{frame}
+
+\begin{frame}{Worry 3 of 3 rephrased}
+\protect\hypertarget{worry-3-of-3-rephrased}{}
+Put another way, if this conjunction was true, how would you describe
+it?
+
+\begin{itemize}
+\tightlist
+\item
+  Pr(Correct Identification \(|\) Looks-Green) = \(0.8\); and
+\item
+  Pr(Correct Identification \(|\) Looks-Blue) = \(0.8\). \pause
+\end{itemize}
+
+I think I'd say the witness correctly identified the color 80\% of the
+time.
+\end{frame}
+
+\begin{frame}{General Lesson}
+\protect\hypertarget{general-lesson}{}
+\begin{itemize}
+\tightlist
+\item
+  When you get this kind of accuracy data in words - check what you are
+  being told!
+\item
+  Data with very different implications might be described in similar
+  words.
+\item
+  This is just as important a lesson as the lesson ``Attend to base
+  rates''.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+We will end the week looking at some more complicated examples of
+inverting conditional probability.
+\end{frame}
+
+\end{document}

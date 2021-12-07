@@ -1,0 +1,33 @@
+---
+title: "Assignment Week 4"
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "mathastext"]
+    fig_caption: no
+fontsize: 11pt
+mainfont: SF Pro Text Light
+mainfontoptions: "Scale=MatchLowercase"
+geometry: margin=1.2in
+linestretch: 1.4
+author: Philosophy 305
+date: Due February 12, 5pm
+---
+
+# Trees or Tables
+
+Using either Truth Trees or Truth Tables, work out which of the following sentences are logical truths. You don't have to show your working, just input the answers into Canvas. (But if you do want to show workings, there is a place for uploading files, such as scans, containing workings.)
+
+1. $((A \rightarrow (B \vee D)) \rightarrow C) \rightarrow (\neg C \rightarrow A)$
+2. $((A \vee D) \rightarrow (B \rightarrow C)) \rightarrow (B \rightarrow (A \rightarrow C))$
+3. $(A \rightarrow (B \rightarrow C)) \rightarrow ((B \vee D) \rightarrow (A \rightarrow C))$
+4. $(A \rightarrow \neg (B \wedge D)) \rightarrow (((\neg B \vee \neg D) \rightarrow \neg C) \rightarrow (C \rightarrow \neg A))$
+5. $(A \rightarrow \neg (B \vee D)) \rightarrow (((\neg B \wedge \neg D) \rightarrow \neg C) \rightarrow (C \rightarrow \neg A))$
+6. $(A \rightarrow B) \rightarrow C, C \rightarrow A, \vdash D \rightarrow A$
+7. $A \rightarrow B \vdash (C \rightarrow \neg A) \vee (\neg B \rightarrow D)$
+8. $A \rightarrow (B \wedge C), (A \wedge B) \rightarrow (C \rightarrow (D \vee E)) \vdash \neg D \rightarrow (A \rightarrow E)$
+9. $A \rightarrow (\neg B \vee C), A \rightarrow ((\neg D \vee E) \rightarrow (B \rightarrow C)) \vdash (A \wedge D) \rightarrow E$
+10. $(A \rightarrow B) \rightarrow B, (\neg B \rightarrow C) \rightarrow C \vdash A \vee C$

@@ -1,0 +1,137 @@
+---
+title: "305 Lecture 4.2 - Examples of Truth Trees"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+This lecture goes over some examples of truth trees.
+
+## Associated Reading
+
+Boxes and Diamonds, section 2.4.
+
+---
+
+This is a tableau for showing $A \rightarrow (A \vee B)$ is a logical truth.
+
+\begin{oltableau}
+[\sFmla{\False}{A \rightarrow (A \vee B)}, checked, just = \TAss
+	[\sFmla{\True}{A}, just = {\TRule{\False}{\rightarrow}[1]}
+		[\sFmla{\False}{A \vee B}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+			[\sFmla{\False}{A}, just = {\TRule{\False}{\vee}[3]}
+				[\sFmla{\False}{B}, just = {\TRule{\False}{\vee}[3]}, close
+				]
+			]
+		]
+	]
+]
+\end{oltableau}
+
+## Ticks and Crosses 
+
+- I've stared including $\checkmark$ on lines. 
+- That's just a reminder that I'm done with that line. 
+- It's not essential, but it's useful.
+
+## Ticks and Crosses
+
+- It's useful in part because you don't always want to apply rules in order.
+- In particular, you want to apply branching rules **after** non-branching rules.
+- But if you do that, it's easy to forget which lines you still need to apply.
+- So the tick marks help.
+
+## Ticks and Crosses
+
+- The crosses at the end, saying which branches are closed, are essential.
+
+---
+
+Here is a tableau for showing that $A \rightarrow B, \neg B \vdash \neg A$ is valid.
+
+\begin{oltableau}
+[\sFmla{\True}{A \rightarrow B}, checked, just = \TAss
+	[\sFmla{\True}{\neg B}, checked, just = \TAss
+		[\sFmla{\False}{\neg A}, checked, just = \TAss
+			[\sFmla{\False}{B}, just = {\TRule{\True}{\neg}[2]}
+				[\sFmla{\True}{A}, just = {\TRule{\False}{\neg}[3]}
+					[\sFmla{\False}{A}, just = {\TRule{\True}{\rightarrow}[1]}, close]
+					[\sFmla{\True}{B}, just = {\TRule{\True}{\rightarrow}[1]}, close]
+				]
+			]
+		]
+	]
+]
+\end{oltableau}
+
+---
+
+Here is a tableau for showing that $A \rightarrow B, \neg A \vdash \neg B$ is **invalid**.
+
+\begin{oltableau}
+[\sFmla{\True}{A \rightarrow B}, checked, just = \TAss
+	[\sFmla{\True}{\neg A}, checked, just = \TAss
+		[\sFmla{\False}{\neg B}, checked, just = \TAss
+			[\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[2]}
+				[\sFmla{\True}{B}, just = {\TRule{\False}{\neg}[3]}
+					[\sFmla{\False}{A}, just = {\TRule{\True}{\rightarrow}[1]},]
+					[\sFmla{\True}{B}, just = {\TRule{\True}{\rightarrow}[1]},]
+				]
+			]
+		]
+	]
+]
+\end{oltableau}
+
+This one is over the top - since both branches are open. You only need one open branch.
+
+---
+
+Here's one for the argument $A \vee B \vdash A$
+
+\begin{oltableau}
+[\sFmla{\True}{A \vee B}, checked, just = \TAss
+	[\sFmla{\False}{A}, just = \TAss
+		[\sFmla{\True}{A}, just = {\TRule{\True}{\vee}[1]}, close]
+		[\sFmla{\True}{B}, just = {\TRule{\True}{\vee}[1]}]
+	]
+]
+\end{oltableau}
+
+The right hand branch is open, so the whole tableau is open.
+
+---
+
+Here's one for the obviously invalid $A \vee B \vdash \neg (C \vee D)$, to make a point about branching.
+
+\begin{oltableau}
+[\sFmla{\True}{A \vee B}, checked, just = \TAss
+	[\sFmla{\False}{\neg (C \vee D)}, checked, just = \TAss
+  	[\sFmla{\True}{C \vee D}, checked, just = {\TRule{\False}{\neg}[2]}
+  		[\sFmla{\True}{A}, just = {\TRule{\True}{\vee}[1]}
+    		[\sFmla{\True}{C}, just = {\TRule{\True}{\vee}[3]}]
+    		[\sFmla{\True}{D}, just = {\TRule{\True}{\vee}[3]}]
+		  ]
+  		[\sFmla{\True}{B}, just = {\TRule{\True}{\vee}[1]}
+    		[\sFmla{\True}{C}, just = {\TRule{\True}{\vee}[3]}]
+    		[\sFmla{\True}{D}, just = {\TRule{\True}{\vee}[3]}]
+		  ]
+    ]
+  ]
+]
+\end{oltableau}
+
+## For Next Time
+
+We will look at some more worked examples.
+

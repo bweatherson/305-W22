@@ -1,0 +1,94 @@
+---
+title: "305 Lecture 12.2 - Extending Modal Tableau"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To introduce tableau for proving things in modal logics other than K.
+
+## Associated Reading
+
+- Boxes and Diamonds, section 5.5-5.6.
+
+## K is special
+
+The logic we have so far is very weak.
+
+- It's the logic K, that puts no restrictions on the R-relation.
+- Most applications of modal logic do have restrictions.
+- How should we model them?  \pause 
+- The answer is that we sort of model them one at a time.
+- The rules are on page 80, and I'll end today with quickly mentioning a couple of them.
+
+## T - the logic of reflexive frames
+
+Add two new rules.
+
+1. If $\Box A$ is true at $x$, infer that $A$ is true at $x$.
+2. If $\Diamond A$ is false at $x$, infer that $A$ is false at $x$.
+
+That's it!
+
+## 4 - the logic of transitive frames
+
+Add two new rules
+
+1. If $\Box A$ is true at $x$, and $x.y$ exists on the tree, add that $\Box A$ is true at $x.y$. (You already should have added that $A$ is true at $x.y$; that's the basic rule for $\Box$.
+2. If $\Diamond A$ is false at $x$, and $x.y$ exists on the tree, add that $\Diamond A$ is false at $x.y$. (You already should have added that $A$ is false at $x.y$; that's the basic rule for $\Box$.)
+
+## $\Box A \rightarrow \Box \Box A$
+
+This should fail in K - here's an open tableau for it.
+
+\begin{oltableau}
+[\sFmla{\False}{1, \Box A \rightarrow \Box \Box A}, just = \TAss,
+	[\sFmla{\True}{1, \Box A}, just = {\TRule{\False}{\rightarrow}[1]},
+		[\sFmla{\False}{1, \Box \Box A}, just = {\TRule{\False}{\rightarrow}[1]},
+			[\sFmla{\False}{1.1, \Box A}, just = {\TRule{\False}{\Box}[3]},
+				[\sFmla{\True}{1.1, A}, just = {\TRule{\True}{\Box}[2]},
+					[\sFmla{\False}{1.1.1, A}, just = {\TRule{\False}{\Box}[4]},
+					]
+				]
+			]
+		]
+	]
+]
+\end{oltableau}
+
+## $\Box A \rightarrow \Box \Box A$
+
+But now let's apply the rules for 4 as well. After line 5 we need to make one new inference.
+
+\begin{oltableau}
+[\sFmla{\False}{1, \Box A \rightarrow \Box \Box A}, just = \TAss,
+	[\sFmla{\True}{1, \Box A}, just = {\TRule{\False}{\rightarrow}[1]},
+		[\sFmla{\False}{1, \Box \Box A}, just = {\TRule{\False}{\rightarrow}[1]},
+			[\sFmla{\False}{1.1, \Box A}, just = {\TRule{\False}{\Box}[3]},
+				[\sFmla{\True}{1.1, A}, just = {\TRule{\True}{\Box}[2]},
+					[\sFmla{\True}{1.1, \Box A}, just = {4$\Box$ 2},
+						[\sFmla{\False}{1.1.1, A}, just = {\TRule{\False}{\Box}[4]},
+							[\sFmla{\True}{1.1.1, A}, just = {4$\Box$ 6}, close]
+						]
+					]
+				]
+			]
+		]
+	]
+]
+\end{oltableau}
+
+
+## For Next Time
+
+We'll look more closely at the differences between different logics.

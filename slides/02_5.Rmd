@@ -1,0 +1,143 @@
+---
+title: "305 Lecture 2.5 - Basic Truth Tables"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+  pdf_document: default
+---
+
+## Plan
+
+This lecture is the truth tables for the basic connectives.
+
+## Associated Reading
+
+- We're still working through forall x chapters 9-11.
+- This is primarily about chapter 9.
+- We're not going to cover biconditionals here (or elsewhere in this course).
+
+## Four Main Connectives
+
+- Building truth tables requires, unfortunately, a small amount of memorization.
+- In particular, you just have to memorize the truth tables for each of the connectives.
+- Equally unfortunately, justifying yourself using truth tables requires justifying these basic tables.
+- And as we'll see, that's not trivial.
+- But that's for much down the line - let's learn how to use these first, then we'll get to justifying them.
+
+## Negation Table
+
+\begin{center}
+\begin{tabular}{@{ }c | c@{ }@{ }c}
+A & $\neg$ & A\\
+\hline 
+$\True$ & \textcolor{red}{$\False$} & $\True$\\
+$\False$ & \textcolor{red}{$\True$} & $\False$\\
+\end{tabular}
+
+\end{center}
+
+You should read it as saying that if $A$ is $\True$ then $\neg A$ is $\False$, and if $A$ is $\False$, then $\neg A$ is $\True$.
+
+## The Conjunction Table
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A & B &  & A & $\wedge$ & B & \\
+\hline 
+$\True$ & $\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\True$ & $\False$ &  & $\True$ & \textcolor{red}{$\False$} & $\False$ & \\
+$\False$ & $\True$ &  & $\False$ & \textcolor{red}{$\False$} & $\True$ & \\
+$\False$ & $\False$ &  & $\False$ & \textcolor{red}{$\False$} & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## Conjunction in Words
+
+- A conjunction is $\True$ if both conjuncts are $\True$, and is $\False$ otherwise.
+
+## The Disjunction Table
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A & B &  & A & $\vee$ & B & \\
+\hline 
+$\True$ & $\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\True$ & $\False$ &  & $\True$ & \textcolor{red}{$\True$} & $\False$ & \\
+$\False$ & $\True$ &  & $\False$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\False$ & $\False$ &  & $\False$ & \textcolor{red}{$\False$} & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## Disjunction in Words
+
+- A disjunction is $\True$ if either disjunct is $\True$, and is $\False$ otherwise.
+
+## The Conditional Table
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A & B &  & A & $\rightarrow$ & B & \\
+\hline 
+$\True$ & $\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\True$ & $\False$ &  & $\True$ & \textcolor{red}{$\False$} & $\False$ & \\
+$\False$ & $\True$ &  & $\False$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\False$ & $\False$ &  & $\False$ & \textcolor{red}{$\True$} & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## Material Implication
+
+Note that these three sentences have exactly the same table.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{ }}
+A & B &  & A & $\rightarrow$ & B &  &  & $\neg$ & A & $\vee$ & B &  & $\neg$ & ( & A & $\wedge$ & $\neg$ & B & )\\
+\hline 
+$\True$ & $\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\False$ & $\True$ & \textcolor{red}{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ & $\True$ & \\
+$\True$ & $\False$ &  & $\True$ & \textcolor{red}{$\False$} & $\False$ &  &  & $\False$ & $\True$ & \textcolor{red}{$\False$} & $\False$ &  & \textcolor{red}{$\False$} &  & $\True$ & $\True$ & $\True$ & $\False$ & \\
+$\False$ & $\True$ &  & $\False$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\True$ & $\False$ & \textcolor{red}{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\False$ & $\False$ & $\True$ & \\
+$\False$ & $\False$ &  & $\False$ & \textcolor{red}{$\True$} & $\False$ &  &  & $\True$ & $\False$ & \textcolor{red}{$\True$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\False$ & $\True$ & $\False$ & \\
+\end{tabular}
+
+\end{center}
+
+This conditional is sometimes called **material implication**.
+
+## Oddities
+
+It is certainly an odd interpretation of 'if' that makes these sentences turn out true.
+
+- If I am 200 years old, then Michigan is part of Canada.
+- If I am in Los Angeles, then I am in Ann Arbor.
+
+But they are both true on this table.
+
+## Arguments
+
+- It turns out that interpreting the conditional this way makes the most sense of the role of conditionals in certain arguments, in particular to do with disjunctive syllogism.
+- There is an allusion to this at the end of chapter 1 of _Boxes and Diamonds_.
+
+## Arguments
+
+The big advantage of thinking of 'if' this way is that it guarantees that for any value of $A, B, C$, these two arguments agree on validity - that is, they are either both valid or both invalid.
+
+> $A, B \vdash C$
+
+> $A \vdash B \rightarrow C$
+
+And plausibly those should be the same. $A$ suffices for $B \rightarrow C$ just in case $A$ and $B$ together suffice for $C$.
+
+## For Next Time
+
+We'll talk about how to use these basic truth tables to build larger truth tables.
+

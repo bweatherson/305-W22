@@ -1,0 +1,562 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 9.6 - Allais Paradox},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+ \usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+\usetikzlibrary{arrows.meta}
+ \forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 9.6 - Allais Paradox}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+\begin{itemize}
+\tightlist
+\item
+  In this lecture we'll talk about a famous puzzle for the story I've
+  been telling you about the relationship between utility and money: the
+  Allais paradox.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+Odds and Ends, section 13.1.
+\end{frame}
+
+\begin{frame}{Sure Thing Principle}
+\protect\hypertarget{sure-thing-principle}{}
+Assume two bets A and B have the following characteristic.
+
+\begin{itemize}
+\tightlist
+\item
+  For some proposition \(p\), A and B have the exact same return. \pause
+\end{itemize}
+
+Then the Sure Thing Principle says the following.
+
+\begin{itemize}
+\tightlist
+\item
+  Changing what that return is won't change your preference between A
+  and B.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Intuitive Example}
+\protect\hypertarget{intuitive-example}{}
+Assume that B is a \textbf{conditional bet} - a bet on \(q\) that only
+takes place if something is true. So if you take the bet, the following
+things happen.
+
+\begin{itemize}
+\tightlist
+\item
+  So if the condition, and \(q\) is true, you win, let's say, \$10.
+\item
+  If the condition, and \(q\) is false, you lose \$10.
+\item
+  But if the condition is not met, then the bet is called off.
+\end{itemize}
+
+E.g., you might bet a friend that if the Rose Bowl is played this year,
+Michigan will win it. The bet is simply called off if the Rose Bowl
+doesn't happen. Let A be the action of simply not taking this bet, and
+staying at the status quo. And let \(p\) be that the Rose Bowl doesn't
+happen. So A and B have the same payoff if \(p\), since then the bet is
+called off.
+\end{frame}
+
+\begin{frame}{A Change}
+\protect\hypertarget{a-change}{}
+You find out, apparently because you've been doing more gambling in your
+spare time than is good for you, that you have another bet that wins 5
+dollars if \(p\), i.e., if the Rose Bowl doesn't happen, and returns
+nothing otherwise.
+
+\begin{itemize}
+\tightlist
+\item
+  Could this change your preferences over A vs B?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Argument for No}
+\protect\hypertarget{the-argument-for-no}{}
+Either \(p\) is true or it isn't.
+
+\begin{itemize}
+\tightlist
+\item
+  If it is, then whether you would have got \$5 if it were not doesn't
+  make a difference to whether you prefer A or B.
+\item
+  If it is not, then you should still be indifferent between A and B.
+\item
+  And this doesn't look like it just applies to this case.
+\item
+  It looks like a perfectly general weak dominance argument.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Expected Utility Theory and Constraints on Choice}
+\protect\hypertarget{expected-utility-theory-and-constraints-on-choice}{}
+\begin{itemize}
+\tightlist
+\item
+  Orthodox expected utility theory, the theory that says you should
+  maximise expected utility, puts very few constraints on individual
+  choices.
+\item
+  But it puts quite striking constraints on sets of choices.
+\item
+  It says you can't prefer A to B, and B to C, and C to A, for example.
+\item
+  And it says that the Sure Thing Principle, a principle about what
+  changes in payouts licence a change of preferences, holds.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Allais}
+\protect\hypertarget{allais}{}
+Maurice Allais (1911-2010) developed the most famous objection to the
+Sure Thing Principle.
+
+\begin{itemize}
+\tightlist
+\item
+  It is a pair of two-way choices, and an intuitively rational pair of
+  preferences among them.
+\item
+  Expected utility can make sense of either one of the pair, but not
+  both.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Allais - First Part}
+\protect\hypertarget{allais---first-part}{}
+You have a choice between:
+
+\begin{enumerate}
+[A.]
+\tightlist
+\item
+  A 10\% chance of \$5,000,000.
+\item
+  An 11\% chance of \$1,000,000.
+\end{enumerate}
+
+What do you choose?
+\end{frame}
+
+\begin{frame}{Allais - Second Part}
+\protect\hypertarget{allais---second-part}{}
+That was a hypothetical. Now for real you have a choice between:
+
+\begin{enumerate}
+[A.]
+\setcounter{enumi}{2}
+\tightlist
+\item
+  A 10\% chance of \$5,000,000, an 89\% chance of \$1,000,000, and a 1\%
+  chance of nothing.
+\item
+  \$1,000,000.
+\end{enumerate}
+
+What do you choose?
+\end{frame}
+
+\begin{frame}{Allais's Argument}
+\protect\hypertarget{allaiss-argument}{}
+\begin{itemize}
+\tightlist
+\item
+  It is rational to prefer A to B, and D to C. \pause
+\item
+  Expected utility theory says that you can't prefer both A to B, and D
+  to C. \pause
+\item
+  So expected utility theory is false.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Allais Table}
+\protect\hypertarget{allais-table}{}
+Imagine you have 10 blue marbles in an urn, 89 maize marbles, and 1
+scarlet marble.
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+& Blue & Maize & Scarlet \\ \addlinespace
+\midrule
+\endhead
+A & 5M & 0 & 0 \\ \addlinespace
+B & 1M & 0 & 1M \\ \addlinespace
+& & & \\ \addlinespace
+C & 5M & 1M & 0 \\ \addlinespace
+D & 1M & 1M & 1M \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+All that changed from AB to CD was that we changed how much the payout
+was if Maize, without changing the fact that it was equal.
+\end{frame}
+
+\begin{frame}{Why Expected Utility Theory Can't Handle This}
+\protect\hypertarget{why-expected-utility-theory-cant-handle-this}{}
+Let \(u(5M) = x\) and \(u(1M) = y\).
+
+\begin{itemize}
+\tightlist
+\item
+  If A is preferred to B, then \(0.1x > 0.11y\), since those are the
+  expected utilities of A and B. \pause
+\item
+  So adding \(0.89y\) to both sides, we get \(0.1x + 0.89y > y\). \pause
+\item
+  But those just are the expected utilities of C and D.
+\item
+  So if A is preferred to B, then C is preferred to D.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{An argument against Allais}
+\protect\hypertarget{an-argument-against-allais}{}
+Assume you'll find out, both in the AB case and the CD case, whether the
+marble was maize, or not-maize before you are told its color.
+
+\begin{itemize}
+\tightlist
+\item
+  At that point, in the AB case, what will you wish you'd chosen? \pause
+\item
+  If B, or you are indifferent, then you shouldn't have preferred A in
+  the first place. \pause
+\item
+  If A, then do the same thing in the CD case.
+\item
+  If you find out the marble is maize, you don't care.
+\item
+  If you find out it's not maize, then you're back in the exact same
+  puzzle, so you should prefer C to D.
+\item
+  So by weak dominance, you should prefer C to D overall.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Decision Theory for Allais Agents}
+\protect\hypertarget{decision-theory-for-allais-agents}{}
+\begin{itemize}
+\tightlist
+\item
+  This was originally developed by the Australian economist John
+  Quiggin, and recently expanded by the American philosopher Lara
+  Buchak.
+\item
+  Very roughly, you replace the \(Pr\) in expected utility theory with
+  some function \(f(Pr)\) where \(f\) measures the agent's attitude to
+  risk.
+\item
+  If \(f(x) < x\), the agent is risk averse, if \(f(x) > x\) they are
+  risk seeking.
+\item
+  If you let \(f(x) = x^2\), it's easy to model the Allais preferences.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+\begin{itemize}
+\tightlist
+\item
+  We will move on to thinking about how to use probability in learning
+  about the world.
+\end{itemize}
+\end{frame}
+
+\end{document}

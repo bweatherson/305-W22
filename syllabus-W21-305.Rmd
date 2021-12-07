@@ -1,0 +1,658 @@
+---
+title: 'PHIL 305: Introduction to Formal Methods'
+author: "Brian Weatherson"
+date: "Winter 2021"
+output:
+  pdf_document:
+    keep_tex: yes
+    fig_caption: yes
+    latex_engine: xelatex
+    md_extensions: +link_attributes+fenced_divs
+    includes:
+      in_header: columns.tex
+  html_document:
+    df_print: paged
+geometry: margin=1.5in
+mainfont: SF Pro Rounded
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+mathfont: Fira Math
+header-includes: \linespread{1.05}
+---
+
+```{r setup, include=FALSE, cache=F, message=F, warning=F, results="hide"}
+knitr::opts_chunk$set(cache=TRUE)
+knitr::opts_chunk$set(fig.path='figs/')
+knitr::opts_chunk$set(cache.path='_cache/')
+knitr::opts_chunk$set(warning=F, message=F)
+# knitr::opts_knit$get(kable.force.latex = TRUE)
+require(tidyverse)
+```
+
+
+
+```{r dates_bib, include=FALSE}
+knitr::opts_chunk$set(cache=FALSE, dev='pdf')
+mon <- as.Date("2021-01-18") # Monday of the First Week
+tue <- mon + 1
+wed <- tue + 1
+thu <- wed + 1
+fri <- thu + 1
+# fri <- as.Date("2016-01-08")
+
+advdate <- function(obj, adv) {
+ theday <- obj + 7*(adv-1)
+ ttheday <- format(theday, format="%A, %B %d")
+ return(ttheday)
+}
+
+#library(RefManageR)
+## library(knitcitations)
+## library(rcrossref)
+#bib <- ReadBib("411bib.bib")
+#myopts <- BibOptions(bib.style = "authoryear", style="latex", first.inits=FALSE, max.names = 20)
+
+```
+
+# Course Description
+
+This course will introduce some important formal tools that are used elsewhere in philosophy. We will look at propositional logic, probability theory and the logic of modals and conditionals. Obviously that's a lot to cover in a short time - the aim here is to make sure you understand the basics, and the symbolism, so you can follow simple applications of these tools, and you have the foundations to understand more complicated applications.
+
+# Canvas
+
+There is a Canvas site for this course, which can be accessed from <https://canvas.umich.edu>. Course documents (syllabus, lecture notes, assignments) will be available from this site. Please make sure that you can access this site. Consult the site regularly for announcements, including changes to the course schedule. And there are many tools on the site to communicate with each other, and with me.
+
+# Required Materials
+
+There are three textbooks for the course. All of them are open access, and hence free. The third is on Canvas, the other two have to be downloaded from elsewhere.
+
+- _forall x: Calgary_ by P. D. Magnus, Tim Button, J. Robert Loftis, Robert Trueman, Aaron Thomas-Bolduc and Richard Zach. Available at <http://forallx.openlogicproject.org>.
+- _Odds and Ends_ by Jonathan Weisberg. Available at <https://jonathanweisberg.org/vip/>.
+- _Boxes and Diamonds: Ann Arbor remix_ by Richard Zach and edited by Brian Weatherson. Available on Canvas.
+
+# Course Requirements
+
+- There will be 10 weekly quizzes. Of these your best 8 will count towards your grade, with each counting for 10%.
+- There will also be a final exam, given through Canvas, that counts for 20% of the grade.
+
+# Summary of Grading System
+
+1. Weekly assignments - 10% each, 8 assignments count, 80% total.
+2. Final exam - 20%.
+
+# Plagiarism
+
+Although team-work, and even co-authorship, is encouraged, plagiarism is strictly prohibited. You are responsible for making sure that none of your work is plagiarized. Be sure to cite work that you use, both direct quotations and paraphrased ideas. Any citation method that is tolerably clear is permitted, but if you'd like a good description of a citation scheme that works well in philosophy, look at <http://bit.ly/VDhRJ4>.
+
+You are encouraged to discuss the course material, including assignments, with your classmates, but all written work that you hand in under your own name must be your own. If work is handed is as the work of two people, you are affirming that each person did a fair share of the work. (Note that when you're submitting work on Canvas, you have to each submit the paper, even if it is co-authored. That way Canvas knows that everyone has turned in work.)
+
+You should also be familiar with the academic integrity policies of the College of Literature, Science \& the Arts at the University of Michigan, which are available here: <http://www.lsa.umich.edu/academicintegrity/>. Violations of these policies will be reported to the Office of the Assistant Dean for Student Academic Affairs, and sanctioned with a course grade of F.
+
+# Disability
+
+The University of Michigan abides by the Americans with Disabilities Act of 1990, Section 504 of the Rehabilitation Act of 1973, and other applicable federal and state laws that prohibit discrimination on the basis of disability, which mandate that reasonable accommodations be provided for qualified students with disabilities.
+
+If you have a disability, and may require some type of instructional and/or examination accommodation, please contact me early in the semester. If you have not already done so, you will also need to register with the Office of Services for Students with Disabilities. The office is located at G664 Haven Hall.
+
+For more information on disability services at the University of Michigan, go to <http://ssd.umich.edu>.
+
+\newpage
+
+# Virtual
+
+This course is being taught virtually because of the still raging pandemic. Hopefully we all learned a bit from virtual teaching/learning in the Fall, but it's still new for a lot of us. I suspect I'll get some things wrong, and I'll have to make adjustments on the fly. If/when that happens, I'll do everything I can to make sure everything is done fairly - but if I don't, you should let me know that I'm messing up.
+
+The college has put a lot of things in place for this rather distinctive semester, including extended add/drop deadlines, and a new grade of NRC. I won't repeat here all of what they've done, in part because I suspect that will be changing as the semester goes along. But I wanted you to know that I know this semester will be a challenge for all of us. And I'll do what I can to make it as productive an educational experience as it can be - even if that isn't as good as what you'd have hoped for.
+
+\newpage
+
+# Class Schedule
+
+The readings will all be from the three textbooks. I'll produce short videos going over the material in the book, and occasionally other philosophically interesting points. Then the time in class will be entirely spent on questions people have, and going over worked examples. So you should do the reading, and watch the lectures, before the scheduled class.
+
+The video lectures will have a number of the form $x.y$, where $x$ is the week they are for, and the $y$ is their order in the week. There will typically be 8-10 lectures each week, each of them roughly 10-12 minutes.
+
+## Week 1: Introduction
+
+:::::: {.cols data-latex=""}
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(mon, 1)`
+
+No class, Martin Luther King Jr Day.
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 1)`
+
+Topic
+:    Introduction
+
+Reading
+:    _forall x_, Chapters 1-2.
+
+Lectures
+:    1.1-1.3.
+
+:::
+
+::::::
+
+## Week 2: Propositional Logic
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 2)`
+
+Topic
+:    Symbolization
+
+Reading
+:    _forall x_, Chapters 4-6.
+
+Lectures
+:    2.1-2.3.
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 2)`
+
+Topic
+:    Truth Tables
+
+Reading
+:    _forall x_, Chapters 9-11.
+
+Lectures
+:    2.4-2.6.
+
+:::
+
+::::::
+
+## Week 3: Tables and Trees
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 3)`
+
+Topic
+:    Truth Tables and Validity
+
+Reading
+:    _forall x_, Chapter 12.
+
+Lectures
+:    3.1-3.4
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 3)`
+
+Topic
+:    Truth Trees
+
+Reading
+:    _Boxes and Diamonds_, Sections 2.1-2.3
+
+Lectures
+:    3.5-3.6.
+
+:::
+
+::::::
+
+## Week 4: Trees and Proofs
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 4)`
+
+Topic
+:    Using Truth Trees
+
+Reading
+:    _Boxes and Diamonds_, Sections 2.4-2.5
+
+Lectures
+:    4.1-4.3
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 4)`
+
+Topic
+:    Introducing Natural Deduction
+
+Reading
+:    _forall x_, Chapter 15 and sections 16.1-16.4.
+
+Lectures
+:    3.5-3.6.
+
+:::
+
+::::::
+
+## Week 5: Proofs
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 5)`
+
+Topic
+:    Rules for Natural Deduction
+
+Reading
+:    _forall x_, Sections 16.5-16.8.
+
+Lectures
+:    5.1-5.3
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 5)`
+
+Topic
+:    Strategies for Natural Deduction
+
+Reading
+:    _forall x_, Chapter 17.
+
+Lectures
+:    5.4-5.6
+
+:::
+
+::::::
+
+## Week 6: Revision
+
+No new content this week, and no class on Wednesday.
+
+
+## Week 7: Introducing Probability
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 7)`
+
+Topic
+:    Probability Basics
+
+Reading
+:    _Odds and Ends_, chapters 1 and 5
+
+Lectures
+:    7.1-7.3.
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 7)`
+
+Topic
+:    Conditional Probability
+
+Reading
+:    _Odds and Ends_, chapter 6
+
+Lectures
+:    7.4-7.5.
+
+:::
+
+::::::
+
+## Week 8: Conditional Probability
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 8)`
+
+Topic
+:    Conditional Probability
+
+Reading
+:    _Odds and Ends_, chapter 8
+
+Lectures
+:    8.1-8.5.
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 8)`
+
+Topic
+:    Base Rates and Multiple Updates
+
+Reading
+:    _Odds and Ends_, chapter 9
+
+Lectures
+:    8.6-8.9.
+
+:::
+
+::::::
+
+## Week 9: Probability and Decision
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 9)`
+
+Topic
+:    Expected Utility
+
+Reading
+:    _Odds and Ends_, chapters 11 and 12
+
+Lectures
+:    9.1-9.4.
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 9)`
+
+Topic
+:    Utility and Money
+
+Reading
+:    _Odds and Ends_, sections 12.5 and 13.1.
+
+Lectures
+:    9.5-9.6.
+
+:::
+
+::::::
+
+## Week 10: Probability and Learning
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 10)`
+
+Topic
+:    Theories of Probability
+
+Reading
+:    _Odds and Ends_, chapters 4, 15, 16 and 18. 
+
+Lectures
+:    10.1-10.5.
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 10)`
+
+Topic
+:    Statistical Learning
+
+Reading
+:    _Odds and Ends_, chapters 19 and 20.
+
+Lectures
+:    10.6-10.7.
+
+:::
+
+::::::
+
+## Week 11: Introduction to Modal Logic
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 11)`
+
+Topic
+:    Varieties of Modalty
+
+Reading
+:    _Boxes and Diamonds_, sections 3.1-3.3.
+
+Lectures
+:    11.1-11.3
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 11)`
+
+Topic
+:    Models and Frames
+
+Reading
+:    _Boxes and Diamonds_, sections 3.4-4.5.
+
+Lectures
+:    11.4-11.7
+
+:::
+
+::::::
+
+## Week 12: Proofs in Modal Logic
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 12)`
+
+Topic
+:    Modal Tableau
+
+Reading
+:    _Boxes and Diamonds_, chapter 5.
+
+Lectures
+:    12.01-12.04
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 12)`
+
+Topic
+:    Examples
+
+Reading
+:    No new reading
+
+Lectures
+:    12.05-12.17
+
+:::
+
+::::::
+
+## Week 13: Conditionals
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 13)`
+
+Topic
+:    Varieties of Conditionals
+
+Reading
+:    _Boxes and Diamonds_, chapter 6.
+
+Lectures
+:    13.1-13.4
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 13)`
+
+Topic
+:    Counterfactual Conditionals
+
+Reading
+:    _Boxes and Diamonds_, chapter 7.
+
+Lectures
+:    13.5-13.6
+
+:::
+
+::::::
+
+## Week 14: Finishing Up
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(mon, 14)`
+
+Topic
+:    The Logic of Counterfactuals
+
+Reading
+:    _Boxes and Diamonds_, chapter 7.
+
+Lectures
+:    14.1-14.2
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(wed, 14)`
+
+Topic
+:    Revision
+
+Reading
+:    No new reading
+
+Lectures
+:    No new lectures
+
+:::
+
+::::::
+
+

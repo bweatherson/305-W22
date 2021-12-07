@@ -1,0 +1,948 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{Fira Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 10.7 - Significance Testing},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+ \usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+\usetikzlibrary{arrows.meta}
+ \forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 10.7 - Significance Testing}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+\begin{itemize}
+\tightlist
+\item
+  We're going to end with a discussion of the role of significance
+  testing in contemporary statistics.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+\begin{itemize}
+\tightlist
+\item
+  Odds and Ends, Chapter 19 (and part of chapter 20)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Significance Testing}
+\protect\hypertarget{significance-testing}{}
+\begin{itemize}
+\tightlist
+\item
+  The subjective approach is very popular within philosophy, but not
+  within statistics or a lot of social sciences.
+\item
+  This is in part because of its subjectivity.
+\item
+  A lot of sciences want methods that are more objective.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Significance Testing}
+\protect\hypertarget{significance-testing-1}{}
+What is known as `classical statistics' is based around the idea of
+significance testing.
+
+\begin{itemize}
+\tightlist
+\item
+  The intuitive idea is that we say that a correlation reflects a real
+  pattern in the underlying data if (but only if) it would be really
+  improbable if we got the data we did by chance.
+\item
+  Intuitively, three heads in a row might be a coincidence, but ten
+  heads in a row suggests something odd is going on.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Significance Testing}
+\protect\hypertarget{significance-testing-2}{}
+So say that we want to argue that two things are connected.
+
+\begin{itemize}
+\tightlist
+\item
+  To make this concrete, say that we want to argue that the survival
+  rates for people who take our company's drug are higher than for
+  people who do not.
+\item
+  What we do is give a bunch of people the drug (after getting all the
+  approvals!)
+\item
+  We then look at their survival rates, and ask \emph{How likely would
+  this data be if our drug had no effect at all}?
+\item
+  If that number is low enough, we conclude that our drug works.
+  (Profit!)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Significance Testing}
+\protect\hypertarget{significance-testing-3}{}
+\begin{itemize}
+\tightlist
+\item
+  That is, we work out something like \(\Pr(E | H_0)\), where \(E\) is
+  the data that we get, and \(H_0\) is a \textbf{null hypothesis} that
+  says there is nothing of interest here.
+\item
+  If \(\Pr(E | H_0)\) is low enough, we conclude that \(H_0\) is false,
+  and hopefully there is a natural alternative to \(H_0\), such as that
+  the drug works, that we infer.
+\item
+  In those cases, we will say that the data shows a significant
+  correlation between taking the drug and survival rates.
+\item
+  This literally means that it would be really improbable to get this
+  data by chance.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Significance Testing}
+\protect\hypertarget{significance-testing-4}{}
+How low is `really low'?
+
+\begin{itemize}
+\tightlist
+\item
+  As the book says, this is mostly a matter of convention.
+\item
+  Which is ironic given the whole point was to get away from
+  subjectivity.
+\item
+  But a common idea is that it is less than 5\%.
+\item
+  So a correlation is significant if it is outside the central 95\% of
+  the distribution.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Inverting}
+\protect\hypertarget{inverting}{}
+\begin{itemize}
+\tightlist
+\item
+  Isn't this all wrong though?
+\item
+  Isn't it inferring from the fact that \(\Pr(E | H_0)\) is low to the
+  conclusion that \(\Pr(H_0 | E)\) is low, something that we've said
+  over and over again not to do? \pause
+\item
+  Yes, but\ldots{} \pause
+\item
+  In practice the method is supplemented by practical rules that avoid
+  the worst consequences of allowing these inversions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Stopping Rules}
+\protect\hypertarget{stopping-rules}{}
+\begin{itemize}
+\tightlist
+\item
+  As it stands, this method leads to all sorts of nonsense and, frankly,
+  fraud.
+\item
+  It needs to be supplemented with extra rules to avoid obvious
+  mistakes.
+\item
+  The first thing that is needed, as was realised fairly early on, was a
+  commitment to external `stopping rules'.
+\item
+  If you are allowed to keep collecting data until the probability of
+  the evidence given the null is low, you will almost always get to
+  reject the null.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{An Experiment}
+\protect\hypertarget{an-experiment}{}
+\begin{itemize}
+\tightlist
+\item
+  This is actually an experiment; the data are randomly generated anew
+  every time I compile these slides.
+\item
+  I'm going to compile these slides, and then present them whether the
+  data comes up the way I hope it does or not.
+\item
+  So it could go horribly wrong!
+\end{itemize}
+\end{frame}
+
+\begin{frame}{An Experiment}
+\protect\hypertarget{an-experiment-1}{}
+\begin{itemize}
+\tightlist
+\item
+  I'm going to simulate tossing a coin 100,000 times.
+\item
+  It uses the computer's random number generator, and it is set up so
+  the probability of heads on each toss is 0.5, and the tosses are
+  independent.
+\item
+  But I'm going to measure the probability of the evidence given the
+  null after each toss, not just at the end.
+\item
+  And by `the probability of the evidence', I mean the probability of
+  getting at least that many heads.
+\item
+  If that is outside \([0.025, 0.975]\) then we have, at this point, a
+  rejection of the null.
+\item
+  This is absurd of course; the null is programmed to be true.
+\item
+  I'll run it five times to see how it goes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tables}
+\protect\hypertarget{tables}{}
+In the tables that follow
+
+\begin{itemize}
+\tightlist
+\item
+  t is the trial number,
+\item
+  result is how the coin landed on that trial,
+\item
+  heads is how many heads to that point,
+\item
+  frequency is frequency of heads to that point,
+\item
+  prob is probability of getting at least that many heads, and
+\item
+  distance is the distance of that number from 0.5. In this trial, we
+  ended up with this many heads.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Take One}
+\protect\hypertarget{take-one}{}
+\begin{longtable}[]{@{}rrrrrr@{}}
+\toprule
+t & result & heads & frequency & prob & distance \\ \addlinespace
+\midrule
+\endhead
+2006 & 1 & 1089 & 0.5428714 & 0.9999444 & 0.4999444 \\ \addlinespace
+1939 & 1 & 1054 & 0.5435792 & 0.9999440 & 0.4999440 \\ \addlinespace
+2008 & 1 & 1090 & 0.5428287 & 0.9999440 & 0.4999440 \\ \addlinespace
+2012 & 1 & 1092 & 0.5427435 & 0.9999431 & 0.4999431 \\ \addlinespace
+1968 & 1 & 1069 & 0.5431911 & 0.9999426 & 0.4999426 \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+Number of heads
+
+\begin{verbatim}
+## [1] 50121
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Take Two}
+\protect\hypertarget{take-two}{}
+\begin{longtable}[]{@{}rrrrrr@{}}
+\toprule
+t & result & heads & frequency & prob & distance \\ \addlinespace
+\midrule
+\endhead
+55157 & 1 & 27775 & 0.5035626 & 0.9532907 & 0.4532907 \\ \addlinespace
+55211 & 1 & 27802 & 0.5035591 & 0.9532105 & 0.4532105 \\ \addlinespace
+55213 & 1 & 27803 & 0.5035589 & 0.9532075 & 0.4532075 \\ \addlinespace
+55114 & 1 & 27753 & 0.5035563 & 0.9529375 & 0.4529375 \\ \addlinespace
+55156 & 1 & 27774 & 0.5035536 & 0.9528748 & 0.4528748 \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+Number of heads
+
+\begin{verbatim}
+## [1] 50228
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Take Three}
+\protect\hypertarget{take-three}{}
+\begin{longtable}[]{@{}rrrrrr@{}}
+\toprule
+t & result & heads & frequency & prob & distance \\ \addlinespace
+\midrule
+\endhead
+6551 & 0 & 3183 & 0.4858800 & 0.0114993 & 0.4885007 \\ \addlinespace
+6536 & 0 & 3176 & 0.4859241 & 0.0117964 & 0.4882036 \\ \addlinespace
+6542 & 0 & 3179 & 0.4859370 & 0.0118284 & 0.4881716 \\ \addlinespace
+6550 & 0 & 3183 & 0.4859542 & 0.0118712 & 0.4881288 \\ \addlinespace
+6552 & 1 & 3184 & 0.4859585 & 0.0118818 & 0.4881182 \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+Number of heads
+
+\begin{verbatim}
+## [1] 50107
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Take Four}
+\protect\hypertarget{take-four}{}
+\begin{longtable}[]{@{}rrrrrr@{}}
+\toprule
+t & result & heads & frequency & prob & distance \\ \addlinespace
+\midrule
+\endhead
+8821 & 1 & 4476 & 0.5074255 & 0.9200580 & 0.4200580 \\ \addlinespace
+8823 & 1 & 4477 & 0.5074238 & 0.9200343 & 0.4200343 \\ \addlinespace
+8827 & 1 & 4479 & 0.5074204 & 0.9199870 & 0.4199870 \\ \addlinespace
+8818 & 1 & 4474 & 0.5073713 & 0.9184998 & 0.4184998 \\ \addlinespace
+8820 & 1 & 4475 & 0.5073696 & 0.9184759 & 0.4184759 \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+Number of heads
+
+\begin{verbatim}
+## [1] 50002
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Take Five}
+\protect\hypertarget{take-five}{}
+\begin{longtable}[]{@{}rrrrrr@{}}
+\toprule
+t & result & heads & frequency & prob & distance \\ \addlinespace
+\midrule
+\endhead
+10822 & 1 & 5526 & 0.5106265 & 0.9868111 & 0.4868111 \\ \addlinespace
+10824 & 1 & 5527 & 0.5106245 & 0.9868042 & 0.4868042 \\ \addlinespace
+10821 & 1 & 5525 & 0.5105813 & 0.9864853 & 0.4864853 \\ \addlinespace
+10823 & 0 & 5526 & 0.5105793 & 0.9864783 & 0.4864783 \\ \addlinespace
+10825 & 0 & 5527 & 0.5105774 & 0.9864712 & 0.4864712 \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+Number of heads
+
+\begin{verbatim}
+## [1] 50313
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Stopping Rules}
+\protect\hypertarget{stopping-rules-1}{}
+\begin{itemize}
+\tightlist
+\item
+  As I said, this is a known bug in significance testing, and every
+  responsible scientist who uses it knows that you aren't meant to stop
+  just when you get the data you want.
+\item
+  But there is another kind of problem that we've recently discovered
+  the importance of.
+\item
+  Here I was testing just one hypothesis.
+\item
+  What if we try to test many more hypotheses at once?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{P-Hacking}
+\protect\hypertarget{p-hacking}{}
+\begin{itemize}
+\tightlist
+\item
+  This practice is known as \textbf{p-hacking}.
+\item
+  It is the tactic of looking at results within all sorts of sub-groups
+  within the data in the hope of finding a significant correlation
+  somewhere.
+\item
+  And with enough subgroups, the odds are pretty good that you'll find
+  one.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Another Experiment}
+\protect\hypertarget{another-experiment}{}
+\begin{itemize}
+\tightlist
+\item
+  Here I'm doing 32000 coin flips, but each flip is randomly assigned to
+  either having or not having three different characteristics: C1, C2
+  and C3.
+\item
+  In medical contexts, think of these as being like sex, age, race, etc.
+\item
+  Again, I'm just doing coin flips here.
+\item
+  And I'm going to run the trials to completion.
+\item
+  But we're going to look for significant correlations among each group.
+\item
+  I'll walk through three attempts to see how likely it is we get one.
+\item
+  I haven't seen the data, so there isn't commentary on the slides, but
+  it is quite unlikely that we'll get a significant correlation on the
+  whole set. On the sub-samples though\ldots{}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Experiment One}
+\protect\hypertarget{experiment-one}{}
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
+All & 15907 & 32000 & 0.1505256 & 0.3494744 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Experiment One - With One Characteristic}
+\protect\hypertarget{experiment-one---with-one-characteristic}{}
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
+No C1 & 7852 & 15960 & 0.0217691 & 0.4782309 \\ \addlinespace
+No C3 & 7916 & 16048 & 0.0448297 & 0.4551703 \\ \addlinespace
+Yes C3 & 7916 & 15952 & 0.1730473 & 0.3269527 \\ \addlinespace
+No C2 & 7916 & 15938 & 0.2027865 & 0.2972135 \\ \addlinespace
+Yes C2 & 7991 & 16062 & 0.2665301 & 0.2334699 \\ \addlinespace
+Yes C1 & 8055 & 16040 & 0.7124655 & 0.2124655 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}
+\small
+
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
+-C1-C2 & 3875 & 7923 & 0.0266553 & 0.4733447 \\ \addlinespace
+-C1-C3 & 3914 & 7962 & 0.0680400 & 0.4319600 \\ \addlinespace
+-C1+C3 & 3938 & 7998 & 0.0880275 & 0.4119725 \\ \addlinespace
++C1-C3 & 4085 & 8086 & 0.8277371 & 0.3277371 \\ \addlinespace
+-C1+C2 & 3977 & 8037 & 0.1801815 & 0.3198185 \\ \addlinespace
++C3-C2 & 3919 & 7917 & 0.1903455 & 0.3096545 \\ \addlinespace
++C1-C2 & 4041 & 8015 & 0.7762376 & 0.2762376 \\ \addlinespace
++C3+C2 & 3989 & 8035 & 0.2660742 & 0.2339258 \\ \addlinespace
+-C3-C2 & 3997 & 8021 & 0.3857913 & 0.1142087 \\ \addlinespace
+-C3+C2 & 4002 & 8027 & 0.4030149 & 0.0969851 \\ \addlinespace
++C1+C3 & 3970 & 7954 & 0.4420544 & 0.0579456 \\ \addlinespace
++C1+C2 & 4014 & 8025 & 0.5178073 & 0.0178073 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}
+\small
+
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
+-C1-C2+C3 & 1927 & 3987 & 0.0182797 & 0.4817203 \\ \addlinespace
+-C1+C2-C3 & 1966 & 4026 & 0.0713598 & 0.4286402 \\ \addlinespace
++C1+C2-C3 & 2036 & 4001 & 0.8724992 & 0.3724992 \\ \addlinespace
++C1+C2+C3 & 1978 & 4024 & 0.1454380 & 0.3545620 \\ \addlinespace
++C1-C2+C3 & 1992 & 3930 & 0.8098470 & 0.3098470 \\ \addlinespace
+-C1-C2-C3 & 1948 & 3936 & 0.2670929 & 0.2329071 \\ \addlinespace
++C1-C2-C3 & 2049 & 4085 & 0.5866906 & 0.0866906 \\ \addlinespace
+-C1+C2+C3 & 2011 & 4011 & 0.5751388 & 0.0751388 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Experiment Two}
+\protect\hypertarget{experiment-two}{}
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
+All & 15928 & 32000 & 0.2120311 & 0.2879689 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Experiment Two - With One Characteristic}
+\protect\hypertarget{experiment-two---with-one-characteristic}{}
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
+Yes C3 & 7856 & 16042 & 0.0046933 & 0.4953067 \\ \addlinespace
+No C2 & 7856 & 15964 & 0.0234836 & 0.4765164 \\ \addlinespace
+No C3 & 7856 & 15958 & 0.0262221 & 0.4737779 \\ \addlinespace
+Yes C2 & 8072 & 16036 & 0.8053126 & 0.3053126 \\ \addlinespace
+No C1 & 7962 & 16014 & 0.2409352 & 0.2590648 \\ \addlinespace
+Yes C1 & 7966 & 15986 & 0.3375410 & 0.1624590 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}
+\small
+
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
+-C3-C2 & 3868 & 7986 & 0.0026637 & 0.4973363 \\ \addlinespace
+-C3+C2 & 4105 & 7972 & 0.9962854 & 0.4962854 \\ \addlinespace
+-C1-C2 & 3896 & 7926 & 0.0675970 & 0.4324030 \\ \addlinespace
++C3+C2 & 3967 & 8064 & 0.0754237 & 0.4245763 \\ \addlinespace
++C1-C2 & 3960 & 8038 & 0.0959441 & 0.4040559 \\ \addlinespace
++C1+C3 & 3939 & 7948 & 0.2194773 & 0.2805227 \\ \addlinespace
++C1+C2 & 4006 & 7948 & 0.7670273 & 0.2670273 \\ \addlinespace
+-C1+C3 & 4016 & 8094 & 0.2488779 & 0.2511221 \\ \addlinespace
+-C1+C2 & 4066 & 8088 & 0.6915916 & 0.1915916 \\ \addlinespace
+-C1-C3 & 3946 & 7920 & 0.3807975 & 0.1192025 \\ \addlinespace
++C1-C3 & 4027 & 8038 & 0.5751942 & 0.0751942 \\ \addlinespace
++C3-C2 & 3988 & 7978 & 0.4955337 & 0.0044663 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}
+\small
+
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
++C1+C2-C3 & 2052 & 3969 & 0.9845709 & 0.4845709 \\ \addlinespace
+-C1-C2-C3 & 1893 & 3917 & 0.0188874 & 0.4811126 \\ \addlinespace
++C1-C2-C3 & 1975 & 4069 & 0.0321605 & 0.4678395 \\ \addlinespace
+-C1+C2-C3 & 2053 & 4003 & 0.9498940 & 0.4498940 \\ \addlinespace
++C1+C2+C3 & 1954 & 3979 & 0.1335600 & 0.3664400 \\ \addlinespace
+-C1+C2+C3 & 2013 & 4085 & 0.1820802 & 0.3179198 \\ \addlinespace
++C1-C2+C3 & 1985 & 3969 & 0.5126624 & 0.0126624 \\ \addlinespace
+-C1-C2+C3 & 2003 & 4009 & 0.4874009 & 0.0125991 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Experiment Three}
+\protect\hypertarget{experiment-three}{}
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
+All & 15968 & 32000 & 0.3623517 & 0.1376483 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Experiment Three - With One Characteristic}
+\protect\hypertarget{experiment-three---with-one-characteristic}{}
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
+Yes C3 & 8110 & 15857 & 0.9980783 & 0.4980783 \\ \addlinespace
+Yes C2 & 7858 & 15923 & 0.0512850 & 0.4487150 \\ \addlinespace
+No C2 & 8110 & 16077 & 0.8719573 & 0.3719573 \\ \addlinespace
+Yes C1 & 7929 & 15995 & 0.1411105 & 0.3588895 \\ \addlinespace
+No C3 & 8110 & 16143 & 0.7303609 & 0.2303609 \\ \addlinespace
+No C1 & 8039 & 16005 & 0.7207019 & 0.2207019 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}
+\small
+
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
++C1+C2 & 3854 & 7857 & 0.0474882 & 0.4525118 \\ \addlinespace
+-C1-C2 & 4035 & 7939 & 0.9307610 & 0.4307610 \\ \addlinespace
++C3+C2 & 3906 & 7940 & 0.0770391 & 0.4229609 \\ \addlinespace
++C1+C3 & 3914 & 7918 & 0.1586094 & 0.3413906 \\ \addlinespace
+-C3-C2 & 4120 & 8160 & 0.8150560 & 0.3150560 \\ \addlinespace
+-C3+C2 & 3952 & 7983 & 0.1913336 & 0.3086664 \\ \addlinespace
++C3-C2 & 3990 & 7917 & 0.7640155 & 0.2640155 \\ \addlinespace
+-C1+C2 & 4004 & 8066 & 0.2628242 & 0.2371758 \\ \addlinespace
+-C1-C3 & 4057 & 8066 & 0.7073250 & 0.2073250 \\ \addlinespace
++C1-C3 & 4015 & 8077 & 0.3043835 & 0.1956165 \\ \addlinespace
+-C1+C3 & 3982 & 7939 & 0.6147805 & 0.1147805 \\ \addlinespace
++C1-C2 & 4075 & 8138 & 0.5572914 & 0.0572914 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}
+\small
+
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+Characteristic & Heads & Trials & Probability &
+Distance \\ \addlinespace
+\midrule
+\endhead
++C1+C2+C3 & 1903 & 3907 & 0.0548104 & 0.4451896 \\ \addlinespace
+-C1-C2-C3 & 2056 & 4033 & 0.8961185 & 0.3961185 \\ \addlinespace
+-C1-C2+C3 & 1979 & 3906 & 0.8017872 & 0.3017872 \\ \addlinespace
++C1+C2-C3 & 1951 & 3950 & 0.2272853 & 0.2727147 \\ \addlinespace
+-C1+C2-C3 & 2001 & 4033 & 0.3183244 & 0.1816756 \\ \addlinespace
+-C1+C2+C3 & 2003 & 4033 & 0.3411217 & 0.1588783 \\ \addlinespace
++C1-C2+C3 & 2011 & 4011 & 0.5751388 & 0.0751388 \\ \addlinespace
++C1-C2-C3 & 2064 & 4127 & 0.5124178 & 0.0124178 \\ \addlinespace
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Pre-Registration}
+\protect\hypertarget{pre-registration}{}
+\begin{itemize}
+\tightlist
+\item
+  The solution to this problem (which I hope the numbers came out right
+  on!) is to require that scientists \textbf{pre-register} their
+  hypotheses.
+\item
+  So you can't collect data then see what it supports, but have to say
+  that one particular thing is what you're testing.
+\item
+  This is still in the process of becoming a universal requirement in
+  respectable science; it was very much not part of standard scientific
+  practice 10-20 years ago.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Philosophical Question}
+\protect\hypertarget{philosophical-question}{}
+\begin{itemize}
+\tightlist
+\item
+  Should we trust a method if it requires these ad hoc rules like
+  announced stopping rules and pre-registration? \pause
+\item
+  Maybe! It depends on the alternatives.
+\item
+  But when you see a report on a statistical finding, you should really
+  check if it satisfies these conditions.
+\item
+  And if it comes from a for-profit entity, you should be really
+  sceptical that it does unless they are super transparent.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+We'll start looking at modal logic, the logic of `must' and `might'.
+\end{frame}
+
+\end{document}

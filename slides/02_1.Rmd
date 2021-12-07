@@ -1,0 +1,136 @@
+---
+title: "305 Lecture 2.1 - Argument Forms"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+  pdf_document: default
+---
+
+## Plan for This Lecture
+
+We're going to get a little clearer on the notions of 'form' and 'structure' from last time.
+
+## Associated Reading
+
+forall x, chapter 4, "First Steps to Symbolization".
+
+## Definition
+
+An argument is valid when
+
+- The truth of the premises guarantees the truth of the conclusion.
+- Equivalently, when it is impossible for the premises to be true and the conclusion not true.
+
+## Formal Validity
+
+An argument is formally valid if
+
+- It is valid; and
+- Any argument of the same form is valid.
+
+In those cases, we infer that it is valid **because of** its form.
+
+## Three Big Questions About Form
+
+> 1. Which words get treated as part of the form, and which get replaced by symbols when converting into formal notation?
+> 2. Which words have the same meaning and should be replaced by the same symbol, and which should be treated differently?
+> 3. How do we break the sentence into its constituent parts?
+
+## Part of the Form
+
+I'm going to have a fairly pluralist, pragmatist view on this question.
+
+- This is not to say that pluralism or pragmatism is right - it's just that it's what I'll adopt. (It is to say that I think it's a reasonable approach.)
+- For some purposes the 'formal words' are very few, like 'and', 'or', 'not' etc.
+- For other purposes the set is more expansive.
+
+## Part of the Form
+
+- If you are studying the logic of causation, you might want to say that 'caused' is a formal word.
+- And that would mean any two arguments that have this structure are of the same form.
+
+&nbsp;
+:    A caused B.
+
+&nbsp;
+:    B caused C.
+
+$\therefore$
+:    A caused C.
+
+## Part of the Form
+
+- But for other purposes, 'caused' is just another binary relation between events.
+- So those arguments will have the same form as these ones.
+
+&nbsp;
+:    A happened near B.
+
+&nbsp;
+:    B happened near C.
+
+$\therefore$
+:    A happened near C.
+
+## Part of the Form
+
+- What I mean by having a 'pluralist, pragmatist' view about form is that there is no objectively correct answer about whether these are the same form or not.
+- For some purposes it will be helpful to treat them as having the same form.
+- For other purposes it will not be.
+- We're going to start with a notion of form where lots and lots of things have the same form, so very few arguments are valid in virtue of form.
+
+## Three Big Questions About Form
+
+1. Which words get treated as part of the form, and which get replaced by symbols when converting into formal notation?
+2. **Which words have the same meaning and should be replaced by the same symbol, and which should be treated differently?**
+3. How do we break the sentence into its constituent parts?
+
+## Same/Different
+
+There are problems in both directions here.
+
+- Sometimes we want to treat words with different spelling as representing the same meaning - e.g., 'kangaroo' and 'kangaroos'.
+- And sometimes we want to treat words with the same spelling as expressing different meanings.
+
+## Relating the First Two Questions
+
+Some kinds of ambiguity are 'resolved' by treating the word as part of the formal system. Consider two possible interpretations of this sentence.
+
+> Nothing is better than world peace
+
+## "Nothing is better than world peace"
+
+> 1. There is no thing such that it is better than world peace.
+> 2. It is better that there is nothing than that there is world peace.
+
+## Ambiguity and Form
+
+- If you include words like 'nothing' as formal words, then the two readings of the sentence will have different formal representations.
+- And the logic called 'predicate logic' does exactly that; it treats 'nothing' as one of the formal words.
+- We're not covering that in this course, though you have have covered it elsewhere.
+- Some more expansive accounts of what should be a formal word are moved by the thought that treating more words as formal removes some possible ambiguities.
+
+## Three Big Questions About Form
+
+1. Which words get treated as part of the form, and which get replaced by symbols when converting into formal notation?
+2. Which words have the same meaning and should be replaced by the same symbol, and which should be treated differently?
+3. **How do we break the sentence into its constituent parts?**
+
+## Three Formal Tools
+
+> 1. Replacing words/sentences with letters.
+> 2. Using parentheses.
+> 3. Replacing 'formal words' with symbols.
+
+## For Next Time
+
+We'll look at how propositional logic carries out these three tasks.

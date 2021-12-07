@@ -1,0 +1,84 @@
+---
+title: "305 Lecture 10.3 - Objective Theories of Probability"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- In this lecture we're going to start talking about interpretations of probability.
+- And we'll go over so called 'objective' interpretations.
+
+## Associated Reading
+
+Odds and Ends, chapter 15.
+
+## Two Questions
+
+1. What do we mean by saying that something is probable, or that it is 80% likely, or that its probability is 40%? \pause
+2. What should we mean by those things? What meanings would be mostly useful for conversational purposes, scientific purposes, etc?
+
+## Caveats
+
+First, a caveat.
+
+- There probably isn't a single good answer to either of these questions.
+- That we actually do things a certain way is some evidence that that's a good way to do it, but far from compelling evidence.
+- And what is useful in the context of physical science is probably different to what's useful in social science and is probbably different again to what's useful in everyday life. \pause
+
+But let's see how we can do by ignoring all this and finding a single meaning for probability.
+
+## Probability is Everywhere
+
+- Most, maybe all, human languages have terms for something like probability. \pause
+- Saying "Probably" feels like an answer, and not just a response, to being asked whether $p$ is true.
+
+## Objective or Subjective
+
+- Objective theories say that probability is something about the world.
+- Subjective theories say that probability is something about minds.
+
+## One Paradigm Objective Theory
+
+Probability is frequency.
+
+- To say that the probability the roulette wheel will land 17 is $\frac{1}{38}$ just is to say that the proportion of spins that land 17 is $\frac{1}{38}$.
+
+## Advantages
+
+- Makes probability something observable. \pause
+- Makes probability something we clearly care about. \pause
+- Explains why we connect probability to action.
+
+## Disadvantages
+
+- Need extra complications to deal with cyclic events. The probability that it's now daytime is not 0.5, although the proportions of times that are daytime is 0.5. \pause
+- Implies that one-off events do not have a defined probablity. But we can say, for instance, that it is very probable that Oswald killed Kennedy.
+
+## Reference Class
+
+Thinking of probabilities as frequencies requires a reference class.
+
+- Think about what the probability is that I'm right handed.
+- Is it the frequency of right-handedness amongst:
+    - Humans? \pause
+    - Adult male humans? \pause
+    - Australians? \pause
+    - Michigan faculty? \pause
+    - Philosophy faculty? \pause
+    - Australian men who are on the philosophy faculty at Michigan?
+    
+The last of these is a singleton class, so the probability is 0 or 1.
+
+## For Next Time
+
+- We will move on to looking at subjective theories.

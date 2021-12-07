@@ -1,0 +1,127 @@
+---
+title: "305 Lecture 13.3 - Strict Conditionals"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To discuss the strict conditional.
+
+## Associated Reading
+
+- Boxes and Diamonds, section 6.3
+
+## Definition of Strict Conditional
+
+- _If A, B_ means _Necessarily, A materially implies B_.
+- In symbols, $A \rightarrow B = \Box (A \supset B)$
+
+## What Box
+
+Two main options
+
+- Universal - $\Box (A \supset B)$ means that every $A$ world is a $B$ world, i.e., $A \wedge \neg B$ is impossible.
+- Epistemic $\Box (A \supset B)$ means that every $A$ world _that could be actual for all we know_ is a $B$ world, i.e., $A \wedge \neg B$ is known to be false.
+
+And there are other complications you could try. We'll *mostly* stay out of these.
+
+## The Nine Puzzle Cases
+
+1. Modus Ponens - $A, A \rightarrow B \vDash B$
+2. Agglomeration - $A \rightarrow B, A \rightarrow C \vDash A \rightarrow (B \wedge C)$
+3. Transitive - $A \rightarrow B, B \rightarrow C \vDash A \rightarrow C$
+4. Contraposition - $A \rightarrow B \vDash \neg B \rightarrow \neg A$
+5. Antecedent Strengthening - $A \rightarrow B \vDash (A \wedge C) \rightarrow B$
+6. Paradox 1 - $B \vDash A \rightarrow B$
+7. Paradox 2 - $\neg A \vDash A \rightarrow B$
+8. Strict Paradox - $\Box B \vDash A \rightarrow B$
+9. Disjunction Paradox - $(A \rightarrow B) \vee (B \rightarrow A)$
+
+## Modus Ponens
+
+Still valid.
+
+- Assume $A$, and that every $A$ world is a $B$ world.
+- Then this is an $A$ world, so it is a $B$ world.
+
+## Agglomeration.
+
+Still valid.
+
+- Assume every $A$ world is a $B$ world, and that every $A$ world is a $C$ world.
+- Then every $A$ world will be a $B \wedge C$ world.
+- So $A \rightarrow (B \wedge C)$
+
+## Transitivity
+
+Still valid.
+
+- Assume every $A$ world is a $B$ world, and every $B$ world is a $C$ world.
+- Then every $A$ world is a $C$ world.
+- So $A \rightarrow C$
+
+## Contraposition
+
+Still valid.
+
+- Assume every $A$ world is a $B$ world.
+- Consider an arbitrary $\neg B$ world.
+- It can't be an $A$ world, because then some $A$ world would not be a $B$ world.
+- So it's a $\neg A$ world.
+- So all $\neg B$ worlds are $\neg A$ worlds
+- So $\neg B \rightarrow \neg A$.
+
+## Antecedent Strengthening
+
+Still valid.
+
+- Assume every $A$ world is a $B$ world.
+- Consider an $A \wedge C$ world.
+- It's an $A$ world, by the rule for true $\wedge$.
+- So it's a $B$ world.
+- So $(A \wedge C) \rightarrow B$.
+
+## Paradox 1
+
+Not valid!
+
+- Even if $B$ is true, as long as $A \wedge \neg B$ is possible, $A \rightarrow B$ will be false.
+
+## Paradox 2
+
+Not valid!
+
+- Even if $A$ is not actually true, as long as _some_ world make $A \wedge \neg B$ true, then $A \rightarrow B$ will be false.
+
+## Strict Paradox
+
+Still valid.
+
+- Assume every world is a $B$ world.
+- Then every $A$ world is a world, and hence a $B$ world.
+- So $A \rightarrow B$.
+
+## Disjunction Paradox
+
+Not valid.
+
+- Just let $A, B$ be two independent propositions, so all four binary possibilities are realised.
+- Then neither disjunction will be true.
+
+## Summary
+
+This is better than the material conditional theory, but not perfect. And we haven't said anything about the subjunctive conditionals.
+
+## For Next Time
+
+We'll talk a bit more about one of these rules, antecedent strengthening.

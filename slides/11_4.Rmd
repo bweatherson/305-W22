@@ -1,0 +1,130 @@
+---
+title: "305 Lecture 11.4 - Truth in a Model"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To extend our discussion of truth at a world, to discussion of truth in a whole model.
+
+## Associated Reading
+
+- Boxes and Diamonds, section 3.5.
+
+## Models
+
+Models have three parts:
+
+1. A set of worlds, typically called $W$. \pause
+2. A binary accessibility relation on those worlds, typically called $R$. \pause
+3. A valuation function on those worlds, typically called $V$. \pause
+
+We'll write the models as $\langle W, R, V\rangle$.
+
+## Valuations
+
+$V$ is a function from atomic sentence letters to subsets of $W$.
+
+- It tells you when the atomic sentences are true.
+- When an atomic sentence is not true, it is false.
+
+## Truth at a Point
+The general theory of truth is built up in stages from the basic theory. Assume we have a model $\langle W, R, V\rangle$, and a point $w \in W$, and are asking whether an arbitrary sentence is true at $w$ in $\langle W, R, V\rangle$.
+
+- $p$ is true at $w$ iff $w \in V(p)$.\pause
+- $\neg A$ is true at $w$ iff $A$ is not true at $w$.
+- $A \wedge B$ is true at $w$ iff $A$ is true and $w$ and $B$ is true at $w$.
+- $A \vee B$ is true at $w$ iff $A$ is true and $w$ or $B$ is true at $w$.
+- $A \rightarrow B$ is true at $w$ iff $A$ is false at $w$ or $B$ is true at $w$.\pause
+
+This just leaves the modal formulae. I'll set out the rules, then do some worked examples.
+
+## Necessary Truth at a Point
+
+First we'll do $\Box A$.
+
+- I'll read this as `Box $A$'.\pause
+- Intuitively, it means **It must be that A**, where **must** could be a metaphysical necessity, or an epistemic necessity, or a moral necessity, or anything else.\pause
+- And it is true at $w$ just in case $A$ is true at every world $y$ such that $wRy$.
+- Necessary truth is truth at all accessible worlds.
+
+## Possible Truth at a Point
+
+Now we'll do $\Diamond A$.
+
+- I'll read this as `Diamond $A$'.\pause
+- Intuitively, it means **It might be that A**, where **might** could be a metaphysical necessity, or an epistemic necessity, or a moral necessity, or anything else.\pause
+- And it is true at $w$ just in case $A$ is true at some world $y$ such that $wRy$.
+- Possible truth is truth at some accessible world.
+
+## Iterated Modalities
+
+We can run these rules in sequence.\pause
+
+- What does it take for $\Box \Box A$ to be true at $w$? \pause
+- It is for $\Box A$ to be true at every $y$ such that $wRy$.\pause
+- And that means that $A$ has to be true at every world $z$ such that $yRz$ (for any $y$ such that $wRy)$.
+
+## Access
+
+We can think, a little picturesquely, as the accessibility relation being a `step' between worlds.
+
+- If $wRy$, then you can `step' from $w$ to $y$.\pause
+- $\Box A$ means that anywhere you can step to from $w$ is a world where $A$ is true.\pause
+- And $\Box \Box A$ means that anywhere you can get to in two steps from $w$ is a world where $A$ is true.
+
+## Iterated Modalities
+
+We can run the rules in sequence.\pause
+
+- What does it take for $\Diamond \Diamond A$ to be true at $w$? \pause
+- It is for $\Diamond A$ to be true at some $y$ such that $wRy$.\pause
+- And that means that $A$ has to be true at some world $z$ such that $yRz$ (for some $y$ such that $wRy)$.\pause
+- In the picturesque terms, you can get from $w$ to an $A$-world in two steps.
+
+## Mixed Modalities
+
+What does it mean for $\Diamond \Box A$ to be true at $w$?\pause
+
+- There is some accessible world where $\Box A$ is true.\pause
+- That is, there is some accessible world such that everywhere you can go from there, $A$ is true.
+
+## Mixed Modalities
+
+What does it mean for $\Box \Diamond A$ to be true at $w$?\pause
+
+- At all accessible worlds, $\Diamond A$ is true.\pause
+- That is, wherever you go, you can get to there is some accessible world such that everywhere you can go from there, $A$ is true.
+
+## Longer Sentences
+
+What does it mean for $\Box(p \vee (q \rightarrow \Diamond r))$ to be true at $w$? \pause
+
+- It's for $p \vee (q \rightarrow \Diamond r)$ to be true everywhere you can get to (in one step) from $w$.
+- That is, at every one of those worlds, either $p$ is true or $q \rightarrow \Diamond r$ is true.\pause
+- That is, at every one of those worlds, either $p$ is true, or $q$ is false, or $\Diamond r$ is true. \pause
+- That is, at every one of those worlds, either $p$ is true, or $q$ is false, or there is some world you can get to where $r$ is true. 
+
+## Box and connectives
+
+The general rule is just to apply the rules for sentences inside the brackets at each world in $W$, and then apply the rule for $\Box$ or $\Diamond$. But there are three special cases worth thinking about.
+
+- $\Box(A \wedge B)$ means that all accessible worlds are $A$ and $B$ worlds. \pause
+- $\Box(A \vee B)$ means that all accessible worlds make at least one of $A$ and $B$ true.\pause
+- $\Box(A \rightarrow B)$ means that all accessible $A$-worlds are $B$-worlds.
+
+We'll use that last one a lot.
+
+## For Next Time
+
+We'll discuss of examples of truth (and non-truth) in models to explain this material.

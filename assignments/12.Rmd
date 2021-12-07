@@ -1,0 +1,27 @@
+---
+title: "Assignment Week 12"
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    md_extensions: +startnum
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "mathastext"]
+    fig_caption: no
+fontsize: 12pt
+mainfont: SF Pro Text Light
+mainfontoptions: "Scale=MatchLowercase"
+geometry: margin=1.4in
+linestretch: 1.6
+author: Philosophy 305
+date: Due April 9, 2021
+---
+
+Which of the following are theorems of K?
+
+1. $(\Box A \vee \Box B) \rightarrow \Box(A \vee B)$
+2. $(\Box A \wedge \Diamond B) \rightarrow \Diamond(A \wedge B)$
+3. $\Box (A \wedge \Diamond B) \rightarrow \Diamond(A \wedge B)$
+4. $(\Box A \rightarrow \Box B) \rightarrow (\Diamond A \rightarrow \Diamond B)$
+5. $\Box (A \rightarrow B) \rightarrow (\Diamond A \rightarrow \Diamond B)$

@@ -1,0 +1,198 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[Scale=MatchLowercase]{SF Pro Text Light}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Assignment Week 10},
+  pdfauthor={Philosophy 305},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1.4in]{geometry}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{gensymb}
+\usepackage{nicefrac}
+\usepackage{caption}
+\usepackage{mathastext}
+
+\title{Assignment Week 10}
+\author{Philosophy 305}
+\date{Due March 26, 2021}
+
+\begin{document}
+\maketitle
+
+\setstretch{1.2}
+\hypertarget{question-1}{%
+\subsection{Question 1}\label{question-1}}
+
+Some workplaces hold a weekly lottery. Suppose there are 30 people in
+your workplace lottery, and each person pays in \$5 every Monday. A
+finalist is chosen at random every Friday, for three weeks. Then, on the
+fourth Friday, one of the three finalists from the previous three weeks
+is chosen at random. That person gets all the prize money.
+
+What is the expected value of being in the lottery?
+
+\hypertarget{question-2}{%
+\subsection{Question 2}\label{question-2}}
+
+Sonia has tickets to see The Weeknd tomorrow night. Her friend has
+tickets to see Beyoncé, and also tickets to Katy Perry. Beyoncé is
+Sonia's favourite performer, in fact she would rather see Beyoncé than
+The Weeknd.
+
+Sonia's friend offers a gamble in exchange for her tickets to The
+Weeknd. The gamble has a 9/10 chance of winning, in which case Sonia
+gets the Beyoncé tickets (utility 1). Otherwise she gets the Katy Perry
+tickets (utility 0).
+
+If Sonia declines the gamble, what can we conclude?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  For Sonia, the utility of seeing The Weeknd is 9/10
+\item
+  For Sonia, the utility of seeing The Weeknd is greater than 9/10
+\item
+  For Sonia, the utility of seeing The Weeknd is less than 9/10
+\item
+  For Sonia, the utility of seeing The Weeknd is 1/10
+\end{enumerate}
+
+\hypertarget{questions-3-4}{%
+\subsection{Questions 3-4}\label{questions-3-4}}
+
+After giving her calculus midterm, Professor X always offers her
+students a chance to improve their grade by trying to solve an optional
+``challenge'' problem. If they get it right, their grade is increased by
+one letter grade: F changes to D, D changes to C, etc. But if they get
+it wrong, their grade goes down by one letter-grade: A changes to B, B
+changes to C, etc.
+
+Hui got a C on his midterm. He asks the professor how often students get
+the challenge problem right and she says they get it right half the
+time. Hui decides to stick with his C. But he would be willing to try
+the challenge problem if the chances of getting it right were higher:
+2/3 or more.
+
+Suppose getting a D has utility 5/10 for Hui, while a B has utility
+8/10.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  What is the expected utility for Hui of trying the challenge problem?
+\item
+  How much utility does a C have for Hui?
+\end{enumerate}
+
+\hypertarget{questions-5-7}{%
+\subsection{Questions 5-7}\label{questions-5-7}}
+
+Eleanor wants to get a job at Google so she's going to university to
+study computer science. She has to decide between Wayne State and
+Michigan State. Suppose 1/100 of Wayne State's computer science students
+get jobs at Google and the rest get jobs at Facebook. For Eleanor, a job
+at Google has utility 200 while a job at Facebook has utility 50.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  What is the expected utility of going to Wayne State for Eleanor?
+\end{enumerate}
+
+Suppose Michigan State students have better odds of getting a job at
+Google: 5/400. And 360/400 students go to work at Amazon, which Eleanor
+would prefer to Facebook. On the other hand, the remaining 35/400 of
+them don't get a job at all, which has utility zero for Eleanor. After
+thinking about it, she can't decide: Wayne State and Michigan State seem
+like equally good options to her.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  How much utility does working at Amazon have for Eleanor?
+\end{enumerate}
+
+Suppose Eleanor ends up going to Wayne State, and now she's about to
+graduate. Unfortunately, Google isn't hiring any more. The only jobs
+available are at Amazon and Facebook. She would have to take a special
+summer training program to qualify for a job at Amazon, though. And that
+would mean she can't get a job at Facebook. Facebook is offering her a
+job, but she has to take it now or never. So, she has to either take the
+guaranteed job at Facebook right now, or gamble on the summer program.
+The summer program could get her a job at Amazon, or it could leave her
+unemployed.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  How high would the probability of getting a job at Amazon have to be
+  for Eleanor to be indifferent between taking and not taking the
+  special summer program?
+\end{enumerate}
+
+\end{document}

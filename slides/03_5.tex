@@ -1,0 +1,458 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 3.5 - Introducing Truth Trees},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+ \usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+\usetikzlibrary{arrows.meta}
+ \forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 3.5 - Introducing Truth Trees}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+This lecture introduces a new way of testing for validity - truth trees.
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+Boxes and Diamonds, section 2.1
+\end{frame}
+
+\begin{frame}{What Tableaux Are}
+\protect\hypertarget{what-tableaux-are}{}
+\begin{itemize}
+\tightlist
+\item
+  A way for determining whether some combinations are logically
+  possible.
+\item
+  That can be used for determining whether some arguments are valid - if
+  the truth of the premises and the falsity of the conclusion is not
+  logically possible; then the argument is valid.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Structure}
+\protect\hypertarget{structure}{}
+\begin{itemize}
+\tightlist
+\item
+  Start out writing the things you care about.\pause
+\item
+  Each time one of those things implies that some other things must be
+  the case, write those down too.
+\item
+  For example, if you write down that \(A \wedge B\) is true, also write
+  down that \(A\) is true and that \(B\) is true. \pause
+\item
+  Each time there are multiple ways to make something you've written
+  true, create multiple branches for those ways.
+\item
+  For example, if you write down that \(A \vee B\) is true, create a
+  branch where \(A\) is true, and a branch where \(B\) is true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Closing}
+\protect\hypertarget{closing}{}
+\begin{itemize}
+\tightlist
+\item
+  A branch of a tableau is closed if it contains that some particular
+  claim has incompatible truth values.
+\item
+  For now, this means that one sentence is both true and false.\pause
+\item
+  The whole tableau is closed if every branch is closed.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What Closure Means}
+\protect\hypertarget{what-closure-means}{}
+\begin{itemize}
+\tightlist
+\item
+  If the tableau is closed, then the initial assumptions cannot be true
+  together.
+\item
+  If you are evaluating an argument, this means that the argument is
+  valid.\pause
+\item
+  If you start the tableau by just saying that one sentence is false,
+  the closure of the tableau means that that sentence is a logical
+  truth.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Benefits of Tableaux}
+\protect\hypertarget{benefits-of-tableaux}{}
+Tableaux have two big benefits over truth tables.
+
+\begin{enumerate}
+\tightlist
+\item
+  They don't grow exponentially when you increase the number of
+  variables.\pause
+\item
+  They can be generalised to things beyond propositional logic.
+\end{enumerate}
+
+We are introducing them here because of point 2.
+\end{frame}
+
+\begin{frame}{Open Tableaux}
+\protect\hypertarget{open-tableaux}{}
+Here is something the book doesn't make a big deal of, but is kind of
+important.
+
+\begin{itemize}
+\tightlist
+\item
+  A closed tableau can show that an argument is valid.
+\item
+  An open \textbf{and completed} tableau can show that an argument is
+  invalid.\pause
+\item
+  The trick here is that it's hard to tell when a tableau is completed
+  in the relevant sense.
+\item
+  This will be easier to illustrate in practice than in theory, so let's
+  start building tableau up.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Signs}
+\protect\hypertarget{signs}{}
+The system we are using is what is called a \textbf{signed tableau}
+system.
+
+\begin{itemize}
+\tightlist
+\item
+  That means that every line consists of two parts.
+\item
+  The bigger, second, part is a sentence.
+\item
+  The first part is a \textbf{sign}, which for now is a truth value.
+\item
+  That is, it is either \(\True\) or \(\False\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What Lines Mean}
+\protect\hypertarget{what-lines-mean}{}
+So each line either says that a particular sentence is true, or says
+that it is false.
+
+\begin{itemize}
+\tightlist
+\item
+  The book for some reason includes the word `might' here.
+\item
+  That's misleading; what they should say is that each line says what is
+  true given (a) the starting assumptions and (b) the assumptions we
+  made for branching purposes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Numbering And Annotation}
+\protect\hypertarget{numbering-and-annotation}{}
+The system we're using also has two other distinctive features.
+
+\begin{enumerate}
+\tightlist
+\item
+  We number each of the lines. \pause
+\item
+  We list why we're writing down each line to the right of the tree.
+  \pause
+\end{enumerate}
+
+Both of these are somewhat idiosyncratic, though not abnormal. Unlike
+the truth tables, there just aren't well defined conventions for how to
+write these things out.
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+We will start looking at the rules that get used for building truth
+trees.
+\end{frame}
+
+\end{document}

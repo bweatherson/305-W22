@@ -1,0 +1,105 @@
+---
+title: "305 Lecture 10.6 - Convergence Theorems"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- We're going to talk about why different priors might not matter - because they usually converge to the same thing.
+
+## Associated Reading
+
+This isn't in the book; we'll return to its narrative next time.
+
+## Big Picture
+
+- Maybe there is no one true prior.
+- But not anything goes.
+- And the ones that are ok are all such that they will converge to the truth given enough evidence.
+
+## Convergence
+
+- I am really not going to go over the details of this.
+- But it turns out there are a large class of functions with the following feature.
+- According to any function in the class, the probability that evidence will come in that makes every function in the class get arbitrarily close is very high.
+
+## Intuitive Case
+
+Imagine that I know a coin is biased in 1 of 2 ways.
+
+1. Each flip has probability 0.8 of landing heads.
+2. Each flip has probability 0.2 of landing heads.
+
+Then I get to flip the coin 100 times. What will happen?
+
+## Convergence
+
+- On scenario 1, the probability that I'll get at least 60 heads is greater than 0.99999.
+- But on scenaio 2, the probability of that is less than $10^{-10}$.
+- So if I start out 50/50 between the options, and get more than 60 heads, I'll end up massively leaning towards scenario 1. \pause
+- But imagine someone else starts out thinking that option 2 is really likely - 0.99 likely and option 1 only 0.01.
+- They will also get to the right view after 100 trials - even 60 heads (which is really low on scenario 1) would be enough to change the probabilities.
+
+## Extreme Example
+
+> - What if we started with a really extreme view, that the probability of option 1 is $10^{-30}$? 
+> - Well 100 coin flips would probably still be enough. 
+> - The next slide shows what happens to the probability of option 1 for 10 experimenters who start out with that low probability, and what their probability for option 1 is after each coin flip.
+
+## Example
+
+```{r a-graph, echo=FALSE, message=FALSE, warning=FALSE}
+require(tidyverse)
+set.seed(50)
+big_data <- c()
+for (trial in 1:10){
+highprob <- c(10^(-30))
+flip_outcome <- sample(1:5,100,replace = T)
+
+for (flips in 1:100){
+  x <- highprob[flips]
+  if (flip_outcome[flips] == 1){
+    y <- 0.2 * x / (0.2 * x + 0.8 * (1-x))
+  }  
+  if (flip_outcome[flips] > 1){
+    y <- 0.8 * x / (0.2 * (1-x) + 0.8 * x)
+  }  
+  highprob <- c(highprob, y)
+}
+t <- enframe(highprob) %>% mutate(trial = as.factor(trial))
+big_data <- bind_rows(big_data, t)
+}
+ggplot(big_data, aes(x = name, y = value, color = trial, group = trial)) + 
+  geom_line() + 
+  labs(x = "Trial", y = "Probability") +
+  theme_minimal()
+```
+
+## General Principle
+
+As long as we don't start with probability 0 for one or other scenario, get enough evidence and we'll converge to the correct scenario.
+
+## Two Problem Cases
+
+1. There isn't enough evidence around. This is a big problem in thinking about history, and also about social sciences.
+2. People do start with probability 0 for various scenarios.
+
+## Optimistic Take
+
+- These two problems won't arise very often.
+- So updating by conditionalisation will lead us to converge.
+- That's the sense in which we get objectivity; subjective priors that are sufficiently responsive to the evidence end up being objective enough.
+
+## For Next Time
+
+- We will end this unit by looking at a common scientific practice - significance testing.

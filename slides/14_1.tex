@@ -1,0 +1,769 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 14.1 - Counterfactuals and Similarity},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\usetikzlibrary{arrows.meta}
+\RequirePackage[tableaux]{prooftrees}
+\forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 14.1 - Counterfactuals and Similarity}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+To discuss the notion of similarity at the heart of Lewis's theory.
+\end{frame}
+
+\begin{frame}{Reading}
+\protect\hypertarget{reading}{}
+This isn't covered so much in the book.
+\end{frame}
+
+\begin{frame}{Julius Caeser in Command}
+\protect\hypertarget{julius-caeser-in-command}{}
+Which of these (if either) sounds true?
+
+\begin{enumerate}
+\tightlist
+\item
+  If Julius Caeser had commanded the US forces in Vietnam, he would have
+  used nuclear weapons.
+\item
+  If Julius Caeser had commanded the US forces in Vietnam, he would have
+  used catapults.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Respects of Similarity}
+\protect\hypertarget{respects-of-similarity}{}
+Lewis argued that either could be true, in different contexts, though
+they couldn't both be true at once.
+
+\begin{itemize}
+\tightlist
+\item
+  A world where Caeser is in command in Vietnam is going to be very
+  different to reality in several ways.
+\item
+  Making it similar requires highlighting some aspects of similarity,
+  and, by necessity, downplaying others. \pause 
+\item
+  Hold fixed how belligerent Caeser is, and you get him using nuclear
+  weapons. \pause 
+\item
+  Hold fixed his knowledge of weaponry, and you get him using catapults.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conjoining}
+\protect\hypertarget{conjoining}{}
+Could this be true?
+
+\begin{itemize}
+\tightlist
+\item
+  If Julius Caeser had commanded the US forces in Vietnam, he would have
+  used catapults to fire nuclear weapons.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Feature, Not Bug}
+\protect\hypertarget{feature-not-bug}{}
+It feels like in some sense the world in which Caeser uses nuclear
+weapons is more similar to actuality, and in some other sense the world
+in which he uses catapults is more similar. Lewis argued that this was a
+good feature of his theory.
+
+\begin{itemize}
+\tightlist
+\item
+  These conditionals just are vague, and context-sensitive.
+\item
+  It's a good thing that we use a vague, content-sensitive notion like
+  \textbf{similarity} to analyse them.
+\item
+  That doesn't make them too vague, or context-sensitive, it
+  \textbf{explains} why they are so vague and context-sensitive. \pause 
+\end{itemize}
+
+I'm not sure whether that argument works, but I'm not going to
+investigate it further.
+\end{frame}
+
+\begin{frame}{A Different Example}
+\protect\hypertarget{a-different-example}{}
+This seems like a tricky to figure out, historical question.
+
+\begin{enumerate}
+\tightlist
+\item
+  If Richard Nixon had ordered the use of nuclear weapons in Vietnam,
+  his generals would have refused the order. \pause 
+\end{enumerate}
+
+You can imagine trying to figure that out by careful archival research,
+and guesswork about the parts of the archives that are off-limits to
+researchers. \pause 
+
+\begin{itemize}
+\tightlist
+\item
+  But there's an argument that philosophy shows 1 is true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Two Worlds}
+\protect\hypertarget{two-worlds}{}
+\begin{itemize}
+\tightlist
+\item
+  Let \(w\) be the actual world where (I'll assume), Nixon never gave
+  such an order.
+\item
+  Let \(w_1\) be the world where the order is given, and refused, and we
+  never hear about it, and life goes on more or less as in \(w\).
+\item
+  Let \(w_2\) be the world where the order is given, carried out, and
+  other relevant parties (especially Russia and China) react in ways
+  you'd expect to nuclear weapons being launched against their
+  ally/neighbor.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Two Worlds}
+\protect\hypertarget{two-worlds-1}{}
+Which of these worlds is more similar to the actual world? \pause 
+
+\begin{itemize}
+\tightlist
+\item
+  There is a good case for \(w_1\).
+\item
+  It just requires a few generals to act a little out of character for a
+  few minutes.
+\item
+  In \(w_2\), everyday life is changed in unrecognisable ways for
+  millions of people; perhaps billions of people if it triggers a larger
+  nuclear war.
+\item
+  So philosophy tells us that if Nixon had ordered nuclear weapons to be
+  used, his generals would have refused.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{History and Philosophy}
+\protect\hypertarget{history-and-philosophy}{}
+This is an absurd result.
+
+\begin{itemize}
+\tightlist
+\item
+  Maybe Nixon's generals would have refused.
+\item
+  But you can only tell that by careful historical research, not by
+  thinking about similarity of worlds.
+\item
+  Something must have gone wrong.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fixing The Problem}
+\protect\hypertarget{fixing-the-problem}{}
+Insist that similarity of patterns or regularities is more important
+than similarity of particular facts.
+
+\begin{itemize}
+\tightlist
+\item
+  In \(w_1\), some generals (arguably) do something very out of
+  character.
+\item
+  That's the kind of violation of a pattern or regularity that makes a
+  big difference in similarity. (In the special sense of similarity that
+  we care about.)
+\item
+  In \(w_2\) there are lots of particular facts that are different.
+  There is a lot more radiation poisoning in Vietnam, and possibly in
+  the United States (depending on the retaliation), but the patterns or
+  regularities are not violated.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A New Puzzle}
+\protect\hypertarget{a-new-puzzle}{}
+Which of these is true?
+
+\begin{enumerate}
+\tightlist
+\item
+  If I'd jumped out my office window, I would have been seriously
+  injured (I'm 1.5 floors above some concrete steps).
+\item
+  If I'd jumped out my office window, I would only have done that if
+  there were a net to catch me, so I wouldn't have been seriously
+  injured.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Puzzle}
+\protect\hypertarget{puzzle}{}
+\begin{itemize}
+\tightlist
+\item
+  At least some of the time, we want to say that 1 is true.
+\item
+  That's the `non-backtracking' reading of the conditional that's
+  relevant for thinking about decision-making, moral responsibility,
+  causation, etc.
+\item
+  But it's not clear Lewis can get that result.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Three Worlds}
+\protect\hypertarget{three-worlds}{}
+\begin{itemize}
+\tightlist
+\item
+  World \(w\) is the actual world where I stay nice and safe in my
+  office working on these slides.
+\item
+  World \(w_3\) is where there is no net, I jump and am seriously
+  injured.
+\item
+  World \(w_4\) is where I check that there is a net, and then jump.
+\item
+  World \(w_4\) differs from \(w\) in two respects - there is a net that
+  doesn't really exist, and I jump out the window.
+\item
+  But world \(w_3\) differs in two ways as well - I jump out the window,
+  and this is \textbf{really} out of character
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The New Puzzle}
+\protect\hypertarget{the-new-puzzle}{}
+The `solution' to the previous case seems to make this worse.
+
+\begin{itemize}
+\tightlist
+\item
+  If we prioritise patterns and regularities, then it looks like \(w_3\)
+  is really dissimilar to the actual world.
+\item
+  But we want there to be an ordinary sense in which it's just true that
+  if I had jumped out the window, I would have been seriously injured.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Recap}
+\protect\hypertarget{recap}{}
+\begin{itemize}
+\tightlist
+\item
+  If you use an overall, intuitive, measure of similarity, you get the
+  wrong results in the nuclear weapons example.
+\item
+  If you use a measure that focuses on patterns and regularities, you
+  get the wrong result (or at least rule out a good result) in the jump
+  out window example.
+\item
+  This is starting to feel like a trap.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A Way Through}
+\protect\hypertarget{a-way-through}{}
+Here's how Lewis suggested getting out of the trap. (I'm simplifying a
+bit here; if you're interested you should read his paper
+``Counterfactual Dependence and Time's Arrow''.)
+
+\begin{itemize}
+\tightlist
+\item
+  Treat the past and the future differently.
+\item
+  In terms of the past, what matters for similarity is keeping
+  \textbf{everything}, patterns, regularities, particular facts,
+  everything, \textbf{exactly the same}. The nearest worlds are an exact
+  duplicate of ours from the Big Bang to as close as possible to the
+  present.
+\item
+  In terms of the future, patterns and regularities are \textbf{much}
+  more important.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Intuitive Picture}
+\protect\hypertarget{intuitive-picture}{}
+How to find the nearest world where \(A\) is true.
+
+\begin{itemize}
+\tightlist
+\item
+  Start at the present time and work backwards.
+\item
+  What's the first time where you can make \(A\) true with only a single
+  violation of patterns or regularities in the world. It might be a big
+  violation - like gravity stopping for a second, but ideally it is just
+  one violation.
+\item
+  Roll the world forward from that time according to the laws of the
+  world - the physical laws, the biological laws, the psychological
+  laws, the economic laws and so on.
+\item
+  If those laws leave lots of things open, then there are lots of worlds
+  that are equally close to actuality where \(A\) is true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Two Puzzles}
+\protect\hypertarget{two-puzzles}{}
+I like this intuitive picture a lot - I think it captures a lot of what
+we're trying to do with counterfactuals. But there are still puzzles
+remaining. I'll end this lecture with two of them.
+
+\begin{enumerate}
+\tightlist
+\item
+  The car theft puzzle.
+\item
+  The baseball jinx puzzle.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{The Car Theft}
+\protect\hypertarget{the-car-theft}{}
+\begin{itemize}
+\tightlist
+\item
+  Imagine that yesterday I parked my car at work in a UM garage, then
+  drove home at the end of the day.
+\item
+  My car wasn't stolen yesterday (like every other day).
+\item
+  But car thefts happen - it being stolen isn't like aliens invading.
+  \pause 
+\item
+  Think about this counterfactual:
+\end{itemize}
+
+\begin{quote}
+If my car had been stolen yesterday, it would have been stolen just
+before midnight.
+\end{quote}
+\end{frame}
+
+\begin{frame}{The Car Theft}
+\protect\hypertarget{the-car-theft-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Intuitively, that's not true.
+\item
+  Just before midnight, my car was locked in my garage.
+\item
+  During the day, it was in a public carpark at UM.
+\item
+  If it was going to get stolen yesterday, it's at least as likely that
+  it would have been stolen during the day as late at night.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Three Worlds (Again)}
+\protect\hypertarget{three-worlds-again}{}
+\begin{itemize}
+\tightlist
+\item
+  Again, let \(w\) be the actual, no car theft, world.
+\item
+  Let \(w_5\) be the world where my car is stolen from a UM parking lot
+  at midday.
+\item
+  Let \(w_6\) be the world where my car is stolen from my garage just
+  before midnight.
+\item
+  In \(w_6\), things stay exactly the same as in \(w\) for much longer -
+  for nearly 12 hours longer.
+\item
+  So by the metric we're using, it's more similar to actuality than
+  \(w_5\).
+\item
+  So it will be true that had my car been stolen yesterday, it would
+  have been stolen just before midnight.
+\item
+  This isn't very plausible, so we still need to tinker with the
+  similarity metric.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Baseball Jinx}
+\protect\hypertarget{the-baseball-jinx}{}
+Imagine that I watch a baseball game, and my team loses. My friends
+accuse me of jinxing the team. I defend myself with 1.
+
+\begin{enumerate}
+\tightlist
+\item
+  If I hadn't watched, they would still have lost. \pause 
+\end{enumerate}
+
+Here's an argument that 1 is, for all we know, false.
+\end{frame}
+
+\begin{frame}{Physics and Baseball}
+\protect\hypertarget{physics-and-baseball}{}
+\begin{itemize}
+\tightlist
+\item
+  Possibly baseball is seriously indeterministic.
+\item
+  Possibly quantum indeterminacy in the player's brains causes
+  differences in outcomes.
+\item
+  Possibly quantum indeterminacy in the interaction of the ball with the
+  air as it travels to the plate causes just enough variation in the
+  position of the ball when it's hit to make the difference between a
+  home run and a fly ball at the wall.
+\item
+  Maybe physics will tell us otherwise, but it seems to me we can't rule
+  out this kind of indeterminacy.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Baseball and Uncertainty}
+\protect\hypertarget{baseball-and-uncertainty}{}
+Now compare these two worlds (to \(w\), the actual world).
+
+\begin{itemize}
+\tightlist
+\item
+  In \(w_7\), I don't watch, but the game goes \textbf{exactly} as it
+  goes in \(w\), and my team loses.
+\item
+  In \(w_8\), things go \textbf{exactly} as they do in \(w\) up until
+  the start of the game, when I don't sit down to watch it. Then they
+  follow the laws of nature. But the laws are chancy, and in \(w_8\) the
+  variations favor my team just enough that they narrowly win rather
+  than narrowly lose. \pause 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Puzzle}
+\protect\hypertarget{the-puzzle}{}
+\begin{itemize}
+\tightlist
+\item
+  If all we care about is exact match before the `break point' (when the
+  first thing changes), then conformity to laws, patterns and
+  regularities after the `break point', then \(w_7\) and \(w_8\) are
+  equally close to actuality.
+\item
+  They both are exactly alike until I don't watch (rather than watch)
+  and both conform to laws afterwards.
+\item
+  So the conditional, \emph{If I hadn't have watched, we still would
+  have lost}, is false.
+\item
+  In one of the nearest worlds where I don't watch, we lose.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Is This a Problem}
+\protect\hypertarget{is-this-a-problem}{}
+This doesn't sound great.
+
+\begin{itemize}
+\tightlist
+\item
+  We know that we don't make a difference to baseball games by watching
+  or not watching them.
+\item
+  But this theory, which otherwise looks promising, seems to say that
+  maybe we do.
+\item
+  This is just an open puzzle.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Next Time}
+\protect\hypertarget{next-time}{}
+We'll talk more about the logic of these counterfactuals.
+\end{frame}
+
+\end{document}

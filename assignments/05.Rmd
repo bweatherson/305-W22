@@ -1,0 +1,33 @@
+---
+title: "Assignment Week 5"
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "mathastext"]
+    fig_caption: no
+fontsize: 11pt
+mainfont: SF Pro Text Light
+mainfontoptions: "Scale=MatchLowercase"
+geometry: margin=1.2in
+linestretch: 1.4
+author: Philosophy 305
+date: Due February 19, 5pm
+---
+
+# Proofs
+
+Provide proofs of each of the following arguments. You should enter these in http://carnap.io, and make a note in Canvas when you are done.
+
+1. $A \rightarrow B, A \rightarrow C \vdash A \rightarrow (B \wedge C)$
+2. $(A \wedge B) \rightarrow C \vdash A \rightarrow (B \rightarrow C)$
+3. $A \rightarrow (B \rightarrow C) \vdash (A \wedge B) \rightarrow C $
+4. $A \vee (B \wedge C) \vdash (A \vee B) \wedge (A \vee C)$
+5. $(A \vee B) \wedge (A \vee C) \vdash A \vee (B \wedge C)$
+6. $A \vee C, A \rightarrow C, B \rightarrow D \vdash C \vee D$
+7. $B \vdash \neg (A \wedge \neg A)$
+8. $(A \rightarrow C) \wedge (B \rightarrow C) \vdash (A \vee B) \rightarrow C$
+9. $\neg A \rightarrow \neg B \vdash B \rightarrow A$
+10. $A \rightarrow (B \vee C) \vdash (A \rightarrow B) \vee (A \rightarrow C)$

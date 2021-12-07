@@ -1,0 +1,20 @@
+~~~{.ProofChecker .Prop  options="indent fonts popout render autoIndent"} 
+1. P -> Q :|-: (P /\ R) -> Q
+2. P /\ Q :|-: Q /\ P
+3. ~P, ~Q :|-: ~(P \/ Q)
+4. ~Q :|-: ~(P /\ Q)
+5. P \/ ~Q :|-: ~(Q /\ ~P)
+~~~
+
+~~~{.TruthTable .Validity options="exam autoAtoms"}
+6. P /\ (Q \/ R) :|-: (P /\ Q) \/ (P /\ R)
+7. P /\ (Q \/ R) :|-: (P \/ Q) /\ (P \/ R)
+8. (P /\ Q) \/ (P /\ R) :|-: P /\ (Q \/ R)  
+9. (P \/ Q) /\ (P \/ R) :|-: P /\ (Q \/ R) 
+10. P \/ (Q /\ R) :|-: (P \/ Q) /\ (P \/ R)
+11. P \/ (Q /\ R) :|-: (P /\ Q) \/ (P /\ R)
+12. (P \/ Q) /\ (P \/ R) :|-: P \/ (Q /\ R)  
+13. (P /\ Q) /\ (P /\ R) :|-: P \/ (Q /\ R) 
+14. :|-: ((P -> Q) -> P) -> P
+15. :|-: (P -> Q) \/ (Q -> P)
+~~~

@@ -1,0 +1,125 @@
+---
+title: "305 Lecture 2.2 - Forms in Propositional Logic"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+  pdf_document: default
+---
+
+## Plan for This Lecture
+
+- We're going to look at how to translate English sentences into a form where we can use the tools of propositional logic on them.
+
+## Associated Reading
+
+forall x, chapter 5, "Connectives"
+
+- Note that the book goes into more detail than I'm going into here about the range of English sentences that can be translated (or at least symbolized) using the tools of propositional logic.
+
+## Sentence Letters
+
+- We use letters, usually starting with $p$ and then continuing through the alphabet, for 'atomic' sentences. 
+- forall x uses capital letters, others use lowercase. This is a matter of taste.
+
+## Symbols
+
+- "and" is represented by $\wedge$
+- "or" is represented by $\vee$
+- "not" is represented by $\neg$
+- "if" is represented by $\rightarrow$
+- "if and only if" is represented by $\leftrightarrow$
+
+## An Easy Example
+
+> It will rain on Monday or it will rain on Tuesday
+
+Basic Sentences
+
+- $M$ = It will rain on Monday
+- $T$ = It will rain on Tuesday
+
+Translation
+
+> $M \vee T$
+
+## Another Easy Example
+
+> It will rain on Monday and it will rain on Tuesday
+
+Basic Sentences
+
+- $M$ = It will rain on Monday
+- $T$ = It will rain on Tuesday
+
+Translation
+
+> $M \wedge T$
+
+## Only Slightly Harder Example
+
+> If it rains on Monday, it will rain on Tuesday
+
+Basic Sentences
+
+- $M$ = It will rain on Monday
+- $T$ = It will rain on Tuesday
+
+Translation
+
+> $M \rightarrow T$
+
+## And A Bit Harder Again
+
+> It will rain on Monday, but it won't rain on Tuesday
+
+Basic Sentences
+
+- $M$ = It will rain on Monday
+- $T$ = It will rain on Tuesday
+
+Translation
+
+> $M \wedge \neg T$
+
+## Parentheses
+
+- As in math, these tell you what order to compute things in.
+- They let you avoid the ambiguity in the following sentence.
+
+> It will rain on Monday and it will rain on Tuesday or it will rain on Wednesday.
+
+## Two Translations
+
+Basic Sentences
+
+- $M$ = It will rain on Monday
+- $T$ = It will rain on Tuesday
+- $W$ = It will rain on Wednesday
+
+Translations
+
+1. $(M \wedge T) \vee W$
+2. $M \wedge (T \vee W)$
+
+## What's the Difference?
+
+1. $(M \wedge T) \vee W$
+2. $M \wedge (T \vee W)$
+
+What is a situation where one of these is true but not the other?
+
+> - If it only rains on Wednesday, then 1 is true but 2 is false.
+> - Are there any others?
+
+## For Next Time
+
+We'll look at how the processes I've described in this lecture can be iterated.

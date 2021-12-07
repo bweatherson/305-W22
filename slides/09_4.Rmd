@@ -1,0 +1,163 @@
+---
+title: "305 Lecture 9.4 - Maximise Expected Utility"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- In this lecture we'll talk about the core rule of formal decision theory: Maximise Expected Utility.
+
+## Associated Reading
+
+Odds and Ends, Chapter 12
+
+## The Rule
+
+- The orthodox view in modern decision theory is that the right decision is the one that maximises the expected utility of your choice. 
+- The rational decision maximises not actual utility, but expected utility.
+
+## Airline Example (Several Variants)
+
+It turns out that what to do turns on three factors.
+
+1. How likely bad weather is.
+2. How much you have to gain by flying the cheaper airline in good weather.
+3. How much you have to lose by flying the cheaper airline in bad weather.
+
+It is plausible, I think, that these three should matter.
+
+## Version One
+
+Lots to gain, relatively little to lose, high probability of good weather.
+
+----------------------------------------------------
+                     Good weather      Bad Weather   
+                       Pr=0.8            Pr=0.2      
+------------------- ----------------- --------------
+ Fly Cheap Airline        10                0       
+ 
+ Fly Good Airline         6                 5       
+----------------------------------------------------
+
+## Utility Calculation
+
+We can work out the expected utility of each action fairly easily.
+
+\begin{align*}
+Exp(\text{Cheap Airline}) &= 0.8 \times 10 + 0.2 \times 0 \\
+ &= 8 + 0 \\
+ &= 8 \\
+Exp(\text{Reliable Airline}) &= 0.8 \times 6 + 0.2 \times 5 \\
+ &= 4.8 + 1 \\
+ &= 5.8 
+\end{align*} 
+
+- So the cheap airline has an expected utility of 8, the reliable airline has an expected utility of 5.8. 
+- The cheap airline has a higher expected utility, so it is what should be taken.
+
+## Other versions
+
+- We'll now look at three changes to the example. 
+- Each change should intuitively change the correct decision, and we'll see that the maximise expected utility rule does change in each case. 
+
+## More Downside if Bad Weather
+
+----------------------------------------------------
+                     Good weather      Bad Weather   
+                       Pr=0.8            Pr=0.2      
+------------------- ----------------- --------------
+ Fly Cheap Airline        10                -20   
+ 
+ Fly Good Airline         6                 5       
+----------------------------------------------------
+
+## Utility Calculations
+
+Here are the new expected utility considerations.
+
+\begin{align*}
+Exp(\text{Cheap Airline}) &= 0.8 \times 10 + 0.2 \times -20 \\
+ &= 8 + (-4) \\
+ &= 4 \\
+Exp(\text{Reliable Airline}) &= 0.8 \times 6 + 0.2 \times 5 \\
+ &= 4.8 + 1 \\
+ &= 5.8 
+\end{align*}
+
+- Now the expected utility of catching the reliable airline is higher than the expected utility of catching the cheap airline. 
+- So it is better to catch the reliable airline.
+
+## Less to Gain by Cheaper Airline
+
+----------------------------------------------------
+                     Good weather      Bad Weather   
+                       Pr=0.8            Pr=0.2      
+------------------- ----------------- --------------
+ Fly Cheap Airline        10                0       
+ 
+ Fly Good Airline         9                 8       
+----------------------------------------------------
+
+## Utility Calculations
+
+Here are the revised expected utility considerations.
+
+\begin{align*}
+Exp(\text{Cheap Airline}) &= 0.8 \times 10 + 0.2 \times 0 \\
+ &= 8 + 0 \\
+ &= 8 \\
+Exp(\text{Reliable Airline}) &= 0.8 \times 9 + 0.2 \times 8 \\
+ &= 7.2 + 1.6 \\
+ &= 8.8 
+\end{align*}
+
+And again this is enough to make the reliable airline the better choice.
+
+## Bad Weather More Likely
+
+----------------------------------------------------
+                     Good weather      Bad Weather   
+                       Pr=0.3            Pr=0.7      
+------------------- ----------------- --------------
+ Fly Cheap Airline        10             0       
+ 
+ Fly Good Airline         6              5       
+----------------------------------------------------
+
+## Utility Calculations
+
+We can work out the expected utility of each action fairly easily.
+
+\begin{align*}
+Exp(\text{Cheap Airline}) &= 0.3 \times 10 + 0.7 \times 0 \\
+ &= 3 + 0 \\
+ &= 3 \\
+Exp(\text{Reliable Airline}) &= 0.3 \times 6 + 0.7 \times 5 \\
+ &= 1.8 + 3.5 \\
+ &= 5.3 
+\end{align*}
+
+## Summarising the Cases
+
+We've looked at four versions of the same case. In each case the ordering of the outcomes, from best to worst, was:
+
+1. Cheap airline and good weather
+2. Reliable airline and good weather
+3. Reliable airline and bad weather
+4. Cheap airline and bad weather
+
+But this doesn't settle what to do; these three factors all matter.
+
+## For Next Time
+
+- We will look at the relationship between utility and money.

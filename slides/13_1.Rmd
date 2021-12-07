@@ -1,0 +1,70 @@
+---
+title: "305 Lecture 13.1 - Two Kinds of Conditionals"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- Starting the discussion of conditionals.
+
+## Associated Reading
+
+- Boxes and Diamonds, chapter 6
+
+## Compare These Examples
+
+1. If Shakespeare didn't write _Hamlet_, then someone else did.
+2. If Shakespeare hadn't written _Hamlet_, then someone else would have. \pause 
+
+Intuitively, 1 is true and 2 is false. \pause 
+
+- So it must be wrong to write both of them as $\neg A \rightarrow B$.
+
+## Terminology
+
+1. If Shakespeare didn't write _Hamlet_, then someone else did.
+2. If Shakespeare hadn't written _Hamlet_, then someone else would have.
+
+There are some common, if misleading, names for these kinds of conditionals.
+
+- 1 is called an **indicative** conditional.
+- 2 is called a **subjunctive** or **counterfactual** conditional
+
+## What's in a Name
+
+- Apparently 2 isn't really subjunctive, though you'd have to speak to a language teacher to explain precisely why this is so.
+- The class of sentences that 2 is meant to pick out are all **counter** to the facts either, as examples like this show.
+
+> If Billy had stolen the cookies from the cookie jar, then we would have found exactly the clues that we actually did find.
+
+## What the Hamlet Example Shows
+
+- That we can't represent each of these conditionals with the same formalism.
+
+## What the Hamlet Example Doesn't Show
+
+- Where the boundary between these two types of conditionals is located. \pause 
+- Whether there even is a binary distinction here, or whether this is part of some n-way division. \pause 
+- How the difference is encoded in language. \pause 
+- Whether it is really 'if' that is ambiguous, or something in the $A$ or $B$.
+
+## What is a Theory of Conditionals
+
+- It should cover both kinds, though maybe in different ways. \pause 
+- You can read the truth tables as giving a very particular theory of conditionals. \pause 
+- But it's an incredibly implausible theory of conditionals.
+
+
+## For Next Time
+
+We'll discuss the so called material conditional.

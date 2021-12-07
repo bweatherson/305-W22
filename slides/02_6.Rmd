@@ -1,0 +1,630 @@
+---
+title: "305 Lecture 2.6 - Complicated Truth Tables"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+  pdf_document: default
+---
+
+
+## Plan
+
+This lecture is about how to build more complicated truth tables than we have looked at so far.
+
+## Associated Reading
+
+forall x, chapters 10 and 11.
+
+## The Example
+
+We are going to work out the truth table for this sentence:
+
+> $(A \vee \neg B) \rightarrow (B \rightarrow (A \wedge C))$
+
+## How Many Rows
+
+> - How many rows should there be in the truth table?
+> - There are three (3) atomic sentences, so there should be $2^3 = 8$ rows.
+
+## Laying Out the Rows
+
+- The convention for these is a bit odd.
+- Here's one way to think about it.
+- For the left-most column you fill the first half of the rows with $\True$ and then the second half of the rows with $\False$.
+
+## First Column
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & & \\
+ $\True$ & & \\
+ $\True$ & & \\
+ $\True$ & & \\
+ $\False$ & &\\
+ $\False$ & &\\
+ $\False$ & &\\
+ $\False$ & &\\
+\end{tabular}
+\end{center}
+
+## Second Column
+
+- Then the second column has one quarter $\True$, followed by one quarter $\False$, followed by one quarter $\True$, followed by one quarter $\False$. 
+- In this case that means we alternate every two rows.
+
+## Second Column
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\lor$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ &\\
+ $\True$ & $\True$ &\\
+ $\True$ & $\False$ &\\
+ $\True$ & $\False$ & \\
+ $\False$ & $\True$ &\\
+ $\False$ & $\True$ &\\
+ $\False$ & $\False$ &\\
+ $\False$ & $\False$ &\\
+\end{tabular}
+\end{center}
+
+## Third Column
+
+- From now on you do half as many rows between changes.
+- In this table we did 4 rows with one value then 4 of another for column 1, 2 with one value then 2 with another for column 2, and now alternate every row for column 3.
+- It's helpful to know the full algorithm in case you ever have to do this with 5 or more variables.
+- But I won't do that in this course.
+
+## Third Column
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\lor$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  & \\
+ $\True$ & $\True$ & $\False$ &  & \\
+ $\True$ & $\False$ & $\True$ &  & \\
+ $\True$ & $\False$ & $\False$ &  &  \\
+ $\False$ & $\True$ & $\True$ &  & \\
+ $\False$ & $\True$ & $\False$ &  & \\
+ $\False$ & $\False$ & $\True$ &  & \\
+ $\False$ & $\False$ & $\False$ &  & \\
+\end{tabular}
+\end{center}
+
+## Parsing the Sentence
+
+Now we need to go back to our sentence.
+
+> $(A \vee \neg B) \rightarrow (B \rightarrow (A \wedge C))$
+
+What is its **main connective**? \pause \bigskip
+
+- It's the first $\rightarrow$. The sentence is of the form $D \rightarrow E$, where $D$ is $(A \vee \neg B)$ and $E$ is $(B \rightarrow (A \wedge C))$
+
+## Building Up
+
+So eventually, we will have the truth value for the whole sentence under the first $\rightarrow$.
+
+- But that's some distance away.
+- While that's where we want to get to, we have to build from the inside out.
+- The first thing to do is to repeat the values for the atomic sentences.
+
+## Atomic Replicator
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ &&& $\True$ &  &&  & $\True$ &&  & $\True$ && $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ &&& $\True$ &  &&  & $\True$ &&  & $\True$ && $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ &&& $\False$ &  &&  & $\False$ &&  & $\True$ && $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ &&& $\False$ &  &&  & $\False$ &&  & $\True$ && $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ &&& $\True$ &  &&  & $\True$ &&  & $\False$ && $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ &&& $\True$ &  &&  & $\True$ &&  & $\False$ && $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ &&& $\False$ &  &&  & $\False$ &&  & $\False$ && $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ &&& $\False$ &  &&  & $\False$ &&  & $\False$ && $\False$ &  &  & \\
+\end{tabular}
+\end{center}
+
+What can we fill in immediately?
+
+## Next Steps
+
+- We have enough on the table to include the values for $\neg B$.
+- And we have enough on the table to include the values for the $A \wedge C$ on the far right.
+- We'll do these in order.
+
+## Negation
+
+Everywhere $B$ is $\True$, $\neg B$ is $\False$, so let's include all of those.
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ && $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ && $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ &&& $\False$ &  &&  & $\False$ &&  & $\True$ && $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ &&& $\False$ &  &&  & $\False$ &&  & $\True$ && $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ && $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ && $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ &&& $\False$ &  &&  & $\False$ &&  & $\False$ && $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ &&& $\False$ &  &&  & $\False$ &&  & $\False$ && $\False$ &  &  & \\
+\end{tabular}
+\end{center}
+
+## Negation (cont)
+
+Everywhere $B$ is $\False$, $\neg B$ is $\True$, so let's include all of those.
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ && $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ && $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ && $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ && $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ && $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ && $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ && $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ && $\False$ &  &  & \\
+\end{tabular}
+\end{center}
+
+## Conjunction
+
+If $A, C$ are both $\True$, so is $A \wedge C$. So let's include those.
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ && $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ && $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ && $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ && $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ && $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ && $\False$ &  &  & \\
+\end{tabular}
+\end{center}
+
+## Conjunction (cont)
+
+And $A \wedge C$ is false everywhere else.
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+\end{center}
+
+## Complex Disjunction
+
+- The next step is combining the values of $A$ and $\neg B$ to get the value of $A \vee \neg B$.
+- The main thing to remember here is what your inputs are.
+- In this case it's not too confusing; it's the values immediately to either side of the $\vee$.
+- But that won't be the general case.
+
+## Disjunction
+
+When $A$ is $\True$, so is $A \vee \neg B$.
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ && $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+\end{center}
+
+## Disjunction (cont)
+
+And when $\neg B$ is $\True$, so is $A \vee \neg B$.
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ && $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+\end{center}
+
+## Disjunction (part III)
+
+Otherwise, $A \vee \neg B$ is $\False$.
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+\end{center}
+
+## Conditional
+
+- Now we have to do $B \rightarrow (A \wedge C)$.
+- We have to remember the table for $\rightarrow$ - TFTT.
+- And we have to remember that what's on the right-hand side of this conditional is a complex sentence: $A \wedge C$.
+
+## Conditional Terminology
+
+- It's helpful to recall our distinctive terminology for conditionals
+- We'll often call the left-hand side of a conditional the **antecedent**. ('Ante' for before, if that helps.) \pause
+- And we'll call the right-hand side the **consequent** (i.e., what comes after).
+- We won't have fancy distinct terminology for the left-hand and right-hand sides of other sentences, because they are symmetric.
+
+## Row 1
+
+$B$ is $\True$, $A \wedge C$ is $\True$, so this is $\True \rightarrow \True$, i.e., $\True$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Row 2
+
+$B$ is $\True$, $A \wedge C$ is $\False$, so this is $\True \rightarrow \False$, i.e., $\False$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\False$ &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Row 3
+
+$B$ is $\False$, $A \wedge C$ is $\True$, so this is $\False \rightarrow \True$, i.e., $\True$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\False$ &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Row 4
+
+$B$ is $\False$, $A \wedge C$ is $\False$, so this is $\False \rightarrow \False$, i.e., $\True$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\False$ &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ & $\True$ &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Row 5
+
+$B$ is $\True$, $A \wedge C$ is $\False$, so this is $\True \rightarrow \False$, i.e., $\False$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\False$ &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ & $\True$ &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ & $\False$ &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Row 6
+
+$B$ is $\True$, $A \wedge C$ is $\False$, so this is $\True \rightarrow \False$, i.e., $\False$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\False$ &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ & $\True$ &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ & $\False$ &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ & $\False$ &  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ &&  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Rows 7 and 8
+
+$B$ is $\False$, $A \wedge C$ is $\False$, so this is $\False \rightarrow \False$, i.e., $\False$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & $\True$ & $\False$ & $\True$ &  &&  & $\True$ & $\False$ &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ & $\True$ &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ & $\True$ &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ & $\False$ &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & $\False$ & $\False$ & $\True$ &  &&  & $\True$ & $\False$ &  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ & $\True$ &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\True$ & $\False$ &  &&  & $\False$ & $\True$ &  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Almost Done
+
+- Now we just need to put the two parts together.
+- We have a conditional whose left-hand side, the antecedent, is $A \vee \neg B$.
+- And the right-hand side, the consequent, is $B \rightarrow (A \wedge C)$.
+- In each row we've computed the truth values for the antecedent and consequent.
+- Now it's a matter of just looking up how they combine.
+- Remember that the truth table for $\rightarrow$ is TFTT.
+- To help, I've started by putting in blue the columns for the antecedent and consequent.
+
+## Getting There
+
+Putting the two relevant columns in blue to make them stand out.
+``
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+\end{center}
+``{=latex}
+
+## Row 1
+
+That's $\True \rightarrow \True$, i.e., $\True$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Row 2
+
+That's $\True \rightarrow \False$, i.e., $\False$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\False$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Row 3
+
+That's $\True \rightarrow \True$, i.e., $\True$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\False$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Row 4
+
+That's also $\True \rightarrow \True$, i.e., $\True$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\False$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Rows 5 and 6
+
+That's  $\False \rightarrow \False$, i.e., $\True$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\False$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Rows 7 and 8
+
+That's  $\True \rightarrow \True$, i.e., $\True$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\False$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## Summing Up
+
+It's true everywhere except when $A, B$ are both $\True$, and $C$ is $\False$.
+
+\begin{center}
+
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{}@{ }c}
+A & B & C &  & ( & A & $\vee$ & $\neg$ & B & ) & $\rightarrow$ & ( & B & $\rightarrow$ & ( & A & $\wedge$ & C & ) & ) & \\
+\hline 
+ $\True$ & $\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\False$ & $\True$ &  &\textcolor{red}{$\False$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\True$ & $\False$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\True$ & $\True$ &  &  & \\
+ $\True$ & $\False$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\True$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\True$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\True$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\False$ & $\True$ &  &\textcolor{red}{$\True$}&  & $\True$ & \textcolor{dodgerblue}{$\False$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+ $\False$ & $\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\True$ &  &  & \\
+ $\False$ & $\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\False$} & $\True$ & $\False$ &  &\textcolor{red}{$\True$}&  & $\False$ & \textcolor{dodgerblue}{$\True$} &  & $\False$ & $\False$ & $\False$ &  &  & \\
+\end{tabular}
+
+\end{center}
+
+## For Next Week
+
+- We'll start on analysing arguments using truth tables.
+- Remember to do the assignment by Friday 5pm.

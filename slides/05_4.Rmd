@@ -1,0 +1,135 @@
+---
+title: "305 Lecture 5.4 - Strategies 1: Working Backwards"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+
+## Plan
+
+This lecture discusses strategies for constructing proofs that involve working backwards.
+
+## Associated Reading
+
+forall x, section 17.1.
+
+## Big Picture
+
+- When you are given a proof to do, you are told what the intended conclusion is.
+- That conclusion will usually have a connective in it.
+- And when it does, it will often be good to aim to use the introduction rule for that connective to complete the proof.
+- Thinking about how that could happen will often give us something to aim for.
+
+## Iteration
+
+- The strategies they discuss in chapter 17 apply recursively.
+- Whenever we talk about a 'target' or a 'conclusion', that could be the conclusion of the whole argument, but it does not have to be.
+- It could just be something else we've set as a target.
+
+## Working Backwards: And
+
+The $\wedge$I rule says
+
+- From X, and Y, infer X $\wedge$ Y.
+
+So if the last line is a conjunction, one strategy is to aim to prove both parts.
+
+## $A \wedge B, C \vdash (A \wedge C) \wedge (B \wedge C)$
+
+![Writing out premises and conclusion](5_4a.png){height=75%}
+
+## $A \wedge B, C \vdash (A \wedge C) \wedge (B \wedge C)$
+
+![Setting up $\wedge$ introduction](5_4b.png){height=75%}
+
+## $A \wedge B, C \vdash (A \wedge C) \wedge (B \wedge C)$
+
+![Working backwards from $A \wedge C$](5_4c.png){height=75%}
+
+## $A \wedge B, C \vdash (A \wedge C) \wedge (B \wedge C)$
+
+![Filling in rules](5_4d.png){height=75%}
+
+## $A \wedge B, C \vdash (A \wedge C) \wedge (B \wedge C)$
+
+![Working backwards from $B \wedge C$](5_4e.png){height=75%}
+
+## $A \wedge B, C \vdash (A \wedge C) \wedge (B \wedge C)$
+
+![Filling in line numbers for the second half](5_4f.png){height=75%}
+
+## $A \wedge B, C \vdash (A \wedge C) \wedge (B \wedge C)$
+
+![Filling in line numbers for the final line](5_4g.png){height=75%}
+
+## $A \rightarrow B \vdash (A \wedge C) \rightarrow (B \wedge C)$
+
+![Premise and conclusion](5_4h.png){height=75%}
+
+## $A \rightarrow B \vdash (A \wedge C) \rightarrow (B \wedge C)$
+
+![Setting up $\rightarrow$I](5_4i.png){height=75%}
+
+## $A \rightarrow B \vdash (A \wedge C) \rightarrow (B \wedge C)$
+
+![Setting up $\wedge$I](5_4ii.png){height=75%}
+
+## $A \rightarrow B \vdash (A \wedge C) \rightarrow (B \wedge C)$
+
+![Getting the first conjunct](5_4j.png){height=75%}
+
+
+## $A \rightarrow B \vdash (A \wedge C) \rightarrow (B \wedge C)$
+
+![Getting the second conjunct](5_4k.png){height=75%}
+
+## $A \rightarrow B \vdash (A \wedge C) \rightarrow (B \wedge C)$
+
+![Line numbers for the $\wedge$I step](5_4l.png){height=75%}
+
+## $A \rightarrow B \vdash (A \wedge C) \rightarrow (B \wedge C)$
+
+![Line numbers for the $\rightarrow$I step](5_4m.png){height=75%}
+
+## $A \rightarrow B, \neg B \vdash \neg A$
+
+![Premises and Conclusion](5_4n.png){height=75%}
+
+## $A \rightarrow B, \neg B \vdash \neg A$
+
+![Setting up $\neg$I](5_4o.png){height=75%}
+
+## $A \rightarrow B, \neg B \vdash \neg A$
+
+![Getting the Contradiction](5_4p.png){height=75%}
+
+## $A \rightarrow B, \neg B \vdash \neg A$
+
+![Finishing the Proof](5_4q.png){height=75%}
+
+## Working Backwards
+
+- What if the conclusion is a disjunction?
+- Don't work backwards!
+
+## For Next Time
+
+- We'll look at strategies that involve going forwards.
+
+
+
+
+
+
+
+
+

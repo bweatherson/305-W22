@@ -1,0 +1,109 @@
+---
+title: "305 Lecture 11.2 - Truth in Modal Logic"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To talk about what a model for a modal logic is.
+
+## Associated Reading
+
+- Boxes and Diamonds, section 3.3 and 3.4.
+
+## Worlds
+
+We start with Leibniz's idea that necessity is truth in all possible worlds.
+
+- Leibniz was interested in metaphysical necessity, so we'll have to qualify this a little, but it's a good idea.
+- So instead of saying that each proposition simply has a truth value, we'll say that there are many **worlds**, and at each world each proposition has a truth value.
+- But don't assume that propositions have the same truth value at each world.
+- In one world I might be standing, and in another world I might be sitting.
+
+## What Are Worlds
+
+We are well and truly not going to get into the metaphysics of worlds here.
+
+- Indeed, they need not even be anything like possible worlds in the sense that metaphysicians usually care about.
+- They might, for instance, be different times.
+- All we care about is that they are things at which propositions can be true or false.
+
+## Valuations
+
+A valuation function tells us which worlds atomic sentences are true at.
+
+- These can be completely arbitrary; we don't put any restrictions on them.
+
+## Truth at a World
+
+We want more generally a function that tells us whether a sentence is true at a particular world.
+
+- For sentences built up using $\wedge, \vee, \rightarrow, \neg$, this is relatively easy.
+- We just keep on using truth tables.
+- So if at world $w$, $A$ is true and $B$ is false, then $A \wedge B$ is false and $A \vee B$ is true.
+
+## Modal Values
+
+We also need values for these sentences:
+
+- $\Box A$
+- $\Diamond A$
+
+It turns out these are more complicated - but not much more complicated.
+
+## Accessibility 
+
+The last part of our model is an **accessibility** relation between worlds.
+
+- Again, this can be completely arbitrary.
+- We don't yet put any restrictions on it.
+- Notably, we don't assume that it is **reflexive**, **symmetric** or **transitive**
+
+## Properties of Relations
+
+- $R$ is reflexive iff for all $x$, $xRx$.\pause
+- $R$ is symmetric iff for all $x, y$, if $xRy$ then $yRx$.\pause
+- $R$ is transitive iff for all $x, y, z$ if $xRy$ and $yRz$ then $xRz$.\pause
+
+A lot of relations we care about have one or more of these properties, but not all do. Consider, for example, **admires** as an example of a relation with none of them.
+
+## Truth of Modal Formulas
+
+A sentence $\Box A$ is true at a world $x$ just in case the following condition is met:
+
+- For all worlds $y$ such that $xRy$, $A$ is true at world $y$.\pause
+
+A sentence $\Diamond A$ is true at a world $x$ just in case the following condition is met:
+
+- For some world $y$ such that $xRy$, $A$ is true at world $y$.
+
+## Modal Truth
+
+- Something is necessarily true iff it is true everywhere that is accessible.
+- Something is possibly true iff it is true somewhere accessible. \pause
+
+We get back the Leibnizian idea that necessity is truth in all possible worlds if we assume the accessibility relation is the universal relation, i.e., $xRy$ for all $x, y$.
+
+## Metaphysical Necessity
+
+On this Leibnizian model, where all worlds can access all worlds, iterated modalities are rather uninteresting. These three sentences are true in the same worlds/models.
+
+1. $\Box A$
+2. $\Box \Box A$
+3. $\Diamond \Box A$
+
+That's because if $\Box A$ is true at any world, then it is true at all worlds. In the general case, where we do not assume that $R$ is universal, these are not equivalent.
+
+## For Next Time
+
+We'll talk about the relationship between boxes and diamonds.

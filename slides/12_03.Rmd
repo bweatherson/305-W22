@@ -1,0 +1,113 @@
+---
+title: "305 Lecture 12.3 - Differences Between Modal Logics"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To look at the differences between different modal logics.
+
+## Associated Reading
+
+- Boxes and Diamonds, section 5.7.
+
+## Many Logics
+
+- As we've said before, there is no such thing as modal logic (singular).
+- Rather, there are modal logics (plural).
+- How do we refer to them?
+
+## Old Way - Axioms
+
+Here's how we traditionally identified **K**, the basic modal logic.
+
+1. The logic just is the set of theorems (or logical truths).
+2. Any theorem of propositional logic is a theorem.
+3. If $X$ and $X \rightarrow Y$ are theorems, so is $Y$.
+4. If $X$ is a theorem, so is $\Box X$.
+5. Any instance of $(\Box A \rightarrow \Box B) \rightarrow \Box (A \rightarrow B)$ is a theorem.
+
+## More Logics
+
+We extend that by adding new things after 5. Here are some things we could add.
+
+- Any instance of $\Box A \rightarrow A$ is a theorem. (Call this **T**.)
+- Any instance of $\Box A \rightarrow \Box \Box A$ is a theorem. (Call this **4**.)
+- Any instance of $A \rightarrow \Box \Diamond A$ is a theorem. (Call this **B**.)
+
+The logic KTB is what you get by adding the first and third of these to K. The logic K4 is what you get by adding just the second, and so on.
+
+## New Way - Models
+
+But the axiomatic approach is often hard to work with.
+
+- Proving even quite simple things this way can be a pain.
+- And figuring out which instances of these axioms to appeal to is hard to automate.
+- So instead we focus on the classes of models.
+
+## Back to K
+
+The basic logic **K** is defined as follows.
+
+- A logic is still a set of theorems.
+- Something is a theorem of **K** just in case it is true at all points in all models $\langle W, R, V \rangle$.
+
+## Adding Things
+
+We get other logics by putting _restrictions_ on R.
+
+- We could put on the restriction that R is reflexive (everything points to itself). Call this **T**.
+- We could put on the restriction that R is transitive (if you can get somewhere in two steps, you can get there in one). Call this **4**.
+- We could put on the restriction that R is symmetric (if you can get somewhere, you can get back.) Call this **B**.
+
+## Naming Logics Again
+
+And we can follow the same naming convention.
+
+- KT4 is the logic of frames that are both reflexive (T) and transitive (4).
+- KB is the logic of frames that are symmetric.
+
+## Two Special Names
+
+There are two names that don't fit this convention, because they come from a different historical tradition. This is the tradition that goes back to Lewis & Langford's 1932 discussion of modal logic, where they introduced 5 logics called S1 through S5.
+
+- S4 = KT4.
+- S5 = KT4B.
+
+## Restrictions Imply More Rules
+
+When you put restrictions on the class of frames, more things are guaranteed to be true.
+
+- Generally, it's easier for something to be true throughout a smaller class of models than throughout a larger class.
+- So we need new rules for the restrictions.
+- These supplement, not replace, the old rules.
+- If you have two restrictions, you get two new sets of rules.
+
+## Rules for T
+
+- If $\Box A$ is true at $x$, then $A$ is true at $x$.
+- If $\Diamond A$ is false at $x$, then $A$ is false at $x$.
+
+## Rules for 4
+
+- If $\Box A$ is true at $x$, and $x.y$ appears on the branch, then $\Box A$ is true at $x.y$.
+- If $\Diamond A$ is false at $x$, and $x.y$ appears on the branch, then $\Diamond A$ is false at $x.y$
+
+## Rules for B
+
+- If $\Box A$ is true at $x.y$, then $A$ is true at $x$.
+- If $\Diamond A$ is false at $x.y$ then $A$ is false at $x$.
+
+## For Next Time
+
+We'll look at the special rules for the special logic S5.

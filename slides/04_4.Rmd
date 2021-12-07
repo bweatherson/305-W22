@@ -1,0 +1,48 @@
+---
+title: "305 Lecture 4.4 - Introducing Natural Deduction"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+This lecture introduces the proof system called Natural Deduction.
+
+## Associated Reading
+
+forall x, chapter 15.
+
+## What is Natural Deduction
+
+> -  A proof system that looks like reasoning in natural language
+> - Every step is an inference that conforms to one of a small number of good rules.
+
+##  Advantages
+
+> - The results look more natural.
+> - The results feel more philosophically significant.
+> - The length of proofs grows more or less linearly with the complexity of the argument, not exponentially.
+> - The method can be generalised well beyond basic propositional logic.
+
+## Tables, Trees and Proofs
+
+- The last two advantages are really advantages of natural deduction over tables.
+- They aren’t really advantages over trees.
+
+## Disadvantages
+
+> - This is a one-way method; it can’t be used to prove invalidity.
+> - Constructing proofs is hard.
+
+## For Next Time
+
+- We will look at 16.1, on the idea of a proof.

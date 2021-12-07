@@ -1,0 +1,183 @@
+---
+title: "305 Lecture 1.3 - Validity"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+  pdf_document: default
+---
+
+## Plan for This Lecture
+
+We're discussing the nature of validity.
+
+## Associated Reading
+
+forall x, chapter 2, "The Scope of Logic".
+
+## Virtues of Arguments
+
+What are some virtues of arguments that you can think of? What makes for a good argument?
+
+## Virtues of Arguments
+
+> - Premises are true.
+> - Premises are known. 
+> - Premises are accepted in debate. 
+> - Premises are evidence for the conclusion.
+> - Premises guarantee the truth of the conclusion.
+
+## Logic
+
+To a first approximation, logic is about the last of these virtues.
+
+- Does the truth of a set of premises **guarantee** the truth of the conclusion? \pause
+- If so, we'll say the argument is **valid**.
+
+## Guarantee
+
+What is it for the premises to guarantee truth?
+
+- It's for every **case** where the premises are true to also be a case where the conclusion is true. \pause
+- That's nice, you might say, but what's a case?
+
+## Cases
+
+- This, I'm afraid, we're going to leave a little abstract. 
+- As the book in effect notes, it's probably best to leave this as a placeholder.
+- Different notions of what a case are get you different notions of what arguments are valid.
+- But you get into deep metaphysical waters here pretty fast; let's retreat to some defintions.
+
+## Terminology
+
+When an argument, with premises $P_1, P_2, \dots, P_n$ and conclusion $C$ is valid, we'll say all the following things are true. \pause
+
+- The premises **entail** the conclusion. \pause
+- The conclusion **follows from** the premises. \pause
+- The conclusion is a **consequence** of the premises.
+
+## Invalid
+
+- An argument is **invalid** just in case it is not valid. \pause
+- That is, it is **invalid** if there is a case where the premises are true and the conclusion false.
+
+## Structure
+
+- Logic is largely about validity, about which premises guarantee the truth of which conclusions.
+- It's about a special kind of guarantee, one that holds in virtue of the **structure** or **form** of the premises and conclusion.
+
+## A Valid Argument
+
+&nbsp;
+:    All kangaroos are wise.
+
+&nbsp;
+:    Skippy is a kangaroo.
+
+$\therefore$
+:    Skippy is wise.
+
+## Non-Structural Guarantee
+
+Compare the Skippy argument with this one.
+
+&nbsp;
+:    Today is Wednesday.
+
+$\therefore$
+:    Tomorrow is Thursday.
+
+The premise guarantees the truth of the conclusion, but it does so in virtue of meanings of 'Wednesday' and 'Thursday', not structural features.
+
+## Form and Structure
+
+- In the book they talk about the **form** of arguments.
+- This is just the same thing as I'm meaning by **structure**.
+- There is something about the Skippy example that's special; just the form of the argument shows that it is valid.
+
+## Structure and Substitution
+
+When the structure of the argument does the guaranteeing, the guarantee would persist through some substitutions.
+
+&nbsp;
+:    All kangaroos are wise.
+
+&nbsp;
+:    Skippy is a kangaroo.
+
+$\therefore$
+:    Skippy is wise.
+
+## Structure and Substitution
+
+When the structure of the argument does the guaranteeing, the guarantee would persist through some substitutions.
+
+&nbsp;
+:    All kangaroos are wise.
+
+&nbsp;
+:    Lucky is a kangaroo.
+
+$\therefore$
+:    Lucky is wise.
+
+## Structure and Substitution
+
+When the structure of the argument does the guaranteeing, the guarantee would persist through some substitutions.
+
+&nbsp;
+:    All koalas are wise.
+
+&nbsp;
+:    Lucky is a koala.
+
+$\therefore$
+:    Lucky is wise.
+
+## Structure and Substitution
+
+When the structure of the argument does the guaranteeing, the guarantee would persist through some substitutions.
+
+&nbsp;
+:    All koalas are dishonest.
+
+&nbsp;
+:    Lucky is a koala.
+
+$\therefore$
+:    Lucky is dishonest.
+
+## Terminology
+
+- We'll say an argument is **valid** just in case the truth of the premises guarantees the truth of the conclusion.
+- We'll say an argument is **formally valid**, or occasionally **logically valid**, if it is valid, and any argument with the same form/structure is valid.
+- We'll say an argument is **sound** just in case it is valid and has true premises.
+- We won't have much interest here in soundness; just in validity.
+
+## Structure
+
+- You might have noticed that I never actually defined what it is for two arguments to share a structure.
+- I just said that changing a name (consistently throughout the argument), or changing a noun/adjective (consistently) preserves structure.
+- But I didn't say more than that.
+- Hold that thought! We'll have quite a lot to say as the course goes on about this notion of structure.
+
+## Validity
+
+Here are some equivalent ways to define validity.
+
+- An argument is valid if necessarily, when the premises are true, the conclusion is too.
+- An argument is valid if it is impossible for the premises to be true and the conclusion to not be true.
+
+We'll use that last formulation a lot.
+
+## For Next Time
+
+We'll start our look at the most fundamental kind of logic: propositional logic.

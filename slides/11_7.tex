@@ -1,0 +1,648 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 11.7 - Frames and Philosophy},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\usetikzlibrary{arrows.meta}
+\RequirePackage[tableaux]{prooftrees}
+\forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 11.7 - Frames and Philosophy}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+\begin{itemize}
+\tightlist
+\item
+  To go over why we should care about frames in philosophy classes, not
+  just in logic classes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+\begin{itemize}
+\tightlist
+\item
+  Boxes and Diamonds, section 4.3 to 4.5 (though a lot of what I say
+  here isn't in this book.)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Thinking about Possibility}
+\protect\hypertarget{thinking-about-possibility}{}
+When we think about what these models might really mean, the \(R\)
+relation is a kind of possibility.
+
+\begin{itemize}
+\tightlist
+\item
+  \(wRx\) means that if \(w\) is how things actually are, then \(x\) is
+  a way things might be, in the sense of might that we care about.
+  \pause  The point of the results in chapter 4 is that we now have two
+  ways to think about these possibility claims.
+\end{itemize}
+
+\begin{enumerate}
+\tightlist
+\item
+  We can look at them directly, and this may tell us something about
+  certain modal sentences.
+\item
+  Or we can look at the sentences, and that can tell us something about
+  the possibility claims.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Epistemic Modality}
+\protect\hypertarget{epistemic-modality}{}
+I want to walk through a bit how this plays out in contemporary debates
+in epistemology (the study of knowledge).
+
+\begin{itemize}
+\tightlist
+\item
+  We will treat \(\Box A\) as meaning \emph{Hero knows that A}.
+\item
+  So \(\Diamond A\) means \emph{For all hero knows, A}, or (roughly)
+  \emph{A might be true (from Hero's perspective)}.
+\item
+  And \(wRx\) means \emph{If w is actual, then x is possible for Hero}.
+  That is, if \(w\) is actual, then for all Hero knows, they are
+  actually in \(x\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Reflexivity}
+\protect\hypertarget{reflexivity}{}
+Remember there is a tight connection between these two claims.
+
+\begin{enumerate}
+\tightlist
+\item
+  \(R\) is reflexive, i.e., \(wRw\) for all \(w\).
+\item
+  It is always true that \(\Box A \rightarrow A\).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Reflexivity and Epistemic Modals}
+\protect\hypertarget{reflexivity-and-epistemic-modals}{}
+Both of these look like they should hold.
+
+\begin{enumerate}
+\tightlist
+\item
+  If Hero is in world \(w\), then for all she knows, she could be in
+  world \(w \pause\).
+\item
+  If Hero knows that \(A\), then it is the case that \(A\).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Symmetry}
+\protect\hypertarget{symmetry}{}
+Remember there is a tight connection between these two claims.
+
+\begin{enumerate}
+\tightlist
+\item
+  \(R\) is symmetric, i.e., if \(wRx\) then \(xRw\).
+\item
+  It is always true that \(A \rightarrow \Box \Diamond A \pause\).
+\end{enumerate}
+
+Question:
+
+\begin{itemize}
+\tightlist
+\item
+  Should this hold for the epistemic interpretation of \(\Box\)?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Symmetry and Epistemic Modals}
+\protect\hypertarget{symmetry-and-epistemic-modals}{}
+This does not look particularly plausible. Let \(p\) be something that's
+actually true, but which Hero believes is false. (Hero could be anyone,
+so they could have false beliefs.) We'll start thinking directly about
+the models.
+
+\begin{itemize}
+\tightlist
+\item
+  Let \(w_a\) be the actual world, and \(w_b\) the world in which
+  everything is exactly as Hero thinks it is (in all respects).
+\item
+  Then \(w_aRw_b\), since \(w_b\) is surely possible for Hero from the
+  actual perspective.
+\item
+  But if she were in \(w_b\), then \(w_a\) would not be possible,
+  because she would know that \(p\) is false, and in \(w_a\) it is true.
+\item
+  So \(w_aRw_b\) but not \(w_bRw_a\), showing symmetry fails.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Symmetry and Epistemic Modals (cont)}
+\protect\hypertarget{symmetry-and-epistemic-modals-cont}{}
+Now think about the axiom
+
+\begin{itemize}
+\tightlist
+\item
+  \(p \rightarrow \Box \Diamond p\)
+\end{itemize}
+
+Remember Hero thinks \(p\) is false, but it's actually true. Is it the
+case that \(\Box \Diamond p \pause\). Presumably not. This means that
+Hero knows that \(p\) might be true, but she thinks \(p\) is false. So
+false beliefs are still a problem.
+\end{frame}
+
+\begin{frame}{Transitivity}
+\protect\hypertarget{transitivity}{}
+Remember there is a tight connection between these two claims.
+
+\begin{enumerate}
+\tightlist
+\item
+  \(R\) is transitive, i.e., if \(wRx\) and \(xRy\) then \(wRy\).
+\item
+  It is always true that \(\Box A \rightarrow \Box \Box A \pause\).
+\end{enumerate}
+
+Question:
+
+\begin{itemize}
+\tightlist
+\item
+  Should this hold for the epistemic interpretation of \(\Box\)?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Current Debate}
+\protect\hypertarget{current-debate}{}
+\begin{itemize}
+\tightlist
+\item
+  This is a much disputed question in the contemporary literature.
+\item
+  Here's one way to think about it.
+\item
+  Is there some state of affairs that (a) Hero knows does not obtain,
+  but (b) would be possible if the world was some other way, and (c) for
+  all Hero knows the world is that way? \pause
+\item
+  For a long time, philosophers (and computer scientists, economists
+  etc) thought this was impossible, so they thought we should have
+  \(\Box A \rightarrow \Box \Box A \pause\). But recently a number of
+  philosophers have started thinking this isn't true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Outside Philosophy}
+\protect\hypertarget{outside-philosophy}{}
+This is a philosophy course, so I'm going to focus on what happens in
+philosophy.
+
+\begin{itemize}
+\tightlist
+\item
+  But the issue has broader ramifications.
+\item
+  Lots of disciplines use models that include a representation of what
+  various agents (living or artificial) know at different points.
+\item
+  And the standard way this is done doesn't even allow for the
+  representation of transitivity failures.
+\item
+  Indeed, it doesn't even allow for symmetry failures, which is a bigger
+  problem.
+\item
+  But the issue here is one that lots of theorists should worry about.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Margins of Error}
+\protect\hypertarget{margins-of-error}{}
+Think about the following situation.
+
+\begin{itemize}
+\tightlist
+\item
+  Hero is in a large lecture - maybe intro philosophy.
+\item
+  As often happens, they are a bit bored, and start estimating how many
+  people are in the lecture theatre.
+\item
+  They are good at this kind of estimation, but not perfect.
+\item
+  But they are almost always within 10\% of the correct count. That's
+  their \textbf{margin of error}.
+\item
+  Today they guess there are 200 students in the lecture, and (a little
+  surprisingly) there are indeed exactly 200 students in the lecture.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Margins and Knowledge}
+\protect\hypertarget{margins-and-knowledge}{}
+What does Hero know?
+
+\begin{itemize}
+\tightlist
+\item
+  Presumably they don't know that there are precisely 200 students in
+  the lecture.
+\item
+  After all, they aren't usually this accurate.
+\item
+  But they do know that the number of students in somewhere between 180
+  and 220, since they are accurate to within 10\%.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Some worlds}
+\protect\hypertarget{some-worlds}{}
+Let \(w_n\) be the world where there are precisely \(n\) students in the
+lecture.
+
+\begin{itemize}
+\tightlist
+\item
+  So the actual world is \(w_{200}\).
+\item
+  And every world between \(w_{180}\) and \(w_{220}\) is possible.
+  \pause 
+\item
+  But the worlds outside that range are not possible - Hero knows they
+  do not obtain. \pause Now think about which worlds are possible from
+  \(w_{220}\). \pause 
+\item
+  In particular, should we think \(w_{220}Rw_{230}\)?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What's At Stake}
+\protect\hypertarget{whats-at-stake}{}
+If \(w_{220}Rw_{230}\) then transitivity fails.
+
+\begin{itemize}
+\tightlist
+\item
+  We have \(w_{200}Rw_{220}\).
+\item
+  And we have, by hypothesis, \(w_{220}Rw_{230}\).
+\item
+  But we don't have \(w_{200}Rw_{230}\), since Hero actually knows that
+  there are less than 230 students in the lecture. \pause 
+\end{itemize}
+
+But if we don't have \(w_{220}Rw_{230}\), then transitivity holds here.
+And this kind of case might be the best case for a transitivity failure.
+\end{frame}
+
+\begin{frame}{So What's Right?}
+\protect\hypertarget{so-whats-right}{}
+Think about what Hero knows in the world where
+
+\begin{enumerate}
+\tightlist
+\item
+  There are actually 220 students in the lecture, and
+\item
+  She guesses there are 200 students. \pause 
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  On the one hand, her estimations are only accurate to within 10\%, so
+  it would be funny if she knew there were less than 230 students. That
+  would mean she could rule out something that was within the margin of
+  error of her estimation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{So What's Right?}
+\protect\hypertarget{so-whats-right-1}{}
+Think about what Hero knows in the world where
+
+\begin{enumerate}
+\tightlist
+\item
+  There are actually 220 students in the lecture, and
+\item
+  She guesses there are 200 students. \pause 
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  On the other hand, she knows that she guessed 200. And she knows (we
+  can assume) that she's almost always within 10\% of the truth. While
+  she does not know this is one of the cases where she is this accurate,
+  it actually is such a case. So maybe she can knowingly deduce (from
+  her guess) that the crowd size is between 180 and 220.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A Verdict?}
+\protect\hypertarget{a-verdict}{}
+I'm not going to adjudicate this here. Indeed it's an open debate in the
+literature.
+
+\begin{itemize}
+\tightlist
+\item
+  What I do think is that thinking about these models, and in particular
+  how they can be used to model noisy estimation of point values, is a
+  helpful way to approach the problem.
+\item
+  It's more helpful than thinking directly about whether someone could
+  know something without knowing that they knew it.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+Next week, we'll look at how we prove things in modal logic.
+\end{frame}
+
+\end{document}

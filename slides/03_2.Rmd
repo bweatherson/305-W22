@@ -1,0 +1,90 @@
+---
+title: "305 Lecture 3.2 - Tautologies"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+This lecture is about how we use truth tables to check for whether something is a **tautology**.
+
+## Associated Reading
+
+forall x, chapter 12, especially section 12.1.
+
+## Tautologies
+
+We are going to start with a particular kind of sentence, a **tautology**.
+
+## Definition
+
+A tautology is a sentence that gets the value $\True$ in every row of its truth table.
+
+## Examples of Tautologies
+
+What are some sentences that might fit the bill?
+
+## The Law of Excluded Middle
+
+\begin{center}
+\begin{tabular}{@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A &  & A & $\lor$ & $\neg$ & A & \\
+\hline 
+$\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\False$ & $\True$ & \\
+$\False$ &  & $\False$ & \textcolor{red}{$\True$} & $\True$ & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## The Law of Non-Contradiction
+
+\begin{center}
+\begin{tabular}{@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{ }}
+A & $\neg$ & ( & A & $\wedge$ & $\neg$ & A & )\\
+\hline 
+$\True$ & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ & $\True$ & \\
+$\False$ & \textcolor{red}{$\True$} &  & $\False$ & $\False$ & $\True$ & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## Reflexive Conditionals
+
+\begin{center}
+\begin{tabular}{@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A &  & A & $\rightarrow$ & A & \\
+\hline 
+$\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\False$ &  & $\False$ & \textcolor{red}{$\True$} & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## A Surprising One
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+A & B &  & ( & A & $\rightarrow$ & B & ) & $\lor$ & ( & B & $\rightarrow$ & A & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+\end{center}
+
+## Tautologies and Logical Truth
+
+- All tautologies are logical truths.
+- But the converse isn't true - some logical truths are not tautologies.
+- E.g., If Brian is necessarily a human, then Brian is a human.
+
+## For Next Time
+
+We will start using truth tables to look at whether arguments are valid.

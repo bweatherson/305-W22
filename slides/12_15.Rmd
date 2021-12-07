@@ -1,0 +1,126 @@
+---
+title: $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$ (in S5)
+author: Build a Tableau
+date: To Check Whether it is Valid
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Hypothesis
+
+$\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$ is a theorem of S5.
+
+- We are going to use simplified S5 because normal S5 is really painful for cases like this one.
+
+## $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)}{1}, just = \TAss,
+]
+\end{oltableau}
+
+\bigskip
+
+Start with it being false at 1.
+
+## $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)}{1}, checked, just = \TAss,
+  [\pFmla{\False}{\Box(\Box A \rightarrow B)}{1}, just = {\TRule{\False}{\vee}[1]}
+    [\pFmla{\False}{\Box(\Box B \rightarrow A)}{1}, just = {\TRule{\False}{\vee}[1]}
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+False $\vee$ sentences have both sides false.
+
+## $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)}{1}, checked, just = \TAss,
+  [\pFmla{\False}{\Box(\Box A \rightarrow B)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+    [\pFmla{\False}{\Box(\Box B \rightarrow A)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+      [\pFmla{\False}{\Box A \rightarrow B}{2}, just = {\TRule{\False}{\Box}[2]}
+        [\pFmla{\False}{\Box B \rightarrow A}{3}, just = {\TRule{\False}{\Box}[3]}
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Both of these false $\Box$ sentences have to be made false somehow.
+
+## $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)}{1}, checked, just = \TAss,
+  [\pFmla{\False}{\Box(\Box A \rightarrow B)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+    [\pFmla{\False}{\Box(\Box B \rightarrow A)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+      [\pFmla{\False}{\Box A \rightarrow B}{2}, checked, just = {\TRule{\False}{\Box}[2]}
+        [\pFmla{\False}{\Box B \rightarrow A}{3}, checked, just = {\TRule{\False}{\Box}[3]}
+          [\pFmla{\True}{\Box A}{2}, just = {\TRule{\False}{\rightarrow}[4]}
+            [\pFmla{\False}{B}{2}, just = {\TRule{\False}{\rightarrow}[4]}
+              [\pFmla{\True}{\Box B}{3}, just = {\TRule{\False}{\rightarrow}[5]}
+                [\pFmla{\False}{A}{3}, just = {\TRule{\False}{\rightarrow}[5]}
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+- False $\rightarrow$ sentences mean left false; right true.
+
+
+## $\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box(\Box A \rightarrow B) \vee \Box(\Box B \rightarrow A)}{1}, checked, just = \TAss,
+  [\pFmla{\False}{\Box(\Box A \rightarrow B)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+    [\pFmla{\False}{\Box(\Box B \rightarrow A)}{1}, checked, just = {\TRule{\False}{\vee}[1]}
+      [\pFmla{\False}{\Box A \rightarrow B}{1.1}, checked, just = {\TRule{\False}{\Box}[2]}
+        [\pFmla{\False}{\Box B \rightarrow A}{1.2}, checked, just = {\TRule{\False}{\Box}[3]}
+          [\pFmla{\True}{\Box A}{2}, just = {\TRule{\False}{\rightarrow}[4]}
+            [\pFmla{\False}{B}{2}, just = {\TRule{\False}{\rightarrow}[4]}
+              [\pFmla{\True}{\Box B}{3}, just = {\TRule{\False}{\rightarrow}[5]}
+                [\pFmla{\False}{A}{3}, just = {\TRule{\False}{\rightarrow}[5]}
+                  [\pFmla{\True}{A}{3}, just = {\TRule{\True}{\Box}[6]}, close]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+- And if $\Box A$ is true, then $A$ is true everywhere, including 3.
+- This closes the tree, so it is a theorem of S5.
+
+

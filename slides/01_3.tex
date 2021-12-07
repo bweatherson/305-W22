@@ -1,0 +1,577 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 1.3 - Validity},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\usetikzlibrary{arrows.meta}
+\RequirePackage[tableaux]{prooftrees}
+\forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 1.3 - Validity}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan for This Lecture}
+\protect\hypertarget{plan-for-this-lecture}{}
+We're discussing the nature of validity.
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+forall x, chapter 2, ``The Scope of Logic''.
+\end{frame}
+
+\begin{frame}{Virtues of Arguments}
+\protect\hypertarget{virtues-of-arguments}{}
+What are some virtues of arguments that you can think of? What makes for
+a good argument?
+\end{frame}
+
+\begin{frame}{Virtues of Arguments}
+\protect\hypertarget{virtues-of-arguments-1}{}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Premises are true.
+\item
+  Premises are known.
+\item
+  Premises are accepted in debate.
+\item
+  Premises are evidence for the conclusion.
+\item
+  Premises guarantee the truth of the conclusion.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Logic}
+\protect\hypertarget{logic}{}
+To a first approximation, logic is about the last of these virtues.
+
+\begin{itemize}
+\tightlist
+\item
+  Does the truth of a set of premises \textbf{guarantee} the truth of
+  the conclusion? \pause
+\item
+  If so, we'll say the argument is \textbf{valid}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Guarantee}
+\protect\hypertarget{guarantee}{}
+What is it for the premises to guarantee truth?
+
+\begin{itemize}
+\tightlist
+\item
+  It's for every \textbf{case} where the premises are true to also be a
+  case where the conclusion is true. \pause
+\item
+  That's nice, you might say, but what's a case?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cases}
+\protect\hypertarget{cases}{}
+\begin{itemize}
+\tightlist
+\item
+  This, I'm afraid, we're going to leave a little abstract.
+\item
+  As the book in effect notes, it's probably best to leave this as a
+  placeholder.
+\item
+  Different notions of what a case are get you different notions of what
+  arguments are valid.
+\item
+  But you get into deep metaphysical waters here pretty fast; let's
+  retreat to some defintions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Terminology}
+\protect\hypertarget{terminology}{}
+When an argument, with premises \(P_1, P_2, \dots, P_n\) and conclusion
+\(C\) is valid, we'll say all the following things are true. \pause
+
+\begin{itemize}
+\tightlist
+\item
+  The premises \textbf{entail} the conclusion. \pause
+\item
+  The conclusion \textbf{follows from} the premises. \pause
+\item
+  The conclusion is a \textbf{consequence} of the premises.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Invalid}
+\protect\hypertarget{invalid}{}
+\begin{itemize}
+\tightlist
+\item
+  An argument is \textbf{invalid} just in case it is not valid. \pause
+\item
+  That is, it is \textbf{invalid} if there is a case where the premises
+  are true and the conclusion false.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Structure}
+\protect\hypertarget{structure}{}
+\begin{itemize}
+\tightlist
+\item
+  Logic is largely about validity, about which premises guarantee the
+  truth of which conclusions.
+\item
+  It's about a special kind of guarantee, one that holds in virtue of
+  the \textbf{structure} or \textbf{form} of the premises and
+  conclusion.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A Valid Argument}
+\protect\hypertarget{a-valid-argument}{}
+\begin{description}
+\tightlist
+\item[~]
+All kangaroos are wise.
+\item[~]
+Skippy is a kangaroo.
+\item[\(\therefore\)]
+Skippy is wise.
+\end{description}
+\end{frame}
+
+\begin{frame}{Non-Structural Guarantee}
+\protect\hypertarget{non-structural-guarantee}{}
+Compare the Skippy argument with this one.
+
+\begin{description}
+\tightlist
+\item[~]
+Today is Wednesday.
+\item[\(\therefore\)]
+Tomorrow is Thursday.
+\end{description}
+
+The premise guarantees the truth of the conclusion, but it does so in
+virtue of meanings of `Wednesday' and `Thursday', not structural
+features.
+\end{frame}
+
+\begin{frame}{Form and Structure}
+\protect\hypertarget{form-and-structure}{}
+\begin{itemize}
+\tightlist
+\item
+  In the book they talk about the \textbf{form} of arguments.
+\item
+  This is just the same thing as I'm meaning by \textbf{structure}.
+\item
+  There is something about the Skippy example that's special; just the
+  form of the argument shows that it is valid.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Structure and Substitution}
+\protect\hypertarget{structure-and-substitution}{}
+When the structure of the argument does the guaranteeing, the guarantee
+would persist through some substitutions.
+
+\begin{description}
+\tightlist
+\item[~]
+All kangaroos are wise.
+\item[~]
+Skippy is a kangaroo.
+\item[\(\therefore\)]
+Skippy is wise.
+\end{description}
+\end{frame}
+
+\begin{frame}{Structure and Substitution}
+\protect\hypertarget{structure-and-substitution-1}{}
+When the structure of the argument does the guaranteeing, the guarantee
+would persist through some substitutions.
+
+\begin{description}
+\tightlist
+\item[~]
+All kangaroos are wise.
+\item[~]
+Lucky is a kangaroo.
+\item[\(\therefore\)]
+Lucky is wise.
+\end{description}
+\end{frame}
+
+\begin{frame}{Structure and Substitution}
+\protect\hypertarget{structure-and-substitution-2}{}
+When the structure of the argument does the guaranteeing, the guarantee
+would persist through some substitutions.
+
+\begin{description}
+\tightlist
+\item[~]
+All koalas are wise.
+\item[~]
+Lucky is a koala.
+\item[\(\therefore\)]
+Lucky is wise.
+\end{description}
+\end{frame}
+
+\begin{frame}{Structure and Substitution}
+\protect\hypertarget{structure-and-substitution-3}{}
+When the structure of the argument does the guaranteeing, the guarantee
+would persist through some substitutions.
+
+\begin{description}
+\tightlist
+\item[~]
+All koalas are dishonest.
+\item[~]
+Lucky is a koala.
+\item[\(\therefore\)]
+Lucky is dishonest.
+\end{description}
+\end{frame}
+
+\begin{frame}{Terminology}
+\protect\hypertarget{terminology-1}{}
+\begin{itemize}
+\tightlist
+\item
+  We'll say an argument is \textbf{valid} just in case the truth of the
+  premises guarantees the truth of the conclusion.
+\item
+  We'll say an argument is \textbf{formally valid}, or occasionally
+  \textbf{logically valid}, if it is valid, and any argument with the
+  same form/structure is valid.
+\item
+  We'll say an argument is \textbf{sound} just in case it is valid and
+  has true premises.
+\item
+  We won't have much interest here in soundness; just in validity.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Structure}
+\protect\hypertarget{structure-1}{}
+\begin{itemize}
+\tightlist
+\item
+  You might have noticed that I never actually defined what it is for
+  two arguments to share a structure.
+\item
+  I just said that changing a name (consistently throughout the
+  argument), or changing a noun/adjective (consistently) preserves
+  structure.
+\item
+  But I didn't say more than that.
+\item
+  Hold that thought! We'll have quite a lot to say as the course goes on
+  about this notion of structure.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Validity}
+\protect\hypertarget{validity}{}
+Here are some equivalent ways to define validity.
+
+\begin{itemize}
+\tightlist
+\item
+  An argument is valid if necessarily, when the premises are true, the
+  conclusion is too.
+\item
+  An argument is valid if it is impossible for the premises to be true
+  and the conclusion to not be true.
+\end{itemize}
+
+We'll use that last formulation a lot.
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+We'll start our look at the most fundamental kind of logic:
+propositional logic.
+\end{frame}
+
+\end{document}

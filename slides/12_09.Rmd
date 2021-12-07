@@ -1,0 +1,139 @@
+---
+title: $\Box A \rightarrow \Box \Box A$ (in KT)
+author: Build a Tableau
+date: To Check Whether it is Valid
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Hypothesis
+
+$\Box A \rightarrow \Box \Box A$ is a theorem of KT.
+
+- So we can use all the rules, plus the special rules for T.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow \Box \Box A}{1}, just = \TAss,
+]
+\end{oltableau}
+
+\bigskip
+
+Start with it being false at 1.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow \Box \Box A}{1}, checked, just = \TAss
+  [\pFmla{\True}{\Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+You know the drill - left hand side true, right hand side false.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow \Box \Box A}{1}, checked, just = \TAss
+  [\pFmla{\True}{\Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{1}, just = {T $\Box$ 2}
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+It's T, so we have obligations when a $\Box$ sentence is true.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow \Box \Box A}{1}, checked, just = \TAss
+  [\pFmla{\True}{\Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Box A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{1}, just = {T $\Box$ 2}
+        [\pFmla{\False}{\Box A}{1.1}, just = {\TRule{\False}{\Box}[3]}
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Now we have to make the false $\Box$ sentence actually false.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow \Box \Box A}{1}, checked, just = \TAss
+  [\pFmla{\True}{\Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Box A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{1}, just = {T $\Box$ 2}
+        [\pFmla{\False}{\Box A}{1.1}, just = {\TRule{\False}{\Box}[3]}
+          [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Box}[2]}        
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Carry down the true $\Box$ sentence.
+
+## $\Box A \rightarrow \Box \Box A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Box A \rightarrow \Box \Box A}{1}, checked, just = \TAss
+  [\pFmla{\True}{\Box A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Box A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{1}, just = {T $\Box$ 2}
+        [\pFmla{\False}{\Box A}{1.1}, checked, just = {\TRule{\False}{\Box}[3]}
+          [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\Box}[2]}        
+            [\pFmla{\False}{A}{1.1.1}, just = {\TRule{\False}{\Box}[5]}
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+- One more false $\Box$ sentence. \pause
+- And now we're done; all rules applied, and tree open. So it is not a theorem.
+
+## A Model 
+
+- Three worlds, $w_1, w_{1.1}, w_{1.1.1}$.
+- The accessibility relations are $w_1Rw_{1.1}, w_{1.1}Rw_{1.1.1}, w_1Rw_1, w_{1.1}Rw_{1.1}$ and $w_{1.1.1}Rw_{1.1.1}$.
+- The first two are from the tree, the next three from the restriction.
+- $A$ is true at $w_1$ and $w_{1.1}$ and false at $w_{1.1.1}$.
+- So $\Box A$ will be true only at $w_1$.
+- So $\Box \Box A$ will be false at $w_1$, as required.
+

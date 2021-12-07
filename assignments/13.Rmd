@@ -1,0 +1,44 @@
+---
+title: "Assignment Week 13"
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    md_extensions: +startnum
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "mathastext"]
+    fig_caption: no
+fontsize: 11pt
+mainfont: SF Pro Text Light
+mainfontoptions: "Scale=MatchLowercase"
+geometry: margin=1.4in
+linestretch: 1.2
+author: Philosophy 305
+date: Due April 16, 2021
+---
+
+## Questions 1-4
+
+Which of the following are theorems of KT?
+
+1. $\Box A \rightarrow (A \wedge \Diamond A)$
+2. $\Box (A \rightarrow B) \rightarrow (A \rightarrow B)$
+3. $A \rightarrow \Box \Diamond A$
+4. $A \rightarrow \Diamond \Box A$
+
+## Questions 5-7
+
+Which of the following are theorems of S4?
+
+5. $\Box \Diamond A \rightarrow \Box \Box \Diamond A$
+6. $\Box \Diamond A \rightarrow \Box \Diamond \Diamond A$
+7. $\Diamond \Box A \rightarrow \Box \Diamond A$
+
+## Questions 8-10
+
+Which of the following are theorems of S5?
+
+8. $\Diamond A \rightarrow \Box \Box \Diamond A$
+9. $\Box A \vee \neg A$
+10. $\neg \Diamond ((A \wedge \neg \Box A) \wedge \Diamond \Box (A \wedge \neg \Box A))$

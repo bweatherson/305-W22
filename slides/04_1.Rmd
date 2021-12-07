@@ -1,0 +1,252 @@
+---
+title: "305 Lecture 4.1 - Using Truth Trees"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+Showing how we use truth trees to check for logical truth and validity.
+
+## Reading
+
+Boxes and Diamonds, section 2.4.
+
+---
+
+::: columns
+
+:::: column
+\begin{oltableau}
+[\sFmla{\True}{\neg A},
+	[\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[1]}]
+]
+\end{oltableau}
+::::
+
+:::: column
+\begin{oltableau}
+[\sFmla{\False}{\neg A},
+	[\sFmla{\True}{A}, just = {\TRule{\False}{\neg}[1]}]
+]
+\end{oltableau}
+::::
+
+:::
+
+\vspace{-3pt}
+
+::: columns
+
+:::: column
+\begin{oltableau}
+[\sFmla{\True}{A \wedge B},
+	[\sFmla{\True}{A}, just = {\TRule{\True}{\wedge}[1]}
+	  [\sFmla{\True}{B}, just = {\TRule{\True}{\wedge}[1]}]
+	]
+]
+\end{oltableau}
+::::
+
+:::: column
+\begin{oltableau}
+[\sFmla{\False}{A \wedge B},
+	[\sFmla{\False}{A}, just = {\TRule{\False}{\wedge}[1]}]
+	[\sFmla{\False}{B}, just = {\TRule{\False}{\wedge}[1]}]
+]
+\end{oltableau}
+::::
+
+:::
+
+\vspace{-3pt}
+
+::: columns
+
+:::: column
+\begin{oltableau}
+[\sFmla{\True}{A \vee B},
+	[\sFmla{\True}{A}, just = {\TRule{\True}{\vee}[1]}]
+	[\sFmla{\True}{B}, just = {\TRule{\True}{\vee}[1]}]
+]
+\end{oltableau}
+::::
+
+:::: column
+\begin{oltableau}
+[\sFmla{\False}{A \vee B},
+	[\sFmla{\False}{A}, just = {\TRule{\False}{\vee}[1]}
+	  [\sFmla{\False}{B}, just = {\TRule{\False}{\vee}[1]}]
+	]
+]
+\end{oltableau}
+::::
+
+:::
+
+\vspace{-3pt}
+
+::: columns
+
+:::: column
+\begin{oltableau}
+[\sFmla{\True}{A \rightarrow B},
+	[\sFmla{\False}{A}, just = {\TRule{\True}{\rightarrow}[1]}]
+	[\sFmla{\True}{B}, just = {\TRule{\True}{\rightarrow}[1]}]
+]
+\end{oltableau}
+
+::::
+
+:::: column
+\begin{oltableau}
+[\sFmla{\False}{A \rightarrow B},
+	[\sFmla{\True}{A}, just = {\TRule{\False}{\rightarrow}[1]}
+	  [\sFmla{\False}{B}, just = {\TRule{\False}{\rightarrow}[1]}]
+	]
+]
+\end{oltableau}
+::::
+
+:::
+
+## Closure
+
+- A tree without branches closes if there is a sentence on the tree that is marked as both true and false.
+- Here is an example. The first line is stipulated, the rest are derived.
+
+\begin{oltableau}
+[\sFmla{\True}{A \wedge \neg A},
+  [\sFmla{\True}{A}, just = {\TRule{\True}{\wedge}[1]}
+    [\sFmla{\True}{\neg A}, just = {\TRule{\True}{\wedge}[1]}
+      [\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[3]}, close
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+## Interpreting Closure
+
+- If a tree is closed, it means the initial assumptions can't be true.
+- So this tree means that the initial assumption $A \wedge \neg A$ can't be true.
+
+\begin{oltableau}
+[\sFmla{\True}{A \wedge \neg A},
+  [\sFmla{\True}{A}, just = {\TRule{\True}{\wedge}[1]}
+    [\sFmla{\True}{\neg A}, just = {\TRule{\True}{\wedge}[1]}
+      [\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[3]}, close
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+## Closure with Branches
+
+- A branching tree closes if every branch closes.
+- The next slide has an example, with in this case the top two lines stipulated.
+
+---
+
+\begin{oltableau}
+[\sFmla{\True}{\neg A \wedge \neg B},
+  [\sFmla{\True}{A \vee B},
+    [\sFmla{\True}{\neg A}, just = {\TRule{\True}{\wedge}[1]}
+      [\sFmla{\True}{\neg B}, just = {\TRule{\True}{\wedge}[1]}
+        [\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[3]}
+          [\sFmla{\False}{B}, just = {\TRule{\True}{\neg}[4]}
+            [\sFmla{\True}{A}, just = {\TRule{\True}{\vee}[2]}, close]
+            [\sFmla{\True}{B}, just = {\TRule{\True}{\vee}[2]}, close]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+## Closure with Branches
+
+- A tree with any open branches is open, i.e., not closed.
+- If a tree has some open branches and some closed branches, it is **open**.
+- All that matters is if all branches are closed.
+- The next slide is an example of an open tree.
+
+---
+
+\begin{oltableau}
+[\sFmla{\True}{\neg A \wedge B},
+  [\sFmla{\True}{A \vee B},
+    [\sFmla{\True}{\neg A}, just = {\TRule{\True}{\wedge}[1]}
+      [\sFmla{\True}{B}, just = {\TRule{\True}{\wedge}[1]}
+        [\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[3]}
+            [\sFmla{\True}{A}, just = {\TRule{\True}{\vee}[2]}, close]
+            [\sFmla{\True}{B}, just = {\TRule{\True}{\vee}[2]}]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+## Logical Truth
+
+Here is the algorithm for seeing whether a sentence is a logical truth.
+
+> 1. Start a tree by saying at line 1 that the sentence is **False**.
+> 2. If the tree closes, it is a logical truth.
+> 3. If the tree does not close, it is not a logical truth (of propositional logic).
+
+## Looking for Counterexamples (Tables)
+
+- Truth tables didn't just tell us that something failed to be a logical truth (of propositional logic).
+- It told us where the failure was.
+- You didn't just know that there was an \textcolor{red}{$\False$} in the relevant column, you knew which row it was on.
+- And that told you where to look for counterexamples.
+
+## Looking for Counterexamples (Trees)
+
+- The same thing happens with trees.
+- By reading off the open branch, you can see where the sentence fails.
+- The trick is to focus on the **atomic** sentences on the branch.
+- These are the ones with no connectives at all.
+
+---
+
+\begin{oltableau}
+[\sFmla{\False}{A \rightarrow (A \wedge B)},
+  [\sFmla{\True}{A}, just = {\TRule{\True}{\rightarrow}[1]}
+    [\sFmla{\False}{A \wedge B}, just = {\TRule{\True}{\rightarrow}[1]}
+      [\sFmla{\False}{A}, just = {\TRule{\False}{\wedge}[3]}, close]
+      [\sFmla{\False}{B}, just = {\TRule{\False}{\wedge}[3]}]
+    ]
+  ]
+]
+\end{oltableau}
+
+- The right hand branch doesn't close.
+- The atomics on that branch are that $A$ is \textcolor{red}{$\True$} and $B$ is \textcolor{red}{$\False$}.
+- So that's the line on the truth table where $A \rightarrow (A \wedge B)$ is \textcolor{red}{$\False$}.
+
+## Validity
+
+Here is the algorithm for seeing whether an argument is valid (in propositional logic).
+
+> 1. Start a tree with one line for each premise, saying that the premise is **True**.
+> 2. Then have a line that says the conclusion is **False**.
+> 3. If the tree closes, the argument is valid.
+> 4. If the tree does not close, the argumnt is not valid (in propositional logic).
+
+## For Next Time
+
+We will illustrate this algorithm.

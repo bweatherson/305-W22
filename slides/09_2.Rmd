@@ -1,0 +1,119 @@
+---
+title: "305 Lecture 9.2 - States and Choices"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- In this lecture we'll talk about how to formulate decision problems.
+- And we'll talk about one simple way to analyse these problems, using so-called dominance reasoning.
+
+## Associated Reading
+
+Odds and Ends, Chapter 12
+
+## States and Choices
+
+- We're interested in what to do when the outcomes of your actions depend on some external facts about which you are uncertain, e.g., 
+
+|          | State 1 | State 2 |
+|---------:|:-------:|:-------:|
+| Choice 1 | $a$     | $b$     |
+| Choice 2 | $c$     | $d$     |
+
+## States and Choices
+
+- The **choices** are the options you can take. 
+- The **states** are the ways the world can be that affect how good an outcome you'll get. 
+- A choice plus a state determines an **outcome**
+- And the variables, $a$, $b$, $c$ and $d$ are numbers measuring how good those outcomes are. 
+- We'll call this the **utility** of the outcome.
+- The higher the number, the better.
+
+## What is Utility
+
+- The book spends one chapter (11) on cases where value is easy to measure - it's something like dollars won or lost, or time spent.
+- Then it spends the next chapter (i.e., 12) on cases where value is more abstract.
+- I'm not going to carve things up this way.
+- But I will start with a case where the values are fairly clear.
+
+## An Example
+
+- It's a Sunday afternoon in Fall, and your friend, who is a big Packers fan, has the choice between watching the Packers game and finishing a paper due on Monday. 
+- It will be a little painful for them to do the paper after the football, but not impossible. 
+- It will be fun to watch football, at least if the Packers wins.
+- But if the Packers lose they'll have spent the afternoon watching them lose, and still have the paper to write. 
+- On the other hand, your friend will feel bad if they skip the game and the Packers win. So we might have the decision table on the next slide.
+
+## Decision Table for the Example
+
+|                | Packers Win | Packers Lose |
+|---------------:|:-----------:|:------------:|
+| Watch Football |      4      |      1       |
+| Work on Paper  |      3      |      2       |
+
+- The numbers come from the preferences.
+- We're assuming (for now) that what one wants is better for one.
+- That assumption could get either conceptual backing (utility is defined in terms of preference) or empirical backing.
+
+## Changing Preferences
+
+- The numbers would be different if your friend had different preferences. 
+- Perhaps their desire to watch football is simply stronger than their desire to finish the paper.
+- In that case the table might look like this.
+
+|                | Packers Win | Packers Lose |
+|---------------:|:-----------:|:------------:|
+| Watch Football |      4      |      2       |
+| Work on Paper  |      3      |      1       |
+
+
+## Dominance Reasoning
+
+- The simplest rule we can use for decision making is **never choose dominated options**. 
+- There is a stronger and a weaker version of this rule.
+
+## Weak and Strong Dominance
+
+- An option $A$ **strongly dominates** another option $B$ no matter which state is actual, A leads to better outcomes than B.  \pause 
+- $A$ **weakly dominates** B if in every state, A leads to at least as good an outcome as B, and in some states it leads to a better outcome.
+
+## Dominance Principles
+
+- Principle 1: If A strongly dominates B, don't choose B.
+- Principle 2: If A weakly dominates B, don't choose B.
+- The second principle is slightly **stronger**; it rules out more things.
+- As such, it is slightly more controversial.
+
+## Using Dominance Principles
+
+- Dominance principles seem very intuitive when applied to everyday decision cases. 
+- Consider, for example, a revised version of our case about choosing whether to watch football or work on a term paper. 
+- Imagine that your friend will do very badly on the term paper if they leave it to the last minute. 
+- And imagine that the term paper is vitally important for something that matters to their future. 
+- Then we might set up the decision table as on the next slide.
+
+## Football Example with Dominance
+
+|                | Packers Win | Packers Lose |
+|---------------:|:-----------:|:------------:|
+| Watch Football |      3      |      1       |
+| Work on Paper  |      4      |      2       |
+
+- They are better off working on the paper if the Packers win.
+- And they are better off working on the paper if the Packers lose.
+- So either way, they should work on the paper!
+
+## For Next Time
+
+- We will look at how to think about decisions where dominance reasoning doesn't apply.

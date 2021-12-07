@@ -1,0 +1,66 @@
+---
+title: "305 Lecture 3.1 - Propositional Logic"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan for This Lecture
+
+We're introducing propositional logic, and talking about what it is.
+
+## Associated Reading
+
+This doesn't correspond to any particular part of the book, but I think it's helpful before going onto chapter 12.
+
+## Key Assumption
+
+We start with one key assumption:
+
+- Every sentence has precisely one of the two truth values: TRUE, FALSE.
+- I will write these values as $\True$ and $\False$.
+- I'm using these funny shaped letters because they get used in _Boxes and Diamonds_, and because they make our lives easier when we start using trees.
+
+## Unpacking the Assumption
+
+1. There are just two truth values: $\True$, $\False$.  
+2. Every sentence has one of them. There are no truth-value *gaps*. 
+3. No sentence has both of them. There are no truth-value *gluts*.
+
+## Two Parts of Classical Logic
+
+- Traditionally, classical logic is divided into two parts. 
+- We're just going to look at the first part here.
+- The parts differ on what counts as a **structural** feature of a sentence.
+
+## Classical Propositional Logic
+
+The structural features are just five sentential connectives:
+
+- And
+- Or
+- Not
+- If
+- If and only if; usually written iff.
+
+The result is a very simple, but very weak, logic. It doesn't even tell us that the arguments about Skippy and Lucky are structurally valid. (And note that here we'll simplify further, by not covering iff.)
+
+## Classical Predicate Logic
+
+As well as those structural features, we add:
+
+- The division of parts of sentences into names, variables, predicates, and logical terms.
+- The addition of the logical terms **All** and **Some**.
+
+## For Next Time
+
+- We will see how to use truth tables to tell which sentences are logical truths in propositional logic.

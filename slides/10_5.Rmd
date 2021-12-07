@@ -1,0 +1,76 @@
+---
+title: "305 Lecture 10.5 - The One True Prior"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- We're going to look at a very objective version of the subjective theory, one that says there is a single true prior probability function.
+
+## Associated Reading
+
+Odds and Ends, chapter 18.
+
+## Symmetry
+
+There is a natural way to start looking for the one true prior.
+
+- When we do probabilities involving games of chance, we naturally take the different possibilities as having equal probability.
+- So when we give equal probability to heads and tails, or to each marble being drawn, or each side of the die coming up, that doesn't seem to be based on a careful analysis of coins, marbles or dice.
+- Rather, it's just natural to divide probability evenly among the possibilities.
+
+## A Caveat
+
+There is one way in which it is more complicated than that.
+
+- We don't give any probability to the coin landing on its edge, or the die landing on a corner.
+- I suspect this is because we've observed a lot about the world from a very young age, and noticed things like that just don't happen.
+- This complicates the narrative that we're just using some natural principle of prior probability.
+
+## Logical Probability
+
+The very rough idea is that there are logical symmetry principles, and the prior probability function is one that respects these symmetries.
+
+- If $p$ is a proposition that things are one side of one of these lines of symmetry in logical space, the prior probability of $p$ is 0.5. \pause
+- Don't think about this too hard because it isn't actually going to work.
+- The problem is that there are too many symmetries.
+
+## The Cube Factory
+
+- Imagine that all you know about a factory is that it makes cubes with side lengths between 0 and 2cm. 
+- What is the probability that the next cube will have a side length less than or equal to 1cm? \pause
+- Intuitively, it's 0.5, right?
+
+## The Cube Factory (reprise)
+
+- Imagine that all you know about a factory is that it makes cubes with volumes between 0 and 8cm$^3$. 
+- What is the probability that the next cube will have a volume less than or equal to 1cm$^3$? \pause
+- Intuitively, it's 1 in 8, right?
+
+## Problem
+
+- These are the same question!
+- To say the sides are between 0 and 2 just is to say the volume is between 0 and 8.
+- And to say that the side length is at most 1 just is to say that the volume is at most 1.
+- If we try to respect all intuitive symmetries, we are led into inconsistency.
+
+## Principle of Indifference
+
+The intuitive rule we've been discussing here has a name, the Principle of Indifference.
+
+- It says that given a partition of possibility space into $n$ possibilities, and no reason to give higher probability to any one of them, give each of them probability $\frac{1}{n}$.
+- But this is incoherent - since the possibility that the cubes are under 1 is both part of a 2-way partition (the partition by side lengths) and an 8-way partitio (the partition by volumes).
+
+## For Next Time
+
+- We will take a short look at why some theorists thought it didn't matter if people start with very different priors.

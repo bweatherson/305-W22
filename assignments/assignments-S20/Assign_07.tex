@@ -1,0 +1,365 @@
+\documentclass[11pt,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+    \setmainfont[]{SF Pro Text Light}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Assignment 7},
+            pdfauthor={Philosophy 305},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Assignment 7}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Philosophy 305}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{Due 1 November, 2019}
+
+\usepackage{gensymb}
+\usepackage{nicefrac}
+\usepackage{caption}
+\usepackage{mathastext}
+
+\begin{document}
+\maketitle
+
+Note that all these questions are from \emph{Odds and Ends},
+occasionally with minor changes to the wording.
+
+\hypertarget{expected-value-questions}{%
+\section{Expected Value Questions}\label{expected-value-questions}}
+
+\hypertarget{questions-1-to-3}{%
+\subsection{Questions 1 to 3}\label{questions-1-to-3}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What is the expected monetary value of playing a slot machine that
+  costs \(\$100\) to play, and has a \(1/25\) chance of paying out
+  \(\$500\)? (The rest of the time it pays nothing.)
+\item
+  Suppose a slot machine pays off \(\$25\) a fiftieth of the time and
+  costs a \(\$1\) to play, and a video poker machine pays off \(\$10\) a
+  twentieth of the time and costs \(\$2\) to play. Which machine is the
+  better bet in terms of expected monetary value?
+\item
+  You're considering downloading a new game for your phone. The game
+  costs \(\$0.99\). But as a promotion, the first \(50,000\) downloaders
+  are being entered in a fair lottery with a \(\$10,000\) cash prize. If
+  you know you'll be one of the first \(50,000\) downloaders, what is
+  the expected monetary value of downloading the game?
+\end{enumerate}
+
+\hypertarget{question-4}{%
+\subsection{Question 4}\label{question-4}}
+
+A local casino offers a game which costs \(\$2\) to play. A fair coin is
+flipped up to three times, and the payouts work as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  If the coin lands heads on the first toss, you win \(\$2\) and the
+  game is over.
+\item
+  If the coin lands heads on the second toss, you win \(\$4\) and the
+  game is over.
+\item
+  If the coin lands heads on the third toss, you win \(\$8\) and the
+  game is over.
+\item
+  If the coin lands tails all three times, you win \(\$0\).
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  What is the expected monetary value of this game?
+\end{enumerate}
+
+\hypertarget{question-5}{%
+\subsection{Question 5}\label{question-5}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Suppose you can bet on either of two dogs: Santa's Little Helper or
+  She's the Fastest. If you bet on Santa's Little Helper and he wins,
+  you get \(\$5\). If he loses you pay \(\$2\). If you bet on She's the
+  Fastest and she loses, you pay \(\$10\). The two dogs have the same
+  chance of winning. How much would a winning bet on She's the Fastest
+  have to pay for the bets to have the same value?
+\end{enumerate}
+
+\hypertarget{questions-6-to-9}{%
+\subsection{Questions 6 to 9}\label{questions-6-to-9}}
+
+Suppose Michigan is deciding whether to enact a new tax. If the tax is
+enacted, it will bring in \(\$700\) million in revenue. But it could
+also hurt the economy. The chance of harm to the economy is small, just
+\(1/5\). But it would cost the country \(\$1,200\) million in lost
+earnings. (The \(\$700\) million in revenue would still be gained,
+partially offsetting this loss.) Treat gains as positive and losses as
+negative.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  What is the expected monetary value of enacting the new tax?
+\end{enumerate}
+
+The government also has the option of conducting a study before deciding
+whether to enact the new tax. If the study's findings are bad news, that
+means the chance of harm to the economy is actually double what they
+thought. If its findings are good news, then the chance of harm to the
+economy is actually half of what they thought.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Suppose the government conducts the study and its findings are good
+  news. What will the expected monetary value of enacting the tax be
+  then?
+\item
+  Suppose the government conducts the study and its findings are bad
+  news. What will the expected monetary value of enacting the tax be
+  then?
+\item
+  If the expected monetary value of the tax is what you said in question
+  6, and the study is bound to deliver good news or bad news, what is
+  the probability of it delivering good news?
+\end{enumerate}
+
+\hypertarget{question-10}{%
+\subsection{Question 10}\label{question-10}}
+
+Consider the following game: I'm going to flip a fair coin up to three
+times. If it comes up heads on the first toss, the game is over and you
+win \(\$2\). If it comes up heads for the first time on the second toss,
+you win \(\$40\) and the game is over. If the first heads comes up on
+the third toss, you win \(\$800\) and the game is over. If it comes up
+tails every time, you have to pay me \(\$x\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  What does \(x\) have to be to make the game fair?
+\end{enumerate}
+
+\hypertarget{question-11}{%
+\subsection{Question 11}\label{question-11}}
+
+Some workplaces hold a weekly lottery. Suppose there are 30 people in
+your workplace lottery, and each person pays in \$5 every Monday. A
+finalist is chosen at random every Friday, for three weeks. Then, on the
+fourth Friday, one of the three finalists from the previous three weeks
+is chosen at random. That person gets all the prize money.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{10}
+\tightlist
+\item
+  What is the expected value of being in this lottery?
+\end{enumerate}
+
+\hypertarget{utility-questions}{%
+\section{Utility Questions}\label{utility-questions}}
+
+\hypertarget{question-12}{%
+\subsection{Question 12}\label{question-12}}
+
+Sonia has tickets to see The Weeknd tomorrow night. Her friend has
+tickets to see Beyoncé, and also tickets to Katy Perry. Beyoncé is
+Sonia's favourite performer, in fact she would rather see Beyoncé than
+The Weeknd. Sonia's friend offers a gamble in exchange for her tickets
+to The Weeknd. The gamble has a \(9/10\) chance of winning, in which
+case Sonia gets the Beyoncé tickets (utility \(1\)). Otherwise she gets
+the Katy Perry tickets (utility \(0\)).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{11}
+\item
+  If Sonia declines the gamble, what can we conclude?
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    For Sonia, the utility of seeing The Weeknd is \(9/10\).
+  \item
+    For Sonia, the utility of seeing The Weeknd is greater than
+    \(9/10\).
+  \item
+    For Sonia, the utility of seeing The Weeknd is less than \(9/10\).
+  \item
+    For Sonia, the utility of seeing The Weeknd is \(1/10\).
+  \end{enumerate}
+\end{enumerate}
+
+\hypertarget{questions-13-to-14}{%
+\subsection{Questions 13 to 14}\label{questions-13-to-14}}
+
+After giving her calculus midterm, Professor X always offers her
+students a chance to improve their grade by trying to solve an optional
+``challenge'' problem. If they get it right, their grade is increased by
+one letter grade: F changes to D, D changes to C, etc. But if they get
+it wrong, their grade goes down by one letter-grade: A changes to B, B
+changes to C, etc.
+
+Hui got a C on his midterm. He asks the professor how often students get
+the challenge problem right and she says they get it right half the
+time. Hui decides to stick with his C. But he would be willing to try
+the challenge problem if the chances of getting it right were higher:
+\(2/3\) or more. Suppose getting a D has utility \(5/10\) for Hui, while
+a B has utility \(8/10\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{12}
+\tightlist
+\item
+  What is the expected utility for Hui of trying the challenge problem?
+\item
+  How much utility does a C have for Hui?
+\end{enumerate}
+
+\hypertarget{questions-15-to-17-2-points-each}{%
+\subsection{Questions 15 to 17 (2 points
+each)}\label{questions-15-to-17-2-points-each}}
+
+Eleanor wants to get a job at Google so she's going to university to
+study computer science. She has to decide between Wayne State and
+Michigan State. Suppose \(1/100\) of Wayne State's computer science
+students get jobs at Google and the rest get jobs at Facebook. For
+Eleanor, a job at Google has utility \(200\) while a job at Facebook has
+utility \(50\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{14}
+\tightlist
+\item
+  What is the expected utility of going to Wayne State for Eleanor?
+\end{enumerate}
+
+Suppose Michigan State students have better odds of getting a job at
+Google: \(5/400\). And \(360/400\) students go to work at Amazon, which
+Eleanor would prefer to Facebook. On the other hand, the remaining
+\(35/400\) of them don't get a job at all, which has utility zero for
+Eleanor. After thinking about it, she can't decide: Wayne State and
+Michigan State seem like equally good options to her.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{15}
+\tightlist
+\item
+  How much utility does working at Amazon have for Eleanor?
+\end{enumerate}
+
+Suppose Eleanor ends up going to Wayne State, and now she's about to
+graduate. Unfortunately, Google isn't hiring any more. The only jobs
+available are at Amazon and Facebook. She would have to take a special
+summer training program to qualify for a job at Amazon, though. And that
+would mean she can't get a job at Facebook. Facebook is offering her a
+job, but she has to take it now or never. So, she has to either take the
+guaranteed job at Facebook right now, or gamble on the summer program.
+The summer program could get her a job at Amazon, or it could leave her
+unemployed.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{16}
+\tightlist
+\item
+  How high would the probability of getting a job at Amazon have to be
+  for Eleanor to be indifferent between taking and not taking the
+  special summer program?
+\end{enumerate}
+
+
+\end{document}

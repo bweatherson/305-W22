@@ -1,0 +1,127 @@
+---
+title: "305 Lecture 5.5 - Strategies 2: Working Forwards"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+
+## Plan
+
+This lecture discusses strategies for constructing proofs that involve working forwards.
+
+## Associated Reading
+
+forall x, section 17.2.
+
+## Working Forwards
+
+Big Idea: Plan to use the Elimination rules on the connectives in the premises.
+
+## Simple Illustration: And
+
+When one of the premises is of the form $X \wedge y$, you'll almost certainly need to apply $\wedge$E to get $X$ and $Y$.
+
+## Slightly Trickier: If
+
+> - When one of the premises is of the form $X \rightarrow Y$, you'll almost certainly need to apply $\rightarrow$E.
+> - And that means you'll need $X$.
+> - But in practice it's hard to tell in advance whether you'll prove $X$, or have it as the start of a subproof, or something else.
+
+## Working forward from Or
+
+When one of the premises is $X \vee Y$ there is a clear(ish) strategy.
+
+1. Find a target conclusion $C$.
+2. Do a subproof from $X$ to $C$.
+3. Do a subproof from $Y$ to $C$.
+4. Conclude $C$ by $\vee$E.
+
+## Working forward from Or
+
+Why clear-ish?
+
+- Because it isn't always true that the target here should be the conclusion of the whole argument.
+- Sometimes it is optimal to do a step or two of working backwards first.
+- But if you want a simple rule to go by, the best is to do what's on the previous slide with $C$ as the conclusion of the whole argument.
+
+## $A \vee B, B \rightarrow C \vdash A \vee C$
+
+![Write Out Premises and Conclusion](5_5a.png){height=75%}
+
+## $A \vee B, B \rightarrow C \vdash A \vee C$
+
+![Set Up $\vee$E](5_5b.png){height=75%}
+
+## $A \vee B, B \rightarrow C \vdash A \vee C$
+
+![Note what happens on line 7](5_5b.png){height=75%}
+
+## $A \vee B, B \rightarrow C \vdash A \vee C$
+
+![There are indents on all the blank lines](5_5b.png){height=75%}
+
+## $A \vee B, B \rightarrow C \vdash A \vee C$
+
+![The left-hand subproof](5_5c.png){height=75%}
+
+## $A \vee B, B \rightarrow C \vdash A \vee C$
+
+![The right-hand subproof](5_5d.png){height=75%}
+
+## $A \vee B, B \rightarrow C \vdash A \vee C$
+
+![Finishing the proof - note the justifications](5_5e.png){height=75%}
+
+## Proofs From Disjunctions
+
+- That's the basic structure.
+- They are a bit of a pain; I've illustrated almost the easiest one I could find.
+- But it's really important to keep track of what your goal is at every point.
+- For almost everyone, that's impossible if you try to just start at line 1 and work to line 9.
+- You have to bounce forward and backward in these proofs; just like I've done here.
+
+## Working Forward from Not
+
+- It's going to be some kind of proof involving $\bot$.
+- Whether that's Indirect Proof or $\neg$E isn't always clear, but that's going to be the structure.
+
+## A Simple Strategy
+
+- If any of the premises is negated, then assume the opposite of the conclusion and try to derive $\bot$.
+- If the conclusion is positive, its opposite is adding a negation.
+- If the conclusion is already negated, its opposite is deleting the negation.
+
+## A More Complicated Strategy
+
+- Sometimes the simple strategy won't be optimal.
+- Sometimes it will be quicker to do some working forward from the other premises, or backwards from the conclusion.
+- But the simple strategy is going to work, even in those cases.
+
+## $\neg A \vdash \neg (A \wedge B)$
+
+![Premise and Conclusion](5_5f.png){height=75%}
+
+## $\neg A \vdash \neg (A \wedge B)$
+
+![Set up $\neg$I - note how $\bot$ is written](5_5g.png){height=75%}
+
+## $\neg A \vdash \neg (A \wedge B)$
+
+![Derive the contradiction](5_5h.png){height=75%}
+
+## $\neg A \vdash \neg (A \wedge B)$
+
+![Finish the proof](5_5i.png){height=75%}
+
+## For Next Time
+
+- I'll end with two special techniques

@@ -1,0 +1,190 @@
+---
+title: $\neg \Box (A \wedge \neg \Box A)$ (in KT)
+author: Build a Tableau
+date: To Check Whether it is Valid
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+
+## Hypothesis
+
+$\neg \Box (A \wedge \neg \Box A)$ is a theorem of KT.
+
+- So we can use all the rules, plus the special rules for T.
+
+## $\neg \Box (A \wedge \neg \Box A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\neg \Box (A \wedge \neg \Box A)}{1}, just = \TAss,
+]
+\end{oltableau}
+
+\bigskip
+
+Start with it being false at 1.
+
+## $\neg \Box (A \wedge \neg \Box A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\neg \Box (A \wedge \neg \Box A)}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Box (A \wedge \neg \Box A)}{1}, just = {\TRule{\False}{\neg}[1]}
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+Turn false $\neg$ false into true unnegated sentence.
+
+## $\neg \Box (A \wedge \neg \Box A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\neg \Box (A \wedge \neg \Box A)}{1}, checked, just = \TAss,
+    [\pFmla{\True}{\Box (A \wedge \neg \Box A)}{1}, just = {\TRule{\True}{\neg}[1]}
+      [\pFmla{\True}{A \wedge \neg \Box A}{1}, just = {T $\Box$ 2}
+      ]    
+    ]
+]
+\end{oltableau}
+
+\bigskip
+
+It's KT, so whatever is necessary is true.
+
+## $\neg \Box (A \wedge \neg \Box A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\neg \Box (A \wedge \neg \Box A)}{1}, checked, just = \TAss,
+    [\pFmla{\True}{\Box (A \wedge \neg \Box A)}{1}, just = {\TRule{\True}{\neg}[1]}
+      [\pFmla{\True}{A \wedge \neg \Box A}{1}, checked, just = {T $\Box$ 2}
+        [\pFmla{\True}{A}{1}, just = {\TRule{\True}{\wedge}[3]}
+          [\pFmla{\True}{\neg \Box A}{1}, just = {\TRule{\True}{\wedge}[3]}
+          ]
+        ]
+      ]    
+    ]
+]
+\end{oltableau}
+
+\bigskip
+
+Both sides of a conjunction have to be true.
+
+## $\neg \Box (A \wedge \neg \Box A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\neg \Box (A \wedge \neg \Box A)}{1}, checked, just = \TAss,
+    [\pFmla{\True}{\Box (A \wedge \neg \Box A)}{1}, just = {\TRule{\True}{\neg}[1]}
+      [\pFmla{\True}{A \wedge \neg \Box A}{1}, checked, just = {T $\Box$ 2}
+        [\pFmla{\True}{A}{1}, just = {\TRule{\True}{\wedge}[3]}
+          [\pFmla{\True}{\neg \Box A}{1}, checked, just = {\TRule{\True}{\wedge}[3]}
+            [\pFmla{\False}{\Box A}{1}, just = {\TRule{\False}{\neg}[5]}
+            ]
+          ]
+        ]
+      ]    
+    ]
+]
+\end{oltableau}
+
+\bigskip
+
+Whatever isn't true is false.
+
+## $\neg \Box (A \wedge \neg \Box A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\neg \Box (A \wedge \neg \Box A)}{1}, checked, just = \TAss,
+    [\pFmla{\True}{\Box (A \wedge \neg \Box A)}{1}, just = {\TRule{\True}{\neg}[1]}
+      [\pFmla{\True}{A \wedge \neg \Box A}{1}, checked, just = {T $\Box$ 2}
+        [\pFmla{\True}{A}{1}, just = {\TRule{\True}{\wedge}[3]}
+          [\pFmla{\True}{\neg \Box A}{1}, checked, just = {\TRule{\True}{\wedge}[3]}
+            [\pFmla{\False}{\Box A}{1}, checked, just = {\TRule{\False}{\neg}[5]}
+              [\pFmla{\False}{A}{1.1}, just = {\TRule{\False}{\Box}[6]}
+              ]
+            ]
+          ]
+        ]
+      ]    
+    ]
+]
+\end{oltableau}
+
+\bigskip
+
+A false Box sentence requires a world that makes it false. What can we do now?
+
+## $\neg \Box (A \wedge \neg \Box A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\neg \Box (A \wedge \neg \Box A)}{1}, checked, just = \TAss,
+    [\pFmla{\True}{\Box (A \wedge \neg \Box A)}{1}, just = {\TRule{\True}{\neg}[1]}
+      [\pFmla{\True}{A \wedge \neg \Box A}{1}, checked, just = {T $\Box$ 2}
+        [\pFmla{\True}{A}{1}, just = {\TRule{\True}{\wedge}[3]}
+          [\pFmla{\True}{\neg \Box A}{1}, checked, just = {\TRule{\True}{\wedge}[3]}
+            [\pFmla{\False}{\Box A}{1}, checked, just = {\TRule{\False}{\neg}[5]}
+              [\pFmla{\False}{A}{1.1}, just = {\TRule{\False}{\Box}[6]}
+                [\pFmla{\True}{A \wedge \neg \Box A}{1.1}, just = {\TRule{\True}{\Box}[2]}
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]    
+    ]
+  ]
+]
+\end{oltableau}
+
+Line 3 is a $\Box$ sentence, so the unboxed part applies everywhere accessible.
+
+## $\neg \Box (A \wedge \neg \Box A)$
+
+\begin{oltableau}
+[\pFmla{\False}{\neg \Box (A \wedge \neg \Box A)}{1}, checked, just = \TAss,
+    [\pFmla{\True}{\Box (A \wedge \neg \Box A)}{1}, just = {\TRule{\True}{\neg}[1]}
+      [\pFmla{\True}{A \wedge \neg \Box A}{1}, checked, just = {T $\Box$ 2}
+        [\pFmla{\True}{A}{1}, just = {\TRule{\True}{\wedge}[3]}
+          [\pFmla{\True}{\neg \Box A}{1}, checked, just = {\TRule{\True}{\wedge}[3]}
+            [\pFmla{\False}{\Box A}{1}, checked, just = {\TRule{\False}{\neg}[5]}
+              [\pFmla{\False}{A}{1.1}, just = {\TRule{\False}{\Box}[6]}
+                [\pFmla{\True}{A \wedge \neg \Box A}{1.1}, checked, just = {\TRule{\True}{\Box}[2]}
+                  [\pFmla{\True}{A}{1.1}, just = {\TRule{\True}{\wedge}[8]}, close
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]    
+    ]
+]
+\end{oltableau}
+
+And both parts of an and sentence have to be true - though the first is enough to close this tree.
+
+## Philosophical Consequences
+
+- This is a philosophically interesting result.
+- If $\Box$ means "Is known by X", then it says that X can't know of a particular proposition that it is true but they don't know it.
+- Assuming that X is not omniscient, so there are some things they don't know, this means there are limits to X's knowledge.
+
+## Idealism
+
+- Let B = "Brian doesn't know that B is true". (And assume, for now, that this kind of self-reference makes sense.
+- That's surely true. My knowing it implies a contradiction in the way we've just shown.
+- So we all know it, because we can all follow the proof. $\pause$
+- Except wait - it's true, and it says I don't know it, so I must not know it.
+- So there's something you all know that I don't know.
+- Though just why I don't know it is something of a mystery, since I do have a well-supported (and correct) belief that it is true.
+

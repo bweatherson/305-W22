@@ -1,0 +1,608 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 3.4 - Features of Validity},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\usetikzlibrary{arrows.meta}
+\RequirePackage[tableaux]{prooftrees}
+\forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 3.4 - Features of Validity}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+This lecture finishes our discussion of truth tables by looking some
+properties validity has in the truth table system.
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+forall x, chapter 12, sections 12.5-12.7.
+\end{frame}
+
+\begin{frame}{The Rules}
+\protect\hypertarget{the-rules}{}
+\begin{itemize}
+\tightlist
+\item
+  An argument is \textbf{invalid} if there is a row on the truth table
+  where all the premises are true and the conclusion is false.
+  (Roughly!)
+\item
+  It is \textbf{valid} if all the rows where the premises are all true,
+  the conclusion is true as well.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A Relevance Failure}
+\protect\hypertarget{a-relevance-failure}{}
+Is this argument valid?
+
+\begin{description}
+\tightlist
+\item[~]
+\(A\)
+\item[\(\therefore\)]
+B \(\vee \neg B\)
+\end{description}
+
+\pause
+
+Yes!
+
+\begin{itemize}
+\tightlist
+\item
+  There is no line where the conclusion is false.
+\item
+  So there are no lines where the premise is true and the conclusion
+  false.
+\item
+  So it is not invalid, i.e., it is valid.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Terminology}
+\protect\hypertarget{terminology}{}
+Say a \textbf{valuation} is a function \(v\) from sentences to
+\(\{\True, \False\}\) satisfying these constraints.
+
+\begin{enumerate}
+\tightlist
+\item
+  \(v(\neg A) = \True\) if \(v(A) = \False\), and \(v(\neg A) = \False\)
+  otherwise.
+\item
+  \(v(A \vee B) = \True\) if \(V(A) = \True\) or \(v(B) = \True\), and
+  \(v(A \vee B) = \False\) otherwise.
+\item
+  \(v(A \wedge B) = \True\) if \(V(A) = \True\) and \(v(B) = \True\),
+  and \(v(A \wedge B) = \False\) otherwise.
+\item
+  \(v(A \rightarrow B) = \True\) if \(V(A) = \False\) or
+  \(v(B) = \True\), and \(v(A \rightarrow B) = \False\) otherwise.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Restating}
+\protect\hypertarget{restating}{}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  An argument is valid relative to a class of valuations \(V\) iff any
+  valuation \(v \in V\) that makes all the premises \(\True\) also makes
+  the conclusion \(\True\).
+\item
+  An argument is truth functionally valid when the class \(V\) is the
+  class of valuations satisfying the constraints on the previous slide.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Very Technical Terminology}
+\protect\hypertarget{very-technical-terminology}{}
+\begin{itemize}
+\tightlist
+\item
+  I'll use \(\Gamma \vDash A\) to mean that the argument with premises
+  \(\Gamma\) and conclusion \(A\) is valid in this sense - i.e., all
+  valuations that make all of \(\Gamma\) come out \(\True\) also make
+  \(A\) come out \(\True\).
+\item
+  The double bar in \(\vDash\) is to represent that this is a kind of
+  validity defined in terms of valuations (or, as we'll start calling
+  them, models), and not proofs.
+\item
+  For purposes of 305, the difference between \(\vdash\) and \(\vDash\)
+  is not important, and if this is the last logic/mathematical
+  philosophy course you plan to take, you don't have to worry about
+  this.
+\item
+  But I like being pedantic even when it isn't relevant to the course.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Closure}
+\protect\hypertarget{closure}{}
+\begin{quote}
+If \(\Gamma \vDash A\) and \(\Gamma \vDash A \rightarrow B\) then
+\(\Gamma \vDash B \pause\).
+\end{quote}
+
+Proof: Assume this is false. So assume that \(\Gamma \nvDash B\). So
+there is a valuation function \(v\) that makes everything in \(\Gamma\)
+come out \(\True\) and \(B\) come out \(\False \pause\). Either
+\(v(A) = \True\) or \(v(A) = \False \pause\). If \(v(A) = \True\), then
+\(v(A \rightarrow B) = \False\), contradicting
+\(\Gamma \vDash A \rightarrow B \pause\). If \(v(A) = \False\), then
+\(v\) is a counterexample to \(\Gamma \vDash A\), but we know
+\(\Gamma \vDash A\) is true. Either way, such a \(v\) cannot exist, so
+\(\Gamma \vDash B\) is true.
+\end{frame}
+
+\begin{frame}{Monotony}
+\protect\hypertarget{monotony}{}
+\begin{quote}
+If \(\Gamma \vDash A\), and \(\Gamma \subset \Delta\), then
+\(\Delta \vDash A\).
+\end{quote}
+
+That is, adding premises can't turn an argument from being valid to
+invalid.
+\end{frame}
+
+\begin{frame}{Monotony Proof}
+\protect\hypertarget{monotony-proof}{}
+\begin{itemize}
+\tightlist
+\item
+  Assume that for all \(B \in \Delta, v(B) = \True\).
+\item
+  We need to prove that \(v(A) = \True\).\pause
+\item
+  Assume \(C \in \Gamma\).
+\item
+  Then \(C \in \Delta\), since \(\Gamma \subset \Delta\).\pause
+\item
+  So by hypothesis, \(v(C) = \True\), since everything in \(\Delta\) is
+  \(\True\).\pause
+\item
+  So \(v\) is such that everything in \(\Gamma\) is \(\True\).\pause
+\item
+  And since \(\Gamma \vDash A\), that implies \(v(A) = \True\), as
+  required.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Monotony Commentary}
+\protect\hypertarget{monotony-commentary}{}
+\begin{itemize}
+\tightlist
+\item
+  This idea, that adding premises doesn't destroy validity, only works
+  for logical arguments.
+\item
+  It isn't true for good arguments in general.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tweety the First}
+\protect\hypertarget{tweety-the-first}{}
+\begin{description}
+\tightlist
+\item[~]
+Tweety is a bird.
+\item[\(\therefore\)]
+Tweety flies.
+\end{description}
+
+That's a perfectly good, though not logically valid, argument.
+\end{frame}
+
+\begin{frame}{Tweety the Second}
+\protect\hypertarget{tweety-the-second}{}
+\begin{description}
+\tightlist
+\item[~]
+Tweety is a bird.
+\item[~]
+Tweety is black and white, lives in Antarctica, and lays large eggs.
+\item[\(\therefore\)]
+Tweety flies.
+\end{description}
+
+That's not a very good argument!
+\end{frame}
+
+\begin{frame}{Transitivity}
+\protect\hypertarget{transitivity}{}
+\begin{quote}
+If \(\Gamma \vDash A\) and \(\Delta \cup A \vDash B\) then
+\(\Gamma \cup \Delta \vDash B\)
+\end{quote}
+
+If some premises entail \(A\), and some other premises plus \(A\) entail
+\(B\), then the two sets of premises between them entail \(B\).
+\pause This is crucial for being able to chain together lines of
+reasoning.
+\end{frame}
+
+\begin{frame}{Transitivity Proof}
+\protect\hypertarget{transitivity-proof}{}
+\begin{itemize}
+\tightlist
+\item
+  Assume that for all \(C \in \Gamma \cup \Delta, v(C) = \True\).
+\item
+  We need to prove \(v(B) = \True\).\pause
+\item
+  Since everything in \(\Gamma\) is \(\True\) according to \(v\), and
+  \(\Gamma \vDash A\), it follows that \(v(A) = \True\).\pause
+\item
+  Since everything in \(\Delta\) is \(\True\) according to \(v\), and
+  \(A\) is \(\True\) according to \(v\), and \(\Delta \cup A \vDash B\),
+  it follows that \(v(B) = \True\), as required.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Deduction Theorem}
+\protect\hypertarget{deduction-theorem}{}
+This is why we define \(\rightarrow\) the way we do.
+
+\begin{quote}
+\(\Gamma \vDash A \rightarrow B\) if and only if
+\(\Gamma \cup A \vDash B\).
+\end{quote}
+
+Note that there are two claims here - one each direction. We need to
+prove each.
+\end{frame}
+
+\begin{frame}{Deduction Theorem Left-to-Right}
+\protect\hypertarget{deduction-theorem-left-to-right}{}
+\begin{itemize}
+\tightlist
+\item
+  Assume \(\Gamma \vDash A \rightarrow B\), and prove
+  \(\Gamma \cup A \vDash B\).
+\item
+  So assume \(v(C) = \True\) for all \(C \in \Gamma\), and
+  \(v(A) = \True\), and aim to prove \(v(B) = \True\).\pause
+\item
+  Since \(\Gamma \vDash A \rightarrow B\) and \(v(C) = \True\) for all
+  \(C \in \Gamma\), it follows that
+  \(v(A \rightarrow B) = \True\).\pause
+\item
+  Since \(v(A \rightarrow B) = \True\) and \(v(A) = \True\), it must be
+  that \(v(B) = \True\), since that's the only line on the truth table
+  where \(A \rightarrow B\) and \(A\) are both \(\True\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Deduction Theorem Right-to-Left}
+\protect\hypertarget{deduction-theorem-right-to-left}{}
+\begin{itemize}
+\tightlist
+\item
+  Assume that \(\Gamma \cup A \vDash B\), and prove
+  \(\Gamma \vDash A \rightarrow B\).
+\item
+  So assume \(v(C) = \True\) for all \(C \in \Gamma\), and prove
+  \(v(A \rightarrow B) = \True\). \pause
+\item
+  Either \(v(A) = \True\) or \(v(A) = \False\). Take each case in
+  turn.\pause
+\item
+  If \(v(A) = \True\), then since \(v(C) = \True\) for all
+  \(C \in \Gamma\), and \(\Gamma \cup A \vDash B\), it follows that
+  \(v(B) = \True \pause\), so \(v(A \rightarrow B) = \True \pause\).
+\item
+  If \(v(A) = \False\), it follows directly that
+  \(v(A \rightarrow B) = \True \pause\).
+\item
+  Either way, \(v(A \rightarrow B) = \True\) as required.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Deduction Theorem Comments}
+\protect\hypertarget{deduction-theorem-comments}{}
+\begin{itemize}
+\tightlist
+\item
+  This is a striking result.
+\item
+  It shows that proving \(A \rightarrow B\) is just the same as proving
+  \(B\), assuming you're allowed to add \(A\) as an extra assumption.
+\item
+  And that's a good thing, intuitively. That is how we prove
+  conditionals.
+\item
+  But it only works if you have the (very odd looking) truth table that
+  we're using for \(\rightarrow\).
+\item
+  This is the main reason for thinking, despite it's odd appearance,
+  that this truth table is the right one for \(\rightarrow\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+We will start working on a different way to analyse arguments: truth
+trees.
+\end{frame}
+
+\end{document}

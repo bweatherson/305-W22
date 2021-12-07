@@ -1,0 +1,597 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 7.2 - About Probability Functions},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+ \usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+\usetikzlibrary{arrows.meta}
+ \forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\setlength\lightrulewidth{0.3pt}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 7.2 - About Probability Functions}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+\begin{itemize}
+\tightlist
+\item
+  This lecture looks at some general features of probability functions,
+  and looks at some ways to think probabilistically about real world
+  events.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+Odds and Ends, Chapter 5
+\end{frame}
+
+\begin{frame}{Scale}
+\protect\hypertarget{scale}{}
+\[
+0 \leq \Pr(A) \leq 1
+\]
+\end{frame}
+
+\begin{frame}{Negation}
+\protect\hypertarget{negation}{}
+\[
+\Pr(\neg A) = 1 - \Pr(A)
+\]
+\end{frame}
+
+\begin{frame}{Excluded Middle}
+\protect\hypertarget{excluded-middle}{}
+\[
+\Pr(A) + \Pr(\neg A) = 1
+\]
+\end{frame}
+
+\begin{frame}{Partition}
+\protect\hypertarget{partition}{}
+Some events \(A_1, \dots A_n\) form a partition if, necessarily, exactly
+one of them is true.
+
+\begin{itemize}
+\tightlist
+\item
+  So they are \textbf{exclusive} - you can't have any two of them both
+  be true.
+\item
+  And they are \textbf{exhaustive} - you have to have at least one true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Partition}
+\protect\hypertarget{partition-1}{}
+If \(A_1, \dots A_n\) form a partition then
+
+\[
+\Pr(A_1) + \dots + \Pr(A_n) = 1
+\]
+\end{frame}
+
+\begin{frame}{Exclusive}
+\protect\hypertarget{exclusive}{}
+If \(A, B\) are exclusive
+
+\[
+\Pr(A \vee B) = \Pr(A) + \Pr(B)
+\]
+\end{frame}
+
+\begin{frame}{General Principle}
+\protect\hypertarget{general-principle}{}
+\[
+\Pr(A) + \Pr(B) = \Pr(A \vee B) + \Pr(A \wedge B)
+\]
+
+\pause
+
+It's worth thinking through why this is true in terms of possibilities.
+\end{frame}
+
+\begin{frame}{Trees}
+\protect\hypertarget{trees}{}
+\begin{itemize}
+\tightlist
+\item
+  Often, we can't just write down numbers for the possibilities.
+\item
+  But we can write down, or at least make reasonable guesses about,
+  numbers for certain events.
+\item
+  And we can think about how things are likely to go given those events
+  happen.
+\item
+  This is the tree structure that is used in \emph{Odds and Ends}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Academic Forecasting}
+\protect\hypertarget{academic-forecasting}{}
+\begin{itemize}
+\tightlist
+\item
+  So let's say you're interested in the probability that we have in
+  person classes all the way through Fall semester.
+\item
+  The vaccine rollout is going much better than I ever expected.
+\item
+  But we saw how bad things got last Thanksgiving and Christmas, and you
+  can see why that might make you worried.
+\item
+  But it's hard to put into numbers how it affects things.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{One Method}
+\protect\hypertarget{one-method}{}
+\begin{itemize}
+\tightlist
+\item
+  Divide up the state space.
+\item
+  Work out the probability of being in one or other part of the space.
+\item
+  Work out the probability of classes running all semester in each part
+  of the space.
+\item
+  Add things up.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Nothing is Reliable}
+\protect\hypertarget{nothing-is-reliable}{}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  There are a lot of ways to do this.
+\item
+  You could divide up the space by how many cases there are in Michigan.
+\item
+  Or you could divide up the space by how many other universities shut
+  down.
+\item
+  Or, and let's work with this one, you could divide it up by how many
+  people are vaccinated by the the start of term.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Three States}
+\protect\hypertarget{three-states}{}
+\begin{enumerate}
+\tightlist
+\item
+  Only high risk staff and students are vaccinated.
+\item
+  More than just the high risk folks are vaccinated, but there are still
+  shortages.
+\item
+  Vaccine for all.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Two Step Process}
+\protect\hypertarget{two-step-process}{}
+\begin{enumerate}
+\tightlist
+\item
+  Work out (or at least estimate) probability of each state.
+\item
+  Work out probability of the university staying open within each of
+  those states.
+\end{enumerate}
+
+This will involve a lot of guesswork - do not make investment decisions
+on the basis of the numbers I'm about to use because they are really
+pulled out of the air - but it's a very helpful heuristic to at least
+approximate the reality.
+\end{frame}
+
+\begin{frame}{Probabilities of States}
+\protect\hypertarget{probabilities-of-states}{}
+This could be embarrassingly out of date by the time we even do the
+classes, but let's say the probabilities look like this.
+
+\begin{itemize}
+\tightlist
+\item
+  High risk only - 20\%, or 0.2.
+\item
+  Limited quantities of vaccine - 50\%, or 0.5.
+\item
+  Unlimited quantities of vaccine - 30\%, or 0.3.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Class Probabilities}
+\protect\hypertarget{class-probabilities}{}
+Then we want to work out how likely it is that we get a full semester of
+classes in given each of these three possibilities.
+\end{frame}
+
+\begin{frame}{High Risk Only}
+\protect\hypertarget{high-risk-only}{}
+Given how badly things went last Fall, I'm not sure what we'd do in this
+situation. Maybe we'd muddle through and it would work. But I suspect
+that it's most likely we'd be planning to shut down at Thanksgiving, so
+not strictly a full semester.
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Let's call it a 30\% chance of staying open all semester in that
+  situation.
+\item
+  I really, and I can't stress this enough, want to emphasise that I'm
+  making these numbers up for the purposes of an in class example.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Limited Vaccine}
+\protect\hypertarget{limited-vaccine}{}
+This starts to feel more like something where we can get through the
+term. For one thing, we might just tought it out even if there is a bit
+of an outbreak. For another, I said limited in September; maybe by
+October/November it would be unlimited. So it feels pretty likely.
+
+\begin{itemize}
+\tightlist
+\item
+  Let's say there is an 80\% chance we make it all the way through
+  semester in that situation, and only 20\% that we don't.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Unlimited vaccine}
+\protect\hypertarget{unlimited-vaccine}{}
+Now it's hard to see why the university would shut down. Rather than
+fuss about the details, let's just simplify and say that in this (very
+unlikely) scenario, it's 100\% likely that we'll get all classes in.
+\end{frame}
+
+\begin{frame}{The Giant Table}
+\protect\hypertarget{the-giant-table}{}
+\begin{longtable}[]{@{}lcc@{}}
+\toprule
+& Full Semester & Some shutdown \\ \addlinespace
+\midrule
+\endhead
+No vaccine & \(0.2 \times 0.3 = 0.06\) &
+\(0.2 \times 0.7 = 0.14\) \\ \addlinespace
+Limited vaccine & \(0.5 \times 0.8 = 0.40\) &
+\(0.5 \times 0.2 = 0.10\) \\ \addlinespace
+Unlimited vaccine & \(0.3 \times 1.0 = 0.30\) &
+\(0.3 \times 0.0 = 0.00\) \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+So the probability that we get a full semester in (given these literally
+made up assumptions) is \(0.06 + 0.40 + 0.30 = 0.76\), or 76\%.
+\end{frame}
+
+\begin{frame}{Probabilities and Errors}
+\protect\hypertarget{probabilities-and-errors}{}
+\begin{itemize}
+\tightlist
+\item
+  The error bars on that calculation are massive.
+\item
+  But it's a kind of sanity check on how you think things are going.
+\item
+  Especially in situations where only a handful of paths lead to a
+  salient result (like in playoffs in sports, or when thinking about the
+  likelihood of a particular challenger winning), doing the tree even
+  with favorable numbers can give you a conservative estimate of some
+  probability.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Three Cases Where This is More Precise}
+\protect\hypertarget{three-cases-where-this-is-more-precise}{}
+\begin{enumerate}
+\tightlist
+\item
+  Probabilities are stipulated
+\item
+  Probabilities are due to well understood chance processes (like
+  gambling devices)
+\item
+  Probabilities are derived from very large data sets
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+\begin{itemize}
+\tightlist
+\item
+  We will look at an example where the probabilities are indeed
+  stipulated.
+\end{itemize}
+\end{frame}
+
+\end{document}

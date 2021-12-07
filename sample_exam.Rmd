@@ -1,0 +1,76 @@
+---
+title: "Sample Exam"
+output:
+  pdf_document:
+    toc: false
+    md_extensions: +startnum
+    df_print: kable
+    keep_tex: yes
+    latex_engine: xelatex
+    extra_dependencies: ["gensymb", "nicefrac", "caption", "istgame", "mathastext"]
+    fig_caption: no
+fontsize: 11pt
+header-includes: 
+ - \DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+ - \DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+mainfont: SF Pro Rounded
+mainfontoptions: BoldFont = SF Pro Rounded Semibold, Scale = MatchLowercase
+mathfont: SF Pro Rounded
+geometry: margin=1.5in
+author: Philosophy 305
+date: TBC
+---
+
+## Instructions
+
+- You have **3 hours** for the exam. 
+- Type up any answers you can.
+- But for things you can't type - _especially trees_ - write them out on paper, take a photo of them, and upload the photo.
+- Note that there will be *fewer* questions than this on the final, but the structure will be similar. The point of this is to give you a sense of the kind of questions that there will be.
+
+## Truth Tables
+
+For each of these sequents, do a truth table to test whether they are valid. In each case, say whether they are valid.
+
+1. $A \vee B, B \rightarrow A \vDash A$
+2. $\neg (A \wedge B), \neg (B \rightarrow A) \vDash A$
+3. $A \rightarrow B \vDash B \rightarrow A$
+4. $A \rightarrow (B \vee C), C \rightarrow (A \vee B) \vDash B$
+
+## Truth Trees
+
+For each of these sequents, do a truth table to test whether they are valid. In each case, say whether they are valid.
+
+5. $A \vee B, B \rightarrow A \vDash A$
+6. $\neg (A \wedge B), \neg (B \rightarrow A) \vDash A$
+7. $A \rightarrow B \vDash B \rightarrow A$
+8. $A \rightarrow (B \vee C), C \rightarrow (A \vee B) \vDash B$
+
+
+\newpage
+
+## Proofs
+
+Construct a proof for each of the following
+
+9. $P \rightarrow (Q \wedge R), S \wedge P \vdash R \wedge (S \vee T)$ 
+10. $(P \wedge Q) \rightarrow R \vdash P \rightarrow (Q \rightarrow R)$
+11. $P \rightarrow R, Q \rightarrow R \vdash (P \vee Q) \rightarrow R$
+12. $P \rightarrow (Q \wedge R), P \rightarrow (R \rightarrow \neg Q) \vdash \neg P$
+
+## Probability
+
+13. A fair coin (with equal chance of landing heads and landing tails) is about to be flipped. Ankita is offered the following bet - if it lands heads she wins $200, and if it lands tails she loses $100. Do we know enough to advise Ankita whether or not she should take the bet? Why or why not?
+14. Explain why the following decision rule is not generally reasonable: Identity the most likely state; then choose an act which maximizes utility in that state. (Hint: Describe a situation where this would lead to doing something unreasonable.)
+
+## Modal Logic
+
+For each of the following sentences, do **three** truth trees: one to check whether it is a logical truth in K, one to check whether it is a logical truth in S4, and one to check whether it is a logical truth in KT4B (i.e., S5). You can use the simplified rules for S5.
+
+15. $\Box(\Box A \rightarrow B) \vee \Box A$
+16. $\Diamond(A \rightarrow \Diamond \Box A)$
+
+## Conditionals
+
+17. Show that $\Box (A \rightarrow B) \rightarrow \Box ((A \wedge C) \rightarrow B)$ is a theorem of S5.
+18. Describe a sphere model (from the minimal change semantics chapter of _Boxes And Diamonds_) that shows $((A \boxright B) \wedge (B \boxright C)) \rightarrow (A  \boxright C)$ is not a logical truth in the minimal change semantics.

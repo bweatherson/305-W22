@@ -1,0 +1,167 @@
+---
+title: "305 Lecture 3.4 - Features of Validity"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+This lecture finishes our discussion of truth tables by looking some properties validity has in the truth table system.
+
+## Associated Reading
+
+forall x, chapter 12, sections 12.5-12.7.
+
+## The Rules
+
+- An argument is **invalid** if there is a row on the truth table where all the premises are true and the conclusion is false. (Roughly!)
+- It is **valid** if all the rows where the premises are all true, the conclusion is true as well.
+
+## A Relevance Failure
+
+Is this argument valid?
+
+&nbsp;
+:    $A$
+
+$\therefore$
+:    B $\vee \neg B$
+
+\pause
+
+Yes! 
+
+- There is no line where the conclusion is false.
+- So there are no lines where the premise is true and the conclusion false.
+- So it is not invalid, i.e., it is valid.
+
+## Terminology
+
+Say a **valuation** is a function $v$ from sentences to $\{\True, \False\}$ satisfying these constraints.
+
+1. $v(\neg A) = \True$ if $v(A) = \False$, and $v(\neg A) = \False$ otherwise.
+2. $v(A \vee B) = \True$ if $V(A) = \True$ or $v(B) = \True$, and $v(A \vee B) = \False$ otherwise.
+3. $v(A \wedge B) = \True$ if $V(A) = \True$ and $v(B) = \True$, and $v(A \wedge B) = \False$ otherwise.
+4. $v(A \rightarrow B) = \True$ if $V(A) = \False$ or $v(B) = \True$, and $v(A \rightarrow B) = \False$ otherwise.
+
+## Restating
+
+> - An argument is valid relative to a class of valuations $V$ iff any valuation $v \in V$ that makes all the premises $\True$ also makes the conclusion $\True$.
+> - An argument is truth functionally valid when the class $V$ is the class of valuations satisfying the constraints on the previous slide.
+
+## Very Technical Terminology
+
+- I'll use $\Gamma \vDash A$ to mean that the argument with premises $\Gamma$ and conclusion $A$ is valid in this sense - i.e., all valuations that make all of $\Gamma$ come out $\True$ also make $A$ come out $\True$.
+- The double bar in $\vDash$ is to represent that this is a kind of validity defined in terms of valuations (or, as we'll start calling them, models), and not proofs.
+- For purposes of 305, the difference between $\vdash$ and $\vDash$ is not important, and if this is the last logic/mathematical philosophy course you plan to take, you don't have to worry about this.
+- But I like being pedantic even when it isn't relevant to the course.
+
+## Closure
+
+> If $\Gamma \vDash A$ and $\Gamma \vDash A \rightarrow B$ then $\Gamma \vDash B \pause$.
+
+Proof: Assume this is false. So assume that $\Gamma \nvDash B$. So there is a valuation function $v$ that makes everything in $\Gamma$ come out $\True$ and $B$ come out $\False \pause$. Either $v(A) = \True$ or $v(A) = \False \pause$. If $v(A) = \True$, then $v(A \rightarrow B) = \False$, contradicting $\Gamma \vDash A \rightarrow B \pause$. If $v(A) = \False$, then $v$ is a counterexample to $\Gamma \vDash A$, but we know $\Gamma \vDash A$ is true. Either way, such a $v$ cannot exist, so $\Gamma \vDash B$ is true.
+
+## Monotony
+
+> If $\Gamma \vDash A$, and $\Gamma \subset \Delta$, then $\Delta \vDash A$.
+
+That is, adding premises can't turn an argument from being valid to invalid.
+
+## Monotony Proof
+
+- Assume that for all $B \in \Delta, v(B) = \True$.
+- We need to prove that $v(A) = \True$.\pause
+- Assume $C \in \Gamma$.
+- Then $C \in \Delta$, since $\Gamma \subset \Delta$.\pause
+- So by hypothesis, $v(C) = \True$, since everything in $\Delta$ is $\True$.\pause
+- So $v$ is such that everything in $\Gamma$ is $\True$.\pause
+- And since $\Gamma \vDash A$, that implies $v(A) = \True$, as required.
+
+## Monotony Commentary
+
+- This idea, that adding premises doesn't destroy validity, only works for logical arguments.
+- It isn't true for good arguments in general.
+
+## Tweety the First
+
+
+&nbsp;
+:     Tweety is a bird.
+
+$\therefore$
+:     Tweety flies.
+
+That's a perfectly good, though not logically valid, argument.
+
+## Tweety the Second
+
+&nbsp;
+:     Tweety is a bird.
+
+&nbsp;
+:     Tweety is black and white, lives in Antarctica, and lays large eggs.
+
+$\therefore$
+:     Tweety flies.
+
+That's not a very good argument!
+
+## Transitivity
+
+> If $\Gamma \vDash A$ and $\Delta \cup A \vDash B$ then $\Gamma \cup \Delta \vDash B$
+
+If some premises entail $A$, and some other premises plus $A$ entail $B$, then the two sets of premises between them entail $B$. \pause This is crucial for being able to chain together lines of reasoning.
+
+## Transitivity Proof
+
+- Assume that for all $C \in \Gamma \cup \Delta, v(C) = \True$.
+- We need to prove $v(B) = \True$.\pause
+- Since everything in $\Gamma$ is $\True$ according to $v$, and $\Gamma \vDash A$, it follows that $v(A) = \True$.\pause
+- Since everything in $\Delta$ is $\True$ according to $v$, and $A$ is $\True$ according to $v$, and $\Delta \cup A \vDash B$, it follows that $v(B) = \True$, as required.
+
+## Deduction Theorem
+
+This is why we define $\rightarrow$ the way we do.
+
+> $\Gamma \vDash A \rightarrow B$ if and only if $\Gamma \cup A \vDash B$.
+
+Note that there are two claims here - one each direction. We need to prove each.
+
+## Deduction Theorem Left-to-Right
+
+- Assume $\Gamma \vDash A \rightarrow B$, and prove $\Gamma \cup A \vDash B$.
+- So assume $v(C) = \True$ for all $C \in \Gamma$, and $v(A) = \True$, and aim to prove $v(B) = \True$.\pause
+- Since $\Gamma \vDash A \rightarrow B$ and $v(C) = \True$ for all $C \in \Gamma$, it follows that $v(A \rightarrow B) = \True$.\pause
+- Since $v(A \rightarrow B) = \True$ and $v(A) = \True$, it must be that $v(B) = \True$, since that's the only line on the truth table where $A \rightarrow B$ and $A$ are both $\True$.
+
+## Deduction Theorem Right-to-Left
+
+- Assume that $\Gamma \cup A \vDash B$, and prove $\Gamma \vDash A \rightarrow B$.
+- So assume $v(C) = \True$ for all $C \in \Gamma$, and prove $v(A \rightarrow B) = \True$. \pause
+- Either $v(A) = \True$ or $v(A) = \False$. Take each case in turn.\pause
+- If $v(A) = \True$, then since $v(C) = \True$ for all $C \in \Gamma$, and $\Gamma \cup A \vDash B$, it follows that $v(B) = \True \pause$, so $v(A \rightarrow B) = \True \pause$.
+- If $v(A) = \False$, it follows directly that $v(A \rightarrow B) = \True \pause$.
+- Either way, $v(A \rightarrow B) = \True$ as required.
+
+## Deduction Theorem Comments
+
+- This is a striking result.
+- It shows that proving $A \rightarrow B$ is just the same as proving $B$, assuming you're allowed to add $A$ as an extra assumption.
+- And that's a good thing, intuitively. That is how we prove conditionals.
+- But it only works if you have the (very odd looking) truth table that we're using for $\rightarrow$.
+- This is the main reason for thinking, despite it's odd appearance, that this truth table is the right one for $\rightarrow$.
+
+## For Next Time
+
+We will start working on a different way to analyse arguments: truth trees.
+

@@ -1,0 +1,493 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 10.4 - Subjective Theories of Probability},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+ \usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+\usetikzlibrary{arrows.meta}
+ \forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 10.4 - Subjective Theories of Probability}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+\begin{itemize}
+\tightlist
+\item
+  We're going to look at versions of the subjective theory of
+  probability
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+Odds and Ends, chapter 16.
+\end{frame}
+
+\begin{frame}{Subjective Theory}
+\protect\hypertarget{subjective-theory}{}
+Probability is degree of confidence.
+\end{frame}
+
+\begin{frame}{Two Questions}
+\protect\hypertarget{two-questions}{}
+\begin{enumerate}
+\tightlist
+\item
+  Whose confidence? \pause
+\item
+  Actual confidence or idealised confidence?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Actual}
+\protect\hypertarget{actual}{}
+Question 2 seems easiest to answer.
+
+\begin{itemize}
+\tightlist
+\item
+  No matter how confident you or I am that the moon is made of green
+  cheese, it is not probable that the moon is made of green cheese.
+\item
+  If we're really confident that it is, then we're getting something
+  very badly wrong.
+\item
+  But if probability just was how confident we actually are in
+  something, then it would be probable that the moon is made of green
+  cheese.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Idealised}
+\protect\hypertarget{idealised}{}
+A better view is, as the textbook says, that
+
+\begin{quote}
+Probability is ultimately about belief. It's about how certain you
+should be that something is true.
+\end{quote}
+
+So not what you actually believe, but what you should believe. This gets
+out of the green cheese problem.
+\end{frame}
+
+\begin{frame}{Several Challenges}
+\protect\hypertarget{several-challenges}{}
+\begin{enumerate}
+\tightlist
+\item
+  Why think that `how certain you should be that something is true'
+  obeys these rules? \pause
+\item
+  Who is the `you' in how certain you should be that something is true?
+  \pause
+\item
+  What happens if rationality is \textbf{permissive}; there are several
+  attitudes you can rationally have about how likely something is?
+  \pause
+\item
+  Especially if that last one is true, how does probability have a role
+  to play in objective science? \pause
+\item
+  How do we even measure how confident people, real or idealised, are in
+  propositions? \pause
+\end{enumerate}
+
+We could do weeks on every one of these questions, but I'll focus on
+3/4.
+\end{frame}
+
+\begin{frame}{Bayesianism}
+\protect\hypertarget{bayesianism}{}
+The main subjective theory is known as Bayesianism.
+
+\begin{itemize}
+\tightlist
+\item
+  The name comes from the Rev.~Thomas Bayes, an 18th century
+  mathematician.
+\item
+  Just what is and is not a form of Bayesianism is a slightly contested,
+  though mostly terminological question.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conditionalisation}
+\protect\hypertarget{conditionalisation}{}
+The core principle behind Bayesianism is that updating is by
+conditionalisation.
+
+\begin{itemize}
+\tightlist
+\item
+  That is, the new \(\Pr(H)\) after getting evidence \(E\) is the old
+  \(\Pr(H | E)\).
+\item
+  And \(\Pr(H | E)\) is given by the formula.
+\end{itemize}
+
+\[
+\Pr(H | E) = \frac{\Pr(E | H)\Pr(H)}{\Pr(E)}
+\]
+\end{frame}
+
+\begin{frame}{Problem of the Priors}
+\protect\hypertarget{problem-of-the-priors}{}
+\begin{itemize}
+\tightlist
+\item
+  That tells you how to convert an old probability into a new
+  probability given some evidence \(E\).
+\item
+  That is, it tells you how to generate a \textbf{posterior}
+  probability. \pause
+\item
+  But it does not tell you where the \textbf{prior} probability comes
+  from.
+\item
+  And this question is one that Bayesians have never quite had a good
+  answer to.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Green Cheese}
+\protect\hypertarget{green-cheese}{}
+To make the problem vivid, imagine that I start out with the following
+probabilities.
+
+\begin{itemize}
+\tightlist
+\item
+  The probability that the moon is made of green cheese is 0.99.
+\item
+  The things that happen around here are probabilistically independent
+  of hypotheses about the material composition of the moon.
+\end{itemize}
+
+The first of these is absurd, but the second isn't ridiculous I suppose.
+\end{frame}
+
+\begin{frame}{Updating}
+\protect\hypertarget{updating}{}
+Now some stuff happens, I get evidence \(E\).
+
+\begin{itemize}
+\tightlist
+\item
+  Let \(H\) be that the moon is made of green cheese.
+\item
+  Since \(\Pr(H) = 0.99\), and \(H\) is independent of \(E\), it follows
+  that \(\Pr(H | E) = 0.99\). \pause
+\item
+  So the Bayesians' favourite updating rule says that the new
+  probability for \(H\) should be 0.99. \pause
+\item
+  But that's fairly absurd - what could it mean to say that I
+  \textbf{should} have probability 0.99 in \(H\)?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Two Available Moves Here}
+\protect\hypertarget{two-available-moves-here}{}
+\begin{enumerate}
+\tightlist
+\item
+  Say what the one true prior is - and say that there are two rules: use
+  the one true prior, and update it by conditionalisation. \pause
+\item
+  Say that there are a large class of acceptable priors, and argue that
+  conditionalising any of them with enough evidence will produce a
+  rational outcome. \pause
+\end{enumerate}
+
+The very rough history of this is that 19th century folks were
+sympathetic to option 1, but in the 20th century, most of the focus was
+on option 2.
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+\begin{itemize}
+\tightlist
+\item
+  We will take a short look at the `one true prior' option.
+\end{itemize}
+\end{frame}
+
+\end{document}

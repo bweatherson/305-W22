@@ -1,0 +1,94 @@
+---
+title: "305 Lecture 9.3 - Utilities"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- In this lecture we'll talk about the notion of utility, the idea that we can numerically measure how good an option is for a chooser.
+
+## Associated Reading
+
+Odds and Ends, chapter 12
+
+## Ranking
+
+- The dominance view makes recommendations just looking at the **ranking** of various options. 
+- It doesn't look at how much we prefer one  option over another, just on what is preferred to what.
+
+## Ordinal Utility
+
+- To use the technical language, dominance just depends on **ordinal utilities**. 
+- The term **ordinal** here means that we only look at the **order** of the options. 
+
+## Cardinal Utility
+
+- The rules that we'll look at rely on **cardinal utilities**.
+- Whenever we're associating outcomes with numbers in a way that the magnitudes of the differences between the numbers matters, we're using cardinal utilities.
+
+## Why More Than Order Matters (An Example)
+
+- Chris and Robin each have to make a decision between two airlines to fly them from Detroit to Los Angeles. 
+- One airline is more expensive, the other is more reliable. 
+- To oversimplify things, let's say the unreliable airline runs well in good weather, but in bad weather, things go wrong. 
+- And Chris and Robin have no way of finding out what the weather along the way will be. 
+- They would prefer to save money, but they'd certainly not prefer for things to go badly wrong. 
+
+## A Table
+
+So they face the following decision table.
+
+|                   | Good weather | Bad Weather  |
+|------------------:|:------------:|:------------:|
+| Fly Cheap Airline |      4       |      1       |
+| Fly Good Airline  |      3       |      2       |
+ 
+If we're just looking at the ordering of outcomes, that is the decision problem facing both Chris and Robin.
+
+## Filling in Details
+
+- The cheap airline that Chris might fly has a problem with luggage. 
+- If the weather is bad, their passengers' luggage will be a day late getting to Los Angeles.  \pause 
+- The cheap airline that Robin might fly has a problem with staying in the air. 
+- If the weather is bad, their plane will crash.
+
+## Details Matter
+
+- Those seem like very different decision problems. 
+- It might be worth risking one's luggage being a day late in order to get a cheap plane ticket. 
+- It's not worth risking, seriously risking, a plane crash. 
+- That's to say, Chris and Robin are facing very different decision problems, even though the ranking of the four possible outcomes is the same in each of their cases. 
+- So it seems like some decision rules should be sensitive to magnitudes of differences between options.
+
+## Utility
+
+- Intuitively, think of utilities as measuring how good an outcome is. 
+- The theory we're building towards is thoroughly subjectivist, so think of 'how good' as meaning 'how good along all and only dimensions the agent making the decision cares about'. 
+
+## Scale
+
+- Utilities aren't really measured on any scale. 
+- Indeed, like temperature measures, they don't even have a fixed zero point. 
+- It is usually convenient to associate 0 utility with the status quo, and then have negative numbers for outcomes worse than status quo, and positive numbers for outcomes better than status quo. 
+- But that's just a convention; you can set the 0 wherever you like. 
+- And you can set the utility 1 point at anything better than 0.
+
+## Scale (continued)
+
+- But that's where the convention stops.
+- Once you fix the 0 and 1 points, nothing else is fixed by pure convention.
+- Temperatures are like this too.
+
+## For Next Time
+
+- We will look at how to use utility theory to make decisions.

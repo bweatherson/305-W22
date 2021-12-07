@@ -1,0 +1,110 @@
+---
+title: $\Diamond A \rightarrow \Box \Diamond A$ (in S5)
+author: Build a Tableau
+date: To Check Whether it is Valid
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+
+## Hypothesis
+
+$\Diamond A \rightarrow \Box \Diamond A$ is a theorem of S5.
+
+- We are going to use simplified S5 because normal S5 is really painful for cases like this one.
+- Note that if we can prove this, we'll have shown in effect that in S5, all true modal claims are necessarily true. That's the distinctive feature of S5; modality itself is never contingent.
+
+## $\Diamond A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Diamond A \rightarrow \Box \Diamond A}{1}, just = \TAss,
+]
+\end{oltableau}
+
+\bigskip
+
+Start with it being false at 1.
+
+## $\Diamond A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Diamond A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, just = {\TRule{\False}{\rightarrow}[1]}
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+This feels familiar by now.
+
+## $\Diamond A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Diamond A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{2}, just = {\TRule{\True}{\Diamond}[2]}
+        [\pFmla{\False}{\Diamond A}{3}, just = {\TRule{\False}{\Box}[3]}
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+- True $\Diamond$ sentences and false $\Box$ sentences have to be made true somewhere.
+- Not necessarily the same 'somewhere'.
+
+## $\Diamond A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Diamond A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{2}, just = {\TRule{\True}{\Diamond}[2]}
+        [\pFmla{\False}{\Diamond A}{3}, just = {\TRule{\False}{\Box}[3]}
+          [\pFmla{\False}{A}{2}, just = {\TRule{\False}{\Diamond}[5]}]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+\bigskip
+
+- False $\Diamond$ sentences are false everywhere.
+- That is, the part inside the $\Diamond$ is false everywhere.
+
+## $\Diamond A \rightarrow \Box \Diamond A$
+
+\begin{oltableau}
+[\pFmla{\False}{\Diamond A \rightarrow \Box \Diamond A}{1}, checked, just = \TAss,
+  [\pFmla{\True}{\Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+    [\pFmla{\False}{\Box \Diamond A}{1}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+      [\pFmla{\True}{A}{2}, just = {\TRule{\True}{\Diamond}[2]}
+        [\pFmla{\False}{\Diamond A}{3}, just = {\TRule{\False}{\Box}[3]}
+          [\pFmla{\False}{A}{2}, just = {\TRule{\False}{\Diamond}[5]}, close]
+        ]
+      ]
+    ]
+  ]
+]
+\end{oltableau}
+
+And so it closes, so this is a theorem.
+

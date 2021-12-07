@@ -1,0 +1,108 @@
+---
+title: "305 Lecture 1.1 - Getting Started"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+  pdf_document: default
+---
+
+## Aim of Course
+
+Introductory survey of some formal methods that are of broad philosophical use.
+
+## Three Sections
+
+> 1. Propositional Logic
+> 2. Probability and Statistical Reasoning
+> 3. Modal Logic and Conditionals
+
+## Propositional Logic
+
+- This is the logic of sentences that can be true or false, and that can combine to form longer sentences. 
+- So as well as looking at simple sentences, like _Nadia sings_, we will look at sentences that are built from simple sentences.
+- Examples of such sentences are _Nadia doesn't sing_, _Nadia sings and Bethany dances_, and _If Nadia sings, Simone sleeps_.
+
+## Probability and Statistical Reasoning
+
+> - Sometimes we can't infer that a conclusion is definitely true, but we can infer that it is probably true.
+> - We will look at some tools for regimenting how and when we make such inference. 
+
+## Modal Logic
+
+This is the logic of 'must' and 'might'.  It has as many applications as there are interpretations of 'must' and 'might'. The primary interpretations we'll look at are:
+
+> - Metaphysical 
+> - Epistemological  
+> - Moral 
+
+## Textbooks
+
+There are three - all of them available through Canvas.
+
+1. _forall x: Calgary Edition_ by P. D. Magnus, Tim Button, J. Robert Loftis, Robert Trueman, Aaron Thomas-Bolduc and Richard Zach.
+2. _Odds and Ends_ by Jonathan Weisberg
+3. _Boxes and Diamonds, Ann Arbor remix_, writted by Richard Zach and edited by me.
+
+The three books are for the three parts of the course.
+
+## forall x
+
+![http://forallx.openlogicproject.org](../images/forallxyyc.png){height=80%}
+
+## Registering with Carnap
+
+- To turn in the work for this part of the course, you have to register with a service called Carnap. 
+- You'll find it at <http://carnap.io>.
+
+## Register for the Right Course
+
+Our course is called
+
+> University of Michigan - W21 - Phil305
+> Introduction to Formal Methods, University of Michigan, Winter 2021.
+
+## Odds and Ends
+
+![https://jonathanweisberg.org/vip/](../images/1_1_Odds_and_Ends.png){height=80%}
+
+## Boxes and Diamonds
+
+![https://bd.openlogicproject.org](../images/1_1_Boxes_and_Diamonds.png){height=80%}
+
+---
+
+![Boxes and Diamonds - Ann Arbor](../images/1_1_Boxes_and_Diamonds_AA.png){height=80%}
+
+## Logistics
+
+- These lectures are going to be very short.
+- That's in part because it's really hard to retain focus through a long logic video, and in part because it's easier to manage uploads and downloads with smaller files.
+- So we'll typically have somewhere between 6 and 10 'lectures' each week, though each will be 5 to 15 minutes.
+
+## Access
+
+- The slides will be captioned.
+- The captions are produced automatically by Kaltura then edited by hand, so they should be ok to use.
+- But if anything goes wrong, do let me know.
+- Access is important, and it's harder to get right for a course like this than for other philosophy courses, so you should hold me to a higher standard.
+
+## Assessment
+
+- The primary assessment will be weekly assignments, most of which will be administered through Canvas.
+- Some of them, especially in the early weeks, will be on Carnap.
+- These are already all posted, and they will be due each week on Friday at 5pm.
+- There are exceptions for this week, the week of the mid-term break, and the last week of term.
+- There will also be an end of term exam, also through Canvas.
+
+## For Next Time
+
+We'll start on saying what arguments are, in the special sense we're interested in.

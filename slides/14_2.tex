@@ -1,0 +1,544 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 14.2 - The Logic Of Counterfactuals},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\usetikzlibrary{arrows.meta}
+\RequirePackage[tableaux]{prooftrees}
+\forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 14.2 - The Logic Of Counterfactuals}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+\begin{itemize}
+\tightlist
+\item
+  To discuss some features of the logic of counterfactual conditionals.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+\begin{itemize}
+\tightlist
+\item
+  \emph{Boxes and Diamonds}, chapter 7.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Antecedent Strengthening}
+\protect\hypertarget{antecedent-strengthening}{}
+This fails on the minimal change semantics.
+\end{frame}
+
+\begin{frame}{Antecedent Strengthening}
+\protect\hypertarget{antecedent-strengthening-1}{}
+What is it?
+
+\begin{enumerate}
+\tightlist
+\item
+  \(A \boxright B\).
+\item
+  so, \((A \wedge C) \boxright B\)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Antecedent Strengthening}
+\protect\hypertarget{antecedent-strengthening-2}{}
+Why does it fail? Because this is possible.
+
+\begin{itemize}
+\tightlist
+\item
+  The nearest \(A\)-world is 10 units away, and at it, \(B\) is true,
+  but \(C\) is false.
+\item
+  The nearest \(A \wedge C\)-world is 100 units away, and at it, \(C\)
+  is true (of course), but \(B\) is false.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Antecedent Strengthening}
+\protect\hypertarget{antecedent-strengthening-3}{}
+Put in less technical terms, it fails when these things happen at once.
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  In all normal worlds, when \(A\) is true, \(B\) is true and \(C\) is
+  false.
+\item
+  So there are no normal worlds where \(A \wedge C\).
+\item
+  But in the \(A \wedge C\)-worlds that are only a bit abnormal, \(B\)
+  is false.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Skiing Example}
+\protect\hypertarget{skiing-example}{}
+Here are some things we might imagine are true in all normal
+possibilities.
+
+\begin{itemize}
+\tightlist
+\item
+  When it snows, it snows a normal amount - it isn't a blizzard.
+\item
+  When it snows, Jack goes skiing.
+\item
+  Jack has no disposition to want to ski in a blizzard. \pause
+\end{itemize}
+
+So in the most normal blizzard world, Jack does not go skiing. And we
+have both of the following.
+
+\begin{itemize}
+\tightlist
+\item
+  If it had snowed, Jack would have gone skiing.
+\item
+  If there had been snow and a blizzard, Jack would not have gone
+  skiing.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Transitivity (or Conditional Syllogism)}
+\protect\hypertarget{transitivity-or-conditional-syllogism}{}
+This argument seems initially compelling for any interpretation of `if'.
+
+\begin{enumerate}
+\tightlist
+\item
+  If \(A, B\).
+\item
+  If \(B, C\).
+\item
+  So if \(A, C\).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Transitivity for Subjunctives}
+\protect\hypertarget{transitivity-for-subjunctives}{}
+On the nearest possible world, or minimal change, semantics, this will
+fail for subjunctive conditionals.
+
+\begin{itemize}
+\tightlist
+\item
+  Imagine there is no nearby world where \(A\).
+\item
+  The nearest \(A\) worlds (which in these cases will be quite distant)
+  are worlds where \(B\) is true and \(C\) is false.
+\item
+  There are nearby, normal \(B\) worlds, and they are all worlds where
+  \(C\) is true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Real Life Example}
+\protect\hypertarget{real-life-example}{}
+\begin{enumerate}
+\tightlist
+\item
+  If there had been a hurricane and a blizzard on Presidents' Day
+  Weekend, it would have snowed on Presidents' Day Weekend. \pause 
+\item
+  If it had snowed on Presidents' Day Weekend, Jack would have gone
+  skiing on Presidents' Day Weekend. \pause 
+\item
+  So if there had been a hurricane and a blizzard on Presidents' Day
+  Weekend, Jack would have gone skiing on Presidents' Day Weekend.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Link To Antecedent Strengthening}
+\protect\hypertarget{link-to-antecedent-strengthening}{}
+\begin{enumerate}
+\tightlist
+\item
+  If I had crashed my car last week and won the lottery on the weekend,
+  I'd have crashed my car last week. \pause 
+\item
+  If I had crashed my car last week, I'd now have less money than
+  actually do. \pause 
+\item
+  So if I had crashed my car last week and won the lottery on the
+  weekend, I'd now have less money than actually do.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Recipe Here}
+\protect\hypertarget{recipe-here}{}
+Assume that you have \emph{If A, C}, but not \emph{If A and B, C}.
+
+\begin{enumerate}
+\tightlist
+\item
+  If \(A\) and \(B\), \(A\).
+\item
+  If \(A, C\).
+\item
+  So, If \(A\) and \(B\), \(C\).
+\end{enumerate}
+
+That should have true premises and a false conclusion.
+\end{frame}
+
+\begin{frame}{But Wait}
+\protect\hypertarget{but-wait}{}
+But don't we reason this way all the time.
+
+\begin{enumerate}
+\tightlist
+\item
+  If there had been a major earthquake in Ann Arbor last weekend,
+  several buildings in Ann Arbor would have been destroyed. \pause 
+\item
+  If several buildings in Ann Arbor were destroyed, I would have been
+  very upset. \pause 
+\item
+  So if there had been a major earthquake in Ann Arbor on the weekend, I
+  would have been very upset.
+\end{enumerate}
+
+The point is not that 1-3 look true here, it's that reasoning from 1 and
+2 to 3 looks like good, ordinary, everyday reasoning.
+\end{frame}
+
+\begin{frame}{Modified Transitivity}
+\protect\hypertarget{modified-transitivity}{}
+This argument form is valid on the minimal change semantics.
+
+\begin{enumerate}
+\tightlist
+\item
+  If \(A, B\)
+\item
+  If \(A \wedge B, C\)
+\item
+  So, if \(A, C\)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Proof Of Modified Transitivity}
+\protect\hypertarget{proof-of-modified-transitivity}{}
+\begin{itemize}
+\tightlist
+\item
+  Let \(d\) be the distance of the nearest \(A\) world.
+\item
+  By premise 1, all of those nearest \(A\) worlds, which are distance
+  \(d\) away, are \(B\) worlds. \pause 
+\item
+  So they are also the nearest \(A \wedge B\) worlds. (There can't be
+  any closer, because then they would be closer \(A\) worlds.) \pause 
+\item
+  By premise 2 then, all these \(A \wedge B\) worlds distance \(d\) away
+  are also \(C\) worlds.
+\item
+  So all the \(A\) worlds distance \(d\) away are \(C\) worlds. \pause 
+\item
+  So, if \(A, C\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Explanation}
+\protect\hypertarget{explanation}{}
+Lewis suggested that was what was really going on when we use
+transitivity arguments in everyday life.
+
+\begin{itemize}
+\tightlist
+\item
+  The middle premise is really \emph{If A and B, C}, not just \emph{If
+  B, C}.
+\item
+  Is this plausible? I don't know.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{That's All!}
+\protect\hypertarget{thats-all}{}
+Next class will just be about revision before the final. Thanks for
+staying to the end!
+\end{frame}
+
+\end{document}

@@ -1,0 +1,138 @@
+---
+title: "305 Lecture 13.6 - Minimal Change Semantics"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+To discuss the 'nearest possible world' approach to counterfactuals.
+
+## Reading
+
+Still chapter 7 of Boxes and Diamonds
+
+## Basic Idea
+
+- Replace the on/off accessibility relation between worlds with a distance measure $d$.
+- So $d(x, y)$, where $x, y$ are worlds, measures how similar $x$ and $y$ are. 
+- But we'll sometimes talk as if it is a distance measure, that tracks 'how far apart' the worlds are.
+- And for simplicity, we'll assume $d(x, y)$ is always an integer - there are the worlds 1 unit apart, 2 units apart, etc.
+
+## Nearest World
+
+- So if we're evaluating "If A were true, B would be true", we do the following.
+- We find the nearest world, or worlds, where A is true.
+- We see A is actually true, if not we look one unit away and see if there are any A worlds there, if not we look two units away and see if there are A worlds there, and so on until we find some A worlds.
+- Say the distance they are separated from us is $d$.
+- Then "If A were true, B would be true" is true just in case all the worlds distance $d$ away where A is true also make B true.
+
+## Short Version
+
+_If A were true, B would be true_, means
+
+- All of the nearest A-worlds are B-worlds.
+
+From now on, I'll sometimes write this as $A \boxright B$.
+
+## Variably Strict
+
+- This makes the conditional a variably strict conditional.
+- It's strict, because it requires all A worlds to be B worlds.
+- But it's variably strict, because which worlds it ranges over varies with what the antecedent is.
+
+## Intuition Check
+
+Here's the thought behind Lewis's view.
+
+- When a counterfactual has a normal antecedent, the only worlds that matter to its truth are fairly normal worlds.
+- To figure out what would have happened if I'd had bacon and eggs for breakfast, you only have to consider worlds that are really a lot like the actual world.
+- But to figure out what would have happened if Columbus's fleet had sunk, you have to think about worlds that are really different to reality.
+
+## How Far Away
+
+We can even try to think about really wild counterfactuals.
+
+> - What would happen if a vampire was the starting QB for the University of Michigan? 
+> - Or a zombie? 
+> - Or the number 7? \pause
+
+Maybe some of those don't make sense - there are no worlds, not even distant ones, where they are actual. But we can go a fair way until we get to that point.
+
+## Recap
+
+The textbook calls this theory "minimal change semantics". Here's a reminder of how it works.
+
+- Let's say we want to find out whether $A \boxright B$ is true at $w$ (we'll use $\boxright$ for the conditional we're about to define).
+- We find the world $x$ such that $A$ is true at $x$, and $x$ is closest to $w$, i.e., is the least distance away.
+- Then we look to see whether $B$ is true.
+- If so, $A \boxright B$ is true.
+- If not, $A \boxright B$ is false.
+
+## Complication 1: No A-world
+
+We'll just stipulate that if there are no $A$-worlds at all, then $A \boxright B$ is true for all $B$. These cases are weird, and I'll mostly set them aside.
+
+## Complication 2: No 'closest' A-world
+
+Here's something that can happen if you drop the assumption that the distances are integers.
+
+- For any distance $d > 2$, there is a world $x$ such that the distance between $w$ and $x$ is $d$, and $A$ is true at $x$.
+- But for any distance $d \leq 2$, there is no world $x$ such that the distance between $w$ and $x$ is $d$, and $A$ is true at $x \pause$.
+- So there isn't a **closest** $A$-world, because you can get closer and closer to 2, and find a yet closer $A$-world.
+- This is also a weird possibility, and I'll set it aside.
+
+## Complication 3: Many equally closest A-worlds
+
+This is more philosophically substantial.
+
+- Imagine that for $d$ less than 2, there is no $A$-world distance $d$ away.
+- But at distance 2, there are multiple worlds where $A$ is true.
+- And at some of them $B$ is true, and at others $B$ is false.
+
+## One solution: Require all of them to be $B$ worlds
+
+As I noted above David Lewis said that in that case we should say:
+
+- $A \boxright B$ is false.  \pause  But also
+- $A \boxright \neg B$ is false.
+
+In general $A \boxright$ something requires that the something is true at all the nearest $A$-worlds. And neither $B$ nor $\neg B$ is true at all of them, so neither is true.
+
+## Intuition Pump
+
+Could you have 1 and 2 false, but 3 true?
+
+1. If a UM student had been elected mayor of Ann Arbor, it would have been an undergraduate.
+2. If a UM student had been elected mayor of Ann Arbor, it would have been a postgraduate.
+3. If a UM student had been elected mayor of Ann Arbor, it would have been either an undergraduate or a postgraduate.
+
+Lewis said that you could have 1 and 2 both false, but 3 true, and that's why $\boxright$ should work this way.
+
+## Another solution: Deny this is possible
+
+But the other great founder of this tradition, Robert Stalnaker, argued that we should want these things to be equivalent (at least if $\boxright$ was going to represent something in English).
+
+1. $A \boxright B \vee A \boxright C$
+2. $A \boxright (B \vee C)$
+
+And we couldn't have that on Lewis's picture.
+
+## Stalnaker's Solution
+
+- It is a constraint on the distance metric that there are no ties.
+- The similarity measure is a strict ordering.
+- And it's still a matter of debate whether Lewis or Stalnaker is right about this.
+
+## Next Time
+
+- We'll talk more about this notion of similarity.

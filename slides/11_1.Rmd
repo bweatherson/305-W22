@@ -1,0 +1,74 @@
+---
+title: "305 Lecture 11.1 - Introduction to Modal Logic"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- Introducing modal logic.
+
+## Associated Reading
+
+- Boxes and Diamonds, section 3.1 and 3.2.
+
+## What Modal Logic Is
+
+The logics of **must** and **might**. \pause
+
+- Why plural? Because we do not assume that these words have a single determinate meaning.
+
+## Examples of Must
+
+1. If $x = 2 + 2$, then $x$ must equal 4.
+2. If something is a cat, then it must be a mammal.
+3. If the gardener is innocent, then it must be the butler who did it.
+4. You must drive under 70mph on I-94.
+5. You must keep your promises.
+6. If you set out a knife and fork, the fork must go on the left. \pause
+
+To my ears, 1 is **logical** necessity, 2 is **metaphysical** necessity, 3 is **epistemic** necessity, 4 is **legal** necessity, 5 is **moral** (or **deontic**) necessity and 6 is **etiquette** necessity.
+
+## Examples of May/Might
+
+1. If $x$ is prime, then $x$ might be even.
+2. If $x$ is a cat, then $x$ might be male.
+3. It might be the butler or the gardener that did it.
+4. You may drive at any speed below 30mph on State Street.
+5. You may lie to save a friend's life.
+6. You may use white napkins or red napkins.\pause
+
+To my ears, 1 is **logical** possibility, 2 is **metaphysical** possibility, 3 is **epistemic** possibility, 4 is **legal** possibility, 5 is **moral** (or **deontic**) possibility and 6 is **etiquette** possibility (though I'm not sure about any of these).
+
+## Logics
+
+Consider this very general claim.
+
+> If something must be true, then it is true.\pause
+
+- That's true on the logical, epistemic and metaphysical interpretations of modality. \pause Indeed, it's something like a logical truth of those domains.\pause
+- But it is very much not true on the legal, moral or etiquette interpretations.\pause
+
+So we want some logics where it is a logical truth, and some where it is not.
+
+## Language
+
+We extend our language with two new operators: $\Box$ and $\Diamond$.
+
+- If $p$ is a sentence, so is $\Box p$ and so is $\Diamond p$.
+- These mean, respectively, that $p$ must be true, and that $p$ might be true.
+- We interpret these somewhat similar to negations; they just bind what they are immediately next to.
+- So $\Box p \rightarrow q$ means $(\Box p) \rightarrow q$, not $\Box(p \rightarrow q)$.
+
+## For Next Time
+
+We'll start looking at what it takes for these sentences to be true.

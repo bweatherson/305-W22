@@ -1,0 +1,539 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 11.4 - Truth in a Model},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+ \usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+\usetikzlibrary{arrows.meta}
+ \forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 11.4 - Truth in a Model}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+\begin{itemize}
+\tightlist
+\item
+  To extend our discussion of truth at a world, to discussion of truth
+  in a whole model.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+\begin{itemize}
+\tightlist
+\item
+  Boxes and Diamonds, section 3.5.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Models}
+\protect\hypertarget{models}{}
+Models have three parts:
+
+\begin{enumerate}
+\tightlist
+\item
+  A set of worlds, typically called \(W\). \pause
+\item
+  A binary accessibility relation on those worlds, typically called
+  \(R\). \pause
+\item
+  A valuation function on those worlds, typically called \(V\). \pause
+\end{enumerate}
+
+We'll write the models as \(\langle W, R, V\rangle\).
+\end{frame}
+
+\begin{frame}{Valuations}
+\protect\hypertarget{valuations}{}
+\(V\) is a function from atomic sentence letters to subsets of \(W\).
+
+\begin{itemize}
+\tightlist
+\item
+  It tells you when the atomic sentences are true.
+\item
+  When an atomic sentence is not true, it is false.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Truth at a Point}
+\protect\hypertarget{truth-at-a-point}{}
+The general theory of truth is built up in stages from the basic theory.
+Assume we have a model \(\langle W, R, V\rangle\), and a point
+\(w \in W\), and are asking whether an arbitrary sentence is true at
+\(w\) in \(\langle W, R, V\rangle\).
+
+\begin{itemize}
+\tightlist
+\item
+  \(p\) is true at \(w\) iff \(w \in V(p)\).\pause
+\item
+  \(\neg A\) is true at \(w\) iff \(A\) is not true at \(w\).
+\item
+  \(A \wedge B\) is true at \(w\) iff \(A\) is true and \(w\) and \(B\)
+  is true at \(w\).
+\item
+  \(A \vee B\) is true at \(w\) iff \(A\) is true and \(w\) or \(B\) is
+  true at \(w\).
+\item
+  \(A \rightarrow B\) is true at \(w\) iff \(A\) is false at \(w\) or
+  \(B\) is true at \(w\).\pause
+\end{itemize}
+
+This just leaves the modal formulae. I'll set out the rules, then do
+some worked examples.
+\end{frame}
+
+\begin{frame}{Necessary Truth at a Point}
+\protect\hypertarget{necessary-truth-at-a-point}{}
+First we'll do \(\Box A\).
+
+\begin{itemize}
+\tightlist
+\item
+  I'll read this as `Box \(A\)'.\pause
+\item
+  Intuitively, it means \textbf{It must be that A}, where \textbf{must}
+  could be a metaphysical necessity, or an epistemic necessity, or a
+  moral necessity, or anything else.\pause
+\item
+  And it is true at \(w\) just in case \(A\) is true at every world
+  \(y\) such that \(wRy\).
+\item
+  Necessary truth is truth at all accessible worlds.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Possible Truth at a Point}
+\protect\hypertarget{possible-truth-at-a-point}{}
+Now we'll do \(\Diamond A\).
+
+\begin{itemize}
+\tightlist
+\item
+  I'll read this as `Diamond \(A\)'.\pause
+\item
+  Intuitively, it means \textbf{It might be that A}, where
+  \textbf{might} could be a metaphysical necessity, or an epistemic
+  necessity, or a moral necessity, or anything else.\pause
+\item
+  And it is true at \(w\) just in case \(A\) is true at some world \(y\)
+  such that \(wRy\).
+\item
+  Possible truth is truth at some accessible world.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Iterated Modalities}
+\protect\hypertarget{iterated-modalities}{}
+We can run these rules in sequence.\pause
+
+\begin{itemize}
+\tightlist
+\item
+  What does it take for \(\Box \Box A\) to be true at \(w\)? \pause
+\item
+  It is for \(\Box A\) to be true at every \(y\) such that
+  \(wRy\).\pause
+\item
+  And that means that \(A\) has to be true at every world \(z\) such
+  that \(yRz\) (for any \(y\) such that \(wRy)\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Access}
+\protect\hypertarget{access}{}
+We can think, a little picturesquely, as the accessibility relation
+being a `step' between worlds.
+
+\begin{itemize}
+\tightlist
+\item
+  If \(wRy\), then you can `step' from \(w\) to \(y\).\pause
+\item
+  \(\Box A\) means that anywhere you can step to from \(w\) is a world
+  where \(A\) is true.\pause
+\item
+  And \(\Box \Box A\) means that anywhere you can get to in two steps
+  from \(w\) is a world where \(A\) is true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Iterated Modalities}
+\protect\hypertarget{iterated-modalities-1}{}
+We can run the rules in sequence.\pause
+
+\begin{itemize}
+\tightlist
+\item
+  What does it take for \(\Diamond \Diamond A\) to be true at \(w\)?
+  \pause
+\item
+  It is for \(\Diamond A\) to be true at some \(y\) such that
+  \(wRy\).\pause
+\item
+  And that means that \(A\) has to be true at some world \(z\) such that
+  \(yRz\) (for some \(y\) such that \(wRy)\).\pause
+\item
+  In the picturesque terms, you can get from \(w\) to an \(A\)-world in
+  two steps.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Mixed Modalities}
+\protect\hypertarget{mixed-modalities}{}
+What does it mean for \(\Diamond \Box A\) to be true at \(w\)?\pause
+
+\begin{itemize}
+\tightlist
+\item
+  There is some accessible world where \(\Box A\) is true.\pause
+\item
+  That is, there is some accessible world such that everywhere you can
+  go from there, \(A\) is true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Mixed Modalities}
+\protect\hypertarget{mixed-modalities-1}{}
+What does it mean for \(\Box \Diamond A\) to be true at \(w\)?\pause
+
+\begin{itemize}
+\tightlist
+\item
+  At all accessible worlds, \(\Diamond A\) is true.\pause
+\item
+  That is, wherever you go, you can get to there is some accessible
+  world such that everywhere you can go from there, \(A\) is true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Longer Sentences}
+\protect\hypertarget{longer-sentences}{}
+What does it mean for \(\Box(p \vee (q \rightarrow \Diamond r))\) to be
+true at \(w\)? \pause
+
+\begin{itemize}
+\tightlist
+\item
+  It's for \(p \vee (q \rightarrow \Diamond r)\) to be true everywhere
+  you can get to (in one step) from \(w\).
+\item
+  That is, at every one of those worlds, either \(p\) is true or
+  \(q \rightarrow \Diamond r\) is true.\pause
+\item
+  That is, at every one of those worlds, either \(p\) is true, or \(q\)
+  is false, or \(\Diamond r\) is true. \pause
+\item
+  That is, at every one of those worlds, either \(p\) is true, or \(q\)
+  is false, or there is some world you can get to where \(r\) is true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Box and connectives}
+\protect\hypertarget{box-and-connectives}{}
+The general rule is just to apply the rules for sentences inside the
+brackets at each world in \(W\), and then apply the rule for \(\Box\) or
+\(\Diamond\). But there are three special cases worth thinking about.
+
+\begin{itemize}
+\tightlist
+\item
+  \(\Box(A \wedge B)\) means that all accessible worlds are \(A\) and
+  \(B\) worlds. \pause
+\item
+  \(\Box(A \vee B)\) means that all accessible worlds make at least one
+  of \(A\) and \(B\) true.\pause
+\item
+  \(\Box(A \rightarrow B)\) means that all accessible \(A\)-worlds are
+  \(B\)-worlds.
+\end{itemize}
+
+We'll use that last one a lot.
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+We'll discuss of examples of truth (and non-truth) in models to explain
+this material.
+\end{frame}
+
+\end{document}

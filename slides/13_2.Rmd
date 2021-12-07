@@ -1,0 +1,163 @@
+---
+title: "305 Lecture 13.2 - Material Conditionals"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To discuss the conditional from propositional logic, the material conditional.
+
+## Associated Reading
+
+- Boxes and Diamonds, section 6.1-6.2
+
+## What is It
+
+The material conditional is what the truth tables say is the conditional.
+
+- We will write it as $A \supset B$
+- This just means $\neg (A \wedge \neg B)$, i.e., $\neg A \vee B$.
+
+One interesting hypothesis is that this is the right way to interpret English language conditionals.
+
+## What About Hamlet
+
+Perhaps we should say that two interesting hypotheses are that the two kinds of English language conditionals are best represented as material conditionals.
+
+- Hypothesis 1: If it were the case that $A$ it would be the case that $B$ = $A \supset B$.
+- Hypothesis 2: If it is the case that $A$ then it is the case that $B$ = $A \supset B$.
+
+The first of these is wildly implausible; the second is a bit more defensible.
+
+## Material Subjunctives?
+
+How can you complete this sentence so that it is true?
+
+- If the United States had entered World War II in 1939, then …  \pause 
+
+On the material conditional theory, any sentence whatsoever you put in place of the dots will make this true.  \pause  That's not very plausible.
+
+## Material Indicatives
+
+- But the material conditional theory is at least a little plausible for indicative conditionals.
+- At least, some smart people have defended it
+
+## Nine Formal Properties
+
+1. Modus Ponens - $A, A \rightarrow B \vDash B \pause$
+2. Agglomeration - $A \rightarrow B, A \rightarrow C \vDash A \rightarrow (B \wedge C)\pause$
+3. Transitive - $A \rightarrow B, B \rightarrow C \vDash A \rightarrow C\pause$
+4. Contraposition - $A \rightarrow B \vDash \neg B \rightarrow \neg A$
+5. Antecedent Strengthening - $A \rightarrow B \vDash (A \wedge C) \rightarrow B$
+6. Paradox 1 - $B \vDash A \rightarrow B$
+7. Paradox 2 - $\neg A \vDash A \rightarrow B$
+8. Strict Paradox - $\Box B \vDash A \rightarrow B$
+9. Disjunction Paradox - $(A \rightarrow B) \vee (B \rightarrow A)$
+
+## Nursery Rhyme
+
+For want of a nail the shoe was lost.
+
+For want of a shoe the horse was lost.
+
+For want of a horse the rider was lost.
+
+For want of a rider the message was lost.
+
+For want of a message the battle was lost.
+
+For want of a battle the kingdom was lost.
+
+And all for the want of a horseshoe nail.
+
+## As An Argument
+
+1. If we hadn't lost the nail, we wouldn't have lost the shoe.
+2. If we hadn't lost the shoe, we wouldn't have lost the horse.
+3. If we hadn't lost the horse, we wouldn't have lost the rider
+4. If we hadn't lost the rider, we wouldn't have lost the message
+5. If we hadn't lost the message, we wouldn't have lost the battle
+6. If we hadn't lost the battle, we wouldn't have lost the kingdom. \vspace{18pt}
+7. So, if we hadn't lost the nail, we wouldn't have lost the kingdom.
+
+
+## Nine Formal Properties
+
+1. Modus Ponens - $A, A \rightarrow B \vDash B$
+2. Agglomeration - $A \rightarrow B, A \rightarrow C \vDash A \rightarrow (B \wedge C)$
+3. Transitive - $A \rightarrow B, B \rightarrow C \vDash A \rightarrow C$
+4. Contraposition - $A \rightarrow B \vDash \neg B \rightarrow \neg A \pause$
+5. Antecedent Strengthening - $A \rightarrow B \vDash (A \wedge C) \rightarrow B \pause$
+6. Paradox 1 - $B \vDash A \rightarrow B\pause$
+7. Paradox 2 - $\neg A \vDash A \rightarrow B\pause$
+8. Strict Paradox - $\Box B \vDash A \rightarrow B\pause$
+9. Disjunction Paradox - $(A \rightarrow B) \vee (B \rightarrow A)$
+
+## Modus Ponens
+
+- Imagine that in some NCAA tournament, the only Big 10 teams left in the last 16 are Michigan and Ohio State.
+- And in this sport, Michigan is pretty good, while Ohio State is super lucky to make the last 16. \pause 
+
+Now consider the following two conditionals.
+
+1. If a Big Ten team wins, then if it isn't Michigan, it will be Ohio State.
+2. If Michigan doesn't win, Ohio State will win.
+
+## Modus Ponens Counterexample?
+
+Vann McGee made the following argument.
+
+- Conditional 1 is true, almost by definition. \pause 
+- Conditional 2 is false. \pause 
+- And those judgments stay correct even if it turns out that a Big Ten team does in fact win (especially if it is Michigan). \pause 
+- In general, $A \rightarrow (B \rightarrow C)$ and $A$ seem like they can be true but (especially when $A$ is not known) $B \rightarrow C$ can seem false.
+
+## Agglomeration
+
+- This is very hard to find intuitive counterexamples to.
+- Take this to be a challenge.
+
+## Transitivity
+
+- This often sound right if you run the examples in that order.
+- But it can sound very bad if you don't.
+
+For example:
+
+1. If I win the lottery tonight, I'll be very happy.
+2. If I get hit by a car on the way home and win the lottery tonight, then I'll win the lottery tonight.
+3. So if I get hit by a car on the way home and win the lottery tonight, I'll be very happy.
+
+## Contraposition
+
+Some of the examples to this can sound a little silly, but still they arguably do sound like English.
+
+1. If we win this election, we won't win it by a lot.
+2. So if we win by a lot, we won't win.
+
+## Antecedent Strengthening
+
+The same cases that are problems for transitivity are problems here.
+
+1. If I win the lottery tonight, I'll be very happy.
+2. So if I get hit by a car on the way home and win the lottery tonight, I'll be vey happy
+
+## The Paradoxes
+
+- These are fairly easy to generate intuitive counterexamples for.
+- Note in particular that the disjunction one allows for $B = \neg A$.
+- So we get the following: Either if we win, we'll lose, or if we lose, we'll win.
+
+## For Next Time
+
+We'll discuss the so called strict conditional.

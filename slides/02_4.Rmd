@@ -1,0 +1,297 @@
+---
+title: "305 Lecture 2.4 - Understanding Truth Tables"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+mainfontoptions:
+  - BoldFont = SF Pro Rounded Semibold
+mathfont: STIX Two Math
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+  pdf_document: default
+---
+
+## Plan for This Lecture
+
+- We're going discuss how to read, and understand, a truth table.
+
+## Associated Reading
+
+forall x, chapters 9-11
+
+- Note that I'm really introducing things in different order to the book.
+- We will end up in the same spot, but the aim here is not to simply repeat what's in the book.
+
+
+## Conceptual Idea
+
+> - Think about all the combinations of truth values for the atomic sentences in a longer sentence, or in an argument.
+> - For each possible combination, evaluate the truth of every part of every sentence in an argument.
+> - See if it is possible for the premises to be true and the conclusion false.
+
+## Truth Tables and Validity
+
+> - If an argument is invalid, there will be one combination of values where the premises are true and the conclusion false.
+> - If there is no such combination, mark the argument valid.
+> - If there is such a combination, tentatively mark the argument invalid.
+> - We'll come back to why 'tentatively'.
+
+## Structure
+
+- We list each of the combinations in separate rows.
+- In each column we list the truth value of the sentence such that the symbol at the top of that column is the main connective.
+- That's I think a lot easier to understand in practice than in theory, so let's start with some examples.
+
+## A Truth Table
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+## One Sentence
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+This is a truth table for a single sentence, not an argument. We'll get to arguments in a bit.
+
+## Understanding
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+We will also get (even sooner) to how to build these monsters. What I first want to talk about is how to read them.
+
+## Four Rows
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+\textcolor{dodgerblue}{$\True$} & \textcolor{dodgerblue}{$\False$} &  &  & \textcolor{dodgerblue}{$\True$} & \textcolor{dodgerblue}{$\False$} & \textcolor{dodgerblue}{$\False$} &  & \textcolor{red}{\textcolor{dodgerblue}{$\True$}} &  & \textcolor{dodgerblue}{$\False$} & \textcolor{dodgerblue}{$\True$} & \textcolor{dodgerblue}{$\True$} &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+Each of the four rows represent a way things could be. For instance, the second row (in blue here) represents how things are if $P$ is true and $Q$ is false.
+
+## Four Rows
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+There are four rows because there are 2 sentence letters - $P$ and $Q$ - each of which could take 2 values, so there are $2 \times 2 = 4$ combinations of values.
+
+## More Rows!
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+- If there had been three sentence letters, there would be eight rows.
+- Four sentence letters would mean 16 rows, etc.
+
+## The Columns
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+- The columns under the letters reflect the value of the atomic sentences in each row.
+- As you can see, they are just cut-and-paste from the left hand side.
+
+## Atomic Columns
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & \textcolor{dodgerblue}{$\True$} & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & \textcolor{dodgerblue}{$\True$} &  & \\
+$\True$ & $\False$ &  &  & \textcolor{dodgerblue}{$\True$} & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & \textcolor{dodgerblue}{$\True$} &  & \\
+$\False$ & $\True$ &  &  & \textcolor{dodgerblue}{$\False$} & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & \textcolor{dodgerblue}{$\False$} &  & \\
+$\False$ & $\False$ &  &  & \textcolor{dodgerblue}{$\False$} & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & \textcolor{dodgerblue}{$\False$} &  & \\
+\end{tabular}
+
+\end{center}
+
+I've put in blue all the truth values for $P$, which as you can see were just copied and pasted from the columns on the far left.
+
+## Intermediate Sentences
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\False$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+The surprising thing (or at least the thing that surprised me as a student) was what we mean by the column under the $\rightarrow$, which I've put in blue.
+
+## Intermediate Sentences
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\False$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+Each letter here is giving the truth value of the sentence that has that first $\rightarrow$ as its main connective. That is, $P \rightarrow Q$.
+
+## Intermediate Sentences
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & \textcolor{dodgerblue}{$\False$} & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+And this column gives the truth values for $Q \rightarrow P$.
+
+## Conditionals
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+Don't worry for now about why we write those letters down; we'll get to that in the next lecture. For now I just want to go over how to read these tables.
+
+## The Big Red Column
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+- And the column that I've put in red gives the truth value of the sentence whose main connective is $\vee$.
+- That is, in this case, the whole sentence.
+
+
+## The Big Red Column
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+Ultimately the red column is all we really care about - the others are essentially scaffolding.
+
+## Logical Truth
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+
+\end{center}
+
+- There is something distinctive about this table - the red column is all T.
+- That means the sentence is a logical truth.
+- We'll have more to say about this presently in future lectures.
+
+
+## For Next Time
+
+We'll talk about how to build truth tables.
+
