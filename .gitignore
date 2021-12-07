@@ -1,39 +1,42 @@
 # History files
 .Rhistory
 .Rapp.history
-
 # Session Data files
 .RData
-
 # User-specific files
 .Ruserdata
-
 # Example code in package build process
 *-Ex.R
-
 # Output files from R CMD build
 /*.tar.gz
-
 # Output files from R CMD check
 /*.Rcheck/
-
 # RStudio files
 .Rproj.user/
-
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf
-
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth
-
 # knitr and R markdown default cache directories
 *_cache/
 /cache/
-
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
-
 # R Environment Variables
 .Renviron
+boxes_and_diamonds-ann_arbor.pdf
+final_exam_W21_Phil305.Rmd
+final_exam_W21_Phil305.log
+final_exam_W21_Phil305.pdf
+final_exam_W21_Phil305.tex
+for_all_x-calgary.pdf
+odds_and_ends.pdf
+sample_exam.log
+sample_exam_answer.log
+several-versions-of-the-table.html
+syllabus-W21-305.html
+syllabus-W21-305.pdf
+syllabus-W21-305.tex
+305-W22.Rproj
