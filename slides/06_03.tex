@@ -78,7 +78,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={305 Lecture 7.1 - Introducing Probability},
+  pdftitle={305 Lecture 6.3 - Probability Trees},
   pdfauthor={Brian Weatherson},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -115,12 +115,12 @@
 \DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
- \usepackage{tikz-qtree}
+\usepackage{tikz-qtree}
 % \usepackage{markdown}
 %\RequirePackage{bussproofs}
-\RequirePackage[tableaux]{prooftrees}
 \usetikzlibrary{arrows.meta}
- \forestset{line numbering, close with = x}
+\RequirePackage[tableaux]{prooftrees}
+\forestset{line numbering, close with = x}
 % Allow for easy commas inside trees
 \renewcommand{\,}{\text{, }}
 
@@ -285,7 +285,7 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 
-\title{305 Lecture 7.1 - Introducing Probability}
+\title{305 Lecture 6.3 - Probability Trees}
 \author{Brian Weatherson}
 \date{}
 
@@ -294,287 +294,230 @@
 
 \begin{frame}{Plan}
 \protect\hypertarget{plan}{}
+To introduce the notion of probability trees, and show how they can be
+used for estimating probabilities.
+\end{frame}
+
+\begin{frame}{Trees}
+\protect\hypertarget{trees}{}
 \begin{itemize}
 \tightlist
 \item
-  This lecture introduces the basics of probability.
+  Often, we can't just write down numbers for the possibilities.
+\item
+  But we can write down, or at least make reasonable guesses about,
+  numbers for certain events.
+\item
+  And we can think about how things are likely to go given those events
+  happen.
+\item
+  This is the tree structure that is used in \emph{Odds and Ends}.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Associated Reading}
-\protect\hypertarget{associated-reading}{}
-Odds and Ends, Chapter 1
-\end{frame}
-
-\begin{frame}{Basic Idea}
-\protect\hypertarget{basic-idea}{}
+\begin{frame}{Academic Forecasting}
+\protect\hypertarget{academic-forecasting}{}
 \begin{itemize}
 \tightlist
 \item
-  A probability function is a mapping from possibilities to numbers.
+  So let's say you're flying from Detroit to Salt Lake City via Denver
+  (which apparently is a common route), next Monday.
 \item
-  The numbers must sum to one.
+  And you want to know how likely it is you'll get there on time.
 \item
-  Intuitively, the numbers measure how likely the possibilities are.
+  The weather looks fine here in Michigan, but changing planes in Denver
+  during winter can be a bit of a lottery.
+\item
+  You've got a tight connection, so if the first flight is delayed,
+  you'll probably be delayed.
+\item
+  And that's not the only thing that could go wrong with planes.
+\item
+  But it's hard to put into numbers how it affects things.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Sum to One}
-\protect\hypertarget{sum-to-one}{}
-The math of probability functions is just the math of proportions.
-Ultimately, all we'll be doing is the same kind of math that you would
-do when thinking about things like
-
+\begin{frame}{One Method}
+\protect\hypertarget{one-method}{}
 \begin{itemize}
 \tightlist
 \item
-  What proportion of UM students are from North Carolina?
+  Divide up the state space.
 \item
-  What proportion of UM undergraduates are Tigers fans?
+  Work out the probability of being in one or other part of the space.
+\item
+  Work out the probability of classes running all semester in each part
+  of the space.
+\item
+  Add things up.
 \end{itemize}
-
-etc.
 \end{frame}
 
-\begin{frame}{Three Big Questions}
-\protect\hypertarget{three-big-questions}{}
-\begin{enumerate}[<+->]
+\begin{frame}{Nothing is Reliable}
+\protect\hypertarget{nothing-is-reliable}{}
+\begin{itemize}[<+->]
 \tightlist
 \item
-  What to do with these numbers?
+  There are a lot of ways to do this.
 \item
-  Where these numbers come from?
+  You could divide up the space by how many flights are delayed next
+  Monday.
 \item
-  What do the numbers even mean?
+  Or you could divide up the space by how many airline employees show up
+  for work on Monday.
+\item
+  Or, and let's work with this one, you could divide it up by what the
+  weather is like in Denver. The advantage of this is that we can get an
+  independent assessment of it without knowing a ton about the state of
+  the aviation industry.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Three States}
+\protect\hypertarget{three-states}{}
+\begin{enumerate}
+\tightlist
+\item
+  Blizzard.
+\item
+  Bad weather, but not a blizzard.
+\item
+  Clear skies.
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{A Simple Case}
-\protect\hypertarget{a-simple-case}{}
+\begin{frame}{Two Step Process}
+\protect\hypertarget{two-step-process}{}
+\begin{enumerate}
+\tightlist
+\item
+  Work out (or at least estimate) probability of each state.
+\item
+  Work out probability of the university staying open within each of
+  those states.
+\end{enumerate}
+
+This will involve a lot of guesswork - do not make travel planning
+decisions on the basis of the numbers I'm about to use because they are
+really pulled out of the air - but it's a very helpful heuristic to at
+least approximate the reality.
+\end{frame}
+
+\begin{frame}{Probabilities of States}
+\protect\hypertarget{probabilities-of-states}{}
+Let's say the probabilities look like this.
+
 \begin{itemize}
 \tightlist
 \item
-  Imagine that it is basketball season, and UM has planned to have both
-  the women's and men's teams play on the same night.
+  Blizzard - 10\%, or 0.2.
 \item
-  So at the end of the night there are four possible outcomes.
+  Other bad weather - 60\%, or 0.5.
+\item
+  Good weather - 30\%, or 0.3.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Made Up Probabilities}
-\protect\hypertarget{made-up-probabilities}{}
-I'll stipulate that the probabilities of the four possible outcomes are
-given by this table.
+\begin{frame}{Flight Probabilities}
+\protect\hypertarget{flight-probabilities}{}
+Then we want to work out how likely it is that you get there on time in
+each of these three possibilities.
+\end{frame}
 
+\begin{frame}{Blizzard}
+\protect\hypertarget{blizzard}{}
+\begin{itemize}
+\tightlist
+\item
+  This one's easy - you're going to be late.
+\item
+  Your plane won't land, or the plane you're connecting to won't land,
+  or your plane won't take off.
+\item
+  Never say never, but the probability that you'll be late is 1.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bad Weather}
+\protect\hypertarget{bad-weather}{}
+\begin{itemize}
+\tightlist
+\item
+  It snows a lot in Denver, and yet planes get through.
+\item
+  But still, things start going wrong when there's bad weather, and
+  you've got two points where things can go wrong.
+\item
+  So let's say it's a 25\% chance you're delayed in this situation.
+\item
+  Across the year, just over 90\% of flights from Detroit to Denver are
+  on time, and just under 90\% of flights from Denver to Salt Lake City
+  are on time, but things are worse in winter - even without a blizzard
+  - that's why the 25\%.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Good Weather}
+\protect\hypertarget{good-weather}{}
+\begin{itemize}
+\tightlist
+\item
+  Now it would have to be some other kind of bad luck to be late.
+\item
+  That happens, but let's put it at 10\% likelihood.
+\item
+  If you wake up on Monday and see it's sunny in Denver, it seems you
+  should be at least 90\% confident you'll get to Salt Lake on time.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Giant Table}
+\protect\hypertarget{the-giant-table}{}
 \begin{longtable}[]{@{}lcc@{}}
 \toprule
-& Men Win & Men Lose \\ \addlinespace
+& On Time & Late \\
 \midrule
 \endhead
-Women Win & 0.45 & 0.25 \\ \addlinespace
-Women Lose & 0.20 & 0.10 \\ \addlinespace
+Blizzard & \(0.1 \times 0.00 = 0.00\) & \(0.1 \times 1.00 = 0.10\) \\
+Bad Weather & \(0.6 \times 0.75 = 0.45\) & \(0.6 \times 0.25 = 0.15\) \\
+Good weather & \(0.3 \times 0.90 = 0.27\) &
+\(0.3 \times 0.10 = 0.03\) \\
 \bottomrule
 \end{longtable}
+
+So the probability that you arrive on time (given these literally made
+up assumptions) is \(0.00 + 0.45 + 0.27 = 0.72\), or 72\%.
 \end{frame}
 
-\begin{frame}{Another Representation}
-\protect\hypertarget{another-representation}{}
-Here are the same numbers written a different way.
-
-\begin{longtable}[]{@{}ccc@{}}
-\toprule
-Women & Men & Probability \\ \addlinespace
-\midrule
-\endhead
-Win & Win & 0.45 \\ \addlinespace
-Win & Lose & 0.25 \\ \addlinespace
-Lose & Win & 0.20 \\ \addlinespace
-Lose & Lose & 0.10 \\ \addlinespace
-\bottomrule
-\end{longtable}
-\end{frame}
-
-\begin{frame}{Possibilities}
-\protect\hypertarget{possibilities}{}
-Say a possibility (for current purposes) is one of these maximally
-specific things that the probability is defined over.
-
+\begin{frame}{Probabilities and Errors}
+\protect\hypertarget{probabilities-and-errors}{}
 \begin{itemize}
 \tightlist
 \item
-  It is not really a complete possibility.
+  The error bars on that calculation are massive.
 \item
-  It doesn't tell us the score, or the weather, or the results of the
-  next election, or for that matter the results of the last election.
+  But it's a kind of sanity check on how you think things are going.
 \item
-  But it tells us everything that's relevant to a particular inquiry.
-\item
-  It is a lot like a line on a truth table.
+  Especially in situations where only a handful of paths lead to a
+  salient result (like in playoffs in sports, or when thinking about the
+  likelihood of a particular challenger winning), doing the tree even
+  with favorable numbers can give you a conservative estimate of some
+  probability.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Events}
-\protect\hypertarget{events}{}
-We will say an \textbf{event} is a proposition that can be defined using
-these possibilities. So here are some sample events.
-
-\begin{itemize}
+\begin{frame}{Three Cases Where This is More Precise}
+\protect\hypertarget{three-cases-where-this-is-more-precise}{}
+\begin{enumerate}
 \tightlist
 \item
-  The women's team wins.
+  Probabilities are stipulated
 \item
-  The men's team wins.
+  Probabilities are due to well understood chance processes (like
+  gambling devices)
 \item
-  At least one Michigan team wins.
-\item
-  The two teams have the same result.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Probability of Events}
-\protect\hypertarget{probability-of-events}{}
-\begin{itemize}
-\tightlist
-\item
-  An event is true at some possibilities, false at others.
-\item
-  Each possibility gets a probability.
-\item
-  The probability of an event is the sum of the probabilities of the
-  possibilities where it is true.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Examples - Probability Women's Team Wins}
-\protect\hypertarget{examples---probability-womens-team-wins}{}
-\begin{columns}[T]
-\begin{column}{0.48\textwidth}
-\begin{longtable}[]{@{}ccc@{}}
-\toprule
-Women & Men & Probability \\ \addlinespace
-\midrule
-\endhead
-Win & Win & 0.45 \\ \addlinespace
-Win & Lose & 0.25 \\ \addlinespace
-Lose & Win & 0.20 \\ \addlinespace
-Lose & Lose & 0.10 \\ \addlinespace
-\bottomrule
-\end{longtable}
-\end{column}
-
-\begin{column}{0.48\textwidth}
-\bigskip
-
-\begin{itemize}
-\tightlist
-\item
-  The women's team wins at lines 1 and 2.
-\item
-  So its probability is
-\item
-  0.45 + 0.25 = 0.7.
-\end{itemize}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Examples - Probability Men's Team Wins}
-\protect\hypertarget{examples---probability-mens-team-wins}{}
-\begin{columns}[T]
-\begin{column}{0.48\textwidth}
-\begin{longtable}[]{@{}ccc@{}}
-\toprule
-Women & Men & Probability \\ \addlinespace
-\midrule
-\endhead
-Win & Win & 0.45 \\ \addlinespace
-Win & Lose & 0.25 \\ \addlinespace
-Lose & Win & 0.20 \\ \addlinespace
-Lose & Lose & 0.10 \\ \addlinespace
-\bottomrule
-\end{longtable}
-\end{column}
-
-\begin{column}{0.48\textwidth}
-\bigskip
-
-\begin{itemize}
-\tightlist
-\item
-  The men's team wins at lines 1 and 3.
-\item
-  So its probability is
-\item
-  0.45 + 0.20 = 0.65.
-\end{itemize}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Examples - At Least One Team Wins}
-\protect\hypertarget{examples---at-least-one-team-wins}{}
-\begin{columns}[T]
-\begin{column}{0.48\textwidth}
-\begin{longtable}[]{@{}ccc@{}}
-\toprule
-Women & Men & Probability \\ \addlinespace
-\midrule
-\endhead
-Win & Win & 0.45 \\ \addlinespace
-Win & Lose & 0.25 \\ \addlinespace
-Lose & Win & 0.20 \\ \addlinespace
-Lose & Lose & 0.10 \\ \addlinespace
-\bottomrule
-\end{longtable}
-\end{column}
-
-\begin{column}{0.48\textwidth}
-\bigskip
-
-\begin{itemize}
-\tightlist
-\item
-  At least one team wins at lines 1, 2 and 3.
-\item
-  So its probability is
-\item
-  0.45 + 0.25 + 0.20 = 0.90.
-\end{itemize}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Examples - Same Result in Each Game}
-\protect\hypertarget{examples---same-result-in-each-game}{}
-\begin{columns}[T]
-\begin{column}{0.48\textwidth}
-\begin{longtable}[]{@{}ccc@{}}
-\toprule
-Women & Men & Probability \\ \addlinespace
-\midrule
-\endhead
-Win & Win & 0.45 \\ \addlinespace
-Win & Lose & 0.25 \\ \addlinespace
-Lose & Win & 0.20 \\ \addlinespace
-Lose & Lose & 0.10 \\ \addlinespace
-\bottomrule
-\end{longtable}
-\end{column}
-
-\begin{column}{0.48\textwidth}
-\bigskip
-
-\begin{itemize}
-\tightlist
-\item
-  It is the same result in each game at lines 1 and 4.
-\item
-  So its probability is
-\item
-  0.45 + 0.10 = 0.55.
-\end{itemize}
-\end{column}
-\end{columns}
+  Probabilities are derived from very large data sets
+\end{enumerate}
 \end{frame}
 
 \begin{frame}{For Next Time}
@@ -582,7 +525,8 @@ Lose & Lose & 0.10 \\ \addlinespace
 \begin{itemize}
 \tightlist
 \item
-  We will look at some properties that all probability functions share.
+  We will look at an example where the probabilities are indeed
+  stipulated.
 \end{itemize}
 \end{frame}
 

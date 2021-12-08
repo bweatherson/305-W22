@@ -1,0 +1,122 @@
+---
+title: "305 Lecture 6.3 - Probability Trees"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+To introduce the notion of probability trees, and show how they can be used for estimating probabilities.
+
+## Trees
+
+- Often, we can't just write down numbers for the possibilities.
+- But we can write down, or at least make reasonable guesses about, numbers for certain events.
+- And we can think about how things are likely to go given those events happen.
+- This is the tree structure that is used in _Odds and Ends_.
+
+## Academic Forecasting
+
+- So let's say you're flying from Detroit to Salt Lake City via Denver (which apparently is a common route), next Monday.
+- And you want to know how likely it is you'll get there on time. 
+- The weather looks fine here in Michigan, but changing planes in Denver during winter can be a bit of a lottery.
+- You've got a tight connection, so if the first flight is delayed, you'll probably be delayed.
+- And that's not the only thing that could go wrong with planes.
+- But it's hard to put into numbers how it affects things.
+
+## One Method
+
+- Divide up the state space.
+- Work out the probability of being in one or other part of the space.
+- Work out the probability of classes running all semester in each part of the space.
+- Add things up.
+
+## Nothing is Reliable
+
+> - There are a lot of ways to do this.
+> - You could divide up the space by how many flights are delayed next Monday.
+> - Or you could divide up the space by how many airline employees show up for work on Monday.
+> - Or, and let's work with this one, you could divide it up by what the weather is like in Denver. The advantage of this is that we can get an independent assessment of it without knowing a ton about the state of the aviation industry.
+
+## Three States
+
+1. Blizzard.
+2. Bad weather, but not a blizzard.
+3. Clear skies.
+
+## Two Step Process
+
+1. Work out (or at least estimate) probability of each state.
+2. Work out probability of the university staying open within each of those states.
+
+This will involve a lot of guesswork - do not make travel planning decisions on the basis of the numbers I'm about to use because they are really pulled out of the air - but it's a very helpful heuristic to at least approximate the reality.
+
+## Probabilities of States
+
+Let's say the probabilities look like this.
+
+- Blizzard - 10%, or 0.2.
+- Other bad weather - 60%, or 0.5.
+- Good weather  - 30%, or 0.3.
+
+## Flight Probabilities
+
+Then we want to work out how likely it is that you get there on time in each of these three possibilities.
+
+## Blizzard
+
+- This one's easy - you're going to be late. 
+- Your plane won't land, or the plane you're connecting to won't land, or your plane won't take off.
+- Never say never, but the probability that you'll be late is 1.
+
+## Bad Weather
+
+- It snows a lot in Denver, and yet planes get through.
+- But still, things start going wrong when there's bad weather, and you've got two points where things can go wrong.
+- So let's say it's a 25% chance you're delayed in this situation.
+- Across the year, just over 90% of flights from Detroit to Denver are on time, and just under 90% of flights from Denver to Salt Lake City are on time, but things are worse in winter - even without a blizzard - that's why the 25%.
+
+
+## Good Weather
+
+- Now it would have to be some other kind of bad luck to be late.
+- That happens, but let's put it at 10% likelihood.
+- If you wake up on Monday and see it's sunny in Denver, it seems you should be at least 90% confident you'll get to Salt Lake on time.
+
+
+## The Giant Table
+
+                                     On Time                Late
+---------------------------- -------------------------- ---------------------------
+Blizzard                      $0.1 \times 0.00 = 0.00$   $0.1 \times 1.00 = 0.10$
+Bad Weather                   $0.6 \times 0.75 = 0.45$   $0.6 \times 0.25 = 0.15$
+Good weather                  $0.3 \times 0.90 = 0.27$   $0.3 \times 0.10 = 0.03$
+  
+So the probability that you arrive on time (given these literally made up assumptions) is $0.00 + 0.45 + 0.27 = 0.72$, or 72%.
+
+## Probabilities and Errors
+
+- The error bars on that calculation are massive.
+- But it's a kind of sanity check on how you think things are going.
+- Especially in situations where only a handful of paths lead to a salient result (like in playoffs in sports, or when thinking about the likelihood of a particular challenger winning), doing the tree even with favorable numbers can give you a conservative estimate of some probability.
+
+## Three Cases Where This is More Precise
+
+1. Probabilities are stipulated
+2. Probabilities are due to well understood chance processes (like gambling devices)
+3. Probabilities are derived from very large data sets
+
+## For Next Time
+
+- We will look at an example where the probabilities are indeed stipulated.

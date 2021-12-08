@@ -1,0 +1,79 @@
+---
+title: "305 Lecture 6.2 - About Probability Functions"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- This lecture looks at some general features of probability functions, and looks at some ways to think probabilistically about real world events.
+
+## Associated Reading
+
+Odds and Ends, Chapter 5
+
+## Scale
+
+$$
+0 \leq \Pr(A) \leq 1
+$$
+
+## Negation
+
+$$
+\Pr(\neg A) = 1 - \Pr(A)
+$$
+
+## Excluded Middle
+
+$$
+\Pr(A) + \Pr(\neg A) = 1
+$$
+
+## Partition
+
+Some events $A_1, \dots A_n$ form a partition if, necessarily, exactly one of them is true.
+
+- So they are **exclusive** - you can't have any two of them both be true.
+- And they are **exhaustive** - you have to have at least one true.
+
+## Partition
+
+If $A_1, \dots A_n$ form a partition then
+
+$$
+\Pr(A_1) + \dots + \Pr(A_n) = 1
+$$
+
+## Exclusive
+
+If $A, B$ are exclusive
+
+$$
+\Pr(A \vee B) = \Pr(A) + \Pr(B)
+$$
+
+## General Principle
+
+$$
+\Pr(A) + \Pr(B) = \Pr(A \vee B) + \Pr(A \wedge B)
+$$
+
+\pause
+
+It's worth thinking through why this is true in terms of possibilities.
+
+## For Next Time
+
+We'll look at the use of truth trees to estimate probabilities.
