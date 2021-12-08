@@ -1,0 +1,1065 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold]{SF Pro Rounded}
+  \setmathfont[]{STIX Two Math}
+\fi
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 6.4 - A Worked Out Probability Tree},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\usepackage{tikz-qtree}
+% \usepackage{markdown}
+%\RequirePackage{bussproofs}
+\usetikzlibrary{arrows.meta}
+\RequirePackage[tableaux]{prooftrees}
+\forestset{line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
+
+% This is because arguments didn't have enough space after them
+\usepackage{etoolbox}
+\AfterEndEnvironment{description}{\vspace{9pt}}
+\AfterEndEnvironment{oltableau}{\vspace{9pt}}
+\BeforeBeginEnvironment{oltableau}{\vspace{9pt}}
+\AfterEndEnvironment{center}{\vspace{12pt}}
+\BeforeBeginEnvironment{tabular}{\vspace{9pt}}
+
+\setlength\heavyrulewidth{0pt}
+\setlength\lightrulewidth{0pt}
+
+%\def\toprule{}
+%\def\bottomrule{}
+%\def\midrule{}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+
+\setlength\lightrulewidth{0.3pt}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{305 Lecture 6.4 - A Worked Out Probability Tree}
+\author{Brian Weatherson}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+\begin{itemize}
+\tightlist
+\item
+  This lecture walks through a worked example of how to use probability
+  trees to calculate a probability.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+Odds and Ends, section 1.2.
+\end{frame}
+
+\begin{frame}{Soccer Tournament}
+\protect\hypertarget{soccer-tournament}{}
+There is a big soccer tournament this weekend. The teams competing are
+
+\begin{itemize}
+\tightlist
+\item
+  Fireflies
+\item
+  Penguins
+\item
+  Huskies
+\item
+  Bluebirds
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tournament Structure}
+\protect\hypertarget{tournament-structure}{}
+There will be three games.
+
+\begin{enumerate}
+\tightlist
+\item
+  Fireflies vs Penguins
+\item
+  Huskies vs Bluebirds
+\item
+  Winner of Game 1 vs Winner of Game 2
+\end{enumerate}
+
+Each game will have a winner one way or the other (maybe via penalty
+kicks or extra time).
+\end{frame}
+
+\begin{frame}{Team Strength}
+\protect\hypertarget{team-strength}{}
+The teams are not all equally good. They each have a `strength'. Here is
+their respective strengths
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+Team & Strength \\
+\midrule
+\endhead
+Fireflies & 5 \\
+Penguins & 4 \\
+Huskies & 3 \\
+Bluebirds & 1 \\
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Win Probabilities}
+\protect\hypertarget{win-probabilities}{}
+If a team with strength \(x\) plays a team with strength \(y\), the team
+with strength \(x\) will win with probability
+
+\[
+\frac{x}{x+ y}
+\]
+
+\bigskip
+
+And the team with strength \(y\) will win with probability
+
+\[
+\frac{y}{x + y}
+\]
+\end{frame}
+
+\begin{frame}{Question}
+\protect\hypertarget{question}{}
+What is the probability that each team will win the tournament?
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  We will answer this by doing a tree.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Tournament Tree}
+\protect\hypertarget{tournament-tree}{}
+\newcommand{\pictext}[3]{
+\put(#1, #2){\makebox(0, 0)[b]{#3}}}
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+
+\put(175, 0){\makebox(0, 0)[b]{G1}}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+
+\put(135, 20){\makebox(0, 0)[b]{F}}
+
+\put(215, 20){\makebox(0, 0)[b]{P}}
+
+\put(105, 33){\makebox(0, 0)[b]{G2}}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+
+\put(80, 55){\makebox(0, 0)[b]{H}}
+
+\put(130, 55){\makebox(0, 0)[b]{B}}
+
+\put(245, 33){\makebox(0, 0)[b]{G2}}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+
+\put(220, 55){\makebox(0, 0)[b]{H}}
+
+\put(270, 55){\makebox(0, 0)[b]{B}}
+
+\put(70, 66){\makebox(0, 0)[b]{G3}}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+
+\put(55, 95){\makebox(0, 0)[b]{F}}
+
+\put(85, 95){\makebox(0, 0)[b]{H}}
+
+\put(140, 66){\makebox(0, 0)[b]{G3}}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+
+\put(125, 95){\makebox(0, 0)[b]{F}}
+
+\put(155, 95){\makebox(0, 0)[b]{B}}
+
+\put(210, 66){\makebox(0, 0)[b]{G3}}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+
+\put(195, 95){\makebox(0, 0)[b]{P}}
+
+\put(225, 95){\makebox(0, 0)[b]{H}}
+
+\put(280, 66){\makebox(0, 0)[b]{G3}}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+
+\put(265, 95){\makebox(0, 0)[b]{P}}
+
+\put(295, 95){\makebox(0, 0)[b]{B}}
+\end{picture}
+
+\pause
+
+Now we have to add the probabilities to it.
+\end{frame}
+
+\begin{frame}[fragile]{Tournament Tree}
+\protect\hypertarget{tournament-tree-1}{}
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+
+\put(175, 0){\makebox(0, 0)[b]{G1}}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+
+\put(135, 20){\makebox(0, 0)[b]{F}}
+
+\put(135, 8){\makebox(0, 0)[b]{$\nicefrac{5}{9}$}}
+
+\put(215, 20){\makebox(0, 0)[b]{P}}
+
+\put(215, 8){\makebox(0, 0)[b]{$\nicefrac{4}{9}$}}
+
+\put(105, 33){\makebox(0, 0)[b]{G2}}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+
+\put(80, 55){\makebox(0, 0)[b]{H}}
+
+\put(130, 55){\makebox(0, 0)[b]{B}}
+
+\put(245, 33){\makebox(0, 0)[b]{G2}}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+
+\put(220, 55){\makebox(0, 0)[b]{H}}
+
+\put(270, 55){\makebox(0, 0)[b]{B}}
+
+\put(70, 66){\makebox(0, 0)[b]{G3}}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+
+\put(55, 95){\makebox(0, 0)[b]{F}}
+
+\put(85, 95){\makebox(0, 0)[b]{H}}
+
+\put(140, 66){\makebox(0, 0)[b]{G3}}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+
+\put(125, 95){\makebox(0, 0)[b]{F}}
+
+\put(155, 95){\makebox(0, 0)[b]{B}}
+
+\put(210, 66){\makebox(0, 0)[b]{G3}}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+
+\put(195, 95){\makebox(0, 0)[b]{P}}
+
+\put(225, 95){\makebox(0, 0)[b]{H}}
+
+\put(280, 66){\makebox(0, 0)[b]{G3}}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+
+\put(265, 95){\makebox(0, 0)[b]{P}}
+
+\put(295, 95){\makebox(0, 0)[b]{B}}
+\end{picture}
+
+The first game is strength 5 vs strength 4, so the win probability for
+the stronger team is \(\nicefrac{5}{5+4}\), i.e., \(\nicefrac{5}{9}\).
+\end{frame}
+
+\begin{frame}[fragile]{Tournament Tree}
+\protect\hypertarget{tournament-tree-2}{}
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+
+\put(175, 0){\makebox(0, 0)[b]{G1}}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+
+\put(135, 20){\makebox(0, 0)[b]{F}}
+
+\put(135, 8){\makebox(0, 0)[b]{$\nicefrac{5}{9}$}}
+
+\put(215, 20){\makebox(0, 0)[b]{P}}
+
+\put(215, 8){\makebox(0, 0)[b]{$\nicefrac{4}{9}$}}
+
+\put(105, 33){\makebox(0, 0)[b]{G2}}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+
+\put(80, 55){\makebox(0, 0)[b]{H}}
+
+\put(80, 43){\makebox(0, 0)[b]{$\nicefrac{3}{4}$}}
+
+\put(130, 55){\makebox(0, 0)[b]{B}}
+
+\put(130, 43){\makebox(0, 0)[b]{$\nicefrac{1}{4}$}}
+
+\put(245, 33){\makebox(0, 0)[b]{G2}}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+
+\put(220, 55){\makebox(0, 0)[b]{H}}
+
+\put(220, 43){\makebox(0, 0)[b]{$\nicefrac{3}{4}$}}
+
+\put(270, 55){\makebox(0, 0)[b]{B}}
+
+\put(270, 43){\makebox(0, 0)[b]{$\nicefrac{1}{4}$}}
+
+\put(70, 66){\makebox(0, 0)[b]{G3}}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+
+\put(55, 95){\makebox(0, 0)[b]{F}}
+
+\put(85, 95){\makebox(0, 0)[b]{H}}
+
+\put(140, 66){\makebox(0, 0)[b]{G3}}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+
+\put(125, 95){\makebox(0, 0)[b]{F}}
+
+\put(155, 95){\makebox(0, 0)[b]{B}}
+
+\put(210, 66){\makebox(0, 0)[b]{G3}}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+
+\put(195, 95){\makebox(0, 0)[b]{P}}
+
+\put(225, 95){\makebox(0, 0)[b]{H}}
+
+\put(280, 66){\makebox(0, 0)[b]{G3}}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+
+\put(265, 95){\makebox(0, 0)[b]{P}}
+
+\put(295, 95){\makebox(0, 0)[b]{B}}
+\end{picture}
+
+The second game is strength 3 vs strength 1, so the win probability for
+the stronger team is \(\nicefrac{3}{3+1}\), i.e., \(\nicefrac{3}{4}\).
+And it doesn't matter how the first game went - that's the probability
+for the second game.
+\end{frame}
+
+\begin{frame}[fragile]{Tournament Tree}
+\protect\hypertarget{tournament-tree-3}{}
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+
+\put(175, 0){\makebox(0, 0)[b]{G1}}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+
+\put(135, 20){\makebox(0, 0)[b]{F}}
+
+\put(135, 8){\makebox(0, 0)[b]{$\nicefrac{5}{9}$}}
+
+\put(215, 20){\makebox(0, 0)[b]{P}}
+
+\put(215, 8){\makebox(0, 0)[b]{$\nicefrac{4}{9}$}}
+
+\put(105, 33){\makebox(0, 0)[b]{G2}}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+
+\put(80, 55){\makebox(0, 0)[b]{H}}
+
+\put(80, 43){\makebox(0, 0)[b]{$\nicefrac{3}{4}$}}
+
+\put(130, 55){\makebox(0, 0)[b]{B}}
+
+\put(130, 43){\makebox(0, 0)[b]{$\nicefrac{1}{4}$}}
+
+\put(245, 33){\makebox(0, 0)[b]{G2}}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+
+\put(220, 55){\makebox(0, 0)[b]{H}}
+
+\put(220, 43){\makebox(0, 0)[b]{$\nicefrac{3}{4}$}}
+
+\put(270, 55){\makebox(0, 0)[b]{B}}
+
+\put(270, 43){\makebox(0, 0)[b]{$\nicefrac{1}{4}$}}
+
+\put(70, 66){\makebox(0, 0)[b]{G3}}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+
+\put(55, 95){\makebox(0, 0)[b]{F}}
+
+\put(55, 83){\makebox(0, 0)[b]{$\nicefrac{5}{8}$}}
+
+\put(85, 95){\makebox(0, 0)[b]{H}}
+
+\put(85, 83){\makebox(0, 0)[b]{$\nicefrac{3}{8}$}}
+
+\put(140, 66){\makebox(0, 0)[b]{G3}}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+
+\put(125, 95){\makebox(0, 0)[b]{F}}
+
+\put(125, 83){\makebox(0, 0)[b]{$\nicefrac{5}{6}$}}
+
+\put(155, 95){\makebox(0, 0)[b]{B}}
+
+\put(155, 83){\makebox(0, 0)[b]{$\nicefrac{1}{6}$}}
+
+\put(210, 66){\makebox(0, 0)[b]{G3}}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+
+\put(195, 95){\makebox(0, 0)[b]{P}}
+
+\put(195, 83){\makebox(0, 0)[b]{$\nicefrac{4}{7}$}}
+
+\put(225, 95){\makebox(0, 0)[b]{H}}
+
+\put(225, 83){\makebox(0, 0)[b]{$\nicefrac{3}{7}$}}
+
+\put(280, 66){\makebox(0, 0)[b]{G3}}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+
+\put(265, 95){\makebox(0, 0)[b]{P}}
+
+\put(265, 83){\makebox(0, 0)[b]{$\nicefrac{4}{5}$}}
+
+\put(295, 95){\makebox(0, 0)[b]{B}}
+
+\put(295, 83){\makebox(0, 0)[b]{$\nicefrac{1}{5}$}}
+\end{picture}
+
+And now for each possible match up in game 3, we apply the formula to
+get the win probability for each team.
+\end{frame}
+
+\begin{frame}[fragile]{Tournament Tree}
+\protect\hypertarget{tournament-tree-4}{}
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+
+\put(175, 0){\makebox(0, 0)[b]{G1}}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+
+\put(135, 20){\makebox(0, 0)[b]{F}}
+
+\put(135, 8){\makebox(0, 0)[b]{$\nicefrac{5}{9}$}}
+
+\put(215, 20){\makebox(0, 0)[b]{P}}
+
+\put(215, 8){\makebox(0, 0)[b]{$\nicefrac{4}{9}$}}
+
+\put(105, 33){\makebox(0, 0)[b]{G2}}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+
+\put(80, 55){\makebox(0, 0)[b]{H}}
+
+\put(80, 43){\makebox(0, 0)[b]{$\nicefrac{3}{4}$}}
+
+\put(130, 55){\makebox(0, 0)[b]{B}}
+
+\put(130, 43){\makebox(0, 0)[b]{$\nicefrac{1}{4}$}}
+
+\put(245, 33){\makebox(0, 0)[b]{G2}}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+
+\put(220, 55){\makebox(0, 0)[b]{H}}
+
+\put(220, 43){\makebox(0, 0)[b]{$\nicefrac{3}{4}$}}
+
+\put(270, 55){\makebox(0, 0)[b]{B}}
+
+\put(270, 43){\makebox(0, 0)[b]{$\nicefrac{1}{4}$}}
+
+\put(70, 66){\makebox(0, 0)[b]{G3}}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+
+\put(55, 95){\makebox(0, 0)[b]{F}}
+
+\put(55, 83){\makebox(0, 0)[b]{$\nicefrac{5}{8}$}}
+
+\put(85, 95){\makebox(0, 0)[b]{H}}
+
+\put(85, 83){\makebox(0, 0)[b]{$\nicefrac{3}{8}$}}
+
+\put(140, 66){\makebox(0, 0)[b]{G3}}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+
+\put(125, 95){\makebox(0, 0)[b]{F}}
+
+\put(125, 83){\makebox(0, 0)[b]{$\nicefrac{5}{6}$}}
+
+\put(155, 95){\makebox(0, 0)[b]{B}}
+
+\put(155, 83){\makebox(0, 0)[b]{$\nicefrac{1}{6}$}}
+
+\put(210, 66){\makebox(0, 0)[b]{G3}}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+
+\put(230, 125){\makebox(0, 0)[b]{$\nicefrac{1}{7}$}}
+
+\put(195, 95){\makebox(0, 0)[b]{P}}
+
+\put(195, 83){\makebox(0, 0)[b]{$\nicefrac{4}{7}$}}
+
+\put(225, 95){\makebox(0, 0)[b]{H}}
+
+\put(225, 83){\makebox(0, 0)[b]{$\nicefrac{3}{7}$}}
+
+\put(280, 66){\makebox(0, 0)[b]{G3}}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+
+\put(265, 95){\makebox(0, 0)[b]{P}}
+
+\put(265, 83){\makebox(0, 0)[b]{$\nicefrac{4}{5}$}}
+
+\put(295, 95){\makebox(0, 0)[b]{B}}
+
+\put(295, 83){\makebox(0, 0)[b]{$\nicefrac{1}{5}$}}
+\end{picture}
+
+\begin{itemize}
+\tightlist
+\item
+  The probability of each completed branch is the product of each of the
+  smaller branches.
+\item
+  So the one I've marked is
+  \(\nicefrac{4}{9} \times \nicefrac{3}{4} \times \nicefrac{3}{7} = \nicefrac{1}{7}\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Tournament Tree}
+\protect\hypertarget{tournament-tree-5}{}
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+
+\put(175, 0){\makebox(0, 0)[b]{G1}}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+
+\put(135, 20){\makebox(0, 0)[b]{F}}
+
+\put(135, 8){\makebox(0, 0)[b]{$\nicefrac{5}{9}$}}
+
+\put(215, 20){\makebox(0, 0)[b]{P}}
+
+\put(215, 8){\makebox(0, 0)[b]{$\nicefrac{4}{9}$}}
+
+\put(105, 33){\makebox(0, 0)[b]{G2}}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+
+\put(80, 55){\makebox(0, 0)[b]{H}}
+
+\put(80, 43){\makebox(0, 0)[b]{$\nicefrac{3}{4}$}}
+
+\put(130, 55){\makebox(0, 0)[b]{B}}
+
+\put(130, 43){\makebox(0, 0)[b]{$\nicefrac{1}{4}$}}
+
+\put(245, 33){\makebox(0, 0)[b]{G2}}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+
+\put(220, 55){\makebox(0, 0)[b]{H}}
+
+\put(220, 43){\makebox(0, 0)[b]{$\nicefrac{3}{4}$}}
+
+\put(270, 55){\makebox(0, 0)[b]{B}}
+
+\put(270, 43){\makebox(0, 0)[b]{$\nicefrac{1}{4}$}}
+
+\put(70, 66){\makebox(0, 0)[b]{G3}}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+
+\put(50, 125){\makebox(0, 0)[b]{$\nicefrac{25}{96}$}}
+\put(70, 82){\line(1, 2){20}}
+
+\put(90, 125){\makebox(0, 0)[b]{$\nicefrac{5}{32}$}}
+
+\put(55, 95){\makebox(0, 0)[b]{F}}
+
+\put(55, 83){\makebox(0, 0)[b]{$\nicefrac{5}{8}$}}
+
+\put(85, 95){\makebox(0, 0)[b]{H}}
+
+\put(85, 83){\makebox(0, 0)[b]{$\nicefrac{3}{8}$}}
+
+\put(140, 66){\makebox(0, 0)[b]{G3}}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+
+\put(120, 125){\makebox(0, 0)[b]{$\nicefrac{25}{216}$}}
+\put(140, 82){\line(1, 2){20}}
+
+\put(160, 125){\makebox(0, 0)[b]{$\nicefrac{5}{216}$}}
+
+\put(125, 95){\makebox(0, 0)[b]{F}}
+
+\put(125, 83){\makebox(0, 0)[b]{$\nicefrac{5}{6}$}}
+
+\put(155, 95){\makebox(0, 0)[b]{B}}
+
+\put(155, 83){\makebox(0, 0)[b]{$\nicefrac{1}{6}$}}
+
+\put(210, 66){\makebox(0, 0)[b]{G3}}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+
+\put(190, 125){\makebox(0, 0)[b]{$\nicefrac{4}{21}$}}
+\put(210, 82){\line(1, 2){20}}
+
+\put(230, 125){\makebox(0, 0)[b]{$\nicefrac{1}{7}$}}
+
+\put(195, 95){\makebox(0, 0)[b]{P}}
+
+\put(195, 83){\makebox(0, 0)[b]{$\nicefrac{4}{7}$}}
+
+\put(225, 95){\makebox(0, 0)[b]{H}}
+
+\put(225, 83){\makebox(0, 0)[b]{$\nicefrac{3}{7}$}}
+
+\put(280, 66){\makebox(0, 0)[b]{G3}}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+
+\put(260, 125){\makebox(0, 0)[b]{$\nicefrac{4}{45}$}}
+\put(280, 82){\line(1, 2){20}}
+
+\put(300, 125){\makebox(0, 0)[b]{$\nicefrac{1}{45}$}}
+
+\put(265, 95){\makebox(0, 0)[b]{P}}
+
+\put(265, 83){\makebox(0, 0)[b]{$\nicefrac{4}{5}$}}
+
+\put(295, 95){\makebox(0, 0)[b]{B}}
+
+\put(295, 83){\makebox(0, 0)[b]{$\nicefrac{1}{5}$}}
+\end{picture}
+
+I've included all the others - they usually don't cancel as nicely as
+that one.
+\end{frame}
+
+\begin{frame}{Tournament Table}
+\protect\hypertarget{tournament-table}{}
+It might be easier to see the results in a table
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+Winner & Runner-Up & Probability & Approx \\
+\midrule
+\endhead
+Fireflies & Huskies & \(\nicefrac{25}{96}\) & 0.260 \\
+Huskies & Fireflies & \(\nicefrac{5}{32}\) & 0.156 \\
+Fireflies & Bluebirds & \(\nicefrac{25}{216}\) & 0.116 \\
+Bluebirds & Fireflies & \(\nicefrac{5}{216}\) & 0.023 \\
+Penguins & Huskies & \(\nicefrac{4}{21}\) & 0.190 \\
+Huskies & Penguins & \(\nicefrac{1}{7}\) & 0.143 \\
+Penguins & Bluebirds & \(\nicefrac{4}{45}\) & 0.089 \\
+Bluebirds & Penguins & \(\nicefrac{1}{45}\) & 0.022 \\
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Tournament Table}
+\protect\hypertarget{tournament-table-1}{}
+And we can rearrange that so the rows where each team wins are adjacent.
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+Winner & Runner-Up & Probability & Approx \\
+\midrule
+\endhead
+Fireflies & Huskies & \(\nicefrac{25}{96}\) & 0.260 \\
+Fireflies & Bluebirds & \(\nicefrac{25}{216}\) & 0.116 \\
+Huskies & Fireflies & \(\nicefrac{5}{32}\) & 0.156 \\
+Huskies & Penguins & \(\nicefrac{1}{7}\) & 0.143 \\
+Penguins & Huskies & \(\nicefrac{4}{21}\) & 0.190 \\
+Penguins & Bluebirds & \(\nicefrac{4}{45}\) & 0.089 \\
+Bluebirds & Fireflies & \(\nicefrac{5}{216}\) & 0.023 \\
+Bluebirds & Penguins & \(\nicefrac{1}{45}\) & 0.022 \\
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Tournament Table}
+\protect\hypertarget{tournament-table-2}{}
+And then just adding up the probabilities for the two ways each team can
+win, we get the actual probabilities of each win. (I'm just doing the
+decimals now.)
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+Winner & Approx Probability \\
+\midrule
+\endhead
+Fireflies & 0.376 \\
+Huskies & 0.299 \\
+Penguins & 0.279 \\
+Bluebirds & 0.045 \\
+\bottomrule
+\end{longtable}
+
+(Those numbers don't sum to 1 precisely because of rounding.)
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+\begin{itemize}
+\tightlist
+\item
+  We will introduce an important new concept: conditional probability.
+\end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,107 @@
+---
+title: "305 Lecture 8.3 - Sampling with Replacement"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+        - compact-tables.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To illustrate a special kind of updating on two data points: Sampling with Replacement
+
+## Associated Reading
+
+Odds and Ends, Chapter 9
+
+## An Example
+
+There are two urns in front of us.
+
+- One of them - urn A - has 4 red marbles, 3 green marbles, and 3 blue marbles.
+- The other - urn B- has 8 red marbles, 1 green marbles and 1 blue marbles. \pause
+
+One of the urns will be selected at random, and then a marble drawn from it.
+
+- If the marble is red, what is the probability that Urn A was selected?
+
+---
+
+I'll just do the column for red marble selected.
+
+|           |        Red             |
+|:---------:|:----------------------:|
+| Urn A     | $0.5 \times 0.4 = 0.2$ |
+| Urn B     | $0.5 \times 0.8 = 0.4$ |
+| **Total** | $0.2 + 0.4 = 0.6$      |
+
+$$
+\Pr(A | Red) = \frac{\Pr(A \wedge Red)}{\Pr(Red)} = \frac{0.2}{0.6} = \frac{1}{3}
+$$
+
+## Another Example
+
+There are two urns in front of us.
+
+- One of them - urn A - has 4 red marbles, 3 green marbles, and 3 blue marbles.
+- The other - urn B- has 8 red marbles, 1 green marbles and 1 blue marbles. \pause
+
+One of the urns will be selected at random, and then two marbles drawn from it **with replacement**.
+
+- If both draws are red, what is the probability that Urn A was selected?
+
+---
+
+|           |        Red-Red            |
+|:---------:|:-------------------------:|
+| Urn A     | $0.5 \times 0.4^2 = 0.08$ |
+| Urn B     | $0.5 \times 0.8^2 = 0.32$ |
+| **Total** | $0.08 + 0.32 = 0.4$       |
+
+$$
+\Pr(A | Red-Red) = \frac{\Pr(A \wedge Red-Red)}{\Pr(Red-Red)} = \frac{0.08}{0.4} = \frac{1}{5}
+$$
+
+\bigskip
+The probability of Urn A fell by a lot.
+
+## Yet Another Example
+
+There are two urns in front of us.
+
+- One of them - urn A - has 4 red marbles, 3 green marbles, and 3 blue marbles.
+- The other - urn B- has 8 red marbles, 1 green marbles and 1 blue marbles. \pause
+
+One of the urns will be selected at random, and then two marbles drawn from it **with replacement**.
+
+- If the first draw is red and the second green, what is the probability that Urn A was selected?
+
+---
+
+|           |       Red-Green                     |
+|:---------:|:-----------------------------------:|
+| Urn A     | $0.5 \times 0.4 \times 0.3 = 0.06$  |
+| Urn B     | $0.5 \times 0.8 \times 0.1 = 0.04$  |
+| **Total** | $0.06 + 0.04 = 0.1$                 |
+
+$$
+\Pr(A | Red-Green) = \frac{\Pr(A \wedge Red-Green)}{\Pr(Red-Green)} = \frac{0.06}{0.1} = \frac{3}{5}
+$$
+
+\bigskip
+The probability of Urn A rose by a lot.
+
+## For Next Time
+
+We'll look at what happens when the first data point changes the probability of the later data points.
+

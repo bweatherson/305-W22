@@ -1,0 +1,94 @@
+---
+title: "305 Lecture 7.1 - Conditional Probability"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To introduce a key new concept: **conditional probability**.
+
+## Associated Reading
+
+Odds and Ends, Chapter 6
+
+## What it is
+
+- Sometimes we don't just care about how likely something is.
+- We care about how likely it is given some other thing has happened or will happen. \pause
+- This might be because we want to plan. \pause
+- It might be because we want to compute overall probabilities. \pause
+- Or it might be because we've found something out, and want to know what it means for other likelihoods.
+
+## Prior Examples
+
+We've already used some conditional probabilities.
+
+- We already talked, for example, about the probability of the Fireflies winning conditional on them being in the final against the Bluebirds.
+
+## Inverting
+
+But there are other questions we might want to ask as well.
+
+> - E.g., conditional on the Fireflies winning, how likely is it that they played the Huskies.
+
+## Intuitions
+
+This isn't an easy question to answer intuitively.
+
+- It is more likely that the Huskies will be actually in the final - because they are the better team.
+- But it is more likely that the Fireflies will win against the Bluebirds - because they are weaker.
+- It isn't always easy to intuitively balance these forces.
+
+## Formula
+
+$$
+\Pr(A | B) = \frac{Pr(A \wedge B)}{Pr(B)}
+$$
+
+\pause
+
+- The left-hand side means "The probability of $A$ given $B$." \pause
+- And the right-hand side says that this is equal to the probability of $A \wedge B$ divided by the probability of $B$.
+
+## Fireflies
+
+$$
+\Pr(HR | FC) = \frac{\Pr(HR \wedge FC)}{\Pr(FC)}
+$$
+
+That is, the probability that the Huskies are runners-up ($HR$) given that the Fireflies are champions ($FC$), is given by the formula on the right.
+
+## Fireflies
+
+$$
+\Pr(HR | FC) = \frac{0.26}{0.26+0.116} = \frac{0.26}{0.376} \approx 0.691
+$$
+
+So conditional on the Fireflies winning, it's just under 70% likely they beat the Huskies.
+
+## Updating
+
+We are going to mostly assume that this philosophical claim is true.
+
+$$
+\Pr{}_B(A) = \Pr(A | B)
+$$
+
+The way to read that is saying that the unconditional probability of $A$ after learning $B$ equals the conditional probability of $A$ given $B$. This claim - and it is a philosophical claim not a mathematical one - is a big part of why we care about conditional probability.
+
+## For Next Time
+
+We're going to talk about when it is that two events are independent.
+

@@ -1,0 +1,90 @@
+---
+title: "305 Lecture 8.2 - Updating on Multiple Data Points"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+        - compact-tables.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To look at what happens when we learn two facts about some environment.
+
+## Associated Reading
+
+Odds and Ends, Chapter 9
+
+## Conditional Independence
+
+In a lot of cases, the two data points we get will not be probabilistically independent, but they will be **conditionally independent**.
+
+That is, if $B_1$ and $B_2$ are the data points, and $X$ is an arbitrary hypothesis (like $A, \neg A$), we will have
+
+> $\Pr(B_1 | X)\Pr(B_2 | X) = \Pr(B_1 \wedge B_2 | X)$
+
+## Biased Coins
+
+Here is one kind of case where the happens.
+
+- We have a bunch of biased coins. For each of them, there is a probability $p$ of heads on an arbitrary flip, but we don't know what that is. \pause
+- The results of two flips of the same coin are not indepdendent.
+- If one flip lands heads, that is evidence of a bias towards heads, and hence it increases the probability of heads on the next flip. \pause
+- But conditional on a hypothesis about the bias of the coin, the flips are independent.
+
+## Skilled Activity
+
+A perhaps more real-life case of this is skilled action, like shooting free throws.
+
+- The success of one attempt is not independent of the success of the previous.
+- But conditional on the skill of the actor, the attempts are (probably, more or less) independent.
+
+## Sampling With Replacement
+
+Drawing from a selection **with replacement** produces conditional independence.
+
+- If I don't know how many black marbles are in an urn, then drawing a black marble **and replacing it** will be evidence that the next marble is black.
+- But conditional on a hypothesis about the nature of the urn, the draws with replacement will be independent.
+
+## Yesterday, Today, Tomorrow
+
+This is a little off topic, but a lot of real world phenomena satisfy (roughly) the following condition.
+
+- How things were yesterday is a good (probabilistic) guide to how things will be tomorrow.
+- So how things will be tomorrow is not independent of how things were yesterday. \pause
+- But, conditional on how things are today, how things were yesterday and will be tomorrow are independent.
+- Knowing how things were yesterday doesn't tell you any more about how things will be tomorrow once you know how things are today.
+
+## Markov Chains
+
+A chain of events where every event is probabilistically dependent on the previous one, but only on the previous one, is called a **Markov Chain**. \pause
+
+- Lots of real world processes are (more or less) Markov Chains.
+- Weather systems, for instance, are probably more or less Markov Chains.
+- And lots of ecological models assume that animal populations are Markov Chains.
+- And the core idea is just conditional independence.
+
+## Conditional Independence
+
+In cases where the data points $B_1$ and $B_2$ are independent, we have an easy story about how to work out the probabilities.
+
+> $\Pr(B_1 \wedge B_2 | X) = \Pr(B_1 | X)\Pr(B_2 | X)$
+
+## Same Event
+
+There is an even simpler formula where $B_1$ and $B_2$ are the 'same' event, like the coin landing heads both time, or the same color marble being drawn. 
+
+> $\Pr(B_1 \wedge B_2 | X) = \Pr(B_1 | X)^2$
+
+## For Next Time
+
+We'll start illustrating this with some worked examples.

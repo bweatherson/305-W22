@@ -1,0 +1,90 @@
+---
+title: "305 Lecture 7.6 - Bayes's Theorem"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- This lecture will go over one of the most famous theorems in probability: Bayes's Theorem.
+
+## Associated Reading
+
+Still chapter 8 of Odds and Ends
+
+## One Important Equivalence
+
+$$
+\Pr(B | A) \Pr(A) = \Pr(A | B) \Pr(B)
+$$
+
+We know that because these are two different ways of expressing $\Pr(A \wedge B)$.
+
+## One Important Equivalence
+
+Divide both sides by $\Pr(B)$ (and flip sides around) and you get
+
+$$
+\Pr(A | B) = \frac{\Pr(B | A) \Pr(A)}{\Pr(B)}
+$$
+
+\pause
+This is the formula that's written in neon in the textbook.
+
+## Another Important Equivalence
+
+Start again with our canonical formula for conditional probability.
+
+$$
+\Pr(A | B) = \frac{\Pr(A \wedge B)}{\Pr(B)}
+$$
+
+## Another Important Equivalence
+
+Replace $\Pr(A \wedge B)$ with its definition in terms of conditional probability.
+
+$$
+\Pr(A | B) = \frac{\Pr(B | A)\Pr(A)}{\Pr(B)}
+$$
+
+## Another Important Equivalence
+
+Now replace $\Pr(B)$ with the formula we derived for it in an earlier lecture.
+
+$$
+\Pr(A | B) = \frac{\Pr(B | A)\Pr(A)}{\Pr(B | A)\Pr(A) + \Pr(B | \neg A)\Pr(\neg A)}
+$$
+
+And this is what is sometimes called Bayes's Theorem.
+
+## General Version
+
+- Let $X_1, \dots, X_n$ be a partition of possibility space.
+- Then $B$ is equivalent to $(B \wedge X_1) \vee \dots \vee (B \wedge X_n)$.
+- So $\Pr(B) = \Pr(B \wedge X_1) + \dots + \Pr(B \wedge X_n)$
+- And we can use that to get the very general form of Bayes's theorem
+
+## General Version
+
+$$
+\Pr(X_i | B) = \frac{\Pr(B | X_i)\Pr(X_i)}{\sum_{k=1}^n \Pr(B | X_k)\Pr(X_k)}
+$$
+
+So if you know the prior probability of each cell in the partition, and the probability of $B$ conditional on each cell, you can work out the probability of being in a particular cell given $B$.
+
+## General Version
+
+- A lot of people make a big deal about this formula.
+- I rarely find myself in situations where it is easier to use than something like the trees or tables.
+- But the fact that so many people fuss so much about it suggests that for a lot of applications it is very helpful.
+- For the assignment questions where this is relevant, it's totally up to you whether to use the formula, or trees, or tables.

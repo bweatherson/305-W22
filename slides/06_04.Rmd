@@ -1,0 +1,520 @@
+---
+title: "305 Lecture 6.4 - A Worked Out Probability Tree"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- This lecture walks through a worked example of how to use probability trees to calculate a probability.
+
+## Associated Reading
+
+Odds and Ends, section 1.2.
+
+## Soccer Tournament
+
+There is a big soccer tournament this weekend. The teams competing are
+
+- Fireflies
+- Penguins
+- Huskies
+- Bluebirds
+
+## Tournament Structure
+
+There will be three games.
+
+1. Fireflies vs Penguins
+2. Huskies vs Bluebirds
+3. Winner of Game 1 vs Winner of Game 2
+
+Each game will have a winner one way or the other (maybe via penalty kicks or extra time).
+
+## Team Strength
+
+The teams are not all equally good. They each have a 'strength'. Here is their respective strengths
+
+ Team        Strength
+----------- ---------- 
+ Fireflies      5
+ Penguins       4
+ Huskies        3
+ Bluebirds      1
+
+## Win Probabilities
+
+If a team with strength $x$ plays a team with strength $y$, the team with strength $x$ will win with probability
+
+$$
+\frac{x}{x+ y}
+$$
+
+\bigskip
+
+And the team with strength $y$ will win with probability
+
+$$
+\frac{y}{x + y}
+$$
+
+## Question
+
+What is the probability that each team will win the tournament?
+
+> - We will answer this by doing a tree.
+
+## Tournament Tree {.fragile}
+
+\newcommand{\pictext}[3]{
+\put(#1, #2){\makebox(0, 0)[b]{#3}}}
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{215}{20}{P}
+\pictext{105}{33}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{130}{55}{B}
+\pictext{245}{33}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{270}{55}{B}
+\pictext{70}{66}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{85}{95}{H}
+\pictext{140}{66}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{155}{95}{B}
+\pictext{210}{66}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{225}{95}{H}
+\pictext{280}{66}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{295}{95}{B}
+\end{picture}
+
+\pause
+
+Now we have to add the probabilities to it.
+
+## Tournament Tree {.fragile}
+
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{33}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{130}{55}{B}
+\pictext{245}{33}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{270}{55}{B}
+\pictext{70}{66}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{85}{95}{H}
+\pictext{140}{66}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{155}{95}{B}
+\pictext{210}{66}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{225}{95}{H}
+\pictext{280}{66}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{295}{95}{B}
+\end{picture}
+
+The first game is strength 5 vs strength 4, so the win probability for the stronger team is $\nicefrac{5}{5+4}$, i.e., $\nicefrac{5}{9}$.
+
+## Tournament Tree {.fragile}
+
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{33}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{33}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{66}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{85}{95}{H}
+\pictext{140}{66}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{155}{95}{B}
+\pictext{210}{66}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{225}{95}{H}
+\pictext{280}{66}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{295}{95}{B}
+\end{picture}
+
+The second game is strength 3 vs strength 1, so the win probability for the stronger team is $\nicefrac{3}{3+1}$, i.e., $\nicefrac{3}{4}$. And it doesn't matter how the first game went - that's the probability for the second game.
+
+## Tournament Tree {.fragile}
+
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{33}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{33}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{66}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{55}{83}{$\nicefrac{5}{8}$}
+\pictext{85}{95}{H}
+\pictext{85}{83}{$\nicefrac{3}{8}$}
+\pictext{140}{66}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{125}{83}{$\nicefrac{5}{6}$}
+\pictext{155}{95}{B}
+\pictext{155}{83}{$\nicefrac{1}{6}$}
+\pictext{210}{66}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{195}{83}{$\nicefrac{4}{7}$}
+\pictext{225}{95}{H}
+\pictext{225}{83}{$\nicefrac{3}{7}$}
+\pictext{280}{66}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{265}{83}{$\nicefrac{4}{5}$}
+\pictext{295}{95}{B}
+\pictext{295}{83}{$\nicefrac{1}{5}$}
+\end{picture}
+
+And now for each possible match up in game 3, we apply the formula to get the win probability for each team.
+
+## Tournament Tree {.fragile}
+
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{33}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{33}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{66}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{55}{83}{$\nicefrac{5}{8}$}
+\pictext{85}{95}{H}
+\pictext{85}{83}{$\nicefrac{3}{8}$}
+\pictext{140}{66}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{125}{83}{$\nicefrac{5}{6}$}
+\pictext{155}{95}{B}
+\pictext{155}{83}{$\nicefrac{1}{6}$}
+\pictext{210}{66}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+\pictext{230}{125}{$\nicefrac{1}{7}$}
+\pictext{195}{95}{P}
+\pictext{195}{83}{$\nicefrac{4}{7}$}
+\pictext{225}{95}{H}
+\pictext{225}{83}{$\nicefrac{3}{7}$}
+\pictext{280}{66}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{265}{83}{$\nicefrac{4}{5}$}
+\pictext{295}{95}{B}
+\pictext{295}{83}{$\nicefrac{1}{5}$}
+\end{picture}
+
+- The probability of each completed branch is the product of each of the smaller branches.
+- So the one I've marked is $\nicefrac{4}{9} \times \nicefrac{3}{4} \times \nicefrac{3}{7} = \nicefrac{1}{7}$.
+
+## Tournament Tree {.fragile}
+
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{33}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{33}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{66}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+\pictext{50}{125}{$\nicefrac{25}{96}$}
+\put(70, 82){\line(1, 2){20}}
+\pictext{90}{125}{$\nicefrac{5}{32}$}
+\pictext{55}{95}{F}
+\pictext{55}{83}{$\nicefrac{5}{8}$}
+\pictext{85}{95}{H}
+\pictext{85}{83}{$\nicefrac{3}{8}$}
+\pictext{140}{66}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+\pictext{120}{125}{$\nicefrac{25}{216}$}
+\put(140, 82){\line(1, 2){20}}
+\pictext{160}{125}{$\nicefrac{5}{216}$}
+\pictext{125}{95}{F}
+\pictext{125}{83}{$\nicefrac{5}{6}$}
+\pictext{155}{95}{B}
+\pictext{155}{83}{$\nicefrac{1}{6}$}
+\pictext{210}{66}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+\pictext{190}{125}{$\nicefrac{4}{21}$}
+\put(210, 82){\line(1, 2){20}}
+\pictext{230}{125}{$\nicefrac{1}{7}$}
+\pictext{195}{95}{P}
+\pictext{195}{83}{$\nicefrac{4}{7}$}
+\pictext{225}{95}{H}
+\pictext{225}{83}{$\nicefrac{3}{7}$}
+\pictext{280}{66}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+\pictext{260}{125}{$\nicefrac{4}{45}$}
+\put(280, 82){\line(1, 2){20}}
+\pictext{300}{125}{$\nicefrac{1}{45}$}
+\pictext{265}{95}{P}
+\pictext{265}{83}{$\nicefrac{4}{5}$}
+\pictext{295}{95}{B}
+\pictext{295}{83}{$\nicefrac{1}{5}$}
+\end{picture}
+
+I've included all the others - they usually don't cancel as nicely as that one.
+
+## Tournament Table
+
+It might be easier to see the results in a table
+
+  Winner     Runner-Up   Probability             Approx
+----------- ----------- ---------------------- ------------
+ Fireflies   Huskies     $\nicefrac{25}{96}$     0.260
+ Huskies     Fireflies   $\nicefrac{5}{32}$      0.156
+ Fireflies   Bluebirds   $\nicefrac{25}{216}$    0.116
+ Bluebirds   Fireflies   $\nicefrac{5}{216}$     0.023
+ Penguins    Huskies     $\nicefrac{4}{21}$      0.190
+ Huskies     Penguins    $\nicefrac{1}{7}$       0.143
+ Penguins    Bluebirds   $\nicefrac{4}{45}$      0.089
+ Bluebirds   Penguins    $\nicefrac{1}{45}$      0.022 
+ 
+## Tournament Table
+
+And we can rearrange that so the rows where each team wins are adjacent.
+
+  Winner     Runner-Up   Probability             Approx
+----------- ----------- ---------------------- ------------
+ Fireflies   Huskies     $\nicefrac{25}{96}$     0.260
+ Fireflies   Bluebirds   $\nicefrac{25}{216}$    0.116
+ Huskies     Fireflies   $\nicefrac{5}{32}$      0.156
+ Huskies     Penguins    $\nicefrac{1}{7}$       0.143
+ Penguins    Huskies     $\nicefrac{4}{21}$      0.190
+ Penguins    Bluebirds   $\nicefrac{4}{45}$      0.089
+ Bluebirds   Fireflies   $\nicefrac{5}{216}$     0.023
+ Bluebirds   Penguins    $\nicefrac{1}{45}$      0.022 
+
+## Tournament Table
+
+And then just adding up the probabilities for the two ways each team can win, we get the actual probabilities of each win. (I'm just doing the decimals now.)
+
+  Winner     Approx Probability
+----------- --------------------
+ Fireflies          0.376
+ Huskies            0.299
+ Penguins           0.279
+ Bluebirds          0.045
+ 
+(Those numbers don't sum to 1 precisely because of rounding.)
+
+## For Next Time
+
+- We will introduce an important new concept: conditional probability.

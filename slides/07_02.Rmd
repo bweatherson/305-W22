@@ -1,0 +1,69 @@
+---
+title: "305 Lecture 7.2 - Independence"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- A short lecture to introduce a big idea: the notion of independence.
+
+## Associated Reading
+
+Odds and Ends, Chapter 6.5
+
+## Independence
+
+$A$ and $B$ are independent if (and only if)
+
+$$
+\Pr(A | B) = \Pr(A)
+$$
+
+That is, taking things conditional on $B$ doesn't change $A$.
+
+## Ways Independence can Fail
+
+Causal
+
+- $B$ might be a possible cause of $A$. \pause
+- $B$ might be a possible preventer of $A$. \pause
+- $B$ might be a common effect of a frequent cause of $A$. \pause
+- $B$ might be a common effect of a frequent preventer of $A$.
+
+## Ways Indepenence can Fail
+
+Epistemic
+
+- $B$ being true could tell you that a source that also predicts $A$ is more reliable than you thought.
+
+## Two Big Real World Facts about Independence
+
+1. In reality, strict independence almost never obtains. \pause
+2. In practice, it's very often useful to assume independence for modelling purposes. \pause
+
+These are consistent, but it does mean be careful. Sometimes assuming independence is like assuming that relativistic considerations aren't important to figuring out whether a bridge will stand up. And sometimes it is like assuming that friction isn't important to figuring out whether a bridge will stand up.
+
+## An Odd Instance of Independence
+
+Two fair dice, one red and one blue, are going to be tossed. Let $A$ be that the sum of what they show is 7. Let $B$ be that the red die shows a 2.
+
+Question
+:    Are $A$ and $B$ independent? \pause
+
+Surprising answer - yes!
+
+## For Next Time
+
+- We will look at how to invert conditional probabilities, how to go from a bunch of facts of the form $\Pr(A | B) = x$ to facts of the form $\Pr(B | A) = y$.

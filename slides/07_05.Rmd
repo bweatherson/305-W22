@@ -1,0 +1,134 @@
+---
+title: "305 Lecture 7.5 - The Crashing Websites"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- This lecture will go over exercise 8.8 in the book, as an illustration of how to invert conditional probabilities in a slightly more complicated case.
+
+## Associated Reading
+
+Odds and Ends, Chapter 8
+
+## Odds and Ends 8.8
+
+A company makes websites, always powered by one of three server platforms: Bulldozer, Kumquat, or Penguin. Bulldozer crashes 1 out of every 10 visits, Kumquat crashes 1 in 50 visits, and Penguin only crashes 1 out of every 200 visits.
+
+Half of the websites are run on Bulldozer, 30% are run on Kumquat, and 20% are run on Penguin.
+
+You visit one of their sites for the first time and it crashes. What is the probability it was run on Penguin?
+
+## Start with a Table
+
+|           | Crash | No Crash |
+|:----------|:-----:|:--------:|
+| Bulldozer |       |          |
+| Kumquat   |       |          |
+| Penguin   |       |          |
+
+We will start by filling in the table - though really it is the left hand column that matters here
+
+## The Table
+
+|           | Crash                   | No Crash |
+|:----------|:-----------------------:|:--------:|
+| Bulldozer | $0.5 \times 0.1 = 0.05$ |          |
+| Kumquat   |                         |          |
+| Penguin   |                         |          |
+
+The formular for Bulldozer-and-Crash is
+
+$$
+\Pr(\text{Bulldozer}) \times \Pr(\text{Crash}|\text{Bulldozer}) = 0.5 \times 0.1 = 0.05
+$$
+
+## The Table
+
+|           | Crash                      | No Crash |
+|:----------|:--------------------------:|:--------:|
+| Bulldozer | $0.5 \times 0.1 = 0.05$    |          |
+| Kumquat   | $0.3 \times 0.02 = 0.006$  |          |
+| Penguin   |                            |          |
+
+The formula for Kumquat-and-Crash is
+
+$$
+\Pr(\text{Kumquat}) \times \Pr(\text{Crash}|\text{Kumquat}) = 0.3 \times 0.02 = 0.006
+$$
+
+## The Table
+
+|           | Crash                      | No Crash |
+|:----------|:--------------------------:|:--------:|
+| Bulldozer | $0.5 \times 0.1 = 0.05$    |          |
+| Kumquat   | $0.3 \times 0.02 = 0.006$  |          |
+| Penguin   | $0.2 \times 0.005 = 0.001$ |          |
+
+The formula for Penguin-and-Crash is
+
+$$
+\Pr(\text{Penguin}) \times \Pr(\text{Crash}|\text{Penguin}) = 0.2 \times 0.005 = 0.001
+$$
+
+## The Table
+
+|           | Crash          | No Crash |
+|:----------|:--------------:|:--------:|
+| Bulldozer | $0.05$         |          |
+| Kumquat   | $0.006$        |          |
+| Penguin   | $0.001$        |          |
+
+Let's rewrite it without the workings.
+
+## The Table
+
+|           | Crash          | No Crash |
+|:----------|:--------------:|:--------:|
+| Bulldozer | $0.05$         | $0.45$   |
+| Kumquat   | $0.006$        | $0.294$  |
+| Penguin   | $0.001$        | $0.199$  |
+
+We can fill in the right-hand column by noting that the rows have to add up to 0.5, 0.3 and 0.2 respectively; since those are the probabilities of the three server types.
+
+## Crash!
+
+|           | Crash          | No Crash |
+|:----------|:--------------:|:--------:|
+| Bulldozer | $0.05$         | $0.45$   |
+| Kumquat   | $0.006$        | $0.294$  |
+| Penguin   | $0.001$        | $0.199$  |
+
+So the probability of a crash is 
+
+$$
+0.05 + 0.006 + 0.001 = 0.057
+$$
+
+## Penguin given Crash
+
+So the probability of Penguin given Crash is
+
+$$
+\frac{\Pr(\text{Penguin-and-Crash})}{\Pr(\text{Crash})} = \frac{0.001}{0.057} \approx 0.0175
+$$
+
+\pause
+That's really low, because Penguin sites don't crash.
+
+
+## For Next Time
+
+- We will look at a formula that some people find helpful for solving these kinds of problems.

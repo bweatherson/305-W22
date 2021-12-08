@@ -1,0 +1,162 @@
+---
+title: "305 Lecture 8.4 - Sampling without Replacement"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+        - compact-tables.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To illustrate another special kind of updating on two data points: Sampling without Replacement
+
+## Associated Reading
+
+Odds and Ends, Chapter 9
+
+## Dependence
+
+What happens if the events $B_1$ and $B_2$ are dependent on one or other of the hypotheses?
+
+- The typical case is that they will be dependent on none or all of the hypotheses.
+- But it's possible in principle to have independence on some and dependence on others. 
+- And in that case we have to use the more complicated procedure I'm about to describe.
+
+## Sampling Without Replacement
+
+The paradigm example of conditional dependence is sampling **without replacement**.
+
+- Assume you know which urn I'm using.
+- Then the draws without replacement won't be independent because every time you draw a marble, there are fewer marbles of that color to draw the next time.
+
+## Example
+
+Assume that I am using urn A. (Or assume that we are working out conditional probabilities conditional on urn A.)
+
+- For the first draw, the probability of red is 4 in 10, or  0.4.
+- Conditional on the first draw being red, the probability of the second draw being red is 3 in 9, or $\frac{1}{3}$.
+- That's because there are now 9 marbles left, and 3 of them are red.
+
+## Continuing the Example
+
+So to work out the probability of some sequence of draws $D_1, D_2$ given a hypothesis $X$ about the urn, we need to use the more complicated rule.
+
+$$
+\Pr(D_1 \wedge D_2 | X) = \Pr(D_1 | X) \Pr(D_2 | X \wedge D_1)
+$$
+
+\pause
+For example
+$$
+\Pr(Red_1 \wedge Red_2 | A) = \Pr(Red_1 | A)\Pr(Red_2 | A \wedge Red_1) = \frac{4}{10} \times \frac{3}{9} = \frac{2}{15}
+$$
+
+## Continuing the Example
+
+So to work out the probability of some sequence of draws $D_1, D_2$ given a hypothesis $X$ about the urn, we need to use the more complicated rule.
+
+$$
+\Pr(D_1 \wedge D_2 | X) = \Pr(D_1 | X) \Pr(D_2 | X \wedge D_1)
+$$
+
+For example
+$$
+\Pr(Red_1 \wedge Red_2 | B) = \Pr(Red_1 | B)\Pr(Red_2 | B \wedge Red_1) = \frac{8}{10} \times \frac{7}{9} = \frac{28}{45}
+$$
+
+## Another Example
+
+There are two urns in front of us.
+
+- One of them - urn A - has 4 red marbles, 3 green marbles, and 3 blue marbles.
+- The other - urn B- has 8 red marbles, 1 green marbles and 1 blue marbles. \pause
+
+One of the urns will be selected at random, and then two marbles drawn from it **without replacement**.
+
+- If both draws are red, what is the probability that Urn A was selected?
+
+---
+
+|           |        Red-Red                                               |
+|:---------:|:------------------------------------------------------------:|
+| Urn A     | $0.5 \times \frac{4}{10} \times \frac{3}{9} = \frac{1}{15}$  |
+|           |                                                              |
+| Urn B     | $0.5 \times \frac{8}{10} \times \frac{7}{9} = \frac{14}{45}$ |
+|           |                                                              |
+| **Total** | $\frac{1}{15} + \frac{14}{45} = \frac{17}{45}$               |
+
+\pause
+$$
+\Pr(A | Red-Red) = \frac{\Pr(A \wedge Red-Red)}{\Pr(Red-Red)} = \frac{\frac{1}{15}}{\frac{17}{45}} = \frac{3}{17}
+$$
+
+\bigskip
+The probability of Urn A fell by a bit more.
+
+## Yet Another Example
+
+There are two urns in front of us.
+
+- One of them - urn A - has 4 red marbles, 3 green marbles, and 3 blue marbles.
+- The other - urn B- has 8 red marbles, 1 green marbles and 1 blue marbles. \pause
+
+One of the urns will be selected at random, and then two marbles drawn from it **with replacement**.
+
+- If the first draw is red and the second green, what is the probability that Urn A was selected?
+
+## The General Conjunction Rule
+
+To work out the probability of some sequence of draws $D_1, D_2$ given a hypothesis $X$ about the urn, we need to use the more complicated rule.
+$$
+\Pr(D_1 \wedge D_2 | X) = \Pr(D_1 | X) \Pr(D_2 | X \wedge D_1)
+$$
+
+\pause
+So in this case we get
+$$
+\Pr(Red_1 \wedge Green_2 | A) = \Pr(Red_1 | A)\Pr(Green_2 | A \wedge Red_1) = \frac{4}{10} \times \frac{3}{9} = \frac{2}{15}
+$$
+
+## The General Conjunction Rule
+
+To work out the probability of some sequence of draws $D_1, D_2$ given a hypothesis $X$ about the urn, we need to use the more complicated rule.
+$$
+\Pr(D_1 \wedge D_2 | X) = \Pr(D_1 | X) \Pr(D_2 | X \wedge D_1)
+$$
+
+And for Urn B we get
+$$
+\Pr(Red_1 \wedge Green_2 | B) = \Pr(Red_1 | B)\Pr(Green_2 | B \wedge Red_1) = \frac{8}{10} \times \frac{1}{9} = \frac{4}{45}
+$$
+
+---
+
+|           |        Red-Green                                             |
+|:---------:|:------------------------------------------------------------:|
+| Urn A     | $0.5 \times \frac{4}{10} \times \frac{3}{9} = \frac{1}{15}$  |
+|           |                                                              |
+| Urn B     | $0.5 \times \frac{8}{10} \times \frac{1}{9} = \frac{2}{45}$  |
+|           |                                                              |
+| **Total** | $\frac{1}{15} + \frac{2}{45} = \frac{5}{45}$                 |
+
+\pause
+$$
+\Pr(A | Red-Green) = \frac{\Pr(A \wedge Red-Green)}{\Pr(Red-Green)} = \frac{\frac{1}{15}}{\frac{5}{45}} = \frac{3}{5}
+$$
+
+\bigskip
+Which, interestingly, is exactly the same as in the with replacement case.
+
+## For Next Time
+
+We'll end the week with one last example.

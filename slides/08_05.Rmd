@@ -1,0 +1,121 @@
+---
+title: "305 Lecture 8.5 - More Sampling without Replacement"
+author: "Brian Weatherson"
+mainfont: SF Pro Rounded
+output:
+  beamer_presentation:
+    md_extensions: +link_attributes+fenced_divs
+    keep_tex: yes
+    latex_engine: xelatex
+    includes:
+      in_header: 
+        - 305-beamer-header.tex
+        - visible-midrule.tex
+        - compact-tables.tex
+mathfont: STIX Two Math
+mainfontoptions: BoldFont = SF Pro Rounded Semibold
+---
+
+## Plan
+
+- To go over a more complicated example of sampling without replacement.
+
+## Associated Reading
+
+Odds and Ends, Chapter 9
+
+## Last (Difficult) Example
+
+- There are four urns in the room, three of type X, one of type Y.
+- The type X urns have 4 blue marbles and 2 yellow marbles.
+- The type Y urn has 5 blue marbles and 3 yellow marbles.
+- One of the four urns was selected at random.
+- Then two marbles were selected **without replacement** from the randomly selected urn.
+- The first was blue, the second was yellow.
+- A third marble is about to be selected.
+- What is the probability that it is blue?
+
+---
+
+|   Urn     |    Blue-then-Yellow                                               |
+|:---------:|:-----------------------------------------------------------------:|
+| Type X    | $\frac{3}{4} \times \frac{4}{6} \times \frac{2}{5} = \frac{1}{5}$ |
+|           |                                                              |
+| Type Y    |                                                                   |
+|           |                                                              |
+| **Total** |                                                                   |
+
+$$
+\Pr(X \wedge Blue_1 \wedge Yellow_2) = \Pr(X) \times \Pr(Blue_1 | X) \times \Pr(Yellow_2 | X \wedge Blue_1)
+$$
+
+---
+
+|   Urn     |    Blue-then-Yellow                                                  |
+|:---------:|:--------------------------------------------------------------------:|
+| Type X    | $\frac{3}{4} \times \frac{4}{6} \times \frac{2}{5} = \frac{1}{5}$    |
+|           |                                                                      |
+| Type Y    | $\frac{1}{4} \times \frac{5}{8} \times \frac{3}{7} = \frac{15}{224}$ |
+|           |                                                                      |
+| **Total** |                                                                      |
+
+$$
+\Pr(Y \wedge Blue_1 \wedge Yellow_2) = \Pr(Y) \times \Pr(Blue_1 | Y) \times \Pr(Yellow_2 | Y \wedge Blue_1)
+$$
+
+---
+
+|   Urn     |    Blue-then-Yellow    |
+|:---------:|:----------------------:|
+| Type X    | $\nicefrac{1}{5}$      |
+| Type Y    | $\nicefrac{15}{224}$   |
+| **Total** | $\nicefrac{299}{1120}$ |
+
+You should double check this, but I think
+
+$$
+\frac{1}{5} + \frac{15}{224} = \frac{299}{1120}
+$$
+
+\bigskip
+So that's $\Pr(Blue_1 \wedge Yellow_2)$
+
+## Conditional Probabilities
+
+$$
+\Pr(X | Blue_1 \wedge Yellow_2) = \frac{\Pr(X \wedge Blue_1 \wedge Yellow_2)}{\Pr(Blue_1 \wedge Yellow_2)} = \frac{\frac{1}{5}}{\frac{299}{1120}} = \frac{224}{299}
+$$
+
+$$
+\Pr(Y | Blue_1 \wedge Yellow_2) = \frac{\Pr(Y \wedge Blue_1 \wedge Yellow_2)}{\Pr(Blue_1 \wedge Yellow_2)} = \frac{\frac{15}{224}}{\frac{299}{1120}} = \frac{75}{299}
+$$
+
+The probability of Y is ever so fractionally higher than when we started.
+
+## Next Marble
+
+- If X (and Blue-followed-by-Yellow), the probability of next marble being blue is $\frac{3}{4}$.
+- If Y (and Blue-followed-by-Yellow), the probability of next marble being blue is $\frac{2}{3}$. \pause
+- So overall probability of next marble being blue is
+
+$$
+ \frac{224}{299} \times \frac{3}{4} + \frac{75}{299} \times \frac{2}{3} = \frac{218}{299} \approx 0.729
+$$
+
+## General Strategy of Last Slide
+
+- If there are two hypotheses X and Y, and you want to know the probability of some event E, it will be given by
+
+$$
+\Pr(E) = \Pr(X)\Pr(E | X) + \Pr(Y)\Pr(E | Y)
+$$
+
+And that generalises to the case where there are multiple hypotheses $H_1, \dots H_n$
+
+$$
+\Pr(E) = \Pr(H_1)\Pr(E | H_1) + \dots +  \Pr(H_n)\Pr(E | H_n)
+$$
+
+## For Next Time
+
+Next week we will look at the use of probability in decision making, and in science.
