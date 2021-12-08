@@ -1,5 +1,5 @@
 ---
-title: "305 Lecture 7.1 - Introducing Probability"
+title: "305 Lecture 6.1 - Introducing Probability"
 author: "Brian Weatherson"
 mainfont: SF Pro Rounded
 output:
