@@ -3,6 +3,8 @@ title: 'PHIL 305: Introduction to Formal Methods'
 author: "Brian Weatherson"
 date: "Winter 2022"
 output:
+  html_document:
+    df_print: paged
   pdf_document:
     keep_tex: yes
     fig_caption: yes
@@ -10,8 +12,6 @@ output:
     md_extensions: +link_attributes+fenced_divs
     includes:
       in_header: columns.tex
-  html_document:
-    df_print: paged
 geometry: margin=1.5in
 mainfont: SF Pro Rounded
 mainfontoptions: 
@@ -336,7 +336,9 @@ Lectures
 
 Note that there is no assignment this week.
 
-## Starting on Probability
+\newpage
+
+## Week 6: Starting on Probability
 
 :::::: {.cols data-latex=""}  
 
@@ -351,7 +353,7 @@ Reading
 :    _Odds and Ends_, chapters 1 and 5
 
 Lectures
-:    7.1-7.3.
+:    6.1-6.2.
 
 :::
 
@@ -366,19 +368,21 @@ a column separator -->
 ### `r advdate(thu, 6)`
 
 Topic
-:    Conditional Probability
+:    Probability Trees
 
 Reading
-:    _Odds and Ends_, chapter 6
+:    _Odds and Ends_, chapter 1
 
 Lectures
-:    7.4-7.5.
+:    6.3-6.4.
 
 :::
 
 ::::::
 
-There aren't any 6.x lectures - after I'd recorded the later lectures I decided against doing another week of natural deduction.
+The assignment this week is about the material from week 5
+
+## Week 7: Conditional Probability
 
 :::::: {.cols data-latex=""}  
 
@@ -390,10 +394,10 @@ Topic
 :    Conditional Probability
 
 Reading
-:    _Odds and Ends_, chapter 8
+:    _Odds and Ends_, chapter 6
 
 Lectures
-:    8.1-8.5.
+:    7.1-7.2.
 
 :::
 
@@ -408,19 +412,61 @@ a column separator -->
 ### `r advdate(thu, 7)`
 
 Topic
-:    Base Rates and Multiple Updates
+:    Inverting Conditional Probability
 
 Reading
-:    _Odds and Ends_, chapter 9
+:    _Odds and Ends_, chapter 8
 
 Lectures
-:    8.6-8.9.
+:    7.3-7.6.
 
 :::
 
 ::::::
 
-Probability and Decision
+## Week 8: More Conditional Probability
+
+:::::: {.cols data-latex=""}  
+
+::: {.col data-latex="{0.48\textwidth}"}  
+
+### `r advdate(tue, 8)`
+
+Topic
+:    Base Rates
+
+Reading
+:    _Odds and Ends_, chapter 9
+
+Lectures
+:    8.1-8.2.
+
+:::
+
+::: {.col data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.48\textwidth}"}
+
+### `r advdate(thu, 8)`
+
+Topic
+:    Multiple Updates
+
+Reading
+:    _Odds and Ends_, chapter 9
+
+Lectures
+:    8.3-8.5
+
+:::
+
+::::::
+
+## Week 9: Probability and Decision
 
 :::::: {.cols data-latex=""}  
 
@@ -462,7 +508,7 @@ Lectures
 
 ::::::
 
-## Probability and Learning
+## Week 10: Probability and Learning
 
 :::::: {.cols data-latex=""}  
 
@@ -504,7 +550,11 @@ Lectures
 
 ::::::
 
-## Introduction to Modal Logic
+No assignment this week.
+
+\newpage
+
+## Week 11: Introduction to Modal Logic
 
 :::::: {.cols data-latex=""}  
 
@@ -546,7 +596,7 @@ Lectures
 
 ::::::
 
-## Proofs in Modal Logic
+## Week 12: Proofs in Modal Logic
 
 :::::: {.cols data-latex=""}  
 
@@ -588,7 +638,7 @@ Lectures
 
 ::::::
 
-## Conditionals
+## Week 13: Conditionals
 
 :::::: {.cols data-latex=""}  
 
@@ -630,7 +680,7 @@ Lectures
 
 ::::::
 
-## Finishing Up
+## Week 14: Counterfactuals
 
 :::::: {.cols data-latex=""}  
 
@@ -660,16 +710,18 @@ a column separator -->
 ### `r advdate(thu, 14)`
 
 Topic
-:    Revision
+:    Puzzles about Counterfactuals
 
 Reading
 :    No new reading
 
 Lectures
-:    No new lectures
+:    14.3-14.4
 
 :::
 
 ::::::
 
+\bigskip
 
+There will be a revision class on `r advdate(tue, 15)`, with no new material, to go over the sample exam.
