@@ -67,8 +67,8 @@ The three books are for the three parts of the course.
 
 Our course is called
 
-> University of Michigan - W21 - Phil305
-> Introduction to Formal Methods, University of Michigan, Winter 2021.
+> University of Michigan - W22 - Phil305
+> University of Michigan Winter Term 2022 Philosophy 305 Introduction to Formal Methods
 
 ## Odds and Ends
 
