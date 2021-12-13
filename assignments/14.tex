@@ -5,9 +5,9 @@
 \documentclass[
   11pt,
 ]{article}
+\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{setspace}
-\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
@@ -45,7 +45,7 @@
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1.3in]{geometry}
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -66,10 +66,13 @@
 \usepackage{nicefrac}
 \usepackage{caption}
 \usepackage{mathastext}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 
 \title{Assignment Week 14}
 \author{Philosophy 305}
-\date{Due April 22, 2021}
+\date{Due April 15, 2022, 5pm}
 
 \begin{document}
 \maketitle
@@ -149,7 +152,5 @@ examples, you can do that as well in the text boxes provided.
   case that \(B\), \textit{or}, if it were the case that \(A\), it would
   be the case that \(C\).
 \end{enumerate}
-
-Note that the assignment is due on \textbf{Thursday} at 5pm.
 
 \end{document}

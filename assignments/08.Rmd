@@ -15,16 +15,10 @@ mainfontoptions: "Scale=MatchLowercase"
 geometry: margin=1.2in
 linestretch: 1.4
 author: Philosophy 305
-date: Due March 12, 2021
+date: Due February 25, 2022, 5pm
 ---
 
-## Odds and Ends 6.3
 
-Five percent of tablets made by the company Ixian have factory defects. Ten percent of the tablets made by their competitor com- pany Guild do. A computer store buys 40% of its tablets from Ixian, and 60% from Guild.
-
-a. What is the probability a randomly selected tablet in the store is made by Ixian and has a factory defect?
-b. What is the probability a randomly selected tablet in the store has a factory defect?
-c. What is the probability a tablet from this store is made by Ixian, given that it has a factory defect?
 
 ## Odds and Ends 9.1 (with one extra question)
 

@@ -15,7 +15,7 @@ mainfontoptions: "Scale=MatchLowercase"
 geometry: margin=1.3in
 linestretch: 1.1
 author: Philosophy 305
-date: Due April 22, 2021
+date: Due April 15, 2022, 5pm
 ---
 
 For each of the following arguments, I want you to find substitution instances for $A, B$ and $C$ to make the arguments intuitively have true premises and a false conclusion. In most cases there are examples of these in the textbook or the slides - you **must** use your own versions, not those. If you need to explain the background to the examples, you can do that as well in the text boxes provided.
@@ -46,4 +46,3 @@ For each of the following arguments, I want you to find substitution instances f
 1. If it were the case that $A$, it would be the case that $B \vee C$.
 1. So \textit{either}, if it were the case that $A$, it would be the case that $B$, \textit{or}, if it were the case that $A$, it would be the case that $C$.
 
-Note that the assignment is due on **Thursday** at 5pm.

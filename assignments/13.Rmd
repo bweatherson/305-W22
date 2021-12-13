@@ -15,7 +15,7 @@ mainfontoptions: "Scale=MatchLowercase"
 geometry: margin=1.4in
 linestretch: 1.2
 author: Philosophy 305
-date: Due April 16, 2021
+date: Due April 8, 2022, 5pm
 ---
 
 ## Questions 1-4

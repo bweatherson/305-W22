@@ -5,9 +5,9 @@
 \documentclass[
   11pt,
 ]{article}
+\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{setspace}
-\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
@@ -45,7 +45,7 @@
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1.2in]{geometry}
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -66,37 +66,18 @@
 \usepackage{nicefrac}
 \usepackage{caption}
 \usepackage{mathastext}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 
 \title{Assignment Week 8}
 \author{Philosophy 305}
-\date{Due March 12, 2021}
+\date{Due February 25, 2022, 5pm}
 
 \begin{document}
 \maketitle
 
 \setstretch{1.4}
-\hypertarget{odds-and-ends-6.3}{%
-\subsection{Odds and Ends 6.3}\label{odds-and-ends-6.3}}
-
-Five percent of tablets made by the company Ixian have factory defects.
-Ten percent of the tablets made by their competitor com- pany Guild do.
-A computer store buys 40\% of its tablets from Ixian, and 60\% from
-Guild.
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\tightlist
-\item
-  What is the probability a randomly selected tablet in the store is
-  made by Ixian and has a factory defect?
-\item
-  What is the probability a randomly selected tablet in the store has a
-  factory defect?
-\item
-  What is the probability a tablet from this store is made by Ixian,
-  given that it has a factory defect?
-\end{enumerate}
-
 \hypertarget{odds-and-ends-9.1-with-one-extra-question}{%
 \subsection{Odds and Ends 9.1 (with one extra
 question)}\label{odds-and-ends-9.1-with-one-extra-question}}

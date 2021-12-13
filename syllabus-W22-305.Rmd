@@ -3,8 +3,6 @@ title: 'PHIL 305: Introduction to Formal Methods'
 author: "Brian Weatherson"
 date: "Winter 2022"
 output:
-  html_document:
-    df_print: paged
   pdf_document:
     keep_tex: yes
     fig_caption: yes
@@ -12,6 +10,8 @@ output:
     md_extensions: +link_attributes+fenced_divs
     includes:
       in_header: columns.tex
+  html_document:
+    df_print: paged
 geometry: margin=1.5in
 mainfont: SF Pro Rounded
 mainfontoptions: 
@@ -91,6 +91,10 @@ There are three textbooks for the course. All of them are open access, and hence
 1. Weekly assignments - 8% each, 10 assignments count, 80% total.
 2. Final exam - 20%.
 
+# Grading Schema
+
+By default, we've set up Canvas with the automatic system for converting numerical grades to letter grades. If the questions turn out to be harder than we expected, we might move those numbers around a little bit - the line betwen a B+ and an A- might get moved down a point or two. We won't move any of the lines up though - so the changes can only improve your letter grade.
+
 # Plagiarism
 
 Although team-work, and even co-authorship, is encouraged, plagiarism is strictly prohibited. You are responsible for making sure that none of your work is plagiarized. Be sure to cite work that you use, both direct quotations and paraphrased ideas. Any citation method that is tolerably clear is permitted, but if you'd like a good description of a citation scheme that works well in philosophy, look at <http://bit.ly/VDhRJ4>.
@@ -120,12 +124,12 @@ The video lectures will have a number of the form $x.y$, where $x$ is the week t
 Most weeks have a fairly simple structure. There are in person classes with me on Tuesday and Thursday, and you have a smaller in person class with Mica as well. There are video lectures before each of my classes. And at the end of the week there is a Canvas quiz assigned about the material we covered. But there are exceptions, especially around late January-early February. I'm going to be away on **January 27**, and that leads to the following complications.
 
 - There is no in person class with me on Thursday, January 27.
-- The assignment due January 28 will just be about the material through class on Tuesday, January 25.
-- There will be no assignment due the following week, i.e., on February 4. I want to make sure you've got plenty of time to cover the material in week 5, which is a bit harder than the rest of the course.
-- The assignment in week 6 will be about the material through class on Thursday, February 3.
+- The assignment in week 4 will just be about the material through class on Tuesday, January 25.
+- The assignment in week 5 will just cover the relatively introductory part of the material covered that week.
+- The assignment in week 6 will be about the material through class on Thursday, February 3, i.e., the end of week 5.
 - The assignment in week 7 will cover the material in weeks 6 and 7.
 
-The week after Spring Break is also going to be a bit different. This will be less problems based and more about the philosophical significance of some of the work we're doing here. There isn't an assignment that week, and it quite literally isn't on the test. But I hope you'll get something out of it, because I think understanding this material is important for understanding a lot of what goes on in contemporary academic work. Anyway, there is no assignment that week.
+There is also no assignment the week after Spring Break, so we can all get a bit of a soft relaunch of the term before the final push to the end of term.
 
 \newpage
 
@@ -472,7 +476,7 @@ Lectures
 
 ::: {.col data-latex="{0.48\textwidth}"}  
 
-### `r advdate(tue, 8)`
+### `r advdate(tue, 10)`
 
 Topic
 :    Expected Utility
@@ -493,7 +497,7 @@ a column separator -->
 
 ::: {.col data-latex="{0.48\textwidth}"}
 
-### `r advdate(thu, 8)`
+### `r advdate(thu, 10)`
 
 Topic
 :    Utility and Money
@@ -508,13 +512,16 @@ Lectures
 
 ::::::
 
+No assignment this week.
+
+
 ## Week 10: Probability and Learning
 
 :::::: {.cols data-latex=""}  
 
 ::: {.col data-latex="{0.48\textwidth}"}  
 
-### `r advdate(tue, 10)`
+### `r advdate(tue, 11)`
 
 Topic
 :    Theories of Probability
@@ -535,7 +542,7 @@ a column separator -->
 
 ::: {.col data-latex="{0.48\textwidth}"}
 
-### `r advdate(thu, 10)`
+### `r advdate(thu, 11)`
 
 Topic
 :    Statistical Learning
@@ -550,7 +557,6 @@ Lectures
 
 ::::::
 
-No assignment this week.
 
 \newpage
 
@@ -560,7 +566,7 @@ No assignment this week.
 
 ::: {.col data-latex="{0.48\textwidth}"}  
 
-### `r advdate(tue, 11)`
+### `r advdate(tue, 12)`
 
 Topic
 :    Varieties of Modalty
@@ -581,7 +587,7 @@ a column separator -->
 
 ::: {.col data-latex="{0.48\textwidth}"}
 
-### `r advdate(thu, 11)`
+### `r advdate(thu, 12)`
 
 Topic
 :    Models and Frames
@@ -602,7 +608,7 @@ Lectures
 
 ::: {.col data-latex="{0.48\textwidth}"}  
 
-### `r advdate(tue, 12)`
+### `r advdate(tue, 13)`
 
 Topic
 :    Modal Tableau
@@ -623,7 +629,7 @@ a column separator -->
 
 ::: {.col data-latex="{0.48\textwidth}"}
 
-### `r advdate(thu, 12)`
+### `r advdate(thu, 13)`
 
 Topic
 :    Examples
@@ -644,7 +650,7 @@ Lectures
 
 ::: {.col data-latex="{0.48\textwidth}"}  
 
-### `r advdate(tue, 13)`
+### `r advdate(tue, 14)`
 
 Topic
 :    Varieties of Conditionals
@@ -665,7 +671,7 @@ a column separator -->
 
 ::: {.col data-latex="{0.48\textwidth}"}
 
-### `r advdate(thu, 13)`
+### `r advdate(thu, 14)`
 
 Topic
 :    Counterfactual Conditionals
@@ -686,7 +692,7 @@ Lectures
 
 ::: {.col data-latex="{0.48\textwidth}"}  
 
-### `r advdate(tue, 14)`
+### `r advdate(tue, 15)`
 
 Topic
 :    The Logic of Counterfactuals
@@ -707,7 +713,7 @@ a column separator -->
 
 ::: {.col data-latex="{0.48\textwidth}"}
 
-### `r advdate(thu, 14)`
+### `r advdate(thu, 15)`
 
 Topic
 :    Puzzles about Counterfactuals
@@ -724,4 +730,4 @@ Lectures
 
 \bigskip
 
-There will be a revision class on `r advdate(tue, 15)`, with no new material, to go over the sample exam.
+There will be a revision class on `r advdate(tue, 16)`, with no new material, to go over the sample exam.

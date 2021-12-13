@@ -16,7 +16,7 @@ classoption: twocolumn
 geometry: margin=1.4in
 linestretch: 1.2
 author: Philosophy 305
-date: Due April 2, 2020
+date: Due March 25, 2022, 5pm
 ---
 
 ![First model](11_first_picture.png)

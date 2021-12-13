@@ -3,7 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-  12pt,
+  11pt,
 ]{article}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -39,12 +39,12 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={Assignment Week 12},
+  pdftitle={Assignment Week 6},
   pdfauthor={Philosophy 305},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
-\usepackage[margin=1.4in]{geometry}
+\usepackage[margin=1.2in]{geometry}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -70,29 +70,34 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 
-\title{Assignment Week 12}
+\title{Assignment Week 6}
 \author{Philosophy 305}
-\date{Due April 1, 2022, 5pm}
+\date{Due February 11, 2022, 5pm}
 
 \begin{document}
 \maketitle
 
-\setstretch{1.6}
-Which of the following are theorems of K?
+\setstretch{1.4}
+\hypertarget{proofs}{%
+\section{Proofs}\label{proofs}}
+
+Provide proofs of each of the following arguments. You should enter
+these in \url{http://carnap.io}, and make a note in Canvas when you are
+done.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \((\Box A \vee \Box B) \rightarrow \Box(A \vee B)\)
+  \((A \vee B) \wedge (A \vee C) \vdash A \vee (B \wedge C)\)
 \item
-  \((\Box A \wedge \Diamond B) \rightarrow \Diamond(A \wedge B)\)
+  \(B \vdash \neg (A \wedge \neg A)\)
 \item
-  \(\Box (A \wedge \Diamond B) \rightarrow \Diamond(A \wedge B)\)
+  \((A \rightarrow C) \wedge (B \rightarrow C) \vdash (A \vee B) \rightarrow C\)
 \item
-  \((\Box A \rightarrow \Box B) \rightarrow (\Diamond A \rightarrow \Diamond B)\)
+  \(\neg A \rightarrow \neg B \vdash B \rightarrow A\)
 \item
-  \(\Box (A \rightarrow B) \rightarrow (\Diamond A \rightarrow \Diamond B)\)
+  \(A \rightarrow (B \vee C) \vdash (A \rightarrow B) \vee (A \rightarrow C)\)
 \end{enumerate}
 
 \end{document}

@@ -14,7 +14,7 @@ mainfontoptions: "Scale=MatchLowercase"
 geometry: margin=1.2in
 linestretch: 1.4
 author: Philosophy 305
-date: Due February 12, 5pm
+date: Due January 28, 2022, 5pm
 ---
 
 # Trees or Tables
