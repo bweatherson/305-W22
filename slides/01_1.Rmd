@@ -91,8 +91,8 @@ Our course is called
 ## Access
 
 - The slides will be captioned.
-- The captions are produced automatically by Kaltura then edited by hand, so they should be ok to use.
-- But if anything goes wrong, do let me know.
+- The captions are produced automatically and they aren't always perfect.
+- So if they can't be used.
 - Access is important, and it's harder to get right for a course like this than for other philosophy courses, so you should hold me to a higher standard.
 
 ## Assessment
@@ -102,6 +102,12 @@ Our course is called
 - These are already all posted, and they will be due each week on Friday at 5pm.
 - There are exceptions for this week, the week of the mid-term break, and the last week of term.
 - There will also be an end of term exam, also through Canvas.
+
+## Syllabus
+
+- The syllabus is available on Canvas. Indeed, it is the first thing that comes up when you load Canvas.
+- Read it closely!!
+- It will tell you what we're covering each week, and where you should be at over time.
 
 ## For Next Time
 
