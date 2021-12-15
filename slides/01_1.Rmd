@@ -7,7 +7,7 @@ mainfontoptions:
 mathfont: STIX Two Math
 output:
   beamer_presentation:
-    md_extensions: +link_attributes
+    md_extensions: +link_attributes+line_blocks
     keep_tex: yes
     latex_engine: xelatex
     includes:
@@ -50,7 +50,7 @@ There are three - all of them available through Canvas.
 
 1. _forall x: Calgary Edition_ by P. D. Magnus, Tim Button, J. Robert Loftis, Robert Trueman, Aaron Thomas-Bolduc and Richard Zach.
 2. _Odds and Ends_ by Jonathan Weisberg
-3. _Boxes and Diamonds, Ann Arbor remix_, writted by Richard Zach and edited by me.
+3. _Boxes and Diamonds, Ann Arbor remix_, written by Richard Zach and edited by me.
 
 The three books are for the three parts of the course.
 
@@ -67,7 +67,8 @@ The three books are for the three parts of the course.
 
 Our course is called
 
-> University of Michigan - W22 - Phil305
+> University of Michigan - W22 - Phil305    
+>    
 > University of Michigan Winter Term 2022 Philosophy 305 Introduction to Formal Methods
 
 ## Odds and Ends
@@ -100,7 +101,7 @@ Our course is called
 - The primary assessment will be weekly assignments, most of which will be administered through Canvas.
 - Some of them, especially in the early weeks, will be on Carnap.
 - These are already all posted, and they will be due each week on Friday at 5pm.
-- There are exceptions for this week, the week of the mid-term break, and the last week of term.
+- There are exceptions for this week, the week after the mid-term break, and the last week of term.
 - There will also be an end of term exam, also through Canvas.
 
 ## Syllabus
