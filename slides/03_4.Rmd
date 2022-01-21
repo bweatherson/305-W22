@@ -49,9 +49,9 @@ Yes!
 Say a **valuation** is a function $v$ from sentences to $\{\True, \False\}$ satisfying these constraints.
 
 1. $v(\neg A) = \True$ if $v(A) = \False$, and $v(\neg A) = \False$ otherwise.
-2. $v(A \vee B) = \True$ if $V(A) = \True$ or $v(B) = \True$, and $v(A \vee B) = \False$ otherwise.
-3. $v(A \wedge B) = \True$ if $V(A) = \True$ and $v(B) = \True$, and $v(A \wedge B) = \False$ otherwise.
-4. $v(A \rightarrow B) = \True$ if $V(A) = \False$ or $v(B) = \True$, and $v(A \rightarrow B) = \False$ otherwise.
+2. $v(A \vee B) = \True$ if $v(A) = \True$ or $v(B) = \True$, and $v(A \vee B) = \False$ otherwise.
+3. $v(A \wedge B) = \True$ if $v(A) = \True$ and $v(B) = \True$, and $v(A \wedge B) = \False$ otherwise.
+4. $v(A \rightarrow B) = \True$ if $v(A) = \False$ or $v(B) = \True$, and $v(A \rightarrow B) = \False$ otherwise.
 
 ## Restating
 
