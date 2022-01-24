@@ -5,6 +5,10 @@
 \documentclass[
   ignorenonframetext,
 ]{beamer}
+\title{305 Lecture 6.3 - Probability Trees}
+\author{Brian Weatherson}
+\date{}
+
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
@@ -45,8 +49,8 @@
 }
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -281,13 +285,9 @@
 \setbeamertemplate{caption}{\raggedright\insertcaption}
 
 \setlength\lightrulewidth{0.3pt}
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-
-\title{305 Lecture 6.3 - Probability Trees}
-\author{Brian Weatherson}
-\date{}
 
 \begin{document}
 \frame{\titlepage}
@@ -296,6 +296,11 @@
 \protect\hypertarget{plan}{}
 To introduce the notion of probability trees, and show how they can be
 used for estimating probabilities.
+\end{frame}
+
+\begin{frame}{Reading}
+\protect\hypertarget{reading}{}
+\emph{Odds and Ends}, sections 1.1 and 6.2.
 \end{frame}
 
 \begin{frame}{Trees}
@@ -315,8 +320,8 @@ used for estimating probabilities.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Academic Forecasting}
-\protect\hypertarget{academic-forecasting}{}
+\begin{frame}{Flight Forecasting}
+\protect\hypertarget{flight-forecasting}{}
 \begin{itemize}
 \tightlist
 \item
@@ -346,8 +351,8 @@ used for estimating probabilities.
 \item
   Work out the probability of being in one or other part of the space.
 \item
-  Work out the probability of classes running all semester in each part
-  of the space.
+  Work out the probability of being delayed given you are in one or
+  other part of the space.
 \item
   Add things up.
 \end{itemize}

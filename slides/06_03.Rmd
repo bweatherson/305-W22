@@ -19,6 +19,10 @@ mainfontoptions: BoldFont = SF Pro Rounded Semibold
 
 To introduce the notion of probability trees, and show how they can be used for estimating probabilities.
 
+## Reading
+
+_Odds and Ends_, sections 1.1 and 6.2. 
+
 ## Trees
 
 - Often, we can't just write down numbers for the possibilities.
@@ -26,7 +30,7 @@ To introduce the notion of probability trees, and show how they can be used for 
 - And we can think about how things are likely to go given those events happen.
 - This is the tree structure that is used in _Odds and Ends_.
 
-## Academic Forecasting
+## Flight Forecasting
 
 - So let's say you're flying from Detroit to Salt Lake City via Denver (which apparently is a common route), next Monday.
 - And you want to know how likely it is you'll get there on time. 
@@ -39,7 +43,7 @@ To introduce the notion of probability trees, and show how they can be used for 
 
 - Divide up the state space.
 - Work out the probability of being in one or other part of the space.
-- Work out the probability of classes running all semester in each part of the space.
+- Work out the probability of being delayed given you are in one or other part of the space.
 - Add things up.
 
 ## Nothing is Reliable
@@ -58,7 +62,7 @@ To introduce the notion of probability trees, and show how they can be used for 
 ## Two Step Process
 
 1. Work out (or at least estimate) probability of each state.
-2. Work out probability of the university staying open within each of those states.
+2. Work out probability of being delayed within each of those states.
 
 This will involve a lot of guesswork - do not make travel planning decisions on the basis of the numbers I'm about to use because they are really pulled out of the air - but it's a very helpful heuristic to at least approximate the reality.
 
@@ -66,8 +70,8 @@ This will involve a lot of guesswork - do not make travel planning decisions on 
 
 Let's say the probabilities look like this.
 
-- Blizzard - 10%, or 0.2.
-- Other bad weather - 60%, or 0.5.
+- Blizzard - 10%, or 0.1.
+- Other bad weather - 60%, or 0.6.
 - Good weather  - 30%, or 0.3.
 
 ## Flight Probabilities
@@ -103,7 +107,7 @@ Blizzard                      $0.1 \times 0.00 = 0.00$   $0.1 \times 1.00 = 0.10
 Bad Weather                   $0.6 \times 0.75 = 0.45$   $0.6 \times 0.25 = 0.15$
 Good weather                  $0.3 \times 0.90 = 0.27$   $0.3 \times 0.10 = 0.03$
   
-So the probability that you arrive on time (given these literally made up assumptions) is $0.00 + 0.45 + 0.27 = 0.72$, or 72%.
+So the probability that you arrive on time (given these literally made up assumptions) is $0.00 + 0.45 + 0.27 = 0.72$, or 72%, and the probability that you're delayed is 28%.
 
 ## Probabilities and Errors
 
