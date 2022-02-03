@@ -4,10 +4,14 @@
 %
 \documentclass[
 ]{article}
+\title{PHIL 305: Introduction to Formal Methods}
+\author{Brian Weatherson}
+\date{Winter 2022}
+
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -80,13 +84,9 @@ MatchLowercase]{SF Pro Rounded}
 }
 \makeatother
 \linespread{1.05}
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-
-\title{PHIL 305: Introduction to Formal Methods}
-\author{Brian Weatherson}
-\date{Winter 2022}
 
 \begin{document}
 \maketitle
@@ -151,8 +151,8 @@ downloaded from elsewhere.
 \begin{itemize}
 \tightlist
 \item
-  There will be 12 weekly quizzes. Of these your best 10 will count
-  towards your grade, with each counting for 8\%.
+  There will be 11 weekly assignments. Of these your best 9 will count
+  towards your grade, with each counting for about 9\%.
 \item
   There will also be a final exam, given through Canvas, that counts for
   20\% of the grade.
@@ -165,7 +165,7 @@ downloaded from elsewhere.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Weekly assignments - 8\% each, 10 assignments count, 80\% total.
+  Weekly assignments - 8.9\% each, 9 assignments count, 80\% total.
 \item
   Final exam - 20\%.
 \end{enumerate}
@@ -262,8 +262,7 @@ that leads to the following complications.
   The assignment in week 4 will just be about the material through class
   on Tuesday, January 25.
 \item
-  The assignment in week 5 will just cover the relatively introductory
-  part of the material covered that week.
+  There is no assignment in week 5.
 \item
   The assignment in week 6 will be about the material through class on
   Thursday, February 3, i.e., the end of week 5.
