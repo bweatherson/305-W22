@@ -5,11 +5,15 @@
 \documentclass[
   11pt,
 ]{article}
+\title{Assignment Week 6}
+\author{Philosophy 305}
+\date{Due February 11, 2022, 5pm}
+
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{setspace}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -66,13 +70,9 @@
 \usepackage{nicefrac}
 \usepackage{caption}
 \usepackage{mathastext}
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-
-\title{Assignment Week 6}
-\author{Philosophy 305}
-\date{Due February 11, 2022, 5pm}
 
 \begin{document}
 \maketitle
@@ -89,15 +89,34 @@ done.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \((A \vee B) \wedge (A \vee C) \vdash A \vee (B \wedge C)\)
+  \(A \rightarrow B, A \rightarrow C \vdash A \rightarrow (B \wedge C)\)
 \item
-  \(B \vdash \neg (A \wedge \neg A)\)
+  \(A \rightarrow (B \rightarrow C) \vdash (A \wedge B) \rightarrow C\)
+\item
+  \(A \vee C, A \rightarrow C, B \rightarrow D \vdash C \vee D\)
+\item
+  \(A \vee (B \wedge C) \vdash (A \vee B) \wedge (A \vee C)\)
 \item
   \((A \rightarrow C) \wedge (B \rightarrow C) \vdash (A \vee B) \rightarrow C\)
 \item
   \(\neg A \rightarrow \neg B \vdash B \rightarrow A\)
+\end{enumerate}
+
+Challenge questions (to get full marks, you just need to complete any
+one of these, but you are welcome to try all of them)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  \(\neg (A \wedge B) \vdash \neg A \vee \neg B\)
 \item
   \(A \rightarrow (B \vee C) \vdash (A \rightarrow B) \vee (A \rightarrow C)\)
+\item
+  \(\vdash (A \rightarrow B) \vee (B \rightarrow A)\)
+\item
+  \((A \rightarrow B) \rightarrow A \vdash A\)
 \end{enumerate}
 
 \end{document}
