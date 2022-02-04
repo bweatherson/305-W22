@@ -5,6 +5,10 @@
 \documentclass[
   ignorenonframetext,
 ]{beamer}
+\title{305 Lecture 8.1 - Base Rates}
+\author{Brian Weatherson}
+\date{}
+
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
@@ -45,8 +49,8 @@
 }
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -281,13 +285,9 @@
 \setbeamertemplate{caption}{\raggedright\insertcaption}
 
 \setlength\lightrulewidth{0.3pt}
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-
-\title{305 Lecture 8.1 - Base Rates}
-\author{Brian Weatherson}
-\date{}
 
 \begin{document}
 \frame{\titlepage}
@@ -557,8 +557,8 @@ time.
 
 \begin{frame}{For Next Time}
 \protect\hypertarget{for-next-time}{}
-We will end the week looking at some more complicated examples of
-inverting conditional probability.
+We will look at some more complicated examples of inverting conditional
+probability.
 \end{frame}
 
 \end{document}

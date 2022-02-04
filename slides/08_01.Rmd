@@ -139,4 +139,4 @@ I think I'd say the witness correctly identified the color 80% of the time.
 
 ## For Next Time
 
-We will end the week looking at some more complicated examples of inverting conditional probability.
+We will look at some more complicated examples of inverting conditional probability.
