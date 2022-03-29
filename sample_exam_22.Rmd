@@ -18,7 +18,7 @@ mainfontoptions: BoldFont = SF Pro Rounded Semibold, Scale = MatchLowercase
 mathfont: SF Pro Rounded
 geometry: margin=1.5in
 author: Philosophy 305
-date: TBC
+date: March, 2022
 ---
 
 ## Instructions
@@ -26,7 +26,7 @@ date: TBC
 - You have **3 hours** for the exam. 
 - Type up any answers you can.
 - But for things you can't type - _especially trees_ - write them out on paper, take a photo of them, and upload the photo.
-- Note that there will be *fewer* questions than this on the final, but the structure will be similar. The point of this is to give you a sense of the kind of questions that there will be.
+- Note that there will be *fewer* questions than this on the final, but the structure will be similar. (It will be about 2/3 to 3/4 the length of this.) The point of this is to give you a sense of the kind of questions that there will be.
 
 ## Truth Tables
 
@@ -51,7 +51,7 @@ For each of these sequents, do a truth table to test whether they are valid. In 
 
 ## Proofs
 
-Construct a proof for each of the following
+Construct a proof for each of the following. (If you want to use Carnap, you can do the proofs at https://carnap.io/shared/weath@umich.edu/Playground.pandoc).
 
 9. $P \rightarrow (Q \wedge R), S \wedge P \vdash R \wedge (S \vee T)$ 
 10. $(P \wedge Q) \rightarrow R \vdash P \rightarrow (Q \rightarrow R)$
