@@ -32,8 +32,8 @@ For each of the following arguments, I want you to find substitution instances f
 
 ## Question 3
 
-1. If it was be the case that $A$, it was be the case that $B$.
-1. So, if it was the case that $C \wedge A$, it was be the case that $B$.
+1. If it was the case that $A$, it was the case that $B$.
+1. So, if it was the case that $C \wedge A$, it was the case that $B$.
 
 ## Question 4
 

@@ -8,8 +8,8 @@
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{setspace}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -66,7 +66,7 @@
 \usepackage{nicefrac}
 \usepackage{caption}
 \usepackage{mathastext}
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 
@@ -118,9 +118,9 @@ examples, you can do that as well in the text boxes provided.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  If it was be the case that \(A\), it was be the case that \(B\).
+  If it was the case that \(A\), it was the case that \(B\).
 \item
-  So, if it was the case that \(C \wedge A\), it was be the case that
+  So, if it was the case that \(C \wedge A\), it was the case that
   \(B\).
 \end{enumerate}
 
