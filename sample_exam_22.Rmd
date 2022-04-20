@@ -39,7 +39,7 @@ For each of these sequents, do a truth table to test whether they are valid. In 
 
 ## Truth Trees
 
-For each of these sequents, do a truth table to test whether they are valid. In each case, say whether they are valid.
+For each of these sequents, do a truth tree to test whether they are valid. In each case, say whether they are valid.
 
 5. $A \vee B, B \rightarrow A \vDash A$
 6. $\neg (A \wedge B), \neg (B \rightarrow A) \vDash A$
