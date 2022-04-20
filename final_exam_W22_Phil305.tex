@@ -1,0 +1,185 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[BoldFont = SF Pro Rounded Semibold, Scale =
+MatchLowercase]{SF Pro Rounded}
+  \setmathfont[]{SF Pro Rounded}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Final Exam},
+  pdfauthor={Philosophy 305},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\usepackage{gensymb}
+\usepackage{nicefrac}
+\usepackage{caption}
+\usepackage{istgame}
+\usepackage{mathastext}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Final Exam}
+\author{Philosophy 305}
+\date{April 21-28, 2022}
+
+\begin{document}
+\maketitle
+
+\hypertarget{instructions}{%
+\subsection{Instructions}\label{instructions}}
+
+\begin{itemize}
+\tightlist
+\item
+  You have \textbf{3 hours} for the exam.
+\item
+  Type up any answers you can.
+\item
+  But for things you can't type - \emph{especially trees} - write them
+  out on paper, take a photo of them, and upload the photo.
+\end{itemize}
+
+\hypertarget{propositional-logic}{%
+\subsection{Propositional Logic}\label{propositional-logic}}
+
+For each of the following sequents, do \textbf{both} a truth table and a
+truth tree to test whether it is valid. And say whether the sequent is
+valid.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(A \rightarrow B \vDash A \vee B\)
+\item
+  \(\neg A, \neg B \vDash \neg (A \vee B)\)
+\end{enumerate}
+
+\hypertarget{proofs}{%
+\subsection{Proofs}\label{proofs}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \(Q \rightarrow (P \wedge S), Q \wedge R \vdash P \wedge R\)
+\item
+  \(Q \rightarrow (P \wedge R) \vdash Q \rightarrow P\)
+\item
+  \(R \rightarrow Q, (P \vee Q) \rightarrow \neg R \vdash \neg R\)
+\end{enumerate}
+
+\hypertarget{probability}{%
+\subsection{Probability}\label{probability}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  If \(Pr(B | A) = 0.25, Pr(B | \neg A) = 0.75\) and \(Pr(A) = 0.4\),
+  what is \(Pr(B)\)?
+\item
+  A friend of yours comes to you feeling very worried. When she was at
+  the hospital getting blood work done for a routine check up, they ran
+  some other tests and one of them came back positive for a disease that
+  is very rare (less than 0.1\% of the population have it) but very
+  serious. Your friend is worried because everyone who has the
+  disease tests positive, but 90\% of people who don't have the disease
+  test negative. (Assume all tests are positive or negative.) How
+  worried should your friend be? What might you say to reassure them?
+\end{enumerate}
+
+\hypertarget{modal-logic}{%
+\subsection{Modal Logic}\label{modal-logic}}
+
+For each of the following sentences, do \textbf{three} truth trees: one
+to check whether it is a logical truth in K, one to check whether it is
+a logical truth in S4, and one to check whether it is a logical truth in
+KT4B (i.e., S5). You can use the simplified rules for S5.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  \(\Box A, \Box \Box A \rightarrow B \vDash B\)
+\item
+  \(\neg \Box \Diamond A \vDash \neg \Diamond A\)
+\end{enumerate}
+
+\hypertarget{conditionals}{%
+\subsection{Conditionals}\label{conditionals}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  Show that this is not a theorem of S5:
+  \(\Box (A \rightarrow B) \vee \Box (B \rightarrow A)\)
+\item
+  Describe a sphere model (from the minimal change semantics chapter of
+  \emph{Boxes And Diamonds}) that shows
+  \((A \boxright B) \rightarrow ((A \wedge C) \boxright B)\) is not a
+  logical truth in the minimal change semantics.
+\end{enumerate}
+
+\end{document}
